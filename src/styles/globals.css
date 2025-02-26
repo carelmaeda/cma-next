@@ -7,7 +7,7 @@
   --color-background: #F8FAFC;
   --color-text: #1E293B;
   --color-accent: #14F195; /* Neon Green (for contrast) */
-  --color-light-gray: #3A506B; /* Muted Blue-Gray */
+  --color-light-gray: #747678; /* Muted Blue-Gray */
   --color-white: #FFFFFF;
 
   /* Fonts */
@@ -107,11 +107,11 @@ a:hover {
 
 
 .card {
-  border: none;
+  border: solid 1px var(--color-light-gray);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+} 
 
 .card:hover {
   transform: translateY(-5px);

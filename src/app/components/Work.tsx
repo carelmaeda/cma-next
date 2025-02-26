@@ -2,26 +2,28 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import '@/styles/globals.css';
+
 
 const caseStudies = [
   {
-    title: "Paygos Prototype",
-    description: "A sales acceleration platform for veterinary sales representatives.",
-    tags: ["Next.js", "TypeScript", "UI/UX"],
-    image: "/images/paygos-thumbnail.jpg", // Update with your actual image path
+    title: "Paygos Prototypes",
+    description: "Interactive Figma prototypes to enhance business development presentations and improve client engagement.",
+    tags: ["Figma", "UI/UX"],
+    image: "/images/paygos-thumbnail.png", // Update with your actual image path
     link: "/case-studies/paygos-prototype", // Direct link to the static page
   },
 ];
 
 const Work = () => {
   return (
-    <section className="container my-5">
+    <section className="section-wrapper">
       <h2 className="text-center mb-4">My Work</h2>
       <div className="row justify-content-center">
         {caseStudies.map((caseStudy) => (
           <div key={caseStudy.title} className="col-12 col-md-6 col-lg-4 mb-4">
             <Link href="/case-studies/paygos-prototype" className="text-decoration-none">
-              <div className="card shadow-sm border-0 h-100">
+              <div className="card shadow-sm h-100">
                 <Image
                   src={caseStudy.image}
                   alt={caseStudy.title}
