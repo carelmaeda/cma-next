@@ -14,7 +14,7 @@ const Contact = () => {
     e.preventDefault();
 
     const templateParams = {
-      to_name: "Icaro Lindo", 
+      to_name: "Carel Maeda", 
       from_name: name, // Sender's name
       from_email: email, // Sender's email
       message,
