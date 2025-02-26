@@ -18,7 +18,7 @@ const caseStudies = [
 const Work = () => {
   return (
     <section className="section-wrapper">
-      <h2 className="text-center mb-4">My Work</h2>
+      <h2 className="text-center mb-4">Case Studies</h2>
       <div className="row justify-content-center">
         {caseStudies.map((caseStudy) => (
           <div key={caseStudy.title} className="col-12 col-md-6 col-lg-4 mb-4">
@@ -33,7 +33,7 @@ const Work = () => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{caseStudy.title}</h5>
-                  <p className="card-text text-muted">{caseStudy.description}</p>
+                  <p className="card-text">{caseStudy.description}</p>
                   <div className="d-flex flex-wrap">
                     {caseStudy.tags.map((tag, index) => (
                       <span key={index} className="badge bg-primary me-2 mb-2">{tag}</span>

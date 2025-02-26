@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container">
         <Link className="navbar-logo" href="/">
-          <Image src="/images/logo.png" alt="logo" width={80} height={40} />
+          <Image src="/images/logo.png" alt="logo" width={80} height={45} />
         </Link>
         <button
           className="navbar-toggler"

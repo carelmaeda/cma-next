@@ -136,6 +136,11 @@ a:hover {
 }
 
 .card-text {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: justify;
   font-family: var(--font-sans-serif);
   color: var(--color-text);
   margin-bottom: 1.5rem;
