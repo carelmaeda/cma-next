@@ -238,8 +238,13 @@ form textarea{
 
 /*ABOUT*/
 
-.about-text{
-  max-width: 500px;
+.about-text {
+    max-width: 500px;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: justify;
 }
 
 .about-wrapper{
