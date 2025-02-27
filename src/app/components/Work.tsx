@@ -10,8 +10,8 @@ const caseStudies = [
     title: "Paygos Prototypes",
     description: "Interactive Figma prototypes to enhance business development presentations and improve client engagement.",
     tags: ["Figma", "UI/UX"],
-    image: "/images/paygos-thumbnail.png", // Update with your actual image path
-    link: "/case-studies/paygos-prototype", // Direct link to the static page
+    image: "/images/paygos-thumbnail.png", 
+    link: "/case-studies/paygos-prototype", 
   },
 ];
 
