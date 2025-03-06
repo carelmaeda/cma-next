@@ -48,8 +48,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="section-wrapper">
-      <h2 className="text-center mb-4">Contact Me</h2>
+    <div className="section-wrapper justify-items-center">
+      <h2 className="text-center mb-3">Contact Me</h2>
       <form onSubmit={sendEmail} className="w-100">
         <div className="form-group mb-3">
           <label htmlFor="name" className="form-label">Name</label>
