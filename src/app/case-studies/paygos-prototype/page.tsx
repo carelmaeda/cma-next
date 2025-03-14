@@ -5,18 +5,16 @@ import Image from 'next/image';
 const PaygosPrototype = () => {
   return (
     <section className="section-wrapper p-0">
-
       {/* Hero Section */}
       <div className='row case-study-1 p-5'>
         <div className="col d-flex align-items-center justify-content-center">
-          <Image
+          {/* Use a regular img tag for the GIF */}
+          <img
             src="/videos/paygos-prototype-gif1.gif"
             alt="Screen Recording GIF showcasing Paygos prototype"
             width={300}
             height={600}
-            quality={100}
-            sizes="(max-width: 370px) 100vw, (max-width: 767px) 100vw, 20.833333333333336vw"
-            loading="lazy"
+            style={{ maxWidth: '100%', height: 'auto' }}
           />
         </div>
         <div className="col text-wrapper d-grid gap-2 p-md-4">
@@ -53,7 +51,6 @@ const PaygosPrototype = () => {
 
       {/* Body Section */}
       <div className='d-grid gap-4 p-5'>
-
         {/* Sticky */}
         <Image
           src="/images/sticky1.png"
@@ -62,7 +59,6 @@ const PaygosPrototype = () => {
           height={280}
           quality={100}
           sizes="(max-width: 370px) 100vw, (max-width: 767px) 100vw, 20.833333333333336vw"
-          loading="lazy"
           className='mx-auto'
         />
 
@@ -82,7 +78,6 @@ const PaygosPrototype = () => {
         </div>
 
         <div className="d-grid col-md-6 gap-4 mx-auto text-wrapper">
-
           {/* Intro */}
           <div id='introduction'>
             <h4>Introduction</h4>
@@ -115,7 +110,6 @@ const PaygosPrototype = () => {
               width={600}
               height={390}
               quality={100}
-              loading="lazy"
               className='case-study-img'
             />
             <p>After finalizing the design, prototyping extensively, and testing it with the team, the platform looked polished and ready for client presentations!</p>
@@ -140,7 +134,6 @@ const PaygosPrototype = () => {
             width={600}
             height={390}
             quality={100}
-            loading="lazy"
             className='case-study-img'
           />
         </div>
