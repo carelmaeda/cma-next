@@ -5,10 +5,11 @@ const PaygosPrototype = () => {
   return (
     <section className="section-wrapper p-0">
       {/* Hero Section */}
-      <div className='row case-study-1 p-5'>
-        <div className="col d-flex align-items-center justify-content-center">
+      <div className='d-md-flex case-study-1 p-5'>
+        <div className="d-flex col-12 col-md-6">
           {/* Use a regular img tag for the GIF */}
           <img
+            className='mx-auto'
             src="/videos/paygos-prototype-gif1.gif"
             alt="Screen Recording GIF showcasing Paygos prototype"
             width={300}
@@ -76,7 +77,7 @@ const PaygosPrototype = () => {
           </div>
         </div>
 
-        <div className="d-grid col-md-6 gap-4 mx-auto text-wrapper">
+        <div className="d-grid gap-4 mx-auto text-wrapper">
           {/* Intro */}
           <div id='introduction'>
             <h4>Introduction</h4>
