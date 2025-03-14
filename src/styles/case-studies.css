@@ -1,42 +1,45 @@
 /* General Styles */
 
-/* Hero Section */
-.case-study-hero {
-  position: relative; 
-  width: 100%; 
-  height: 400px;
-  overflow: hidden; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+.case-study-1 {
+  background: #c3c1ff;
 }
 
-.text-wrapper p{
-     max-width: 500px;
-    -webkit-hyphens: auto;
-      hyphens: auto;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      text-align: justify;
-      font-family: var(--font-sans-serif);
-      color: var(--color-text);
-      margin-bottom: 1.5rem;
+.text-wrapper p {
+  max-width: 500px;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: justify;
+  font-family: var(--font-sans-serif);
+  color: var(--color-text);
+  line-height: 1.4;
 }
-  
-  /* Figma Embeds */
-  
-  iframe {
-    border-radius: 8px;
-    width: 100%;
-    height: 400px;
+
+/*Images*/
+.case-study-img{
+  max-width: 500px;
+  width: 100%;
+  margin: 1rem;
+  object-fit: cover;
+}
+
+
+/* Figma Embeds */
+
+iframe {
+  border-radius: 8px;
+  width: 100%;
+  height: 400px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section img {
+    max-height: 250px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .hero-section img {
-      max-height: 250px;
-    }
-  
-    .figma-embed iframe {
-      height: 350px;
-    }
+
+  .figma-embed iframe {
+    height: 350px;
   }
-  
+}

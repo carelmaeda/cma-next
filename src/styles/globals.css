@@ -1,22 +1,22 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
   /* Color Palette */
-  --color-primary: #00A3FF; /* Neon Blue */
-  --color-secondary: #0066CC; /* Deep Electric Blue */
-  --color-background: #F8FAFC;
-  --color-text: #1E293B;
-  --color-accent: #14F195; /* Neon Green (for contrast) */
+  --color-primary: #00a3ff; /* Neon Blue */
+  --color-secondary: #0066cc; /* Deep Electric Blue */
+  --color-background: #f8fafc;
+  --color-text: #1e293b;
+  --color-accent: #14f195; /* Neon Green (for contrast) */
   --color-light-gray: #747678; /* Muted Blue-Gray */
-  --color-white: #FFFFFF;
+  --color-white: #ffffff;
 
   /* Fonts */
-  --font-serif: 'EB Garamond', serif;
-  --font-sans-serif: 'Inter', sans-serif;
+  --font-serif: "EB Garamond", serif;
+  --font-sans-serif: "Inter", sans-serif;
 }
 
 body {
-  padding-top:4rem;
+  padding-top: 4rem;
   font-family: var(--font-sans-serif);
   color: var(--color-text);
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23000000" stroke-width="0.5" stroke-opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
@@ -24,24 +24,33 @@ body {
   line-height: 1.6;
 }
 
-
 /*Typography*/
 
-h1, h2 , h3, h4, .h4, .h3, .h1, .h2{
-  font-family: var(--font-serif);
+h1,
+h2,
+h3,
+h4,
+.h4,
+.h3,
+.h1,
+.h2 {
   color: var(--color-text);
 }
 
-   h5, h6 , .h5, .h6{
-    font-family: var(--font-sans-serif);
- }
+h5,
+h6,
+.h5,
+.h6 {
+  margin-bottom: 0.3rem;
+  font-family: var(--font-sans-serif);
+}
 
-h1{
+h1 {
   letter-spacing: -1px;
   line-height: 0.8;
 }
 
-.display-5{
+.display-5 {
   line-height: 1.1;
 }
 
@@ -63,11 +72,11 @@ a:hover {
   padding: 1rem 0;
 }
 
-.navbar-logo img{
+.navbar-logo img {
   max-height: 50px;
 }
 
-.navbar-logo img:hover{
+.navbar-logo img:hover {
   opacity: 0.4;
 }
 
@@ -83,7 +92,7 @@ a:hover {
 
 /*HERO*/
 
-.hero-text{
+.hero-text {
   color: var(--color-primary);
 }
 
@@ -109,26 +118,25 @@ a:hover {
 /*SECTION*/
 
 .section-wrapper {
-  padding: min(3rem,5%);
-  border-radius:8px;
+  padding: min(3rem, 5%);
+  border-radius: 8px;
   background-color: var(--color-white);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .justify-items-center {
   justify-items: center;
 }
 
-
 /*WORK*/
-
 
 .card {
   border: solid 1px var(--color-light-gray);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-} 
+}
 
 .card:hover {
   transform: translateY(-5px);
@@ -175,26 +183,26 @@ a:hover {
 
 /*CASE STUDY PAGE*/
 
-.case-study-img-full{
-  width:100%;
-  aspect-ratio:16/09;
-  max-height:350px;
-  place-content:center;
+.case-study-img-full {
+  width: 100%;
+  aspect-ratio: 16/09;
+  max-height: 350px;
+  place-content: center;
   object-fit: cover;
 }
 
 .btn-wrapper {
-  display:flex;
+  display: flex;
   justify-content: space-between;
-  width:100%;
+  width: 100%;
   position: fixed;
   bottom: 20px;
   padding: 2rem;
   left: 0;
 }
 
-.case-study-btn{
-  padding-inline:1rem;
+.case-study-btn {
+  padding-inline: 1rem;
 }
 
 /*LOADING SCREEN*/
@@ -209,15 +217,13 @@ a:hover {
   height: 3rem;
 }
 
-
-
 /*CONTACT*/
 
-form{
-  max-width:500px;
+form {
+  max-width: 500px;
 }
 
-form textarea{
+form textarea {
   resize: none;
 }
 
@@ -261,24 +267,24 @@ form textarea{
 /*ABOUT*/
 
 .about-text {
-    max-width: 500px;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    text-align: justify;
+  max-width: 500px;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: justify;
 }
 
-.about-wrapper{
-  display:grid;
+.about-wrapper {
+  display: grid;
   gap: 2rem;
 
-  justify-content:center;
-  justify-items:center;
+  justify-content: center;
+  justify-items: center;
 }
 
-.about-wrapper img{
-  border-radius:99px;
+.about-wrapper img {
+  border-radius: 99px;
   aspect-ratio: 1/1;
   object-fit: cover;
 }

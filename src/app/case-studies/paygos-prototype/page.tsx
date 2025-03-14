@@ -4,148 +4,145 @@ import Image from 'next/image';
 
 const PaygosPrototype = () => {
   return (
-    <section>
+    <section className="section-wrapper p-0">
+
       {/* Hero Section */}
-      <div className="case-study-hero">
-        <Image
-          src="/images/paygos-prototype-hero.png"
-          alt="Paygos Prototype"
-          fill
-          style={{ objectFit: 'cover', objectPosition: 'top' }}
-        />
+      <div className='row case-study-1 p-5'>
+        <div className="col d-flex align-items-center justify-content-center">
+          <Image
+            src="/videos/paygos-prototype-gif1.gif"
+            alt="Screen Recording GIF showcasing Paygos prototype"
+            width={300}
+            height={600}
+            quality={100}
+            sizes="(max-width: 370px) 100vw, (max-width: 767px) 100vw, 20.833333333333336vw"
+            loading="lazy"
+          />
+        </div>
+        <div className="col text-wrapper d-grid gap-2 p-md-4">
+          <div>
+            <h1>From One Day to One Hour</h1>
+            <label className='m-0'>How I Expanded a Business by Designing a Scalable Figma Prototype</label>
+          </div>
+          <div className='py-1'>
+            <span className="badge bg-primary me-2">UX & UI</span>
+            <span className="badge bg-primary me-2">FIGMA</span>
+            <span className="badge bg-primary">UX & UI</span>
+          </div>
+          <hr className="my-2" />
+          <div>
+            <h5>Summary</h5>
+            <p>
+              Designed a <strong>scalable, interactive Figma prototype for a fintech sales platform</strong>, reducing client presentation prep time from one day to one hour.
+            </p>
+            <h5>Problem Statement</h5>
+            <p>
+              The company’s manual branding process for client presentations was <strong>time-consuming</strong>, taking a full day per client and limiting their ability to scale quickly.
+            </p>
+            <h5>Solution</h5>
+            <p>
+              A customizable Figma prototype with <strong>dynamic branding components</strong>, enabling quick updates and interactive client demos.
+            </p>
+            <h5>Metrics</h5>
+            <p>
+              Reduced presentation prep time <strong>from 1 full day to only 1 hour</strong> - leading to increased client acquisition.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="container section-wrapper">
-        <h1 className="text-center display-5">Paygos Prototypes</h1>
+      {/* Body Section */}
+      <div className='d-grid gap-4 p-5'>
 
-        <p className="text-center h5 col-md-8">
-          This case study explores how I designed several interactive prototypes for Paygos,
-          aimed at helping business development teams pitch the platform to potential clients.
-        </p>
+        {/* Sticky */}
+        <Image
+          src="/images/sticky1.png"
+          alt="Sticky note with Paygos prototype details"
+          width={360}
+          height={280}
+          quality={100}
+          sizes="(max-width: 370px) 100vw, (max-width: 767px) 100vw, 20.833333333333336vw"
+          loading="lazy"
+          className='mx-auto'
+        />
 
-        {/* Introduction Section */}
-        <div>
-             <h2 className="h4">Introduction</h2>
-              <ul className="list-unstyled">
-                <li><strong>Role:</strong> UX/UI Designer</li>
-                <li><strong>Date and Duration:</strong> Summer 2023, 6 weeks</li>
-                <li><strong>Team:</strong> Paygos Team (Project Management, Business Developer)</li>
-                <li><strong>Tools:</strong> Figma, Figjam</li>
-              </ul>
-        </div>
-
-        {/* Project Overview */}
-        <div className="text-center text-wrapper">
-          <h2 className="h4">Project Overview</h2>
-          <p className="text-break">
-            Paygos needed an interactive prototype to showcase the platform&apos;s key capabilities to its clients, such as 
-            <strong> ordering, returns, payments, rebates, and dashboards</strong>.<br />
-            Prior to this, the team relied on static PowerPoint presentations that lacked engagement, took considerable time 
-            to update, and were not always consistent.
-          </p>
-        </div>
-
-        {/* Exploring the Problem */}
-        <div>
-          <h2 className="h4">Exploring the Problem</h2>
-          <p className="text-break">
-            The existing sales materials were <strong>outdated and ineffective</strong>. The static nature of PowerPoint
-            presentations made it difficult to convey the platform&apos;s dynamic capabilities.
-          </p>
-        </div>
-
-        {/* Research Section */}
-        <div>
-          <h2 className="h4">Research & Target Users</h2>
-          <div className="row">
-            <div className="col-md-6 col-12">
-              <h3 className="h6">Target Users</h3>
-              <p className="text-break">
-                The prototype was designed for <strong>Business Development Directors</strong>, giving them a
-                more compelling tool to present to potential clients.
-              </p>
-            </div>
-            <div className="col-md-6 col-12">
-              <h3 className="h6">Key Insights</h3>
-              <p className="text-break">
-                We identified that interactive, hands-on demonstrations significantly improve client
-                engagement and understanding of platform functionality.
-              </p>
-            </div>
+        {/* NavIndex */}
+        <div className='d-grid align-items-center justify-content-center'>
+          <h4>Jump to Section</h4>
+          <div className="list-unordered mx-auto col-auto">
+            <ul className="navbar-nav">
+              <li className="nav-item"><a className="nav-link" href="#introduction">Introduction</a></li>
+              <li className="nav-item"><a className="nav-link" href="#idea">Let’s Develop! - An Initial Idea</a></li>
+              <li className="nav-item"><a className="nav-link" href="#solution">The Solution? Figma!</a></li>
+              <li className="nav-item"><a className="nav-link" href="#design">Designing with the Team</a></li>
+              <li className="nav-item"><a className="nav-link" href="#result">The Result</a></li>
+              <li className="nav-item"><a className="nav-link" href="#conclusion">Conclusion</a></li>
+            </ul>
           </div>
         </div>
 
-        {/* Design Process */}
-        <div>
-          <h2 className="h4">Design Process</h2>
-          <p className="text-break">
-            The design process followed a structured approach including:
-          </p>
-          <ul>
-            <li>User research and stakeholder interviews</li>
-            <li>Task flow analysis</li>
-            <li>Wireframing and prototyping in Figma</li>
-            <li>Usability testing and iteration</li>
-          </ul>
-        </div>
+        <div className="d-grid col-md-6 gap-4 mx-auto text-wrapper">
 
-        <div className="d-grid">
+          {/* Intro */}
+          <div id='introduction'>
+            <h4>Introduction</h4>
+            <p>The Fintech’s Business Directors needed to present their product to as many clients as possible in the shortest amount of time.</p>
+            <p>To increase client acquisition, they wanted to present a branded version of their platform to each client. This approach was meant to make clients feel more identified with the product while helping them visualize the User Experience.</p>
+            <p>However, their current process was time-consuming. They manually built PowerPoint presentations and Photoshopped still screens for each client, taking up to one full day per client. This was unsustainable and limited their ability to scale and prospect clients.</p>
+          </div>
+
+          {/* Idea */}
+          <div id='idea'>
+            <h4>Let’s Develop! - An Initial Idea</h4>
+            <p>My first thought was to design and develop a live demo website that was easily accessible for the directors to present. This demo version would showcase the platform’s functionality with unbranded images and fake data, giving clients a realistic feel of how the platform works.</p>
+            <p>But there was a problem: we had no developers or project managers to support such a project. Maintaining and updating a live platform would also be time-consuming. I needed a quicker, simpler, and more feasible solution.</p>
+          </div>
+
+          {/* Solution */}
+          <div id='solution'>
+            <h4>The Solution? Figma!</h4>
+            <p>I pivoted to creating a high-fidelity Figma prototype that mimicked a live website. Users could click through and interact with the platform’s features as if it were real.</p>
+            <p>The best part? This prototype was highly customizable. With just a few clicks, we could update the logo, colors, typography, product images, and names to match each client’s branding.</p>
+          </div>
+
+          {/* Design */}
+          <div id='design'>
+            <h4>Designing with the Team</h4>
+            <p className='my-0'>I collaborated with Project Managers, who provided a basic navbar and user flows for each feature. This helped me identify which pages to design and how users would navigate the platform.</p>
+            <Image
+              src="/images/paygos-prototype2.png"
+              alt="Paygos Prototype Design"
+              width={600}
+              height={390}
+              quality={100}
+              loading="lazy"
+              className='case-study-img'
+            />
+            <p>After finalizing the design, prototyping extensively, and testing it with the team, the platform looked polished and ready for client presentations!</p>
+            <strong>But we still needed to make it scalable for branding.</strong>
+          </div>
+
+          {/* Results */}
+          <div id='result'>
+            <h4>The Result</h4>
+            <p>The final prototype was a game-changer. Not only did it look and feel like a real product, but it also <strong>reduced the time needed to prepare client presentations from one day to one hour.</strong></p>
+          </div>
+
+          {/* Conclusion */}
+          <div id='conclusion'>
+            <h4>Conclusion</h4>
+            <p>By designing a scalable Figma prototype, I helped the fintech streamline its client acquisition process, saving time and driving business growth.</p>
+          </div>
+
           <Image
-            src="/images/paygos-prototype1.png"
-            alt="profile"
-            width={700}
-            height={500}
-            className="border rounded mb-1 img-fluid"
+            src="/images/paygos-prototype3.png"
+            alt="Final Paygos Prototype"
+            width={600}
+            height={390}
+            quality={100}
+            loading="lazy"
+            className='case-study-img'
           />
-          <small className="text-wrap text-center">
-            Example of a few taskflows I created with the Project Management team using Figjam
-          </small>
-        </div>
-
-        {/* Results & Impact */}
-        <div>
-          <h2 className="h4">Results & Impact</h2>
-          <p className="text-break">
-            With the new interactive prototype, the Business Development team observed:
-          </p>
-          <ul>
-            <li>Increased client engagement and interaction</li>
-            <li>Faster decision-making from potential buyers</li>
-            <li>More effective sales presentations</li>
-          </ul>
-        </div>
-
-        {/* Creating the Artboards */}
-        <div className="text-center">
-          <h2 className="h4">Creating the Artboards</h2>
-          <small className="d-block text-break">
-            During the initial phase, I created detailed artboards covering each key feature of the platform.
-          </small>
-          <iframe
-            src="https://embed.figma.com/design/pIMhQogytlVvlOsnkmIjNt/CPG?node-id=6835-10477&embed-host=share"
-            allowFullScreen
-            className="w-100"
-          ></iframe>
-        </div>
-
-        {/* Prototype Section */}
-        <div className="text-center">
-          <h2 className="h4">Interactive Prototype</h2>
-          <small className="d-block text-break">
-            Feel free to explore the interactive prototype below to experience the final design:
-          </small>
-          <iframe
-            src="https://embed.figma.com/proto/pIMhQogytlVvlOsnkmIjNt/CPG?page-id=6835%3A10477&node-id=6835-10480&p=f&viewport=-8404%2C-865%2C0.28&scaling=contain&content-scaling=fixed&starting-point-node-id=6835%3A10480&embed-host=share"
-            allowFullScreen
-            className="w-100"
-          ></iframe>
-        </div>
-
-        {/* Return to Homepage Button */}
-        <div>
-          <Link href="/" className="btn btn-primary w-100">
-            Return to Homepage
-          </Link>
         </div>
       </div>
     </section>
