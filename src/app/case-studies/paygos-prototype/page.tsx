@@ -1,5 +1,4 @@
 import '@/styles/case-studies.css';
-import Link from 'next/link';
 import Image from 'next/image';
 
 const PaygosPrototype = () => {

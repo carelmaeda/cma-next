@@ -1,20 +1,18 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import '@/styles/globals.css';
 import PaygosPrototype from "../case-studies/paygos-prototype/page";
 
 
-const caseStudies = [
-  {
-    title: "Paygos Prototypes",
-    description: "Interactive Figma prototypes to enhance business development presentations and improve client engagement.",
-    tags: ["Figma", "UI/UX"],
-    image: "/images/paygos-thumbnail.png", 
-    link: "/case-studies/paygos-prototype", 
-  },
-];
+// const caseStudies = [
+//   {
+//     title: "Paygos Prototypes",
+//     description: "Interactive Figma prototypes to enhance business development presentations and improve client engagement.",
+//     tags: ["Figma", "UI/UX"],
+//     image: "/images/paygos-thumbnail.png", 
+//     link: "/case-studies/paygos-prototype", 
+//   },
+// ];
 
 // const Work = () => {
 //   return (
