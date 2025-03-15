@@ -5,11 +5,12 @@
 }
 
 .text-wrapper p {
-  max-width: 500px;
+  max-width: 100%;
   -webkit-hyphens: auto;
   hyphens: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  word-break: break-word;
   text-align: justify;
   font-family: var(--font-sans-serif);
   color: var(--color-text);
@@ -17,13 +18,11 @@
 }
 
 /*Images*/
-.case-study-img{
+.case-study-img {
   max-width: 500px;
   width: 100%;
-  margin: 1rem;
   object-fit: cover;
 }
-
 
 /* Figma Embeds */
 

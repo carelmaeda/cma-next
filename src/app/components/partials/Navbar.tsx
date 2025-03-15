@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav className="container-fluid navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container">
         <Link className="navbar-logo" href="/">
           <Image src="/images/logo.png" alt="logo" width={80} height={45} />

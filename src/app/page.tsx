@@ -9,17 +9,15 @@ export default function Home() {
       <div className="container-fluid">
       <Hero />
       </div>
-      <div className="container">
       <section id="work" className="py-4">
       <Work />
       </section>
-      <section id="about" className="py-4">
+      <section id="about" className="container py-4">
         <About />
       </section>
-      <section id="contact" className="py-4">
+      <section id="contact" className="container py-4">
         <Contact />
       </section>
-      </div>
 
     </main>
   );
