@@ -5,28 +5,28 @@ const PaygosPrototype = () => {
   return (
   <section className='container-fluid'>
   {/* Hero Section */}
-  <div className='row case-study-1 p-md-5'>
-    <div className="col-md-6 d-flex col-md-4 justify-content-center">
+  <div className='row case-study-1 p-3 p-md-5 justify-content-md-center'>
+    <div className="col-md-4 d-flex justify-content-center">
       {/* Use a regular img tag for the GIF */}
       <img
-        className='img-fluid'
+        className='img-fluid col-md-10'
         src="/videos/paygos-prototype-gif1.gif"
         alt="Screen Recording GIF showcasing Paygos prototype"
         style={{ maxWidth: '100%', height: 'auto' }}
       />
     </div>
-    <div className="col-md-6 text-wrapper p-3">
+    <div className="col-md-4 text-wrapper">
       <div>
-        <h1 className='display-1'>From One Day to One Hour</h1>
+        <h1>From One Day to One Hour</h1>
         <label className='m-0'>How I Expanded a Business by Designing a Scalable Figma Prototype</label>
       </div>
-      <div className='py-1'>
+      <div className='py-2'>
         <span className="badge bg-primary me-2">UX & UI</span>
         <span className="badge bg-primary me-2">FIGMA</span>
         <span className="badge bg-primary">UX & UI</span>
       </div>
       <hr className="my-2" />
-      <div>
+      <div className='py-2'>
         <h5>Summary</h5>
         <p>
           Designed a <strong>scalable, interactive Figma prototype for a fintech sales platform</strong>, reducing client presentation prep time from one day to one hour.
@@ -48,22 +48,24 @@ const PaygosPrototype = () => {
   </div>
 
   {/* Body Section */}
-  <div className='row d-grid gap-4 p-3 p-md-5'>
-    {/* Sticky */}
+  <div className='section-wrapper container'>
+
+    <div className="row justify-content-center">
+{/* Sticky */}
     <Image
       src="/images/sticky1.png"
       alt="Sticky note with Paygos prototype details"
       width={330}
       height={250}
       quality={100}
-      sizes="(max-width: 370px) 100vw, (max-width: 767px) 100vw, 20.833333333333336vw"
-      className='img-fluid mx-auto'
+      sizes="(max-width: 370px) 33vw, (max-width: 767px) 33vw, 20.833333333333336vw"
+      className='col-9 col-md-3 img-fluid my-3'
     />
 
     {/* NavIndex */}
-    <div className='d-grid align-items-center justify-content-center'>
+    <div className='col-md-4 d-grid my-3'>
       <h4>Jump to Section</h4>
-      <div className="list-unordered mx-auto col-auto">
+      <div className="list-unordered">
         <ul className="navbar-nav">
           <li className="nav-item"><a className="nav-link" href="#introduction">Introduction</a></li>
           <li className="nav-item"><a className="nav-link" href="#idea">Let’s Develop! - An Initial Idea</a></li>
@@ -74,8 +76,10 @@ const PaygosPrototype = () => {
         </ul>
       </div>
     </div>
+    </div>
+    
 
-    <div className="d-grid gap-4 mx-auto text-wrapper">
+    <div className="d-grid gap-4 mx-auto text-wrapper col-md-6">
       {/* Intro */}
       <div id='introduction'>
         <h4>Introduction</h4>

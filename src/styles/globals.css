@@ -119,6 +119,13 @@ h1 {
   line-height: 1;
 }
 
+.display-1, .display-2, .display-3{
+    letter-spacing: -1px;
+    line-height: 1;
+    font-weight: 600;
+
+}
+
 .display-5 {
   line-height: 1.1;
 }
