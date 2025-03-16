@@ -1,5 +1,8 @@
 import '@/styles/case-studies.css';
 import Image from 'next/image';
+import { FaFigma } from 'react-icons/fa'; // Figma icon
+import { FaPlay } from 'react-icons/fa';
+
 
 const PaygosPrototype = () => {
   return (
@@ -7,7 +10,7 @@ const PaygosPrototype = () => {
   {/* Hero Section */}
   <div className='row case-study-1 p-3 p-md-5 justify-content-md-center'>
     <div className="col-md-4 d-flex justify-content-center">
-      {/* Use a regular img tag for the GIF */}
+      {/* APP GIF */}
       <img
         className='img-fluid col-md-10'
         src="/videos/paygos-prototype-gif1.gif"
@@ -59,7 +62,7 @@ const PaygosPrototype = () => {
       height={250}
       quality={100}
       sizes="(max-width: 370px) 33vw, (max-width: 767px) 33vw, 20.833333333333336vw"
-      className='col-9 col-md-3 img-fluid my-3'
+      className='col-9 col-md-4 img-fluid my-3'
     />
 
     {/* NavIndex */}
@@ -106,6 +109,7 @@ const PaygosPrototype = () => {
       <div id='design'>
         <h4>Designing with the Team</h4>
         <p className='my-0'>I collaborated with Project Managers, who provided a basic navbar and user flows for each feature. This helped me identify which pages to design and how users would navigate the platform.</p>
+        <figure>
         <Image
           src="/images/paygos-prototype2.png"
           alt="Paygos Prototype Design"
@@ -114,9 +118,29 @@ const PaygosPrototype = () => {
           quality={100}
           className='img-fluid case-study-img'
         />
+        <figcaption>Here is a snap of our Figjam containing some work flows.</figcaption>
+        </figure>
         <p>After finalizing the design, prototyping extensively, and testing it with the team, the platform looked polished and ready for client presentations!</p>
-        <strong>But we still needed to make it scalable for branding.</strong>
-      </div>
+        <strong>But we're not done! we still needed to make it scalable for branding.</strong>
+
+   {/* Figma Button */}
+<div className="d-grid justify-content-center align-items-center my-3">
+  <a
+    href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=W8JhMyBFw9J1gVtN-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+  >
+    <FaFigma size={24} />
+    View Figma Artboards
+  </a>
+
+
+</div>
+
+
+
+       </div>
 
       {/* Results */}
       <div id='result'>
@@ -130,6 +154,7 @@ const PaygosPrototype = () => {
         <p>By designing a scalable Figma prototype, I helped the fintech streamline its client acquisition process, saving time and driving business growth.</p>
       </div>
 
+        <figure>  
       <Image
         src="/images/paygos-prototype3.png"
         alt="Final Paygos Prototype"
@@ -138,6 +163,33 @@ const PaygosPrototype = () => {
         quality={100}
         className='img-fluid case-study-img'
       />
+<figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
+        </figure>
+
+
+  {/* APP GIF */}
+  <figure>
+      <img
+        className='img-fluid col-md-12 rounded'
+        src="/videos/paygos-prototype-gif2.gif"
+        alt="Screen Recording GIF showcasing Paygos prototype"
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
+      <figcaption>With just a few click I can change all the products in this prototype</figcaption>
+  </figure>
+{/* Play Button */}
+<div className="d-grid justify-content-center align-items-center my-3">
+  <a
+    href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=VVqrTZQz45YEMkNg-1"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+  >
+    <FaPlay size={18} />
+    Play Figma Prototype
+  </a>
+</div>
+
     </div>
   </div>
 </section>
