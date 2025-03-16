@@ -22,9 +22,9 @@ const PaygosPrototype = () => {
             <label className="m-0">How I Expanded a Business by Designing a Scalable Figma Prototype</label>
           </div>
           <div className="py-2">
-            <span className="badge bg-primary me-2">UX & UI</span>
+            <span className="badge bg-primary me-2">UX &amp; UI</span>
             <span className="badge bg-primary me-2">FIGMA</span>
-            <span className="badge bg-primary">UX & UI</span>
+            <span className="badge bg-primary">UX &amp; UI</span>
           </div>
           <hr className="my-2" />
           <div className="py-2">
@@ -78,7 +78,7 @@ const PaygosPrototype = () => {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#idea">
-                    Let’s Develop! - An Initial Idea
+                    Let&rsquo;s Develop! - An Initial Idea
                   </a>
                 </li>
                 <li className="nav-item">
@@ -110,23 +110,23 @@ const PaygosPrototype = () => {
           {/* Intro */}
           <div id="introduction">
             <h4>Introduction</h4>
-            <p>The Fintech’s Business Directors needed to present their product to as many clients as possible in the shortest amount of time.</p>
+            <p>The Fintech&rsquo;s Business Directors needed to present their product to as many clients as possible in the shortest amount of time.</p>
             <p>To increase client acquisition, they wanted to present a branded version of their platform to each client. This approach was meant to make clients feel more identified with the product while helping them visualize the User Experience.</p>
             <p>However, their current process was time-consuming. They manually built PowerPoint presentations and Photoshopped still screens for each client, taking up to one full day per client. This was unsustainable and limited their ability to scale and prospect clients.</p>
           </div>
 
           {/* Idea */}
           <div id="idea">
-            <h4>Let’s Develop! - An Initial Idea</h4>
-            <p>My first thought was to design and develop a live demo website that was easily accessible for the directors to present. This demo version would showcase the platform’s functionality with unbranded images and fake data, giving clients a realistic feel of how the platform works.</p>
+            <h4>Let&rsquo;s Develop! - An Initial Idea</h4>
+            <p>My first thought was to design and develop a live demo website that was easily accessible for the directors to present. This demo version would showcase the platform&rsquo;s functionality with unbranded images and fake data, giving clients a realistic feel of how the platform works.</p>
             <p>But there was a problem: we had no developers or project managers to support such a project. Maintaining and updating a live platform would also be time-consuming. I needed a quicker, simpler, and more feasible solution.</p>
           </div>
 
           {/* Solution */}
           <div id="solution">
             <h4>The Solution? Figma!</h4>
-            <p>I pivoted to creating a high-fidelity Figma prototype that mimicked a live website. Users could click through and interact with the platform’s features as if it were real.</p>
-            <p>The best part? This prototype was highly customizable. With just a few clicks, we could update the logo, colors, typography, product images, and names to match each client’s branding.</p>
+            <p>I pivoted to creating a high-fidelity Figma prototype that mimicked a live website. Users could click through and interact with the platform&rsquo;s features as if it were real.</p>
+            <p>The best part? This prototype was highly customizable. With just a few clicks, we could update the logo, colors, typography, product images, and names to match each client&rsquo;s branding.</p>
           </div>
 
           {/* Design */}
@@ -145,7 +145,7 @@ const PaygosPrototype = () => {
               <figcaption>Here is a snap of our Figjam containing some work flows.</figcaption>
             </figure>
             <p>After finalizing the design, prototyping extensively, and testing it with the team, the platform looked polished and ready for client presentations!</p>
-            <strong>But we're not done! We still needed to make it scalable for branding.</strong>
+            <strong>But we&rsquo;re not done! We still needed to make it scalable for branding.</strong>
 
             {/* Figma Button */}
             <div className="d-grid justify-content-center align-items-center my-3">
@@ -184,33 +184,32 @@ const PaygosPrototype = () => {
             />
             <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
           </figure>
-  {/* APP GIF */}
-  <figure>
-    {/* APP GIF */}
-    <Image
-      src="/videos/paygos-prototype-gif2.gif"
-      width={393}
-      height={255}
-      alt="Screen Recording GIF showcasing Paygos prototype"
-    />
-    <figcaption>With just a few click I can change all the products in this prototype</figcaption>
-  </figure>
-{/* Play Button */}
-<div className="d-grid justify-content-center align-items-center my-3">
-  <a
-    href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=VVqrTZQz45YEMkNg-1"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn btn-lg btn-primary d-flex align-items-center gap-2"
-  >
-    <FaPlay size={18} />
-    Play Figma Prototype
-  </a>
-</div>
-
-    </div>
-  </div>
-</section>
+          {/* APP GIF */}
+          <figure>
+            {/* APP GIF */}
+            <Image
+              src="/videos/paygos-prototype-gif2.gif"
+              width={393}
+              height={255}
+              alt="Screen Recording GIF showcasing Paygos prototype"
+            />
+            <figcaption>With just a few clicks I can change all the products in this prototype</figcaption>
+          </figure>
+          {/* Play Button */}
+          <div className="d-grid justify-content-center align-items-center my-3">
+            <a
+              href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=VVqrTZQz45YEMkNg-1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+            >
+              <FaPlay size={18} />
+              Play Figma Prototype
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
