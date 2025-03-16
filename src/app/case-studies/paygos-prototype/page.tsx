@@ -172,7 +172,7 @@ const PaygosPrototype = () => {
       <img
         className='img-fluid col-md-12 rounded'
         src="/videos/paygos-prototype-gif2.gif"
-        alt="Screen Recording GIF showcasing Paygos prototype"
+        alt="Screen Recording GIF showcasing Paygos Components"
         style={{ maxWidth: '100%', height: 'auto' }}
       />
       <figcaption>With just a few click I can change all the products in this prototype</figcaption>
