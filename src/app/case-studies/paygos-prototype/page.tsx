@@ -9,11 +9,11 @@ const PaygosPrototype = () => {
       <div className="row case-study-1 p-3 p-md-5 justify-content-md-center">
         <div className="col-md-4 d-flex justify-content-center">
           {/* APP GIF */}
-          <img
-            className="img-fluid col-md-10"
+          <Image
             src="/videos/paygos-prototype-gif1.gif"
+            width={350}
+            height={650}
             alt="Screen Recording GIF showcasing Paygos prototype"
-            style={{ maxWidth: '100%', height: 'auto' }}
           />
         </div>
         <div className="col-md-4 text-wrapper">
@@ -184,17 +184,16 @@ const PaygosPrototype = () => {
             />
             <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
           </figure>
-
-
   {/* APP GIF */}
   <figure>
-      <img
-        className='img-fluid col-md-12 rounded'
-        src="/videos/paygos-prototype-gif2.gif"
-        alt="Screen Recording GIF showcasing Paygos prototype"
-        style={{ maxWidth: '100%', height: 'auto' }}
-      />
-      <figcaption>With just a few click I can change all the products in this prototype</figcaption>
+    {/* APP GIF */}
+    <Image
+      src="/videos/paygos-prototype-gif2.gif"
+      width={393}
+      height={255}
+      alt="Screen Recording GIF showcasing Paygos prototype"
+    />
+    <figcaption>With just a few click I can change all the products in this prototype</figcaption>
   </figure>
 {/* Play Button */}
 <div className="d-grid justify-content-center align-items-center my-3">
