@@ -10,8 +10,9 @@ export default function About() {
   return (
     <section className="section-wrapper about-wrapper">
       <h2>About Me</h2>
-      <div className="d-md-flex gap-4">
+      <div className="d-grid d-md-flex gap-4">
         <Image
+        className="mx-auto"
           src="/images/profile.jpg"
           alt="profile"
           width={200}
