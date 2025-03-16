@@ -24,30 +24,38 @@ const PaygosPrototype = () => {
           <div className="py-2">
             <span className="badge bg-primary me-2">UX &amp; UI</span>
             <span className="badge bg-primary me-2">FIGMA</span>
-            <span className="badge bg-primary">UX &amp; UI</span>
+            <span className="badge bg-primary">Wireframing</span>
           </div>
           <hr className="my-2" />
           <div className="py-2">
             <h5>Summary</h5>
             <p>
-              Designed a <strong>scalable, interactive Figma prototype for a fintech sales platform</strong>, reducing client
-              presentation prep time from one day to one hour.
+              Designed an <strong>interactive Figma prototype</strong> that can be branded for a client with just a few clicks.
             </p>
             <h5>Problem Statement</h5>
             <p>
-              The company’s manual branding process for client presentations was <strong>time-consuming</strong>, taking a full day
-              per client and limiting their ability to scale quickly.
+              The company needed a demo of their platform to present to clients.
             </p>
             <h5>Solution</h5>
             <p>
-              A customizable Figma prototype with <strong>dynamic branding components</strong>, enabling quick updates and
-              interactive client demos.
-            </p>
+              A hi-fi Figma prototype with <strong>dynamic branding compnents and variables</strong>, allowing them to tailor the platform for each client with just a few clicks.</p>
             <h5>Metrics</h5>
             <p>
               Reduced presentation prep time <strong>from 1 full day to only 1 hour</strong> - leading to increased client
               acquisition.
             </p>
+             {/* Play Button */}
+          <div className="d-flex align-items-center my-3">
+            <a
+              href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=AlTwewAMyTPezQOI-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+            >
+              <FaPlay size={16} />
+              View Hi Fi Prototype
+            </a>
+          </div>
           </div>
         </div>
       </div>
@@ -178,18 +186,7 @@ const PaygosPrototype = () => {
             />
             <figcaption>With just a few clicks I can change all the products in this prototype</figcaption>
           </figure>
-          {/* Play Button */}
-          <div className="d-grid justify-content-center align-items-center my-3">
-            <a
-              href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=AlTwewAMyTPezQOI-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-lg btn-primary d-flex align-items-center gap-2"
-            >
-              <FaPlay size={18} />
-              Play Figma Prototype
-            </a>
-          </div>
+         
 
           {/* Conclusion */}
           <div id="conclusion">
