@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="container-fluid navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container">
         <Link className="navbar-logo" href="/">
-          <Image src="/images/logo.png" alt="logo" width={80} height={45} />
+          <Image src="/images/logo.png" alt="logo" width={76} height={50} />
         </Link>
         <button
           className="navbar-toggler"
@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" href="/">
+              <Link className="nav-link d-none" href="/">
                 Home
               </Link>
             </li>
