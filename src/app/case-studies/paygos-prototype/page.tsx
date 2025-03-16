@@ -12,7 +12,7 @@ const PaygosPrototype = () => {
           <Image
             src="/videos/paygos-prototype-gif1.gif"
             width={350}
-            height={650}
+            height={620}
             alt="Screen Recording GIF showcasing Paygos prototype"
           />
         </div>
@@ -67,7 +67,7 @@ const PaygosPrototype = () => {
           />
 
           {/* NavIndex */}
-          <div className="col-md-4 d-grid my-3">
+          <div className="col-md-auto d-grid my-3">
             <h4>Jump to Section</h4>
             <div className="list-unordered">
               <ul className="navbar-nav">
@@ -150,7 +150,7 @@ const PaygosPrototype = () => {
             {/* Figma Button */}
             <div className="d-grid justify-content-center align-items-center my-3">
               <a
-                href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=W8JhMyBFw9J1gVtN-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
+                href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=jz44dIPdCVOATYvN-1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-lg btn-primary d-flex align-items-center gap-2"
@@ -167,24 +167,6 @@ const PaygosPrototype = () => {
             <p>The final prototype was a game-changer. Not only did it look and feel like a real product, but it also <strong>reduced the time needed to prepare client presentations from one day to one hour.</strong></p>
           </div>
 
-          {/* Conclusion */}
-          <div id="conclusion">
-            <h4>Conclusion</h4>
-            <p>By designing a scalable Figma prototype, I helped the fintech streamline its client acquisition process, saving time and driving business growth.</p>
-          </div>
-
-          <figure>
-            <Image
-              src="/images/paygos-prototype3.png"
-              alt="Final Paygos Prototype"
-              width={600}
-              height={390}
-              quality={100}
-              className="img-fluid case-study-img"
-            />
-            <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
-          </figure>
-          {/* APP GIF */}
           <figure>
             {/* APP GIF */}
             <Image
@@ -192,13 +174,14 @@ const PaygosPrototype = () => {
               width={393}
               height={255}
               alt="Screen Recording GIF showcasing Paygos prototype"
+              className="case-study-img"
             />
             <figcaption>With just a few clicks I can change all the products in this prototype</figcaption>
           </figure>
           {/* Play Button */}
           <div className="d-grid justify-content-center align-items-center my-3">
             <a
-              href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=VVqrTZQz45YEMkNg-1"
+              href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=AlTwewAMyTPezQOI-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-lg btn-primary d-flex align-items-center gap-2"
@@ -207,6 +190,24 @@ const PaygosPrototype = () => {
               Play Figma Prototype
             </a>
           </div>
+
+          {/* Conclusion */}
+          <div id="conclusion">
+            <h4>Conclusion</h4>
+            <p>By designing a scalable Figma prototype, I helped the fintech streamline its client acquisition process, saving time and driving business growth.</p>
+          </div>
+
+           <figure>
+            <Image
+              src="/images/paygos-prototype3.png"
+              alt="Final Paygos Prototype"
+              width={600}
+              height={390}
+              quality={100}
+              className="case-study-img"
+            />
+            <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
