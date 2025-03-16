@@ -185,32 +185,33 @@ const PaygosPrototype = () => {
             <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
           </figure>
 
-          {/* APP GIF */}
-          <figure>
-            <img
-              className="img-fluid col-md-12 rounded"
-              src="/videos/paygos-prototype-gif2.gif"
-              alt="Screen Recording GIF showcasing Paygos prototype"
-              style={{ maxWidth: '100%', height: 'auto' }}
-            />
-            <figcaption>With just a few clicks, I can change all the products in this prototype</figcaption>
-          </figure>
 
-          {/* Play Button */}
-          <div className="d-grid justify-content-center align-items-center my-3">
-            <a
-              href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=VVqrTZQz45YEMkNg-1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-lg btn-primary d-flex align-items-center gap-2"
-            >
-              <FaPlay size={18} />
-              Play Figma Prototype
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+  {/* APP GIF */}
+  <figure>
+      <img
+        className='img-fluid col-md-12 rounded'
+        src="/videos/paygos-prototype-gif2.gif"
+        alt="Screen Recording GIF showcasing Paygos prototype"
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
+      <figcaption>With just a few click I can change all the products in this prototype</figcaption>
+  </figure>
+{/* Play Button */}
+<div className="d-grid justify-content-center align-items-center my-3">
+  <a
+    href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=VVqrTZQz45YEMkNg-1"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+  >
+    <FaPlay size={18} />
+    Play Figma Prototype
+  </a>
+</div>
+
+    </div>
+  </div>
+</section>
   );
 };
 
