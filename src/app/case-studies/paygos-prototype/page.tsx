@@ -80,32 +80,32 @@ const PaygosPrototype = () => {
             <div className="list-unordered">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link" href="#introduction">
+                  <a className="btn btn-link" href="#introduction">
                     Introduction
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#idea">
+                  <a className="btn btn-link" href="#idea">
                     Let&rsquo;s Develop! - An Initial Idea
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#solution">
+                  <a className="btn btn-link" href="#solution">
                     The Solution? Figma!
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#design">
+                  <a className="btn btn-link" href="#design">
                     Designing with the Team
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#result">
+                  <a className="btn btn-link" href="#result">
                     The Result
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#conclusion">
+                  <a className="btn btn-link" href="#conclusion">
                     Conclusion
                   </a>
                 </li>
