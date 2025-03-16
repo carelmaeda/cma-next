@@ -368,15 +368,19 @@ form textarea {
 
 /*FOOTER*/
 
+
 .footer {
-  background-color: var(--color-text);
-  color: var(--color-white);
   padding: 2rem 0;
   text-align: center;
 }
 
+.footer .container{
+  display: grid;
+  gap:1rem;
+}
+
 .footer a {
-  color: var(--color-white);
+  color: var(--color-primary);
   text-decoration: none;
 }
 

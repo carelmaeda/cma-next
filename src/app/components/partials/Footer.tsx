@@ -11,14 +11,13 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="footer py-3 mt-5">
-      <div className="container">
-        <div className="d-md-flex justify-content-between">
-          <p className="col-auto">This site was designed and built by me.</p>
-          <p className="col-auto">
-            &copy; {year ? year : ""} Carel Maeda. All rights reserved.
-          </p>
-        </div>
+    <footer className="footer bg-light">
+      <div className="container text-muted">
+          <h6>Thank you for your interest in my work!</h6>
+          <div>
+          <p className="m-0">This portfolio was <a href="https://www.figma.com/design/vINdCUCFAALYVx9bto0Nq5/CMA-Portfolio?node-id=75-2169&t=SgGC9GVQ7sCtWpMG-1">designed</a> in Figma and <a href="https://github.com/carelmaeda/cma-next.git">developed</a> with Next.js, TypeScript, and Bootstrap.</p>
+          <small>&copy; {year ? year : ""} Carel Maeda. All rights reserved.</small>
+          </div>
       </div>
     </footer>
   );
