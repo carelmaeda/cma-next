@@ -141,12 +141,46 @@ a:hover {
 /*NAVBAR*/
 
 .navbar {
-  background-color: var(--color-white);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-logo img:hover {
   opacity: 0.4;
+}
+
+.nav-pulsing{
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  background: rgb(242, 242, 242);
+}
+
+.nav-circle {
+  background: rgba(82, 255, 120,1);
+  border-radius: 50%;
+  height: 13px;
+  width: 13px;
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%{
+    transform:scale(0.9);
+    box-shadow: 0 0 0 0 rgba(82, 255, 120, 0.8);
+  }
+
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 8px rgba(82, 255, 120, 0);
+        }
+
+                    100% {
+                      transform: scale(0.9);
+                    }
 }
 
 .nav-link {
@@ -164,6 +198,10 @@ a:hover {
 .btn {
   font-size: 15px;
   padding: 1rem 2.5rem;
+}
+
+.btn:hover{
+  text-decoration: none;
 }
 
 /*HERO*/

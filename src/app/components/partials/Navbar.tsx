@@ -5,9 +5,23 @@ export default function Navbar() {
   return (
     <nav className="container-fluid navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container">
+
+        {/* Nav Right */}
+        {/* Logo */}
+        <div className='d-flex gap-2 align-items-center'>
         <Link className="navbar-logo" href="/">
           <Image src="/images/logo.png" alt="logo" width={76} height={50} />
         </Link>
+
+        {/* Pulsing light */}
+        <div className='nav-pulsing'>
+          <div className="nav-circle"></div>
+          <small>Open for cool projects</small>
+        </div>
+        </div>
+
+
+        {/* Nav Left */}
         <button
           className="navbar-toggler"
           type="button"
