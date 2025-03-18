@@ -15,11 +15,13 @@ const PaygosPrototype = () => {
             height={620}
             alt="Screen Recording GIF showcasing Paygos prototype"
             unoptimized
+            loading="lazy"
           />
         </div>
         <div className="col-md-4 text-wrapper">
           <div>
-            <h1>From One Day to One Hour</h1>
+            <h1 className="d-none">Case Studies</h1>
+            <h2 className='h1'>From One Day to One Hour</h2>
             <label className="m-0">How I Expanded a Business by Designing a Scalable Figma Prototype</label>
           </div>
           <div className="py-2">
@@ -73,6 +75,7 @@ const PaygosPrototype = () => {
             quality={100}
             sizes="(max-width: 370px) 33vw, (max-width: 767px) 33vw, 20.833333333333336vw"
             className="col-9 col-md-4 img-fluid my-3"
+            loading="lazy"
           />
 
           {/* NavIndex */}
@@ -150,6 +153,7 @@ const PaygosPrototype = () => {
                 height={390}
                 quality={100}
                 className="img-fluid case-study-img"
+                loading="lazy"
               />
               <figcaption>Here is a snap of our Figjam containing some work flows.</figcaption>
             </figure>
@@ -185,6 +189,7 @@ const PaygosPrototype = () => {
               alt="Screen Recording GIF showcasing Paygos prototype"
               className="case-study-img"
               unoptimized
+              loading="lazy"
             />
             <figcaption>With just a few clicks I can change all the products in this prototype</figcaption>
           </figure>
@@ -204,6 +209,7 @@ const PaygosPrototype = () => {
               height={390}
               quality={100}
               className="case-study-img"
+              loading="lazy"
             />
             <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
           </figure>

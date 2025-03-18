@@ -119,11 +119,14 @@ h1 {
   line-height: 1;
 }
 
-.display-1, .display-2, .display-3, .display-4, .display-5{
-    letter-spacing: -1px;
-    line-height: 1.1;
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5 {
+  letter-spacing: -1px;
+  line-height: 1.1;
 }
-
 
 a {
   color: var(--color-primary);
@@ -134,7 +137,6 @@ a:hover {
   color: var(--color-secondary);
   text-decoration: underline;
 }
-
 
 /*NAVBAR*/
 
@@ -159,7 +161,7 @@ a:hover {
 
 /*BUTTONS*/
 
-.btn{
+.btn {
   font-size: 15px;
   padding: 1rem 2.5rem;
 }
@@ -173,7 +175,6 @@ a:hover {
 
 .hero-section {
   height: 70dvh;
-  background-color: var(--color-white);
   text-align: center;
   align-items: center;
 }
@@ -206,8 +207,6 @@ a:hover {
 
 /*WORK*/
 
-
-
 /*LOADING SCREEN*/
 
 .loading-screen {
@@ -230,8 +229,6 @@ form textarea {
   resize: none;
 }
 
-
-
 /*ABOUT*/
 
 .about-text {
@@ -246,7 +243,6 @@ form textarea {
 .about-wrapper {
   display: grid;
   gap: 2rem;
-
   justify-content: center;
   justify-items: center;
 }
@@ -259,15 +255,14 @@ form textarea {
 
 /*FOOTER*/
 
-
 .footer {
   padding: 2rem 0;
   text-align: center;
 }
 
-.footer .container{
+.footer .container {
   display: grid;
-  gap:1rem;
+  gap: 1rem;
 }
 
 .footer a {
