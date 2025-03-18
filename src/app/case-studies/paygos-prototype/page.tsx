@@ -14,6 +14,7 @@ const PaygosPrototype = () => {
             width={350}
             height={620}
             alt="Screen Recording GIF showcasing Paygos prototype"
+            unoptimized
           />
         </div>
         <div className="col-md-4 text-wrapper">
@@ -183,6 +184,7 @@ const PaygosPrototype = () => {
               height={255}
               alt="Screen Recording GIF showcasing Paygos prototype"
               className="case-study-img"
+              unoptimized
             />
             <figcaption>With just a few clicks I can change all the products in this prototype</figcaption>
           </figure>
