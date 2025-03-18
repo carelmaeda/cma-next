@@ -36,22 +36,22 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link d-none" href="/">
+              <Link className="nav-link d-none py-3 p-md-0" href="/">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/#work">
+              <Link className="nav-link py-3 p-md-0" href="/#work">
                 Work
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/#about">
+              <Link className="nav-link py-3 p-md-0" href="/#about">
                 About
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/#contact">
+              <Link className="nav-link py-3 p-md-0" href="/#contact">
                 Contact
               </Link>
             </li>
