@@ -1,14 +1,41 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
-  /* Color Palette */
-  --color-primary: #00a3ff; /* Neon Blue */
-  --color-secondary: #0066cc; /* Deep Electric Blue */
+/* Primary Colors */
+  --color-primary: #00a3ff;
+  --color-secondary: #0066cc;
+
+  /* Accent Colors */
+  --color-accent: #14f195;
+
+  /* Background Colors */
   --color-background: #f8fafc;
-  --color-text: #1e293b;
-  --color-accent: #14f195; /* Neon Green (for contrast) */
-  --color-light-gray: #747678; /* Muted Blue-Gray */
+
+  /* Neutral Colors */
+  --color-black: #252525;
   --color-white: #ffffff;
+
+  
+
+  /* Gray Shades */
+  --color-gray-100: #f1f5f9;
+  /* Very light gray */
+  --color-gray-200: #e2e8f0;
+  /* Lighter gray */
+  --color-gray-300: #cbd5e1;
+  /* Light gray */
+  --color-gray-400: #94a3b8;
+  /* Medium gray */
+  --color-gray-500: #64748b;
+  /* Darker medium gray */
+  --color-gray-600: #475569;
+  /* Dark gray */
+  --color-gray-700: #334155;
+  /* Very dark gray */
+  --color-gray-800: #1e293b;
+  /* Almost black */
+  --color-gray-900: #0f172a;
+  /* Near-black, deep gray */
 
   /* Fonts */
   --font-primary: "EB Garamond", serif;
@@ -88,7 +115,7 @@ h6 {
 
 body {
   font-family: var(--font-secondary);
-  color: var(--color-text);
+  color: var(--color-black);
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23000000" stroke-width="0.5" stroke-opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
   background-repeat: repeat;
 }
@@ -103,7 +130,7 @@ h4,
 .h3,
 .h1,
 .h2 {
-  color: var(--color-text);
+  color: var(--color-black);
   font-family: var(--font-secondary);
 }
 
@@ -206,7 +233,7 @@ a:hover {
 
 .nav-link {
   font-family: var(--font-secondary);
-  color: var(--color-text) !important;
+  color: var(--color-black) !important;
   margin: 0 1rem;
 }
 
@@ -216,13 +243,33 @@ a:hover {
 
 /*BUTTONS*/
 
-.btn {
+.btn:not(.btn-sm) {
   font-size: 15px;
   padding: 1rem 2.5rem;
 }
 
 .btn:hover{
   text-decoration: none;
+}
+
+.btn-pill, .btn-light{
+    background: var(--color-gray-100) !important;
+}
+
+.btn-pill{
+  display: flex;
+  align-items: center;
+  color: var(--c);
+  gap:4px;
+  padding: 0.5rem 1rem;
+  border-radius: 32px;
+  font-size: 12px;
+}
+
+.btn-pill:hover {
+  color: var(--color-black);
+  text-decoration: none;
+  background: var(--color-gray-300)
 }
 
 /*HERO*/
@@ -240,13 +287,13 @@ a:hover {
 
 .hero-section h1 {
   font-size: 4rem;
-  color: var(--color-text);
+  color: var(--color-black);
   margin-bottom: 1rem;
 }
 
 .hero-section p {
   font-size: 1.25rem;
-  color: var(--color-text);
+  color: var(--color-black);
   margin-bottom: 2rem;
 }
 
@@ -311,6 +358,7 @@ form textarea {
   aspect-ratio: 1/1;
   object-fit: cover;
 }
+
 
 /*FOOTER*/
 
