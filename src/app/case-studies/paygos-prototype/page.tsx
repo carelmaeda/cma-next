@@ -81,40 +81,38 @@ const PaygosPrototype = () => {
           {/* NavIndex */}
           <div className="col-md-auto d-grid my-3">
             <h4>Jump to Section</h4>
-            <div className="list-unordered">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="#introduction">
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">
+                  <a className="" href="#introduction">
                     Introduction
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#idea">
+                <li className="list-group-item">
+                  <a className="" href="#idea">
                     Let&rsquo;s Develop! - An Initial Idea
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#solution">
+                <li className="list-group-item">
+                  <a className="" href="#solution">
                     The Solution? Figma!
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#design">
+                <li className="list-group-item">
+                  <a className="" href="#design">
                     Designing with the Team
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#result">
+                <li className="list-group-item">
+                  <a className="" href="#result">
                     The Result
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#conclusion">
+                <li className="list-group-item">
+                  <a className="" href="#conclusion">
                     Conclusion
                   </a>
                 </li>
               </ul>
-            </div>
           </div>
         </div>
 
