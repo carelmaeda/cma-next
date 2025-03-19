@@ -50,8 +50,8 @@ export default function Navbar() {
                 About
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="d-inline nav-link py-3 p-md-0" href="/#contact">
+            <li className="nav-item py-3 p-md-0">
+              <Link className="d-inline nav-link" href="/#contact">
                 Work with Me
               </Link>
             </li>
