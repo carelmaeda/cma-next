@@ -158,18 +158,6 @@ const PaygosPrototype = () => {
             <p>After finalizing the design, prototyping extensively, and testing it with the team, the platform looked polished and ready for client presentations!</p>
             <strong>But we&rsquo;re not done! We still needed to make it scalable for branding.</strong>
 
-            {/* Figma Button */}
-            <div className="d-grid justify-content-center align-items-center my-3">
-              <a
-                href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=jz44dIPdCVOATYvN-1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-lg btn-primary d-flex align-items-center gap-2"
-              >
-                <FaFigma size={24} />
-                View Figma Artboards
-              </a>
-            </div>
           </div>
 
           {/* Results */}
@@ -211,6 +199,19 @@ const PaygosPrototype = () => {
             />
             <figcaption>This is a view of all the prototypes I created over the months using this template. Each file contains a branded version of the template ready to be presented to the client.</figcaption>
           </figure>
+          
+            {/* Figma Button */}
+            <div className="d-grid justify-content-center align-items-center">
+              <a
+                href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=jz44dIPdCVOATYvN-1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-lg btn-primary d-flex align-items-center gap-2 "
+              >
+                <FaFigma size={24} />
+                View Figma Artboards
+              </a>
+            </div>
         </div>
       </div>
     </section>
