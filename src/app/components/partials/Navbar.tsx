@@ -34,7 +34,7 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav ms-auto align-items-sm-center">
             <li className="nav-item">
               <Link className="nav-link d-none py-3 p-md-0" href="/">
                 Home
@@ -51,8 +51,8 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link py-3 p-md-0" href="/#contact">
-                Contact
+              <Link className="d-inline nav-link py-3 p-md-0" href="/#contact">
+                Work with Me
               </Link>
             </li>
           </ul>

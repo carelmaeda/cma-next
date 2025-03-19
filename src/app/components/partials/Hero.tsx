@@ -13,7 +13,7 @@ export default function Hero() {
             <p className="lead">
                 Crafting seamless UX/UI designs that put users first and brands ahead.
             </p>
-            <a href="#contact" className="btn btn-dark">Work with Me</a>
+            <a href="#contact" className="d-none btn btn-dark">Work with Me</a>
             </div>
     </section>
   );
