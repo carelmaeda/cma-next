@@ -42,7 +42,7 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <Link className="nav-link py-3 p-md-0" href="/#work">
-                Work
+                Stories
               </Link>
             </li>
             <li className="nav-item">
