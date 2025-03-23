@@ -31,7 +31,7 @@ export default function About() {
         </div>
           {/* Resume Button */}
           <button
-            className="btn btn-light d-flex gap-2 align-items-center"
+            className="btn btn-dark d-flex gap-2 align-items-center"
             onClick={handleOpenResume}
           >
             VIEW RESUME

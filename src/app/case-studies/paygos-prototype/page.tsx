@@ -4,8 +4,13 @@ import { FaFigma, FaPlay } from 'react-icons/fa';
 
 const PaygosPrototype = () => {
   return (
-    <section className="container-fluid">
-      {/* Hero Section */}
+    <section>
+ 
+
+
+      {/* Body Section */}
+      <div className="section-wrapper p-0">
+             {/* Hero Section */}
       <div className="row case-study-1 p-3 p-md-5 justify-content-md-center">
         <div className="col-md-4 d-flex justify-content-center">
           {/* APP GIF */}
@@ -55,17 +60,14 @@ const PaygosPrototype = () => {
               rel="noopener noreferrer"
               className="btn btn-lg btn-primary d-flex align-items-center gap-2"
             >
-              <FaPlay size={16} />
+              <FaPlay size={14} />
               View Hi Fi Prototype
             </a>
           </div>
           </div>
         </div>
       </div>
-
-      {/* Body Section */}
-      <div className="section-wrapper container">
-        <div className="row justify-content-center">
+        <div className="p-3 row justify-content-center">
           {/* Sticky */}
           <Image
             src="/images/sticky1.png"
@@ -116,7 +118,7 @@ const PaygosPrototype = () => {
           </div>
         </div>
 
-        <div className="d-grid gap-4 mx-auto text-wrapper col-md-6">
+        <div className=" p-3 d-grid gap-4 mx-auto text-wrapper col-md-6">
           {/* Intro */}
           <div id="introduction">
             <h4>Introduction</h4>
@@ -201,14 +203,14 @@ const PaygosPrototype = () => {
           </figure>
           
             {/* Figma Button */}
-            <div className="d-grid justify-content-center align-items-center">
+            <div className="d-grid justify-content-center align-items-center mb-4">
               <a
                 href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=jz44dIPdCVOATYvN-1"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-lg btn-primary d-flex align-items-center gap-2 "
               >
-                <FaFigma size={24} />
+                <FaFigma size={16} />
                 View Figma Artboards
               </a>
             </div>
