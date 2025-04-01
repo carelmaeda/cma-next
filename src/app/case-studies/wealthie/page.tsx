@@ -23,7 +23,7 @@ const Wealthie = () => {
           <div className="col-md-4 text-wrapper text-white">
           <div>
             <h1 className="d-none">Case Studies</h1>
-            <h2 className='h1 text-white'>Wealthie: Smart Finance for Young Adults</h2>
+            <h2 className="h1 text-white">Wealthie: Smart Finance for Young Adults</h2>
             <label className="m-0">Designing an AI-Powered Financial App for the Next Generation</label>
           </div>
           <div className="py-2">
@@ -111,7 +111,7 @@ const Wealthie = () => {
                 </figure>
 
                 <div className="text-highlight">
-                 <p className='text-center'>I also designed a dedicated icon to represent Wealthie’s AI. <br />It helps users easily recognize AI insights or chat availability.</p>
+                  <p className="text-center">I also designed a dedicated icon to represent Wealthie&rsquo;s AI.</p>
                  <figure className='m-0'>
                   <Image
                     src="/images/wealthie4.png"
@@ -129,11 +129,11 @@ const Wealthie = () => {
             {/* Approach */}
               <div id="approach">
                 <h4>The UX Approach</h4>
-                <p>This was my insights analyzing the users and the industry</p>
+                <p>These were my insights analyzing the users and the industry</p>
                  <ul>
                   <li><strong>User Research & Persona Development:</strong>I studied the behaviors of young adults when it comes to finance, identifying their pain points and goals.</li>
                   <li><strong>Iterative Design Process: </strong>Based on user feedback, I fine-tuned the app’s features and interface to ensure clarity and engagement, the client also assisted with feedback</li>
-                  <li><strong>Adding A.I:</strong>One of the feedback was to make an A.I screen easily accesible at all time for users, and it didn't need to be a full screen.</li>
+                  <li><strong>Adding A.I:</strong>One of the feedback points was to make an A.I. screen easily accessible at all times for users, and it didn&rsquo;t need to be a full screen.</li>
                 </ul>
                  <figure>
                  <p>Using this information I created a screen dedicated just for interactions with Wealthie's A.I.:</p>

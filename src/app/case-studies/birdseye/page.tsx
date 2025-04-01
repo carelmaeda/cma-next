@@ -110,7 +110,7 @@ const BirdsEye = () => {
                 <figure>
                   <Image
                     src="/images/birdseye3.png"
-                    alt="Paygos Prototype Design"
+                    alt="Figjam Board"
                     width={600}
                     height={390}
                     quality={100}
@@ -134,7 +134,7 @@ const BirdsEye = () => {
                  <figure>
                   <Image
                     src="/images/birdseye2.png"
-                    alt="Paygos Prototype Design"
+                    alt="Mid Fidelity Screens"
                     width={600}
                     height={390}
                     quality={100}
