@@ -136,7 +136,7 @@ const Wealthie = () => {
                   <li><strong>Adding A.I:</strong>One of the feedback points was to make an A.I. screen easily accessible at all times for users, and it didn&rsquo;t need to be a full screen.</li>
                 </ul>
                  <figure>
-                 <p>Using this information I created a screen dedicated just for interactions with Wealthie's A.I.:</p>
+                 <p>Using this information I created a screen dedicated just for interactions with Wealthie&apos;s A.I.:</p>
                   <Image
                     src="/images/wealthie3.png"
                     alt="Paygos Prototype Design"
