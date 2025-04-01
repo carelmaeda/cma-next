@@ -132,7 +132,7 @@ const Wealthie = () => {
                 <p>These were my insights analyzing the users and the industry</p>
                  <ul>
                   <li><strong>User Research & Persona Development:</strong>I studied the behaviors of young adults when it comes to finance, identifying their pain points and goals.</li>
-                  <li><strong>Iterative Design Process: </strong>Based on user feedback, I fine-tuned the app’s features and interface to ensure clarity and engagement, the client also assisted with feedback</li>
+                  <li><strong>Iterative Design Process: </strong>Based on user feedback, I fine-tuned the app&apos;s features and interface to ensure clarity and engagement, the client also assisted with feedback</li>
                   <li><strong>Adding A.I:</strong>One of the feedback points was to make an A.I. screen easily accessible at all times for users, and it didn&rsquo;t need to be a full screen.</li>
                 </ul>
                  <figure>
@@ -162,7 +162,7 @@ const Wealthie = () => {
               {/* Conclusion */}
               <div id="conclusion">
                 <h4>Conclusion and Takeways</h4>
-              <p>Wealthie transformed financial planning into something intuitive and actionable. It’s more than just an app—it’s a financial coach in your pocket.</p>
+              <p>Wealthie transformed financial planning into something intuitive and actionable. It&apos;s more than just an app—it&apos;s a financial coach in your pocket.</p>
                 <ul>
                   <li>AI can make financial management easier, but the UX still needs to simplify complex concepts.</li>
                   <li>If you assign an engaging visual to a feature or a service, the user will find it easier to engage</li>
