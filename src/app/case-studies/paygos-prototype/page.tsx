@@ -5,13 +5,10 @@ import { FaFigma, FaPlay } from 'react-icons/fa';
 const PaygosPrototype = () => {
   return (
     <section>
- 
-
-
       {/* Body Section */}
       <div className="section-wrapper p-0">
-             {/* Hero Section */}
-      <div className="row case-study-1 p-3 p-md-5 justify-content-md-center">
+      {/* Hero Section */}
+      <div className="row case-study-1 p-3 p-md-5 justify-content-md-center align-items-center">
         <div className="col-md-4 d-flex justify-content-center">
           {/* APP GIF */}
           <Image
@@ -26,13 +23,13 @@ const PaygosPrototype = () => {
         <div className="col-md-4 text-wrapper">
           <div>
             <h1 className="d-none">Case Studies</h1>
-            <h2 className='h1'>From One Day to One Hour</h2>
+            <h2>From One Day to One Hour</h2>
             <label className="m-0">How I Expanded a Business by Designing a Scalable Figma Prototype</label>
           </div>
           <div className="py-2">
-            <span className="badge bg-primary me-2">UX &amp; UI</span>
-            <span className="badge bg-primary me-2">FIGMA</span>
-            <span className="badge bg-primary">Wireframing</span>
+            <span className="badge me-2">UX &amp; UI</span>
+            <span className="badge me-2">FIGMA</span>
+            <span className="badge">Wireframing</span>
           </div>
           <hr className="my-2" />
           <div className="py-2">
@@ -70,7 +67,7 @@ const PaygosPrototype = () => {
         <div className="p-3 row justify-content-center">
           {/* Sticky */}
           <Image
-            src="/images/sticky1.png"
+            src="/images/sticky1.webp"
             alt="Sticky note with Paygos prototype details"
             width={330}
             height={250}
@@ -147,7 +144,7 @@ const PaygosPrototype = () => {
             <p className="my-0">I collaborated with Project Managers, who provided a basic navbar and user flows for each feature. This helped me identify which pages to design and how users would navigate the platform.</p>
             <figure>
               <Image
-                src="/images/paygos-prototype2.png"
+                src="/images/paygos-prototype2.webp"
                 alt="Paygos Prototype Design"
                 width={600}
                 height={390}
@@ -191,7 +188,7 @@ const PaygosPrototype = () => {
 
            <figure>
             <Image
-              src="/images/paygos-prototype3.png"
+              src="/images/paygos-prototype1.webp"
               alt="Final Paygos Prototype"
               width={600}
               height={390}
@@ -203,7 +200,7 @@ const PaygosPrototype = () => {
           </figure>
           
             {/* Figma Button */}
-            <div className="d-grid justify-content-center align-items-center mb-4">
+            <div className="d-flex justify-content-center align-items-center mb-4">
               <a
                 href="https://www.figma.com/design/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?node-id=0-1&t=jz44dIPdCVOATYvN-1"
                 target="_blank"

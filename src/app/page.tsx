@@ -1,7 +1,8 @@
-import About from './components/About';
-import Contact from './components/Contact';
+import About from './components/partials/About';
+import Contact from './components/partials/Contact';
 import Hero from './components/partials/Hero';
-import Work from './components/Work';
+import Work from './components/partials/Work';
+import PaygosPrototype from './case-studies/paygos-prototype/page';
 
 export default function Home() {
   return (
@@ -9,8 +10,11 @@ export default function Home() {
       <div className="container-fluid">
       <Hero />
       </div>
-      <section id="work" className="py-4">
-      <Work />
+      <section id="work" className="container py-4">
+         <PaygosPrototype/>
+      </section>
+      <section className="container py-4">
+        <Work/>
       </section>
       <section id="about" className="container py-4">
         <About />
@@ -18,7 +22,6 @@ export default function Home() {
       <section id="contact" className="container py-4">
         <Contact />
       </section>
-
     </main>
   );
 }

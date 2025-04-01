@@ -1,5 +1,5 @@
 
-"use client"; // Ensure it's a Client Component
+"use client";
 
 import { useEffect, useState } from "react";
 

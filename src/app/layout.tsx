@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter, EB_Garamond } from 'next/font/google';
+import { Inter, Urbanist } from 'next/font/google';
 import '@/styles/globals.css';
 import Script from 'next/script'; 
 import Footer from './components/partials/Footer';
 import Navbar from './components/partials/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
-const garamond = EB_Garamond({ subsets: ['latin'] });
+const urbanist = Urbanist({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Carel Maeda',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.className} ${garamond.className}`}>
+    <html lang="en" className={`${inter.className} ${urbanist.className}`}>
       <head>
         {/* Google Analytics Script */}
         <Script

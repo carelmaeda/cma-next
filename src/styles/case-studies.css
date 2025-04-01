@@ -1,10 +1,131 @@
-/* General Styles */
+@import "./variables.css";
 
+:root {
+  /* Case Study Colors */
+  --case-study-1: #4440BF;
+  --case-study-2: #e74c3c;
+  --case-study-3: #8A2BE2;
+}
+
+
+/*GENERAL*/
+
+.badge{
+  font-weight: 300;
+}
+
+h4{
+  letter-spacing: -0.5px;
+}
+
+.text-highlight {
+  font-family: var(--font-primary);
+  color: var(--color-gray-500);
+  line-height: 2.25rem;
+  font-weight: 600;
+  letter-spacing: .03rem;
+  margin-block: 1.5rem;
+  padding: min(1rem, 3%);
+  border-radius: var(--border-radius-md);
+  background: var(--color-gray-100);
+}
+
+/*Paygos Prototypes*/
 .case-study-1 {
   background: #c3c1ff;
 }
 
-.text-wrapper p {
+.case-study-1 h2{
+  font-size: 2rem;
+  color: var(--case-study-1);
+  font-weight:700;
+  letter-spacing: -2px;
+}
+
+.case-study-1 h5{
+  font-size: 1.2rem;
+  color: var(--case-study-1);
+  font-weight: 600;
+}
+
+
+
+.case-study-1 .btn-icon, .case-study-1 .badge {
+    background:var(--case-study-1);
+    border: var(--case-study-1);
+}
+
+/*Birdeseye*/
+
+.case-study-2 {
+  background: #006fc4;
+}
+
+.case-study-2 h2 {
+  font-size: 2rem;
+  color: var(--case-study-2);
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.case-study-2 h5 {
+  font-size: 1.2rem;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.case-study-2 p {
+  font-weight: 300;
+}
+
+.case-study-2 .btn-icon,
+.case-study-2 .badge {
+  background: var(--case-study-2);
+  border: var(--case-study-2);
+}
+
+
+.case-study-2 .btn-icon:hover{
+    background: navy;
+}
+
+/*Wealthy*/
+
+.case-study-3 {
+  background: #fa576a;
+}
+
+.case-study-3 h2 {
+  font-size: 2rem;
+  color: var(--case-study-3);
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.case-study-3 h5 {
+  font-size: 1.2rem;
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.case-study-3 p {
+  font-weight: 300;
+}
+
+.case-study-3 .btn-icon,
+.case-study-3 .badge {
+  background: var(--case-study-3);
+  border: var(--case-study-3);
+}
+
+
+.case-study-3 .btn-icon:hover {
+  background: navy;
+}
+
+
+
+.text-wrapper p{
   max-width: 100%;
   -webkit-hyphens: auto;
   hyphens: auto;
@@ -19,7 +140,7 @@
 
 /*Images*/
 
-figure{
+figure {
   display: grid;
 }
 
@@ -30,15 +151,22 @@ figcaption {
 }
 
 .case-study-img {
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
   width: 100%;
   object-fit: cover;
+}
+
+.gif {
+  display: flex;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  border: solid;
 }
 
 /* Figma Embeds */
 
 iframe {
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
   width: 100%;
   height: 400px;
 }
