@@ -109,7 +109,7 @@ const BirdsEye = () => {
 
                 <figure>
                   <Image
-                    src="/images/birdseye3.png"
+                    src="/images/birdseye3.webp"
                     alt="Paygos Prototype Design"
                     width={600}
                     height={390}
@@ -133,7 +133,7 @@ const BirdsEye = () => {
                  <p>Using this information I created a mid fidelity version of the platform:</p>
                  <figure>
                   <Image
-                    src="/images/birdseye2.png"
+                    src="/images/birdseye2.webp"
                     alt="Paygos Prototype Design"
                     width={600}
                     height={390}
@@ -180,7 +180,7 @@ const BirdsEye = () => {
 
               <figure>
                 <Image
-                  src="/images/birdseye1.png"
+                  src="/images/birdseye1.webp"
                   alt="Final Paygos Prototype"
                   width={600}
                   height={390}

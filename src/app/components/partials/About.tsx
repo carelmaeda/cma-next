@@ -14,10 +14,11 @@ export default function About() {
       <div className="d-grid d-md-flex gap-4">
         <Image
         className="mx-auto"
-          src="/images/profile.jpg"
+          src="/images/profile.webp"
           alt="profile"
           width={200}
           height={200}
+          loading="lazy"
         />
         <div className="about-text">
          <p>I am a <strong>Product Design Manager</strong> with 6+ years of experience in <strong>UX and UI design</strong>.</p>
