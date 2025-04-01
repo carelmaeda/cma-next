@@ -46,7 +46,7 @@ const BirdsEye = () => {
               href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=AlTwewAMyTPezQOI-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+              className="btn btn-lg btn-icon d-flex align-items-center gap-2"
             >
               <FaPlay size={14} />
               View Hi Fi Prototype

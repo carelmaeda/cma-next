@@ -8,21 +8,21 @@ const workCards = [
     {
   logoImg: "/images/avatar.webp",
   cardTitle: "Design Archive",
-  cardSummary: "A collection of my past designs and creative projects",
+  cardSummary: "A Collection of Past Designs and Creative Projects",
   cardUrl: "/case-studies/design-archive",
   cardColor:"#fafafa"
  },
   {
     logoImg: "https://cdn.brandfetch.io/idmFNj9SQF/w/300/h/150/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
     cardTitle: "Company: BirdsEye",
-    cardSummary: "Building a Simple and Engaging Receipt Upload System",
+    cardSummary: "A Simple and Engaging Receipt Tracker System",
     cardUrl: "/case-studies/birdseye",
     cardColor:"#007CAD"
   },
   {
     logoImg: "/images/wealthie-logo.webp",
     cardTitle: "Company: Wealthie",
-    cardSummary: "I redesigned Adobe Acrobat Pro Conversion Funnel",
+    cardSummary: "Designing an AI-Powered Financial App for the Next Generation",
     cardUrl: "/case-studies/wealthie",
     cardColor:"#FAFAFA"
   },
