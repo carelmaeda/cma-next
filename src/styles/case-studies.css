@@ -49,10 +49,13 @@ h4{
 }
 
 
-
 .case-study-1 .btn-icon, .case-study-1 .badge {
     background:var(--case-study-1);
     border: var(--case-study-1);
+}
+
+.case-study-1 .btn-icon:hover {
+  background: rgb(189, 140, 221);
 }
 
 /*Birdeseye*/

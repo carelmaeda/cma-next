@@ -41,12 +41,12 @@ const BirdsEye = () => {
               <p>A simple and intuitive platform that made receipt submission effortless while incorporating game mechanics to keep users engaged and motivated.              </p>
           
           {/* Play Button */}
-          <div className="d-flex align-items-center my-3">
+          <div className="btn-wrapper">
             <a
               href="https://www.figma.com/proto/FQvq1XSAg0904hF2QS1iF8/Vet-Mobile-3.0?page-id=0%3A1&node-id=1-4421&p=f&viewport=-166%2C159%2C0.03&t=AlTwewAMyTPezQOI-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A4421"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg btn-primary d-flex align-items-center gap-2"
+              className="btn btn-lg btn-icon"
             >
               <FaPlay size={14} />
               View Hi Fi Prototype
