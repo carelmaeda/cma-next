@@ -20,7 +20,6 @@ export default function Navbar() {
         </div>
         </div>
 
-
         {/* Nav Left */}
         <button
           className="navbar-toggler"

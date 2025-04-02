@@ -1,7 +1,7 @@
 @import "./variables.css";
 @import "./globals.css";
 
-:root  {
+:root {
   /* Case Study Colors */
   --case-study-1: #4440bf;
   --case-study-2: #e74c3c;
@@ -52,6 +52,11 @@ h4 {
 .case-study-1 .badge {
   background: var(--case-study-1);
   border: var(--case-study-1);
+}
+
+.case-study-1 .btn-icon:hover {
+  background: #5a55ff;
+  color: white;
 }
 
 /*Birdeseye*/

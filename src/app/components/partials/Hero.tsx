@@ -9,12 +9,12 @@ export default function Hero() {
           </div>
 
           <div>
-            <div className="display-3">Hi! My name is <span className='hero-text'>Carel.</span> </div>
+            <div className="hero-header">Hi! My name is <span>Carel.</span> </div>
             <p className="lead">
                 Crafting seamless UX/UI designs that put users first and brands ahead.
             </p>
             <a href="#contact" className="d-none btn btn-dark">Work with Me</a>
-            </div>
+          </div>
     </section>
   );
 }
