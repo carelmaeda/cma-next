@@ -247,7 +247,7 @@ a:hover {
 }
 
 .work-card:hover {
-  background: var(--color-gray-300);
+  background: var(--color-gray-100);
   text-decoration: none;
 }
 
