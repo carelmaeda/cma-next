@@ -26,8 +26,10 @@ const DesignArchive = () => {
    {/* Paygos Case Studies */}
     <div className='section-wrapper p-0'>
       <div>
-          {/* HERO */}
-          <div>
+         
+        <div className='mx-auto text-center justify-content-center text-wrapper col-md-6 p-3 p-md-5'>
+           {/* HERO */}
+          <figure>
           <Image
             src="/images/design-archive1.webp"
             width={1320}
@@ -35,9 +37,9 @@ const DesignArchive = () => {
             alt=" Image showcasing Paygos Case Studies"
             loading="lazy"
             layout="responsive"
+            className='img-fluid case-study-img'
           />
-        </div>
-        <div className='mx-auto text-center justify-content-center text-wrapper col-md-6 p-3 p-md-5'>
+        </figure>
           <div>
             <h2 className='h3 m-0'>Paygos Case Studies</h2>
             <label className="m-0">Creating a set of case studies for presentations</label>

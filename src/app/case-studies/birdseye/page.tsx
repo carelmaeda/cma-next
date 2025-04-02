@@ -180,7 +180,7 @@ const BirdsEye = () => {
 
               <figure>
                 <Image
-                  src="/images/birdseye1.png"
+                  src="/images/birdseye1.webp"
                   alt="Final Paygos Prototype"
                   width={600}
                   height={390}

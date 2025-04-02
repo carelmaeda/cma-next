@@ -99,7 +99,7 @@ const Wealthie = () => {
                 </ul>
                  <figure>
                   <Image
-                    src="/images/wealthie1.png"
+                    src="/images/wealthie1.webp"
                     alt="Paygos Prototype Design"
                     width={390}
                     height={600}
@@ -114,7 +114,7 @@ const Wealthie = () => {
                   <p className="text-center">I also designed a dedicated icon to represent Wealthie&rsquo;s AI.</p>
                  <figure className='m-0'>
                   <Image
-                    src="/images/wealthie4.png"
+                    src="/images/wealthie4.webp"
                     alt="Paygos Prototype Design"
                     width={35}
                     height={35}
@@ -138,7 +138,7 @@ const Wealthie = () => {
                  <figure>
                  <p>Using this information I created a screen dedicated just for interactions with Wealthie&apos;s A.I.:</p>
                   <Image
-                    src="/images/wealthie3.png"
+                    src="/images/wealthie3.webp"
                     alt="Paygos Prototype Design"
                     width={600}
                     height={390}
@@ -173,7 +173,7 @@ const Wealthie = () => {
 
               <figure>
                 <Image
-                  src="/images/wealthie2.png"
+                  src="/images/wealthie2.webp"
                   alt="Final Paygos Prototype"
                   width={600}
                   height={390}

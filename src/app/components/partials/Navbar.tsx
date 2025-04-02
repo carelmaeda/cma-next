@@ -10,7 +10,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className='d-flex gap-2 align-items-center'>
         <Link className="navbar-logo" href="/">
-          <Image src="/images/logo.png" alt="logo" width={76} height={50} />
+          <Image src="/images/logo.webp" alt="logo" width={76} height={50} loading="lazy" />
         </Link>
 
         {/* Pulsing light */}
@@ -19,7 +19,6 @@ export default function Navbar() {
           <small>Open for cool projects</small>
         </div>
         </div>
-
 
         {/* Nav Left */}
         <button

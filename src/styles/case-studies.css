@@ -1,20 +1,20 @@
 @import "./variables.css";
+@import "./globals.css";
 
 :root {
   /* Case Study Colors */
-  --case-study-1: #4440BF;
+  --case-study-1: #4440bf;
   --case-study-2: #e74c3c;
-  --case-study-3: #8A2BE2;
+  --case-study-3: #8a2be2;
 }
-
 
 /*GENERAL*/
 
-.badge{
+.badge {
   font-weight: 300;
 }
 
-h4{
+h4 {
   letter-spacing: -0.5px;
 }
 
@@ -23,7 +23,7 @@ h4{
   color: var(--color-gray-500);
   line-height: 2.25rem;
   font-weight: 600;
-  letter-spacing: .03rem;
+  letter-spacing: 0.03rem;
   margin-block: 1.5rem;
   padding: min(1rem, 3%);
   border-radius: var(--border-radius-md);
@@ -35,14 +35,14 @@ h4{
   background: #c3c1ff;
 }
 
-.case-study-1 h2{
+.case-study-1 h2 {
   font-size: 2rem;
   color: var(--case-study-1);
-  font-weight:700;
+  font-weight: 700;
   letter-spacing: -2px;
 }
 
-.case-study-1 h5{
+.case-study-1 h5 {
   font-size: 1.2rem;
   color: var(--case-study-1);
   font-weight: 600;
@@ -87,9 +87,8 @@ h4{
   border: var(--case-study-2);
 }
 
-
-.case-study-2 .btn-icon:hover{
-    background: navy;
+.case-study-2 .btn-icon:hover {
+  background: navy;
 }
 
 /*Wealthy*/
@@ -121,14 +120,11 @@ h4{
   border: var(--case-study-3);
 }
 
-
 .case-study-3 .btn-icon:hover {
   background: navy;
 }
 
-
-
-.text-wrapper p{
+.text-wrapper p {
   max-width: 100%;
   -webkit-hyphens: auto;
   hyphens: auto;
