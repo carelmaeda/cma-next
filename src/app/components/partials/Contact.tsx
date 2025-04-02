@@ -1,7 +1,7 @@
 "use client"; // Indicate it's a client component
 
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import emailjs from '@emailjs/browser';
 import { MotionVertical } from "./Motions";
 
 const Contact = () => {
