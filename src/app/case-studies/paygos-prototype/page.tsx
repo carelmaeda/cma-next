@@ -10,15 +10,11 @@ const PaygosPrototype = () => {
       {/* Hero Section */}
       <div className="row case-study-1 p-3 p-md-5 justify-content-md-center align-items-center">
         <div className="col-md-4 d-flex justify-content-center">
-          {/* APP GIF */}
-          <Image
-            src="/videos/paygos-prototype-gif1.gif"
-            width={350}
-            height={620}
-            alt="Screen Recording GIF showcasing Paygos prototype"
-            unoptimized
-            loading="lazy"
-          />
+            {/* APP Video */}
+          <video autoPlay loop muted playsInline>
+            <source src="/videos/paygos-prototype-video1.webm" type="video/webm" />
+            <source src="/videos/paygos-prototype-video1.mp4" type="video/mp4" />  
+          </video>
         </div>
         <div className="col-md-4 text-wrapper">
           <div>
@@ -166,16 +162,11 @@ const PaygosPrototype = () => {
           </div>
 
           <figure>
-            {/* APP GIF */}
-            <Image
-              src="/videos/paygos-prototype-gif2.gif"
-              width={393}
-              height={255}
-              alt="Screen Recording GIF showcasing Paygos prototype"
-              className="case-study-img"
-              unoptimized
-              loading="lazy"
-            />
+          {/*video*/}
+          <video autoPlay loop muted playsInline>
+            <source src="/videos/paygos-prototype-video2.webm" type="video/webm" />
+            <source src="/videos/paygos-prototype-video2.mp4" type="video/mp4" />  
+          </video>
             <figcaption>With just a few clicks I can change all the products in this prototype</figcaption>
           </figure>
          

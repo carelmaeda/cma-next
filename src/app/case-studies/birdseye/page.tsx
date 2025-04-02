@@ -9,18 +9,14 @@ const BirdsEye = () => {
       <section>
         {/* Hero Section */}
         <div className="row case-study-2 p-3 p-md-5 justify-content-md-center align-items-center">
-          <div className="col-md-4 d-flex justify-content-center">
-            {/* APP GIF */}
-            <Image
-              src="/videos/birdseye-gif1.gif"
-              width={350}
-              height={620}
-              alt="Screen Recording GIF showcasing Paygos prototype"
-              unoptimized
-              loading="lazy"
-            />
+          <div className="col-md-3 d-flex justify-content-center">
+            {/* APP Video */}
+          <video autoPlay loop muted playsInline className='w-75'>
+            <source src="/videos/birdseye-video1.webm" type="video/webm" />
+            <source src="/videos/birdseye-video1.mp4" type="video/mp4" />  
+          </video>
           </div>
-          <div className="col-md-4 text-wrapper text-white">
+          <div className="col-md-3 text-wrapper text-white">
             <div>
               <h1 className="d-none">Case Studies</h1>
               <h2 className='h1 text-white'>Gamefying Receipts</h2>

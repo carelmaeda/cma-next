@@ -10,15 +10,11 @@ const Wealthie = () => {
         {/* Hero Section */}
         <div className="row case-study-3 p-3 p-md-5 justify-content-md-center align-items-center">
           <div className="col-md-4 d-flex justify-content-center">
-            {/* APP GIF */}
-            <Image
-              src="/videos/wealthie-gif1.gif"
-              width={350}
-              height={620}
-              alt="Screen Recording GIF showcasing Wealthie App"
-              unoptimized
-              loading="lazy"
-            />
+            {/* APP Video */}
+          <video autoPlay loop muted playsInline>
+            <source src="/videos/wealthie-video1.webm" type="video/webm" />
+            <source src="/videos/wealthie-video1.mp4" type="video/mp4" />  
+          </video>
           </div>
           <div className="col-md-4 text-wrapper text-white">
           <div>
