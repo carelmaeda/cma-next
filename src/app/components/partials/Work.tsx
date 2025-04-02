@@ -3,6 +3,7 @@
 import '@/styles/globals.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MotionVertical } from './Motions';
 
 const workCards = [
     {
@@ -30,7 +31,7 @@ const workCards = [
 
 const Work = () => {
   return (
-    <section className="section-wrapper p-md-4 justify-items-center"> 
+    <MotionVertical className="section-wrapper p-md-4 justify-items-center"> 
        <h2 className="fs-5">More Stories</h2>
       <div className="work-wrapper">
         {workCards.map((card, index) => (
@@ -52,7 +53,7 @@ const Work = () => {
           </Link>
         ))}
       </div>
-    </section>
+    </MotionVertical>
   );
 };
 

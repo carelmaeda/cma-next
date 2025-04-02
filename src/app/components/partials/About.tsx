@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import {FaArrowRight, FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
+import { MotionVertical } from "./Motions";
 
 
 export default function About() {
@@ -9,7 +10,7 @@ export default function About() {
   };
 
   return (
-    <section className="section-wrapper about-wrapper">
+    <MotionVertical className="section-wrapper about-wrapper">
       <h2>About Me</h2>
       <div className="d-grid d-md-flex gap-4">
         <Image
@@ -40,6 +41,6 @@ export default function About() {
           </button>
         </div>
       </div>
-    </section>
+    </MotionVertical>
   );
 }

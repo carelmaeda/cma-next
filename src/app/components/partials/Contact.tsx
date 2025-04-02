@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { MotionVertical } from "./Motions";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -48,7 +49,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="section-wrapper justify-items-center">
+    <MotionVertical className="section-wrapper justify-items-center">
       <h2 className="text-center mb-3">Contact Me</h2>
       <form onSubmit={sendEmail} className="w-100">
         <div className="form-group mb-3">
@@ -91,7 +92,7 @@ const Contact = () => {
         {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
         <button type="submit" className="btn btn-dark w-100">Send Message</button>
       </form>
-    </div>
+    </MotionVertical>
   );
 };
 

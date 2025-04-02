@@ -15,7 +15,8 @@ export function MotionVertical({
     <motion.div
       className={className}
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }} // ← Triggers when scrolled into view
+      viewport={{ once: true, margin: "-20%" }} // ← Only animate once + trigger 20% early
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       {children}

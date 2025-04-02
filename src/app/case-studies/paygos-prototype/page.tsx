@@ -1,6 +1,7 @@
 import '@/styles/case-studies.css';
 import Image from 'next/image';
 import { FaFigma, FaPlay } from 'react-icons/fa';
+import { MotionVertical } from '@/app/components/partials/Motions';
 
 const PaygosPrototype = () => {
   return (
@@ -9,14 +10,14 @@ const PaygosPrototype = () => {
       <div className="section-wrapper p-0">
       {/* Hero Section */}
       <div className="row case-study-1 p-3 p-md-5 justify-content-md-center align-items-center">
-        <div className="col-md-4 d-flex justify-content-center">
+        <MotionVertical className="col-md-4 d-flex justify-content-center">
             {/* APP Video */}
           <video autoPlay loop muted playsInline>
             <source src="/videos/paygos-prototype-video1.webm" type="video/webm" />
             <source src="/videos/paygos-prototype-video1.mp4" type="video/mp4" />  
           </video>
-        </div>
-        <div className="col-md-4 text-wrapper">
+        </MotionVertical>
+        <MotionVertical className="col-md-4 text-wrapper">
           <div>
             <h1 className="d-none">Case Studies</h1>
             <h2>From One Day to One Hour</h2>
@@ -58,7 +59,7 @@ const PaygosPrototype = () => {
             </a>
           </div>
           </div>
-        </div>
+        </MotionVertical>
       </div>
         <div className="p-3 row justify-content-center">
           {/* Sticky */}
