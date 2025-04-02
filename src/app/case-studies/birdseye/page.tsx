@@ -105,7 +105,7 @@ const BirdsEye = () => {
 
                 <figure>
                   <Image
-                    src="/images/birdseye3.png"
+                    src="/images/birdseye3.webp"
                     alt="Figjam Board"
                     width={600}
                     height={390}
@@ -129,7 +129,7 @@ const BirdsEye = () => {
                  <p>Using this information I created a mid fidelity version of the platform:</p>
                  <figure>
                   <Image
-                    src="/images/birdseye2.png"
+                    src="/images/birdseye2.webp"
                     alt="Mid Fidelity Screens"
                     width={600}
                     height={390}
