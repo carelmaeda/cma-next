@@ -12,9 +12,10 @@
   margin: 0;
 }
 
+html,
 body {
-  /* 3. Add accessible line-height */
-  line-height: 1.5;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  max-width: 100vw; /* Limit width to viewport width */
   /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
 }
@@ -38,7 +39,6 @@ select {
 }
 
 /* 7. Avoid text overflows */
-p,
 h1,
 h2,
 h3,
@@ -46,10 +46,12 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  margin: 0;
 }
 
 /* 8. Improve line wrapping */
 p {
+  overflow-wrap: break-word;
   text-wrap: pretty;
 }
 h1,

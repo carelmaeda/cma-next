@@ -5,12 +5,11 @@ export default function Navbar() {
   return (
     <nav className="container-fluid navbar navbar-expand-lg navbar-light bg-light sticky-top">
       <div className="container">
-
         {/* Nav Right */}
         {/* Logo */}
         <div className='d-flex gap-2 align-items-center'>
         <Link className="navbar-logo" href="/">
-          <Image src="/images/logo.webp" alt="logo" width={76} height={50} loading="lazy" />
+          <Image src="/images/logov2.webp" alt="logo" width={90} height={50} loading="lazy" />
         </Link>
 
         {/* Pulsing light */}

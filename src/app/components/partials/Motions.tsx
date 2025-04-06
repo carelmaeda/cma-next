@@ -24,6 +24,8 @@ export function MotionVertical({
   );
 }
 
+
+
 // Scales from 90% to 100% with a subtle fade
 export function MotionHorizontal({
   children,
@@ -67,8 +69,8 @@ export function MotionScaleIn({
   );
 }
 
-// Fades in while tilting on the Z-axis
-export function MotionFadeInRotate({
+// MotionScore - Skill animation (rotation for skills)
+export function MotionScore({
   children,
   className,
 }: {
@@ -76,20 +78,14 @@ export function MotionFadeInRotate({
   className?: string;
 }) {
   return (
-    <motion.div
+    <motion.span
       className={className}
-      initial={{ opacity: 0, rotateZ: -5 }} // Slight left tilt
-      animate={{ opacity: 1, rotateZ: 0 }}
-      transition={{ 
-        duration: 0.7, 
-        ease: "easeOut" 
-      }}
-      whileHover={{ rotateZ: 2 }} // Interactive hover tilt
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.5 }}
     >
       {children}
-    </motion.div>
+    </motion.span>
   );
 }
-
-
-

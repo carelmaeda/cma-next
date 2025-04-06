@@ -37,7 +37,7 @@ const Work = () => {
         {workCards.map((card, index) => (
           <Link href={card.cardUrl} className="work-card" key={index}>
             <div className="d-flex align-items-center">
-              <div className="card-logo" style={{ background: card.cardColor }}>
+              <div className="work-card-logo" style={{ background: card.cardColor }}>
                 <Image
                   src={card.logoImg}
                   alt="Case Study Company Logo"

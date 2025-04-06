@@ -10,6 +10,16 @@ body {
 
 /*Typography*/
 
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5 {
+  letter-spacing: -1px;
+  line-height: 1.1;
+  font-family: var(--font-primary);
+}
+
 h1,
 h2,
 h3,
@@ -31,14 +41,16 @@ h1,
   line-height: 1;
 }
 
-.display-1,
-.display-2,
-.display-3,
-.display-4,
-.display-5 {
-  letter-spacing: -1px;
-  line-height: 1.1;
-  font-family: var(--font-primary);
+h4,
+.h4,
+p,
+.p {
+  line-height: 1.5;
+}
+
+p,
+.p {
+  margin-block: 0.25rem;
 }
 
 a {
@@ -49,6 +61,15 @@ a {
 a:hover {
   color: var(--color-secondary);
   text-decoration: underline;
+}
+
+ul,
+ol {
+  margin-top: 0.5rem;
+}
+
+li {
+  margin-block: 0.25rem;
 }
 
 /*NAVBAR*/
@@ -203,18 +224,16 @@ a:hover {
   letter-spacing: clamp(-0.1rem, -2vw, -1.5rem);
 }
 
-.hero-header span{
+.hero-header span {
   color: var(--color-primary);
   font-weight: 600;
 }
-
 
 .hero-section {
   height: 70dvh;
   text-align: center;
   align-items: center;
 }
-
 
 /*WORK*/
 
@@ -251,7 +270,7 @@ a:hover {
   text-decoration: none;
 }
 
-.card-logo {
+.work-card-logo {
   width: 40px;
   height: 40px;
   place-content: center;
