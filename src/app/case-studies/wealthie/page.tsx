@@ -11,10 +11,13 @@ const Wealthie = () => {
         <div className="row case-study-3 p-3 p-md-5 justify-content-center align-items-center">
           <div className="col-8 col-md-3 d-flex justify-content-center">
             {/* APP Video */}
-          <video autoPlay loop muted playsInline>
-            <source src="/videos/wealthie-video1.webm" type="video/webm" />
-            <source src="/videos/wealthie-video1.mp4" type="video/mp4" />  
-          </video>
+            <figure aria-label="Demo video of Wealthie App">
+              <video autoPlay loop muted playsInline>
+                <source src="/videos/wealthie-video1.webm" type="video/webm" />
+                <source src="/videos/wealthie-video1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </figure>
           </div>
           <div className="col-md-4 text-wrapper text-white d-grid gap-3">
           <div>
@@ -38,7 +41,7 @@ const Wealthie = () => {
               <span className="badge">Branding</span>
               <span className="badge">User Flow</span>
               <span className="badge">Research</span>
-              <span className="badge">Prototype& Testing</span>
+              <span className="badge">Prototype &amp; Testing</span>
              </div>
           </div>
             <div>
@@ -49,7 +52,6 @@ const Wealthie = () => {
                 <span className="badge">Zoom</span>
                 <span className="badge">Google Forms</span>
              </div>
-
           </div>        
 
         {/* Play Button */}
@@ -61,10 +63,9 @@ const Wealthie = () => {
             className='btn btn-icon'
           >
             <FaPlay size={14} />
-            View Hi Fi Prototype
+            View Hi-Fi Prototype
           </a>
           </div>
-
           </div>
         </div>
 
@@ -77,10 +78,10 @@ const Wealthie = () => {
                 <h4>Jump to Section</h4>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item"><a href="#introduction">Introduction</a></li>
-                  <li className="list-group-item"><a href="#research">Reserach & Insights</a></li>
-                  <li className="list-group-item"><a href="#design">Ideation & Design</a></li>
-                  <li className="list-group-item"><a href="#result">Testing & Validation</a></li>
-                  <li className="list-group-item"><a href="#conclusion">Conclusion & Next Steps</a></li>
+                  <li className="list-group-item"><a href="#research">Research &amp; Insights</a></li>
+                  <li className="list-group-item"><a href="#design">Ideation &amp; Design</a></li>
+                  <li className="list-group-item"><a href="#result">Testing &amp; Validation</a></li>
+                  <li className="list-group-item"><a href="#conclusion">Conclusion &amp; Next Steps</a></li>
                 </ul>
               </div>
               {/*SECTION INTRO */}
@@ -128,7 +129,7 @@ const Wealthie = () => {
                 <p>To achieve these goals, I conducted:</p>
                  <ol>
                   <li>Competitive Market Analysis: I explored existing finance apps targeting younger audiences to evaluate how they present budgeting, saving, and investing tools, especially those using AI or gamification.</li>
-                  <li>User Interviews: I spoke with teenagers and young adults to better understand their financial behaviours, goals, and frustrations. These conversations offered valuable insights into their emotional relationship with money and the support they wish they had.</li>
+                  <li>User Interviews: I spoke with teenagers and young adults to better understand their financial behaviors, goals, and frustrations. These conversations offered valuable insights into their emotional relationship with money and the support they wish they had.</li>
                 </ol>
               </div>
 
@@ -164,7 +165,7 @@ const Wealthie = () => {
                     </div>
                     <div className='card'>
                     <strong>Fear of Making Mistakes</strong>
-                    <small>Teens worry about doing the "wrong thing" financially, which can lead to avoidance or hesitation in using financial tools.</small>
+                    <small>Teens worry about doing the &quot;wrong thing&quot; financially, which can lead to avoidance or hesitation in using financial tools.</small>
                     </div>
                     <div className='card'>
                     <strong>Lack of Motivation</strong>
@@ -180,7 +181,7 @@ const Wealthie = () => {
             {/* User Personas */}
               <div>
                 <h4>User Personas</h4>
-                <p>With the knowledge and insights gained through the interviews, personas were created to understand the unique qualities, preferences and behaviours of the people most likely to benefit from the website.</p>
+                <p>With the knowledge and insights gained through the interviews, personas were created to understand the unique qualities, preferences and behaviors of the people most likely to benefit from the website.</p>
                   <div className="card-wrapper two-col">
                     <figure>
                   <Image
@@ -253,7 +254,7 @@ const Wealthie = () => {
                     <figure>
                   <Image
                     src="/images/wealthie-lofi.png"
-                    alt="Wealthie Lo Fi Wireframes"
+                    alt="Wealthie Lo-Fi Wireframes"
                     width={1000}
                     height={679}
                     quality={100}
@@ -270,7 +271,7 @@ const Wealthie = () => {
                     <figure>
                   <Image
                     src="/images/wealthie-hifi1.png"
-                    alt="Wealthie High Fi Wireframes"
+                    alt="Wealthie High-Fi Wireframes"
                     width={1000}
                     height={679}
                     quality={100}
@@ -284,25 +285,24 @@ const Wealthie = () => {
               <div>
                 <h4>Usability Testing</h4>
                 <p>Users easily completed tasks within the given timeframe, finding the app intuitive and well-organized. The Homepage and History were simple to navigate and understand, with the AI insights enhancing engagement.</p>
-                <p>However, based on the feedback received I made a few adustments to the UI, check the screens below:</p>
+                <p>However, based on the feedback received I made a few adjustments to the UI, check the screens below:</p>
                 <div className="card-wrapper three-col">
-                    <div className='card'><small>"I’d love to see more categories on the item listing page to help me organize my finances better."</small></div>
-                    <div className='card'><small>"It would be ideal to have the A.I features as a pop up instead of the full page, it would be less intrusive."</small></div>
-                    <div className='card'><small>"I’d love if the AI could give me feedback my spending behaviour, it would help me stay on track."</small></div>
+                    <div className='card'><small>&quot;I&apos;d love to see more categories on the item listing page to help me organize my finances better.&quot;</small></div>
+                    <div className='card'><small>&quot;It would be ideal to have the A.I features as a pop up instead of the full page, it would be less intrusive.&quot;</small></div>
+                    <div className='card'><small>&quot;I&apos;d love if the AI could give me feedback my spending behavior, it would help me stay on track.&quot;</small></div>
                 </div>
                 <figure>
                   <Image
                     src="/images/wealthie-hifi2.png"
-                    alt="Wealthie Hi Fi Wireframes After Feedback"
+                    alt="Wealthie Hi-Fi Wireframes After Feedback"
                     width={1000}
                     height={679}
                     quality={100}
                     className="img-fluid w-75 mx-auto"
                     loading="lazy"
                   />
-                 <figcaption>Based on the feedback received I made a few adustments to the UI</figcaption>
+                 <figcaption>Based on the feedback received I made a few adjustments to the UI</figcaption>
                 </figure>
-                
               </div> 
 
               {/*SECTION Conclusion */}
@@ -327,7 +327,7 @@ const Wealthie = () => {
                 <h4>Next Steps</h4>
                 <ul>
                   <li>Integrate Bank Account Connections: Allow users to link their bank accounts for real-time tracking of spending and automatic categorization of expenses.</li>
-                  <li>Enhance Onboarding Experience: Improve the onboarding process by including a quick tutorial that introduces new users to the app's features and helps them set their first savings goal.</li>
+                  <li>Enhance Onboarding Experience: Improve the onboarding process by including a quick tutorial that introduces new users to the app&apos;s features and helps them set their first savings goal.</li>
                   <li>Expand AI Capabilities: Enhance the AI assistant to provide more tailored advice on budgeting, saving, and even potential investments.</li>
                   <li>Reward System: Offer more reward options, such as discounts or special offers, to increase engagement and incentivize regular financial check-ins.</li>
                 </ul>

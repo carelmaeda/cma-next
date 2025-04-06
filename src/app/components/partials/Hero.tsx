@@ -32,7 +32,7 @@ export default function Hero() {
         </div>
         <p className="lead">
           <AnimatePresence mode="wait">
-            <MotionScore key={currentSkill} className='fw-bold'>
+            <MotionScore key={currentSkill} className="fw-bold">
               {currentSkill}
             </MotionScore>
           </AnimatePresence> <br />projects that bring you results
