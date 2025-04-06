@@ -1,6 +1,6 @@
 'use client';
 
-import { MotionVertical, MotionScore } from './Motions';
+import { MotionHero, MotionScore } from './Motions';
 import { AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
@@ -26,7 +26,7 @@ export default function Hero() {
         <h2>Portfolio Showcase</h2>
         <p>Welcome to my portfolio, where I showcase my latest UX/UI projects</p>
       </div>
-      <MotionVertical>
+      <MotionHero>
         <div className="hero-header">
           Hi! My name is <span>Carel.</span>
         </div>
@@ -40,7 +40,7 @@ export default function Hero() {
         <a href="#contact" className="d-none btn btn-dark">
           Work with Me
         </a>
-      </MotionVertical>
+      </MotionHero>
     </div>
   );
 }

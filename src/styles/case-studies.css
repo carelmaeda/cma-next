@@ -10,11 +10,11 @@
 
 /*GENERAL*/
 
-.badge-wrapper{
-  display:flex;
+.badge-wrapper {
+  display: flex;
   flex-wrap: wrap;
-  gap:0.5rem;
-  padding-block:0.2rem;
+  gap: 0.5rem;
+  padding-block: 0.2rem;
 }
 
 .badge {
@@ -25,12 +25,10 @@ h4 {
   letter-spacing: -0.5px;
 }
 
-
-
-/*CARDS*/
+/* CARDS */
 .card {
   display: grid;
-  gap:0.25rem;
+  gap: 0.25rem;
   font-family: var(--font-secondary);
   color: var(--color-gray-500);
   letter-spacing: 0.03rem;
@@ -44,14 +42,25 @@ h4 {
   padding-block: 1rem;
 }
 
-.two-col {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, max(300px, 50% - 0.5rem)), 1fr));
-}
-
+/* Default: single column for mobile */
+.two-col,
 .three-col {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, max(250px, 33.33% - 0.5rem)), 1fr));
+  grid-template-columns: 1fr;
 }
 
+/* Two columns on tablet/desktop */
+@media (min-width: 768px) {
+  .two-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Three columns on desktop */
+@media (min-width: 1024px) {
+  .three-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 /*Paygos Prototypes*/
 .case-study-1 {
