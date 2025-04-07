@@ -1,5 +1,4 @@
 import '@/styles/case-studies.css';
-import Image from 'next/image';
 import { FaFigma, FaPlay } from 'react-icons/fa';
 import Work from '@/app/components/partials/Work';
 import { MotionScaleIn, MotionHero, MotionVertical, MotionHorizontal } from '@/app/components/partials/Motions';

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image, { ImageProps } from 'next/image';
 import Lightbox, { Slide } from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
@@ -29,13 +29,27 @@ export default function ImageZoom({
     ? src.map(s => ({ src: s })) 
     : [{ src }];
 
-  // Calculate aspect ratio
-  const aspectRatio = width / height;
+  // Handle close with proper dependency
+  const handleClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
+  // Handle click outside with proper dependencies
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handleClose]);
 
   // Lightbox styles with proper TypeScript typing
   const lightboxStyles = {
     container: { 
-      backgroundColor: 'rgba(255, 255, 255, 0.9)' // White 80% opacity background
+      backgroundColor: 'rgba(255, 255, 255, 0.8)'
     },
     slide: {
       display: 'flex',
@@ -45,8 +59,8 @@ export default function ImageZoom({
         objectFit: 'contain' as const,
         width: 'auto',
         height: 'auto',
-        maxWidth: `min(90vw, ${width}px)`, // Responsive max width
-        maxHeight: `min(90vh, ${height}px)`, // Responsive max height
+        maxWidth: `min(90vw, ${width}px)`,
+        maxHeight: `min(90vh, ${height}px)`,
       }
     }
   };
@@ -78,28 +92,34 @@ export default function ImageZoom({
       {!lightboxDisabled && (
         <Lightbox
           open={open}
-          close={() => setOpen(false)}
+          close={handleClose}
           slides={slides}
           carousel={{ finite: true }}
           render={{
             buttonPrev: () => null,
             buttonNext: () => null,
             iconClose: () => (
-              <div style={{
-                position: 'absolute',
-                color:'#1d1d1d',
-                top: '20px',
-                right: '20px',
-                width: '40px',
-                height: '40px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                backgroundColor: 'rgba(0,0,0,0.1)',
-                borderRadius: '50%',
-                zIndex: 9999
-              }}>
+              <button
+                type="button"
+                aria-label="Close"
+                onClick={handleClose}
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '20px',
+                  width: '40px',
+                  height: '40px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  zIndex: 9999,
+                  background: 'none',
+                  border: 'none',
+                  outline: 'none',
+                  padding: 0
+                }}
+              >
                 <svg 
                   width="24" 
                   height="24" 
@@ -111,7 +131,7 @@ export default function ImageZoom({
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
-              </div>
+              </button>
             )
           }}
           styles={lightboxStyles}
