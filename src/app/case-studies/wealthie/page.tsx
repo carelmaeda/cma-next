@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { FaFigma, FaPlay } from 'react-icons/fa';
 import Work from '@/app/components/partials/Work';
 import { MotionScaleIn, MotionHero, MotionVertical, MotionHorizontal } from '@/app/components/partials/Motions';
+import ImageZoom from '@/app/components/partials/ImgZoom';
 
 const Wealthie = () => {
   return (
@@ -117,7 +118,7 @@ const Wealthie = () => {
                 <h4>My Design Process</h4>
                 <MotionScaleIn>
                   <figure>
-                  <Image
+                  <ImageZoom
                     src="/images/objective.png"
                     alt="Paygos Prototype Design"
                     width={800}
@@ -194,7 +195,7 @@ const Wealthie = () => {
                   <div className="card-wrapper two-col">
                     <MotionScaleIn>
                     <figure>
-                  <Image
+                  <ImageZoom
                     src="/images/wealthie-persona01.png"
                     alt="User Persona Giulia"
                     width={1000}
@@ -207,7 +208,7 @@ const Wealthie = () => {
                     </MotionScaleIn>
                 <MotionScaleIn>
                 <figure>
-                <Image
+                <ImageZoom
                   src="/images/wealthie-persona02.png"
                   alt="User Persona Jacob"
                   width={1000}
@@ -250,7 +251,7 @@ const Wealthie = () => {
                 <p>To create the site map, I referred back to key insights from user research, specifically the need for simplicity, clear navigation, and always-accessible AI support. I organized the structure to prioritize core actions like budgeting, saving, and interacting with the AI assistant, while keeping the interface clean and intuitive for younger users.</p>
                 <MotionScaleIn>
                   <figure>
-                  <Image
+                  <ImageZoom
                     src="/images/wealthie-sitemap.png"
                     alt="Wealthie Site Map"
                     width={1000}
@@ -269,7 +270,7 @@ const Wealthie = () => {
                 <p>Next, I started with low-fidelity wireframes to explore different layouts and navigation options. These wireframes focused on essential features like signing in and the homepage dashboards.</p>
                 <MotionScaleIn>
                 <figure>
-                  <Image
+                  <ImageZoom
                     src="/images/wealthie-lofi.png"
                     alt="Wealthie Lo-Fi Wireframes"
                     width={1000}
@@ -288,7 +289,7 @@ const Wealthie = () => {
                 <p>I then proceeded to design high fidelity wireframes applying branding and vibrant imagery. <br /> It is starting to look like a real app!</p>
               <MotionScaleIn>
                  <figure>
-                  <Image
+                  <ImageZoom
                     src="/images/wealthie-hifi1.png"
                     alt="Wealthie High-Fi Wireframes"
                     width={1000}
@@ -313,7 +314,7 @@ const Wealthie = () => {
                 </div>
                 <MotionScaleIn>
                 <figure>
-                  <Image
+                  <ImageZoom
                     src="/images/wealthie-hifi2.png"
                     alt="Wealthie Hi-Fi Wireframes After Feedback"
                     width={1000}
@@ -337,7 +338,7 @@ const Wealthie = () => {
               <p>Through research, prototyping, and testing, I was able to address key pain points and deliver a solution that aligns with user needs and expectations.</p>
              <MotionScaleIn>
               <figure>
-                <Image
+                <ImageZoom
                   src="/images/wealthie-hifi3.png"
                   alt="Final Wealthie Desktop and Mobile Screens"
                   width={1000}

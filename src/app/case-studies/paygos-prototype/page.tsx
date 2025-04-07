@@ -2,6 +2,7 @@ import '@/styles/case-studies.css';
 import Image from 'next/image';
 import { FaFigma, FaPlay } from 'react-icons/fa';
 import { MotionVertical, MotionHorizontal, MotionScaleIn } from '@/app/components/partials/Motions';
+import ImageZoom from '@/app/components/partials/ImgZoom';
 
 const PaygosPrototype = () => {
   return (
@@ -63,7 +64,7 @@ const PaygosPrototype = () => {
       </div>
         <MotionVertical className="p-3 row justify-content-center">
           {/* Sticky */}
-          <Image
+          <ImageZoom
             src="/images/sticky1.webp"
             alt="Sticky note with Paygos prototype details"
             width={330}
