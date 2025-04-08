@@ -1,23 +1,23 @@
 'use client';
 
-import { MotionHero, MotionScore } from './Motions';
-import { AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { MotionHero } from './Motions';
+// import { AnimatePresence } from 'framer-motion';
+// import { useState, useEffect } from 'react';
 
 export default function Hero() {
-  const skills = ["Figma", "UX/UI Design", "Front-End Development", "Graphic Design"];
-  const [currentSkill, setCurrentSkill] = useState(skills[0]);
+  // const skills = ["Figma", "UX/UI Design", "Front-End Development", "Graphic Design"];
+  // const [currentSkill, setCurrentSkill] = useState(skills[0]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSkill((prev) => {
-        const nextIndex = (skills.indexOf(prev) + 1) % skills.length;
-        return skills[nextIndex];
-      });
-    }, 2000); // Change skill every 2 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentSkill((prev) => {
+  //       const nextIndex = (skills.indexOf(prev) + 1) % skills.length;
+  //       return skills[nextIndex];
+  //     });
+  //   }, 2000); // Change skill every 2 seconds
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <div className="hero-section row section-wrapper">
@@ -30,13 +30,14 @@ export default function Hero() {
         <div className="hero-header">
           Hi! My name is <span>Carel.</span>
         </div>
-        <p className="lead">
+        {/* <p className="lead">
           <AnimatePresence mode="wait">
             <MotionScore key={currentSkill} className="fw-bold">
               {currentSkill}
             </MotionScore>
           </AnimatePresence> <br />projects that bring you results
-        </p>
+        </p> */}
+        <p className="lead">UX/UI Designer specializing in SaaS products, I help businesses turn complex ideas into elegant, user-centered solutions.</p>
         <a href="#contact" className="d-none btn btn-dark">
           Work with Me
         </a>
