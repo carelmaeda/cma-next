@@ -34,7 +34,7 @@ const Contact = () => {
       .then(
         (response) => {
           console.log("Email sent successfully:", response.status, response.text);
-          setSuccessMessage("Your message has been sent successfully!");
+          setSuccessMessage("Thank you for reaching out! I'll get back to you within one business day. Have a great day!");
           setName("");
           setEmail("");
           setMessage("");
@@ -42,7 +42,7 @@ const Contact = () => {
         },
         (error) => {
           console.error("Failed to send email:", error);
-          setErrorMessage("Failed to send your message. Please try again later.");
+          setErrorMessage("Oops! Something went wrong, please try again.");
           setSuccessMessage("");
         }
       );

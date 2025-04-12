@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import Work from '@/app/components/partials/Work';
 import { FaFigma } from 'react-icons/fa';
 import Image from 'next/image';
+import { MotionScaleIn, MotionVertical } from '@/app/components/partials/Motions';
 
 const DesignArchive = () => {
   return (
@@ -29,6 +30,8 @@ const DesignArchive = () => {
          
         <div className='mx-auto text-center justify-content-center text-wrapper col-md-6 p-3 p-md-5'>
            {/* HERO */}
+
+           <MotionScaleIn>
           <figure>
           <Image
             src="/images/design-archive1.webp"
@@ -39,8 +42,12 @@ const DesignArchive = () => {
             layout="responsive"
             className='img-fluid case-study-img'
           />
-        </figure>
-          <div>
+        </figure>            
+           </MotionScaleIn>
+
+          
+          <MotionVertical>
+                      <div>
             <h2 className='h3 m-0'>Paygos Case Studies</h2>
             <label className="m-0">Creating a set of case studies for presentations</label>
           </div>
@@ -76,6 +83,10 @@ const DesignArchive = () => {
               </a>
             </div>
           </div>
+
+          </MotionVertical>
+
+
         </div>
 
       </div>
@@ -85,7 +96,7 @@ const DesignArchive = () => {
     <div className='section-wrapper'>
       <div>
           {/* APP GIF */}
-          <div className='col-md-6 mx-auto shadow-lg'>
+          <MotionScaleIn className='col-md-6 mx-auto shadow-lg'>
           <Image
           className='rounded '
             src="/videos/design-archive-gif1.gif"
@@ -95,8 +106,8 @@ const DesignArchive = () => {
             loading="lazy"
            layout="responsive"
           />
-        </div>
-        <div className='mx-auto text-center justify-content-center text-wrapper col-md-6 p-3 p-md-5'>
+        </MotionScaleIn>
+        <MotionVertical className='mx-auto text-center justify-content-center text-wrapper col-md-6 p-3 p-md-5'>
           <div>
             <h2 className='h3 m-0'> Paygos Animated Presentation</h2>
             <label className="m-0">A Dynamic Visual Overview of the Paygos Platform</label>
@@ -106,7 +117,7 @@ const DesignArchive = () => {
             <span className="badge bg-primary">Graphic Design</span>
           </div>
           <hr className="my-2" />
-          <div className="py-2">
+          <MotionVertical className="py-2">
            <h5>Objective</h5>
             <p>
               I created an animated presentation to visually showcase the Paygos platform, highlighting its key features, user experience, and benefits for sales representatives and businesses.
@@ -134,8 +145,8 @@ const DesignArchive = () => {
                 View Presentation
               </a>
             </div>
-          </div>
-        </div>
+          </MotionVertical>
+        </MotionVertical>
 
       </div>
    </div>

@@ -10,10 +10,10 @@ export default function Home() {
       <div className="container-fluid">
       <Hero />
       </div>
-      <section id="work" className="container py-4">
+      <section className="container py-4">
          <PaygosPrototype/>
       </section>
-      <section className="container py-4">
+      <section id="work" className="container py-4">
         <Work/>
       </section>
       <section id="about" className="container py-4">
