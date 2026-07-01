@@ -1,27 +1,42 @@
-import About from './components/partials/About';
-import Contact from './components/partials/Contact';
 import Hero from './components/partials/Hero';
 import Work from './components/partials/Work';
-import PaygosPrototype from './case-studies/paygos-prototype/page';
+import Services from './components/partials/Services';
+import About from './components/partials/About';
+import ContactCTA from './components/partials/ContactCTA';
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Carel Maeda',
+  jobTitle: 'Senior Product Designer',
+  url: 'https://carelmaeda.com',
+  image: 'https://carelmaeda.com/images/profile.webp',
+  sameAs: ['https://linkedin.com/in/carelmaeda', 'https://github.com/carelmaeda'],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Paygos',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Toronto',
+    addressCountry: 'CA',
+  },
+  knowsLanguage: ['en', 'pt', 'fr', 'es'],
+};
 
 export default function Home() {
   return (
     <main>
-      <div className="container-fluid">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+
       <Hero />
-      </div>
-      <section className="container py-4">
-         <PaygosPrototype/>
-      </section>
-      <section id="work" className="container py-4">
-        <Work/>
-      </section>
-      <section id="about" className="container py-4">
-        <About />
-      </section>
-      <section id="contact" className="container py-4">
-        <Contact />
-      </section>
+      <Work />
+      <Services />
+      <About />
+      <ContactCTA />
     </main>
   );
 }

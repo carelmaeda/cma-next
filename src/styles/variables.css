@@ -1,26 +1,24 @@
-/*RESET*/
-
-/* 1. Use a more-intuitive box-sizing model */
+/* ============================================================
+   RESET
+   ============================================================ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 2. Remove default margin */
 * {
   margin: 0;
 }
 
 html,
 body {
-  overflow-x: hidden; /* Prevent horizontal scroll */
-  max-width: 100vw; /* Limit width to viewport width */
-  /* 4. Improve text rendering */
+  overflow-x: hidden;
+  max-width: 100vw;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* 5. Improve media defaults */
 img,
 picture,
 video,
@@ -30,7 +28,6 @@ svg {
   max-width: 100%;
 }
 
-/* 6. Inherit fonts for form controls */
 input,
 button,
 textarea,
@@ -38,7 +35,6 @@ select {
   font: inherit;
 }
 
-/* 7. Avoid text overflows */
 h1,
 h2,
 h3,
@@ -49,11 +45,11 @@ h6 {
   margin: 0;
 }
 
-/* 8. Improve line wrapping */
 p {
   overflow-wrap: break-word;
   text-wrap: pretty;
 }
+
 h1,
 h2,
 h3,
@@ -63,47 +59,155 @@ h6 {
   text-wrap: balance;
 }
 
-/*
-  9. Create a root stacking context
-*/
 #root,
 #__next {
   isolation: isolate;
 }
 
+/* ============================================================
+   DESIGN TOKENS, Carel Maeda portfolio
+   Source of truth: .claude/docs/refferences/ui-update-guide.md
+   ============================================================ */
 :root {
-  /* Primary Colors */
-  --color-primary: #00a3ff;
-  --color-secondary: #0066cc;
+  /* ---------- COLOR ---------- */
+  /* "Editorial-Swiss" monochrome system (ref: h3ylab.com). Structural chrome
+     stays strictly black-on-white; saturated colour lives ONLY inside imagery
+     + data-viz (stat bars, mockups). Grain overlay retained as a signature. */
 
-  /* Accent Colors */
-  --color-accent: #14f195;
+  /* Neutrals, ~90% of surface area */
+  --color-white:        #FFFFFF;   /* page background */
+  --color-off:          #F5F5F5;   /* off-white surfaces / cards / inputs */
+  --color-off-2:        #F9F9F9;   /* lighter off-white surface */
+  --color-warm-panel:   #FAF9F5;   /* warm off-white panel */
+  --color-ink:          #040404;   /* primary text + black pill buttons */
+  --color-black:        #000000;   /* pure black, stat numbers */
+  --color-muted:        #707070;   /* eyebrow / muted label */
+  --color-muted-2:      #888888;   /* secondary metadata */
+  --color-faded:        rgba(0, 0, 0, 0.4);          /* faded caption */
+  --color-pill-fill:    rgba(187, 187, 187, 0.18);   /* translucent pill / hover */
+  --color-hairline:     #E8E8E8;   /* hairline divider */
 
-  /* Background Colors */
-  --color-background: #f8fafc;
+  /* Accents, used sparingly, inside content / data-viz only */
+  --color-blue:         #1400FF;   /* electric blue, logo dot, links */
+  --color-green:        #39F241;   /* neon green, "open for work" dot */
+  --color-lilac:        #B88EFE;   /* stat bar */
+  --color-cyan:         #24D1FE;   /* stat bar */
+  --color-yellow:       #EAFF00;   /* acid yellow, stat bar / accent */
+  --color-pink:         #FBC6F2;   /* stat bar */
 
-  /* Neutral Colors */
-  --color-black: #252525;
-  --color-white: #ffffff;
+  /* Back-compat aliases, legacy class + component names remapped onto the
+     monochrome system so the whole site re-skins without per-component edits.
+     (e.g. `text-coral` → muted grey, `bg-cream` → white, `text-aubergine` → ink) */
+  --color-cream:        var(--color-white);
+  --color-cream-pale:   var(--color-off-2);
+  --color-cream-deep:   var(--color-off);
+  --color-terracotta:   var(--color-ink);
+  --color-coral:        var(--color-muted);
+  --color-mustard:      var(--color-muted);
+  --color-peach:        var(--color-muted-2);
+  --color-charcoal:     var(--color-ink);
+  --color-aubergine:    var(--color-ink);
+  --color-warm-grey:    var(--color-muted);
 
-  /* Gray Shades */
-  --color-gray-100: #f1f5f9;
-  --color-gray-200: #e2e8f0;
-  --color-gray-300: #cbd5e1;
-  --color-gray-400: #94a3b8;
-  --color-gray-500: #64748b;
-  --color-gray-600: #475569;
-  --color-gray-700: #334155;
-  --color-gray-800: #1e293b;
-  --color-gray-900: #0f172a;
+  /* Semantic aliases */
+  --bg:                 var(--color-white);
+  --bg-surface:         var(--color-off-2);
+  --bg-alt:             var(--color-off);
+  --text:               var(--color-ink);
+  --text-muted:         var(--color-muted);
+  --text-strong:        var(--color-ink);
+  --accent:             var(--color-ink);
+  --accent-energy:      var(--color-ink);
+  --accent-highlight:   var(--color-muted);
+  --border-warm:        var(--color-hairline);
 
-  /* Fonts */
-  --font-primary: "Inter", sans-serif;
-  --font-secondary: "Urbanist", sans-serif;
+  /* Design Thinking phase colors, the one place case studies are allowed
+     saturated accents (data-viz). Mapped onto the content accent palette. */
+  --color-phase-empathize:  var(--color-blue);
+  --color-phase-define:     var(--color-cyan);
+  --color-phase-ideate:     var(--color-lilac);
+  --color-phase-prototype:  var(--color-green);
+  --color-phase-test:       var(--color-pink);
 
-  /*Shadows*/
-  --shadow-primary: 0 2px 6px rgba(0, 0, 0, 0.2);
+  /* ---------- TYPOGRAPHY ---------- */
+  /* Three faces, strict roles (injected by next/font/google in app/layout.tsx):
+     Space Grotesk = headings + ALL UI/nav · Roboto Serif = numerals ONLY
+     · Outfit = body copy + tiny functional micro-labels. */
+  --font-display: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
+  --font-sans:    var(--font-outfit), "Outfit", system-ui, sans-serif;
+  --font-numeral: var(--font-roboto-serif), "Roboto Serif", Georgia, serif;
+  /* `--font-mono` retained as an alias so legacy micro-label classes
+     (font-mono eyebrows) resolve to Outfit rather than a monospace face. */
+  --font-mono:    var(--font-outfit), "Outfit", system-ui, sans-serif;
 
-  /*Border Raaius*/
-  --border-radius-md: 8px;
+  /* Back-compat aliases */
+  --font-primary:   var(--font-sans);
+  --font-secondary: var(--font-display);
+
+  /* Type scale */
+  --text-xs:    0.8125rem;
+  --text-sm:    0.9375rem;
+  --text-base:  1.125rem;
+  --text-lg:    1.375rem;
+  --text-xl:    1.75rem;
+  --text-2xl:   2.5rem;
+  --text-3xl:   4rem;
+  --text-4xl:   clamp(4rem, 12vw, 11rem);
+
+  /* Line heights */
+  --leading-tight:   1.05;
+  --leading-snug:    1.2;
+  --leading-normal:  1.55;
+  --leading-loose:   1.7;
+
+  /* Letter spacing, aggressively tight negative tracking on display sizes */
+  --tracking-tight:   -0.04em;   /* ≈ -2.8px at 56px hero */
+  --tracking-snug:    -0.025em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.08em;
+
+  /* ---------- SPACING ---------- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-48: 12rem;
+
+  /* Layout */
+  --container-prose: 42rem;
+  --container-wide:  80rem;
+  --container-full:  90rem;
+  --gutter:          clamp(1.5rem, 8vw, 8rem);
+
+  /* ---------- RADIUS ---------- */
+  /* Fully rounded everything; no hard rectangles. */
+  --radius-sm:      4px;     /* small UI */
+  --radius-md:      11px;    /* inputs */
+  --radius-lg:      24px;    /* cards, panels, bento */
+  --radius-card:    24px;
+  --radius-card-lg: 30px;
+  --radius-pill:    999px;   /* buttons, status pill, tag chips */
+
+  /* ---------- SHADOW (use sparingly, separation via fill + hairline) ---------- */
+  --shadow-soft: 0 4px 24px rgba(4, 4, 4, 0.05);
+  --shadow-lift: 0 18px 48px -12px rgba(4, 4, 4, 0.14);
+  --shadow-warm: var(--shadow-lift);   /* legacy alias */
+
+  /* ---------- MOTION, concrete primitives measured from the reference ---------- */
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);    /* scroll-reveal rise */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);      /* hovers / state */
+  --ease-snappy:   cubic-bezier(0.2, 0, 0, 1);        /* presses / micro */
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:   150ms;
+  --duration-base:   200ms;
+  --duration-hover:  300ms;
+  --duration-press:  180ms;
+  --duration-slow:   400ms;
+  --duration-reveal: 600ms;
 }

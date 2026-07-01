@@ -1,23 +1,63 @@
 import type { Metadata } from 'next';
-import { Inter, Urbanist } from 'next/font/google';
+import { Space_Grotesk, Roboto_Serif, Outfit } from 'next/font/google';
 import '@/styles/globals.css';
-import Script from 'next/script'; 
+import Script from 'next/script';
 import Footer from './components/partials/Footer';
 import Navbar from './components/partials/Navbar';
+import { cn } from '@/lib/utils';
 
-const inter = Inter({ subsets: ['latin'] });
-const urbanist = Urbanist({ subsets: ['latin'] });
+// Headings + ALL UI/nav. Weight 500 almost everywhere, tight negative tracking.
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+});
+
+// Numerals / data ONLY, the serif-vs-grotesque tension is the signature detail.
+const robotoSerif = Roboto_Serif({
+  subsets: ['latin'],
+  variable: '--font-roboto-serif',
+  display: 'swap',
+  weight: ['400', '500'],
+});
+
+// Body copy + tiny functional micro-labels. Neutral, recedes.
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+  weight: ['300', '400', '500', '600'],
+});
 
 export const metadata: Metadata = {
-  title: 'Carel Maeda',
-  description: 'Carel Maeda | UX UI Design',
+  metadataBase: new URL('https://carelmaeda.com'),
+  title: {
+    template: '%s | Carel Maeda',
+    default: 'Carel Maeda, Senior Product Designer',
+  },
+  description:
+    'Senior Product Designer who ships strategy, design, and code, building toward Design Lead. Six years at Paygos, ~10–15% YoY revenue impact across enterprise accounts.',
+  openGraph: {
+    type: 'website',
+    siteName: 'Carel Maeda',
+    locale: 'en_US',
+    title: 'Carel Maeda, Senior Product Designer',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Carel Maeda, Senior Product Designer',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.className} ${urbanist.className}`}>
+    <html
+      lang="en"
+      className={cn(spaceGrotesk.variable, robotoSerif.variable, outfit.variable)}
+      suppressHydrationWarning
+    >
       <head>
-        {/* Google Analytics Script */}
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-TGVPXPQKVJ`}
@@ -34,18 +74,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
-
-        {/* Bootstrap & Popper.js */}
-        <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"
-          strategy="beforeInteractive"
-        />
-        <Script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-          strategy="beforeInteractive"
-        />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Navbar />
         {children}
         <Footer />

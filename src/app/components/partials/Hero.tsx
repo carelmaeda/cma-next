@@ -1,47 +1,34 @@
-'use client';
-
-import { MotionHero } from './Motions';
-// import { AnimatePresence } from 'framer-motion';
-// import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { MotionHero, StaggerWords } from './Motions';
 
 export default function Hero() {
-  // const skills = ["Figma", "UX/UI Design", "Front-End Development", "Graphic Design"];
-  // const [currentSkill, setCurrentSkill] = useState(skills[0]);
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrentSkill((prev) => {
-  //       const nextIndex = (skills.indexOf(prev) + 1) % skills.length;
-  //       return skills[nextIndex];
-  //     });
-  //   }, 2000); // Change skill every 2 seconds
-
-  //   return () => clearInterval(interval);
-  // }, []);
-
   return (
-    <div className="hero-section row section-wrapper">
-      <div className="d-none">
-        <h1>Carel Maeda - UX/UI Designer & Developer</h1>
-        <h2>Portfolio Showcase</h2>
-        <p>Welcome to my portfolio, where I showcase my latest UX/UI projects</p>
-      </div>
-      <MotionHero>
-        <div className="hero-header">
-          Hi! My name is <span>Carel.</span>
+    <section
+      id="hero"
+      className="relative flex min-h-[92dvh] flex-col items-center justify-center px-[var(--gutter)] pb-24 pt-40 text-center"
+    >
+      <MotionHero className="flex w-full max-w-[60rem] flex-col items-center">
+        {/* Tiny uppercase eyebrow */}
+        <p className="mb-8 font-mono text-xs uppercase tracking-[0.14em] text-muted-ink">
+          <span className="text-accentBlue" aria-hidden="true">◆ </span>
+          Senior Product Designer · Toronto
+        </p>
+
+        {/* Giant centred headline, Space Grotesk 500, tight tracking, per-word rise */}
+        <h1 className="font-display text-ink font-medium leading-[1.04] tracking-tight text-[clamp(2.75rem,8vw,5.5rem)] [text-wrap:balance]">
+          <StaggerWords text="Hi, I'm Carel. I design products and ship the code." />
+        </h1>
+
+        {/* Single pill CTA + a quiet meta line */}
+        <div className="mt-14 flex flex-col items-center gap-5">
+          <Button asChild variant="default" size="cta">
+            <Link href="#work" className="no-underline-grow">
+              See the work →
+            </Link>
+          </Button>
         </div>
-        {/* <p className="lead">
-          <AnimatePresence mode="wait">
-            <MotionScore key={currentSkill} className="fw-bold">
-              {currentSkill}
-            </MotionScore>
-          </AnimatePresence> <br />projects that bring you results
-        </p> */}
-        <p className="lead">UX/UI Designer specializing in SaaS products, I help businesses turn complex ideas into elegant, user-centered solutions.</p>
-        <a href="#contact" className="d-none btn btn-dark">
-          Work with Me
-        </a>
       </MotionHero>
-    </div>
+    </section>
   );
 }

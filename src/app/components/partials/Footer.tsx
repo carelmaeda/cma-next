@@ -1,25 +1,76 @@
+import Link from 'next/link';
+import { Mail } from 'lucide-react';
+import { LinkedInIcon, GitHubIcon } from '../shared/BrandIcons';
 
-"use client";
+const explore = [
+  { label: 'Work', href: '/#work' },
+  { label: 'Resume', href: '/cma-resume.pdf', external: true },
+];
 
-import { useEffect, useState } from "react";
+const social = [
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/carelmaeda', Icon: LinkedInIcon },
+  { label: 'GitHub', href: 'https://github.com/carelmaeda', Icon: GitHubIcon },
+  { label: 'Email', href: 'mailto:carelmaeda@gmail.com', Icon: Mail },
+];
 
 export default function Footer() {
-  const [year, setYear] = useState<number | null>(null);
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
-
   return (
-    <footer className="footer bg-light">
-      <div className="container text-muted">
-          <h6>Thank you for your interest in my work!</h6>
-          <div>
-          <small className="d-block">This portfolio was <a target="_blank" href="https://www.figma.com/design/vINdCUCFAALYVx9bto0Nq5/CMA-Portfolio?node-id=75-2169&t=SgGC9GVQ7sCtWpMG-1">designed</a> in Figma and <a target="_blank" href="https://github.com/carelmaeda/cma-next.git">developed</a> with Next.js, TypeScript, and Bootstrap.</small>
-          <small>&copy; {year ? year : ""} Carel Maeda. All rights reserved.</small>
+    <footer className="border-t border-hairline bg-white px-[var(--gutter)] pb-10 pt-20 md:pt-24">
+      <div className="mx-auto max-w-wide">
+        {/* Utility bar — inline nav + social icon buttons, capping the wordmark */}
+        <div className="flex flex-col gap-8 pb-10 sm:flex-row sm:items-center sm:justify-between">
+          <nav className="flex flex-wrap items-center gap-x-7 gap-y-2">
+            {explore.map((l) => (
+              <Link
+                key={l.label}
+                href={l.href}
+                {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="no-underline-grow font-display text-[0.95rem] font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2.5">
+            {social.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="no-underline-grow grid size-10 place-items-center rounded-full border border-hairline text-muted-ink transition duration-300 ease-standard hover:-translate-y-0.5 hover:border-ink hover:text-ink"
+              >
+                <Icon className="size-[18px]" />
+              </a>
+            ))}
           </div>
+        </div>
+
+        {/* Colophon */}
+        <div className="flex flex-col gap-3 border-t border-hairline pt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-ink sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 Carel Maeda · Toronto, Canada</span>
+          <span className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>
+              I built this using Next.js + Tailwind ·{' '}
+              <a
+                href="https://github.com/carelmaeda/cma-next"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="no-underline-grow text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+              >
+                Source ↗
+              </a>
+            </span>
+            <a
+              href="#hero"
+              className="no-underline-grow text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+            >
+              Back to top ↑
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );
 }
-
