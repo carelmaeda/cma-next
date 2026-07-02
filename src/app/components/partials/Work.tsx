@@ -86,17 +86,17 @@ function CoverSlot({ card }: { card: WorkCard }) {
 
 export default function Work() {
   return (
-    <section id="work" className="px-gutter py-28 md:py-40">
-      <div className="mx-auto max-w-wide">
+    <section id="work" className="py-page">
+      <div className="wrap wrap--wide">
         <MotionVertical>
-          <header className="mb-12 md:mb-16">
+          <header className="mb-sub">
             <p className="eyebrow tracking-widest">
               Latest work
             </p>
           </header>
         </MotionVertical>
 
-        <MotionStagger className="grid gap-10" stagger={0.1}>
+        <MotionStagger className="grid gap-sub" stagger={0.1}>
           {workCards.map((card) => (
             <MotionItem key={card.href}>
               <Link
@@ -120,7 +120,7 @@ export default function Work() {
                     {card.description}
                   </p>
 
-                  <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-medium tracking-snug text-ink">
+                  <span className="mt-6 inline-flex items-center gap-2 font-sans text-sm font-medium tracking-snug text-ink">
                     Read case study
                     <span className="transition-transform duration-300 ease-standard group-hover:translate-x-1">
                       →

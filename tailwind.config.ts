@@ -17,27 +17,30 @@ export default {
     },
     extend: {
       fontFamily: {
-        /* Space Grotesk = headings + ALL UI/nav · Outfit = body + micro-labels
-           · Roboto Serif = numerals ONLY. `mono` aliases Outfit so legacy
-           micro-label classes resolve to the neutral sans, not monospace. */
-        display: ['var(--font-space-grotesk)', 'Space Grotesk', 'system-ui', 'sans-serif'],
-        sans:    ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
-        mono:    ['var(--font-outfit)', 'Outfit', 'system-ui', 'sans-serif'],
-        numeral: ['var(--font-roboto-serif)', 'Roboto Serif', 'Georgia', 'serif'],
-        serif:   ['var(--font-roboto-serif)', 'Roboto Serif', 'Georgia', 'serif'],
+        /* Newsreader = headings + highlights + numerals (serif) · Spline Sans =
+           body + ALL UI/nav · Spline Sans Mono = a REAL monospace for
+           micro-labels, pills, tables, code. `serif`/`numeral` = the heading serif. */
+        display: ['var(--font-newsreader)', 'Newsreader', 'Georgia', 'serif'],
+        sans:    ['var(--font-spline-sans)', 'Spline Sans', 'system-ui', 'sans-serif'],
+        mono:    ['var(--font-spline-sans-mono)', 'Spline Sans Mono', 'ui-monospace', 'monospace'],
+        numeral: ['var(--font-newsreader)', 'Newsreader', 'Georgia', 'serif'],
+        serif:   ['var(--font-newsreader)', 'Newsreader', 'Georgia', 'serif'],
       },
       fontSize: {
-        'display-xl': ['clamp(4rem, 12vw, 11rem)', { lineHeight: '1.02', letterSpacing: '-0.045em' }],
-        'display':    ['clamp(2.5rem, 6vw, 4rem)',  { lineHeight: '1.05', letterSpacing: '-0.04em' }],
-        /* Fluid heading ramps — design tokens that replace arbitrary clamp() in JSX. */
-        'hero': ['clamp(2.75rem, 8vw, 5.5rem)',   { lineHeight: '1.02', letterSpacing: '-0.04em' }],
-        'h1':   ['clamp(2.25rem, 5.5vw, 4.25rem)', { lineHeight: '1.04', letterSpacing: '-0.04em' }],
-        'h2':   ['clamp(1.9rem, 4.5vw, 3.25rem)', { lineHeight: '1.1',  letterSpacing: '-0.04em' }],
-        'h3':   ['clamp(1.6rem, 4vw, 2.5rem)',    { lineHeight: '1.15', letterSpacing: '-0.04em' }],
-        'h4':   ['clamp(1.5rem, 2.6vw, 2rem)',    { lineHeight: '1.2',  letterSpacing: '-0.04em' }],
+        /* Fluid heading ramp — reads the shared CSS vars (variables.css) so the
+           `text-*` utilities and the case-study `cs-*` primitives never drift.
+           Tracking is the serif-tuned --tracking-heading (near-neutral). */
+        'display-xl': ['var(--text-4xl)', { lineHeight: '1.02', letterSpacing: 'var(--tracking-heading)' }],
+        'display':    ['clamp(2.5rem, 6vw, 4rem)', { lineHeight: '1.06', letterSpacing: 'var(--tracking-heading)' }],
+        'hero': ['var(--text-hero)', { lineHeight: '1.06', letterSpacing: 'var(--tracking-heading)' }],
+        'h1':   ['var(--text-h1)',   { lineHeight: '1.07', letterSpacing: 'var(--tracking-heading)' }],
+        'h2':   ['var(--text-h2)',   { lineHeight: '1.12', letterSpacing: 'var(--tracking-heading)' }],
+        'h3':   ['var(--text-h3)',   { lineHeight: '1.16', letterSpacing: 'var(--tracking-heading)' }],
+        'h4':   ['var(--text-h4)',   { lineHeight: '1.22', letterSpacing: 'var(--tracking-heading)' }],
       },
       letterSpacing: {
-        tight:  '-0.04em',   /* display headings */
+        heading: 'var(--tracking-heading)',  /* serif headings */
+        tight:  '-0.04em',   /* legacy grotesque-era spot use */
         snug:   '-0.025em',  /* UI / nav / buttons */
         wide:   '0.08em',    /* micro-labels / eyebrows */
         wider:  '0.12em',
@@ -119,12 +122,21 @@ export default {
         },
       },
       maxWidth: {
-        prose: '42rem',
-        wide:  '80rem',
-        full2: '90rem',
+        /* Reading measure — single source of truth is the CSS var, so the
+           `max-w-prose` utility and the `.wrap*` container tiers agree.
+           Width tiers themselves live as `.wrap--content` / `.wrap--wide`
+           classes (globals.css) since one uses a dynamic min(). */
+        prose: 'var(--container-prose)',
       },
       spacing: {
         gutter: 'var(--gutter)',
+        /* Fluid rhythm scale (variables.css) as semantic spacing utilities:
+           gap-item, gap-block, gap-sub, gap-section, py-page, p-block, … */
+        item:    'var(--space-s)',
+        block:   'var(--space-m)',
+        sub:     'var(--space-l)',
+        section: 'var(--space-xl)',
+        page:    'var(--space-2xl)',
       },
       borderRadius: {
         lg:   'var(--radius)',

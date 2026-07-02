@@ -10,7 +10,7 @@ export default function Hero() {
     >
       <MotionHero className="flex w-full max-w-[60rem] flex-col items-center">
 
-        {/* Giant centred headline, Space Grotesk 500, tight tracking, per-word rise */}
+        {/* Giant centred headline, Newsreader serif 500, per-word rise */}
         <h1 className="font-display text-hero font-medium text-ink">
           <StaggerWords text="Hi, I'm Carel. I design products and ship the code." />
         </h1>

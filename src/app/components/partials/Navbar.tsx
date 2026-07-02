@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/sheet';
 
 const navLinks: { label: string; href: string; external?: boolean }[] = [
-  { label: 'Work', href: '/#work' },
   { label: 'Resume', href: '/cma-resume.pdf', external: true },
 ];
 
@@ -47,7 +46,7 @@ export default function Navbar() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto max-w-wide px-[var(--gutter)] pt-4">
+      <div className="wrap wrap--wide pt-4">
         {/* Self-contained floating glass pill — bounded edge + hairline + soft
             shadow reads as an intentional frosted element, never a smear. */}
         <nav className="pointer-events-auto flex items-center justify-between gap-4 rounded-pill border border-hairline/80 bg-white/80 py-2 pl-6 pr-2 shadow-soft backdrop-blur-xl supports-[backdrop-filter]:bg-white/65">
@@ -68,7 +67,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="no-underline-grow font-display text-sm font-medium tracking-snug text-ink/80 transition-colors duration-300 ease-standard hover:text-ink"
+              className="no-underline-grow font-sans text-sm font-medium tracking-snug text-ink/80 transition-colors duration-300 ease-standard hover:text-ink"
             >
               {link.label}
             </Link>
@@ -101,7 +100,7 @@ export default function Navbar() {
                       href={link.href}
                       {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       onClick={close}
-                      className="no-underline-grow py-3 font-display text-3xl font-medium tracking-snug text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+                      className="no-underline-grow py-3 font-sans text-3xl font-medium tracking-snug text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
                     >
                       {link.label}
                     </Link>

@@ -124,11 +124,18 @@ this voice.
   (summaries of the canonical `.md` source in
   `.claude/docs/case-studies/`).
 - **Images:** `next/image` with explicit width/height, `.webp` source
-- **Fonts:** `next/font/google` with Inter (body) and Urbanist
-  (display). Loaded as CSS variables consumed via
-  `--font-primary`/`--font-secondary` in `variables.css`. The
-  earlier double-load (Inter via both `.variable` and `.className`,
-  plus an unused Geist load) was fixed during the audit pass.
+- **Fonts:** `next/font/google` with three faces in strict roles —
+  **Newsreader** (serif) for headings, highlights and numerals;
+  **Spline Sans** for body copy and all UI/nav; **Spline Sans Mono**
+  (a real monospace) for micro-labels, pills, tables and code. Loaded
+  as CSS variables and consumed via the role tokens
+  `--font-display` / `--font-sans` / `--font-mono` / `--font-numeral`
+  in `variables.css` (with `--font-primary`/`--font-secondary`
+  back-compat aliases). Heading size lives on one shared ramp
+  (`--text-hero`/`--text-h1…h4`) read by both the Tailwind `text-*`
+  utilities and the case-study `cs-*` primitives, so the two never
+  drift; serif headings use `--tracking-heading` (near-neutral), not
+  the aggressive grotesque tracking.
 - **Metadata:** every route should export its own `metadata`. Case
   study routes need title, description, and per-route OG image.
 - **Frontend style contract:** all UI work must follow

@@ -2,8 +2,8 @@ import { MotionVertical } from './Motions';
 
 export default function ContactCTA() {
   return (
-    <section id="contact" className="px-gutter py-28 md:py-40">
-      <div className="mx-auto max-w-wide text-center">
+    <section id="contact" className="py-page">
+      <div className="wrap wrap--content text-center">
         <MotionVertical>
           <p className="eyebrow tracking-widest mb-4">
             <span className="text-accentGreen" aria-hidden="true">●</span> Open for new projects
@@ -13,7 +13,7 @@ export default function ContactCTA() {
           </h2>
           <a
             href="mailto:carelmaeda@gmail.com"
-            className="no-underline-grow mt-10 inline-block font-display text-h3 text-ink underline underline-offset-[6px] decoration-1 transition-opacity duration-300 ease-standard hover:opacity-60"
+            className="no-underline-grow mt-sub inline-block font-display text-h3 text-ink underline underline-offset-[6px] decoration-1 transition-opacity duration-300 ease-standard hover:opacity-60"
           >
             carelmaeda@gmail.com
           </a>

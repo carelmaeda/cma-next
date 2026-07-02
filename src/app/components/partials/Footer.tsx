@@ -15,8 +15,8 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-hairline bg-white px-gutter pb-10 pt-20 md:pt-24">
-      <div className="mx-auto max-w-wide">
+    <footer className="border-t border-hairline bg-white pb-10 pt-20 md:pt-24">
+      <div className="wrap wrap--wide">
         {/* Utility bar — inline nav + social icon buttons, capping the wordmark */}
         <div className="flex flex-col gap-8 pb-10 sm:flex-row sm:items-center sm:justify-between">
           <nav className="flex flex-wrap items-center gap-x-7 gap-y-2">
@@ -25,7 +25,7 @@ export default function Footer() {
                 key={l.label}
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="no-underline-grow font-display text-sm font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
+                className="no-underline-grow font-sans text-sm font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
               >
                 {l.label}
               </Link>

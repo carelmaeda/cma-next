@@ -6,44 +6,86 @@
    Class names are scoped with a `cs-` prefix.
    ========================================================= */
 
-/* --- Headings --- */
+/* --- Headings ---
+   Headings are text, so they hold the reading measure and stay left-aligned
+   even when their section spans the full page (assets break out, words don't). */
 .cs-heading {
   font-family: var(--font-display);
-  font-size: clamp(1.875rem, 4vw, 2.75rem);
-  line-height: 1.05;
-  letter-spacing: var(--tracking-tight);
+  font-size: var(--text-h2);
+  line-height: 1.12;
+  letter-spacing: var(--tracking-heading);
   color: var(--text-strong);
+  max-width: var(--container-prose);
 }
 
 .cs-sub {
   font-family: var(--font-display);
-  font-size: 1.625rem;
+  font-size: var(--text-h4);
   line-height: 1.2;
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-heading);
   color: var(--text-strong);
+  max-width: var(--container-prose);
 }
 
 .cs-minor {
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
+  font-size: var(--text-body);
   font-weight: 600;
   line-height: 1.3;
   color: var(--text-strong);
+  max-width: var(--container-prose);
 }
+
+/* --- Compact text columns ---
+   Short body-text blocks (How-Might-We, lessons) laid out side by side on
+   desktop. Columns auto-flow and cap at a readable measure, staying left-
+   aligned so the words stay compact even when the section spans the page. */
+.cs-columns {
+  display: grid;
+  gap: var(--space-l) var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 24rem));
+  justify-content: start;
+}
+.cs-columns > * {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  border-top: 1px solid var(--color-hairline);
+  padding-top: 1rem;
+}
+.cs-columns__index {
+  font-family: var(--font-numeral);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+/* --- Flow (vertical rhythm within a section) ---
+   Siblings are spaced by the item step, but a subsection heading (h3/h4)
+   gets real air above it and its content sits close below — so the page
+   reads with hierarchy instead of one uniform list. */
+.cs-flow > * + *           { margin-block-start: var(--space-s); }
+.cs-flow > :is(h3, h4)     { margin-block-start: var(--space-l); }
+.cs-flow > :is(h3, h4) + * { margin-block-start: var(--space-m); }
 
 /* --- Prose (body copy blocks) --- */
 .cs-prose {
   display: grid;
-  gap: 1.25rem;
+  gap: var(--space-s);
   max-width: var(--container-prose);
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: var(--text-body);
+  line-height: 1.5;
   color: var(--color-charcoal);
 }
 .cs-prose p { margin: 0; }
 .cs-prose strong { font-weight: 500; color: var(--text-strong); }
-.cs-prose em { font-style: italic; color: var(--text-strong); }
+/* Highlight: emphasized copy lifts into the serif italic (Newsreader). */
+.cs-prose em {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-strong);
+}
 .cs-prose a { color: var(--color-terracotta); }
 .cs-prose code {
   font-family: var(--font-mono);
@@ -59,7 +101,7 @@
 
 /* --- Panel (persona / issue cards) --- */
 .cs-panel {
-  padding: 1.25rem;
+  padding: var(--space-m);
   background: var(--color-cream-pale);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
@@ -71,7 +113,7 @@
   place-items: center;
   gap: 0.5rem;
   min-height: 220px;
-  padding: 2rem;
+  padding: var(--space-m);
   text-align: center;
   background: var(--color-cream-pale);
   border: 1px dashed var(--color-hairline);
@@ -79,14 +121,14 @@
 }
 .cs-placeholder--sm {
   min-height: 160px;
-  padding: 1rem;
+  padding: var(--space-s);
 }
 
 /* --- Stat callout (early signals) --- */
 .cs-stat {
   display: grid;
   gap: 0.375rem;
-  padding: 1.5rem;
+  padding: var(--space-m);
   background: var(--color-cream-pale);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
@@ -95,7 +137,7 @@
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-heading);
   color: var(--text-strong);
 }
 .cs-stat__value--long { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
@@ -108,7 +150,7 @@
 }
 .cs-stat__context {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: var(--text-label);
   line-height: 1.5;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
@@ -127,7 +169,7 @@
   border-bottom: 1px solid var(--color-hairline);
   background: var(--color-cream-pale);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: var(--text-label);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--color-warm-grey);
@@ -154,7 +196,7 @@
   padding: 0.375rem 0.75rem 0.375rem 0.5rem;
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: var(--text-label);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
@@ -166,6 +208,45 @@
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
+}
+
+/* --- Phase title (enlarged badge that IS the section title) ---
+   One asset carries the phase colour + number + name, so the section no
+   longer repeats the name in a separate heading. A big italic numeral leads,
+   the phase name follows as an uppercase label, on a soft phase-colour fill. */
+.cs-phase-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: max-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.5rem 1.4rem 0.5rem 0.9rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 0.8rem + 0.9vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+.cs-phase-title__n {
+  font-family: var(--font-display);
+  font-size: 1.9em;
+  font-style: italic;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+/* --- Phase deck (optional descriptive line under the title badge) --- */
+.cs-phase-deck {
+  max-width: var(--container-prose);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-muted);
 }
 
 /* --- Bento (Key Takeaways) numeral value --- */
@@ -188,7 +269,7 @@
   margin-bottom: 0.5rem;
   padding-block: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: var(--text-label);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--color-charcoal);
@@ -206,7 +287,7 @@
 
 /* --- Voice quote (Carel's own voice; the single quick-to-retune asset) --- */
 .cs-voice-quote {
-  margin: 0.5rem 0;
+  margin: 2rem 0;
   padding: 2rem 2.25rem;
   background: var(--color-warm-panel);
   border-radius: var(--radius-lg);
@@ -215,11 +296,9 @@
 .cs-voice-quote p {
   margin: 0;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-  line-height: 1.15;
-  letter-spacing: var(--tracking-tight);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-heading);
   color: var(--text-strong);
-  font-style: normal;
-  text-wrap: balance;
 }

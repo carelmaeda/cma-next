@@ -1,33 +1,34 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, Roboto_Serif, Outfit } from 'next/font/google';
+import { Newsreader, Spline_Sans, Spline_Sans_Mono } from 'next/font/google';
 import '@/styles/globals.css';
 import Script from 'next/script';
 import Footer from './components/partials/Footer';
 import Navbar from './components/partials/Navbar';
 import { cn } from '@/lib/utils';
 
-// Headings + ALL UI/nav. Weight 500 almost everywhere, tight negative tracking.
-const spaceGrotesk = Space_Grotesk({
+// Headings + highlights + numerals. Editorial serif; italic is the highlight face.
+const newsreader = Newsreader({
   subsets: ['latin'],
-  variable: '--font-space-grotesk',
+  variable: '--font-newsreader',
   display: 'swap',
   weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
 });
 
-// Numerals / data ONLY, the serif-vs-grotesque tension is the signature detail.
-const robotoSerif = Roboto_Serif({
+// Body copy + ALL UI/nav. Neutral sans, the workhorse.
+const splineSans = Spline_Sans({
   subsets: ['latin'],
-  variable: '--font-roboto-serif',
+  variable: '--font-spline-sans',
   display: 'swap',
-  weight: ['400', '500'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
-// Body copy + tiny functional micro-labels. Neutral, recedes.
-const outfit = Outfit({
+// Micro-labels, pills, tables, code — a real monospace matched to the sans.
+const splineSansMono = Spline_Sans_Mono({
   subsets: ['latin'],
-  variable: '--font-outfit',
+  variable: '--font-spline-sans-mono',
   display: 'swap',
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600'],
 });
 
 export const metadata: Metadata = {
@@ -54,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={cn(spaceGrotesk.variable, robotoSerif.variable, outfit.variable)}
+      className={cn(newsreader.variable, splineSans.variable, splineSansMono.variable)}
       suppressHydrationWarning
     >
       <head>

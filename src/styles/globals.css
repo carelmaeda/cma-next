@@ -96,12 +96,14 @@ h5,
 h6 {
   font-family: var(--font-display);
   color: var(--text-strong);
-  letter-spacing: var(--tracking-tight);
+  letter-spacing: var(--tracking-heading);
   line-height: var(--leading-tight);
 }
 
 p {
   margin-block: 0.25rem;
+  /* No line-height here — let paragraphs inherit their container's leading
+     (body ~1.55, .cs-prose 1.5) instead of collapsing to a cramped value. */
 }
 
 /* ============================================================
@@ -110,9 +112,24 @@ p {
    (nav, footer, captions, meta strips, chips, stat context).
    ============================================================ */
 @layer components {
+  /* ============================================================
+     LAYOUT CONTAINERS — layered width tiers.
+     Replaces the `mx-auto max-w-* px-gutter` chain repeated across
+     every section. `.wrap` sets the gutter + centering; a modifier
+     picks the tier. Body copy stays capped with `max-w-prose`
+     (the reading measure), so structure spreads while words don't.
+     ============================================================ */
+  .wrap {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .wrap--content { max-width: var(--container-full); }     /* 90rem, text-led sections */
+  .wrap--wide    { max-width: var(--container-feature); }  /* spreads on big screens */
+
   .eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
+    font-size: var(--text-label);
     font-weight: 500;
     line-height: 1.5;
     letter-spacing: var(--tracking-wide);
@@ -611,3 +628,4 @@ li {
     scroll-behavior: auto !important;
   }
 }
+

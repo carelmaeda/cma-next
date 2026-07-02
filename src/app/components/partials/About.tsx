@@ -4,13 +4,13 @@ import { MotionVertical } from './Motions';
 
 export default function About() {
   return (
-    <section id="about" className="px-gutter py-28 md:py-40">
-      <div className="mx-auto max-w-wide">
+    <section id="about" className="py-page">
+      <div className="wrap wrap--content">
         <MotionVertical>
-          <p className="eyebrow tracking-widest mb-12">About</p>
+          <p className="eyebrow tracking-widest mb-sub">About</p>
         </MotionVertical>
 
-        <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+        <div className="grid gap-sub md:grid-cols-12">
           {/* Portrait, grayscale keeps colour reserved for the work */}
           <MotionVertical className="md:col-span-4 lg:col-span-3">
             <Image
@@ -29,7 +29,7 @@ export default function About() {
               A designer who codes, because handoff is where ideas go to die.
             </h2>
 
-            <div className="mt-10 grid gap-x-12 gap-y-5 font-sans text-base leading-[1.7] text-ink md:grid-cols-2">
+            <div className="mt-block grid gap-x-12 gap-y-item font-sans text-base leading-[1.7] text-ink md:grid-cols-2">
               <p>
                 Six years at Paygos, three promotions (Coordinator → Specialist → Manager), now
                 building toward a Design Lead role over the next 12–18 months.
@@ -50,7 +50,7 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <div className="mt-sub flex flex-wrap items-center gap-x-8 gap-y-3">
               <a
                 href="https://linkedin.com/in/carelmaeda"
                 target="_blank"

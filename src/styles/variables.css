@@ -132,14 +132,14 @@ h6 {
 
   /* ---------- TYPOGRAPHY ---------- */
   /* Three faces, strict roles (injected by next/font/google in app/layout.tsx):
-     Space Grotesk = headings + ALL UI/nav · Roboto Serif = numerals ONLY
-     · Outfit = body copy + tiny functional micro-labels. */
-  --font-display: var(--font-space-grotesk), "Space Grotesk", system-ui, sans-serif;
-  --font-sans:    var(--font-outfit), "Outfit", system-ui, sans-serif;
-  --font-numeral: var(--font-roboto-serif), "Roboto Serif", Georgia, serif;
-  /* `--font-mono` retained as an alias so legacy micro-label classes
-     (font-mono eyebrows) resolve to Outfit rather than a monospace face. */
-  --font-mono:    var(--font-outfit), "Outfit", system-ui, sans-serif;
+     Newsreader = headings + highlights + numerals (serif, w/ italic)
+     · Spline Sans = body copy + ALL UI/nav
+     · Spline Sans Mono = micro-labels, pills, tables, code (a REAL monospace). */
+  --font-display: var(--font-newsreader), "Newsreader", Georgia, serif;
+  --font-sans:    var(--font-spline-sans), "Spline Sans", system-ui, sans-serif;
+  --font-mono:    var(--font-spline-sans-mono), "Spline Sans Mono", ui-monospace, monospace;
+  /* Numerals now share the heading serif (Newsreader's figures + italic). */
+  --font-numeral: var(--font-display);
 
   /* Back-compat aliases */
   --font-primary:   var(--font-sans);
@@ -155,19 +155,34 @@ h6 {
   --text-3xl:   4rem;
   --text-4xl:   clamp(4rem, 12vw, 11rem);
 
+  /* Fluid heading ramp — single source shared by the Tailwind `text-*`
+     utilities (tailwind.config.ts) AND the case-study `cs-*` primitives, so
+     a home H2 and a case-study H2 are the same size. Plus one reading-body
+     size and one micro-label size (were three). */
+  --text-hero:  clamp(2.75rem, 8vw,   5.5rem);
+  --text-h1:    clamp(2.25rem, 5.5vw, 4.25rem);
+  --text-h2:    clamp(1.9rem,  4.5vw, 3.25rem);
+  --text-h3:    clamp(1.6rem,  4vw,   2.5rem);
+  --text-h4:    clamp(1.5rem,  2.6vw, 2rem);
+  --text-body:  1.0625rem;   /* reading body (prose) */
+  --text-label: 0.6875rem;   /* single micro-label size */
+
   /* Line heights */
   --leading-tight:   1.05;
   --leading-snug:    1.2;
   --leading-normal:  1.55;
   --leading-loose:   1.7;
 
-  /* Letter spacing, aggressively tight negative tracking on display sizes */
-  --tracking-tight:   -0.04em;   /* ≈ -2.8px at 56px hero */
-  --tracking-snug:    -0.025em;
+  /* Letter spacing. `--tracking-heading` is tuned for the serif (Newsreader) —
+     serifs read best near-neutral, not the aggressive grotesque -0.04em. */
+  --tracking-heading: -0.015em;  /* headings (serif) */
+  --tracking-tight:   -0.04em;   /* legacy grotesque-era spot use */
+  --tracking-snug:    -0.025em;  /* UI / nav / buttons */
   --tracking-normal:  0;
   --tracking-wide:    0.08em;
 
   /* ---------- SPACING ---------- */
+  /* Fixed numeric steps — legacy classes + micro-spacing. */
   --space-1:  0.25rem;
   --space-2:  0.5rem;
   --space-3:  0.75rem;
@@ -180,11 +195,24 @@ h6 {
   --space-32: 8rem;
   --space-48: 12rem;
 
-  /* Layout */
-  --container-prose: 42rem;
-  --container-wide:  80rem;
-  --container-full:  90rem;
-  --gutter:          clamp(1.5rem, 8vw, 8rem);
+  /* Fluid rhythm scale (min ≈375px → max ≈1440px, balanced density).
+     One scale drives the whole vertical rhythm so spacing stays consistent
+     and scales with the viewport, like the type ramp. Exposed to Tailwind
+     as item / block / sub / section / page. */
+  --space-s:   clamp(1rem,    0.88rem + 0.5vw,  1.375rem);  /* item · prose gap · group gap */
+  --space-m:   clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);   /* heading→content · card padding */
+  --space-l:   clamp(1.75rem, 1.35rem + 1.6vw,  3rem);      /* space BEFORE a subsection heading */
+  --space-xl:  clamp(2.75rem, 2.1rem + 2.8vw,   5.5rem);    /* section · major block gap */
+  --space-2xl: clamp(3.5rem,  2.6rem + 3.6vw,   6.5rem);    /* page padding · home section py */
+
+  /* Layout — layered container tiers.
+     reading (prose) → content (full) → feature (wide spread) → bleed.
+     Structure spreads; body copy stays at the reading measure. */
+  --container-prose:   40rem;                 /* reading column (~68–72ch, compact) */
+  --container-full:    90rem;                 /* text-led sections / chrome copy */
+  --container-feature: min(94vw, 132rem);     /* work / about / nav frame — spreads to ~2112px */
+  /* Gutter breathes instead of capping: was clamp(1.5rem, 8vw, 8rem). */
+  --gutter:            clamp(1.25rem, 5vw, 4rem);
 
   /* ---------- RADIUS ---------- */
   /* Fully rounded everything; no hard rectangles. */

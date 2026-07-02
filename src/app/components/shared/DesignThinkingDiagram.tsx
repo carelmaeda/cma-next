@@ -27,168 +27,38 @@ const PHASES: Phase[] = [
     id: 'define',
     label: 'Define',
     colorVar: 'var(--color-phase-define)',
-    bullets: [
-      'Reframe and create human-centric problem statements',
-      'Identify meaningful surprises and tensions',
-      'Infer insights',
-    ],
+    bullets: ['Reframe the problem', 'Find tensions', 'Infer insights'],
   },
   {
     id: 'ideate',
     label: 'Ideate',
     colorVar: 'var(--color-phase-ideate)',
-    bullets: ['Brainstorm radical ideas', "Build on others' ideas", 'Suspend judgement'],
+    bullets: ['Brainstorm widely', "Build on ideas", 'Suspend judgement'],
   },
   {
     id: 'prototype',
     label: 'Prototype',
     colorVar: 'var(--color-phase-prototype)',
-    bullets: [
-      'Create low-res objects and experiences',
-      'Role play to understand context and key features',
-      'Quickly build to think and learn',
-    ],
+    bullets: ['Build low-res', 'Role-play context', 'Learn by making'],
   },
   {
     id: 'test',
     label: 'Test',
     colorVar: 'var(--color-phase-test)',
-    bullets: [
-      'Test with users to refine solutions and gather ideas',
-      'Gain deeper empathy',
-      'Embrace failure',
-    ],
+    bullets: ['Test with users', 'Deepen empathy', 'Embrace failure'],
   },
 ];
 
 const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
-// Hexagon SVG path (flat-top hex inscribed in 100×100 viewBox).
-// Using a viewBox keeps it crisp at any rendered size.
+// Small hexagon (flat-top, inscribed in a 100×100 viewBox). Kept tiny — a
+// restrained nod to design-thinking, tied to the phase chips, not a loud block.
 const HEX_PATH = 'M25 8 L75 8 L100 50 L75 92 L25 92 L0 50 Z';
-
-interface HexProps {
-  phase: Phase;
-  index: number;
-  active: boolean;
-  reduce: boolean;
-}
-
-function Hex({ phase, index, active, reduce }: HexProps) {
-  const delay = reduce ? 0 : index * 0.08;
-  return (
-    <motion.div
-      initial={reduce ? false : { opacity: 0, y: 16 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-10%' }}
-      transition={{ duration: 0.4, ease: EASE_OUT, delay }}
-      className="flex flex-col items-center"
-      style={{ ['--phase-color' as string]: phase.colorVar }}
-    >
-      <svg
-        viewBox="0 0 100 100"
-        className="w-32 h-32 md:w-40 md:h-40 drop-shadow-[0_8px_24px_rgba(44,40,38,0.10)]"
-        aria-hidden="true"
-      >
-        <path
-          d={HEX_PATH}
-          fill={phase.colorVar}
-          opacity={active ? 1 : 0.95}
-        />
-        <text
-          x="50"
-          y="56"
-          textAnchor="middle"
-          className="font-display"
-          style={{
-            fill: 'var(--color-cream-pale)',
-            fontFamily: 'var(--font-display)',
-            fontSize: '14px',
-            letterSpacing: '0.04em',
-            textTransform: 'uppercase',
-            fontWeight: 600,
-          }}
-        >
-          {phase.label}
-        </text>
-      </svg>
-    </motion.div>
-  );
-}
-
-interface BulletsProps {
-  phase: Phase;
-  index: number;
-  reduce: boolean;
-}
-
-function Bullets({ phase, index, reduce }: BulletsProps) {
-  const delay = reduce ? 0 : index * 0.08 + 0.1;
-  return (
-    <motion.ul
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-10%' }}
-      transition={{ duration: 0.4, ease: EASE_OUT, delay }}
-      className="mt-4 grid gap-2"
-    >
-      {phase.bullets.map((b) => (
-        <li
-          key={b}
-          className="flex items-start gap-2 text-sm leading-snug text-charcoal"
-        >
-          <span
-            aria-hidden
-            className="mt-2 inline-block h-2 w-2 shrink-0"
-            style={{ backgroundColor: phase.colorVar }}
-          />
-          <span>{b}</span>
-        </li>
-      ))}
-    </motion.ul>
-  );
-}
-
-interface PillsProps {
-  phase: Phase;
-  labels: string[];
-  index: number;
-  reduce: boolean;
-}
-
-function Pills({ phase, labels, index, reduce }: PillsProps) {
-  const delay = reduce ? 0 : index * 0.08 + 0.1;
-  return (
-    <motion.ul
-      initial={reduce ? false : { opacity: 0, y: 12 }}
-      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-10%' }}
-      transition={{ duration: 0.4, ease: EASE_OUT, delay }}
-      className="mt-4 flex flex-wrap gap-2"
-    >
-      {labels.map((label) => (
-        <li
-          key={label}
-          className="inline-flex items-center rounded-pill px-3 py-1 font-mono text-xs font-semibold uppercase leading-none tracking-wide"
-          style={{
-            backgroundColor: `color-mix(in srgb, ${phase.colorVar} 14%, transparent)`,
-            color: phase.colorVar,
-          }}
-        >
-          {label}
-        </li>
-      ))}
-    </motion.ul>
-  );
-}
 
 interface DesignThinkingDiagramProps {
   activePhase?: DesignThinkingPhase;
   variant?: 'full' | 'compact';
-  /**
-   * Optional per-phase "what I did" labels. When provided for a phase, small
-   * pills replace the generic design-thinking bullets under that hex.
-   */
+  /** Optional per-phase "what I did" labels; falls back to the generic bullets. */
   activities?: Partial<Record<DesignThinkingPhase, string[]>>;
 }
 
@@ -199,36 +69,17 @@ export default function DesignThinkingDiagram({
 }: DesignThinkingDiagramProps) {
   const reduce = useReducedMotion() ?? false;
 
-  const renderDetail = (phase: Phase, i: number) => {
-    const labels = activities?.[phase.id];
-    return labels && labels.length > 0 ? (
-      <Pills phase={phase} labels={labels} index={i} reduce={reduce} />
-    ) : (
-      <Bullets phase={phase} index={i} reduce={reduce} />
-    );
-  };
-
   if (variant === 'compact') {
     return (
       <div className="flex items-center gap-2">
         {PHASES.map((phase) => {
           const active = activePhase === phase.id;
           return (
-            <div
-              key={phase.id}
-              className="flex items-center gap-2"
-              title={phase.label}
-            >
-              <svg viewBox="0 0 100 100" className="w-6 h-6" aria-hidden="true">
-                <path
-                  d={HEX_PATH}
-                  fill={phase.colorVar}
-                  opacity={active ? 1 : 0.35}
-                />
+            <div key={phase.id} className="flex items-center gap-2" title={phase.label}>
+              <svg viewBox="0 0 100 100" className="h-4 w-4" aria-hidden="true">
+                <path d={HEX_PATH} fill={phase.colorVar} opacity={active ? 1 : 0.35} />
               </svg>
-              {active && (
-                <span className="eyebrow eyebrow--strong">{phase.label}</span>
-              )}
+              {active && <span className="eyebrow eyebrow--strong">{phase.label}</span>}
             </div>
           );
         })}
@@ -236,43 +87,45 @@ export default function DesignThinkingDiagram({
     );
   }
 
+  // Editorial "process index" — a numbered horizontal stepper. Serif numerals
+  // over a hairline track, a tiny phase-colour hex as the only accent, and the
+  // activities listed beneath. Monochrome and restrained, matching the site.
   return (
-    <div className="grid gap-12">
-      {/* Hex chain, horizontal at md+, vertical stack below */}
-      <div
-        className="
-          grid grid-cols-1 gap-10
-          md:grid-cols-5 md:gap-4
-          md:items-end
-        "
-      >
-        {PHASES.map((phase, i) => {
-          const active = activePhase === phase.id;
-          // Stagger y-offset on desktop so the chain reads as a diagonal flow,
-          // matching the reference diagram's rhythm.
-          const offsetClass =
-            i % 2 === 0 ? 'md:translate-y-0' : 'md:translate-y-8';
-          return (
-            <div
-              key={phase.id}
-              className={`flex flex-col items-center md:items-start ${offsetClass}`}
+    <ol className="grid grid-cols-1 gap-x-8 gap-y-sub md:grid-cols-5">
+      {PHASES.map((phase, i) => {
+        const labels = activities?.[phase.id] ?? phase.bullets;
+        return (
+          <motion.li
+            key={phase.id}
+            initial={reduce ? false : { opacity: 0, y: 16 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-10%' }}
+            transition={{ duration: 0.4, ease: EASE_OUT, delay: reduce ? 0 : i * 0.08 }}
+            className="cs-panel grid content-start gap-3"
+          >
+            <span
+              className="cs-phase-chip"
+              style={{
+                backgroundColor: `color-mix(in srgb, ${phase.colorVar} 12%, transparent)`,
+              }}
             >
-              <Hex phase={phase} index={i} active={active || !activePhase} reduce={reduce} />
-              <div className="md:hidden">
-                {renderDetail(phase, i)}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Desktop detail, laid out in the same 5-col grid beneath the hex chain */}
-      <div className="hidden md:grid md:grid-cols-5 md:gap-4">
-        {PHASES.map((phase, i) => (
-          <div key={phase.id}>{renderDetail(phase, i)}</div>
-        ))}
-      </div>
-    </div>
+              <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
+                <path d={HEX_PATH} fill={phase.colorVar} />
+              </svg>
+              <span className="cs-phase-chip__n">{String(i + 1).padStart(2, '0')}</span>
+              <span>{phase.label}</span>
+            </span>
+            <ul className="grid gap-1">
+              {labels.map((l) => (
+                <li key={l} className="text-sm leading-snug text-muted-ink">
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </motion.li>
+        );
+      })}
+    </ol>
   );
 }
 

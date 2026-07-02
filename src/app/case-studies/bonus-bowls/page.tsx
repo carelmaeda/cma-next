@@ -22,11 +22,11 @@ function Prose({ children }: { children: ReactNode }) {
 
 function Section({ heading, children }: { heading: string; children: ReactNode }) {
   return (
-    <section className="grid max-w-[58rem] gap-6">
+    <section className="grid gap-block">
       <MotionVertical>
         <h2 className="cs-heading">{heading}</h2>
       </MotionVertical>
-      <div className="grid gap-5">{children}</div>
+      <div className="cs-flow">{children}</div>
     </section>
   );
 }
@@ -42,32 +42,33 @@ const PHASES = {
 
 function Phase({
   phase,
-  heading,
+  deck,
   children,
 }: {
   phase: keyof typeof PHASES;
-  heading: string;
+  deck?: string;
   children: ReactNode;
 }) {
   const { n, label, color } = PHASES[phase];
   return (
-    <section id={phase} className="grid max-w-[58rem] gap-6">
+    <section id={phase} className="grid gap-block">
       <MotionVertical>
         <div className="grid gap-3">
-          <span
-            className="cs-phase-chip"
-            style={{ backgroundColor: `color-mix(in srgb, ${color} 12%, transparent)`, color }}
+          {/* One asset: the enlarged phase badge doubles as the section title. */}
+          <h2
+            className="cs-phase-title"
+            style={{ backgroundColor: `color-mix(in srgb, ${color} 18%, transparent)` }}
           >
-            <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
+            <svg viewBox="0 0 100 100" className="h-6 w-6 shrink-0" aria-hidden="true">
               <path d={HEX_PATH} fill={color} />
             </svg>
-            <span className="cs-phase-chip__n">{n}</span>
+            <span className="cs-phase-title__n">{n}</span>
             <span>{label}</span>
-          </span>
-          <h2 className="cs-heading">{heading}</h2>
+          </h2>
+          {deck && <p className="cs-phase-deck">{deck}</p>}
         </div>
       </MotionVertical>
-      <div className="grid gap-5">{children}</div>
+      <div className="cs-flow">{children}</div>
     </section>
   );
 }
@@ -94,9 +95,9 @@ function Stat({ value, label, context }: { value: string; label: string; context
   );
 }
 
-function Figure({ placeholder, alt, wide }: { placeholder: string; alt: string; wide?: boolean }) {
+function Figure({ placeholder, alt }: { placeholder: string; alt: string }) {
   return (
-    <figure className={wide ? 'm-0 md:-mx-12 lg:-mx-24' : 'm-0'}>
+    <figure className="m-0">
       <div className="cs-placeholder" role="img" aria-label={alt}>
         <span className="eyebrow eyebrow--strong">Visual asset</span>
         <p className="max-w-prose text-sm text-warm-grey">{placeholder}</p>
@@ -107,7 +108,7 @@ function Figure({ placeholder, alt, wide }: { placeholder: string; alt: string; 
 
 function Table({ headers, rows }: { headers: string[]; rows: ReactNode[][] }) {
   return (
-    <div className="m-0 overflow-x-auto rounded-md border border-hairline">
+    <div className="my-4 overflow-x-auto rounded-md border border-hairline">
       <table className="cs-table">
         <thead>
           <tr>
@@ -139,13 +140,13 @@ const bentoSpan: Record<number, string> = { 1: 'md:col-span-1', 2: 'md:col-span-
 function Bento({ cells }: { cells: BentoCell[] }) {
   return (
     <MotionStagger
-      className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
+      className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-item sm:grid-cols-2 md:grid-cols-4"
       stagger={0.07}
     >
       {cells.map((c, i) => (
         <MotionItem key={i} className={`${bentoSpan[c.span ?? 1]} min-h-[180px]`}>
           <div
-            className="flex h-full flex-col overflow-hidden rounded-card p-6"
+            className="flex h-full flex-col overflow-hidden rounded-card p-block"
             style={{ backgroundColor: `color-mix(in srgb, ${c.accent} 16%, var(--color-off))` }}
           >
             {c.kind === 'stat' ? (
@@ -184,20 +185,16 @@ function LinkPlaceholder({ label }: { label: string }) {
 
 export default function BonusBowlsPage() {
   return (
-    <main className="bg-white pt-24 pb-32">
-      <article className="mx-auto grid w-full max-w-wide gap-20 px-gutter md:gap-28">
-        <Link href="/#work" aria-label="Back to work" className="cs-back-link no-underline-grow">
-          <span aria-hidden className="cs-back-link__arrow">←</span>
-          <span>Back to work</span>
-        </Link>
+    <main className="bg-white py-page">
+      <article className="wrap wrap--wide grid gap-section">
 
         {/* Hero */}
-        <header className="grid gap-10 pt-4">
+        <header className="grid gap-sub">
           <MotionVertical className="max-w-[58rem]">
             <h1 className="font-display text-h1 font-medium text-ink">
               Bonus Bowls: A loyalty platform for a Fortune 500 pet brand
             </h1>
-            <p className="mt-6 max-w-prose text-lg leading-relaxed text-ink md:text-xl">
+            <p className="mt-block max-w-prose text-lg leading-relaxed text-ink md:text-xl">
               Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph
               and upload their receipts, collect cashback, and redeem it for rewards. I ran the research, designed the
               experience, shipped the Angular front-end, and connected it to a comprehensive analytics dashboard.
@@ -207,7 +204,7 @@ export default function BonusBowlsPage() {
             <Figure placeholder="{{Hero visual}}" alt="Hero visual placeholder." />
           </MotionVertical>
           <MotionVertical>
-            <dl className="grid grid-cols-2 gap-x-8 gap-y-5 border-y border-hairline py-6 sm:grid-cols-4">
+            <dl className="grid grid-cols-2 gap-x-block gap-y-item border-y border-hairline py-block sm:grid-cols-4">
               {[
                 { label: 'Timeline', value: 'Fall 2025 → Spring 2026' },
                 { label: 'Tools', value: 'Google Forms, Figma, FigJam, Angular, GA4, Looker Studio' },
@@ -226,10 +223,10 @@ export default function BonusBowlsPage() {
         {/* How I Leveraged AI — restrained "sticky note", kept near the top. */}
         <MotionVertical>
           <aside
-            className="grid max-w-[52rem] gap-3 -rotate-1 rounded-card border border-hairline bg-warm-panel p-6 shadow-soft transition-transform duration-300 ease-standard hover:rotate-0 md:p-8"
+            className="grid max-w-[52rem] gap-3 rounded-card border border-hairline bg-warm-panel p-block shadow-soft"
             aria-label="How I leveraged AI on this project"
           >
-            <p className="eyebrow">Process note</p>
+            <p className="eyebrow">Note</p>
             <h2 className="cs-sub">How I Leveraged AI</h2>
             <Prose>
               <p>I directed AI like a build partner, which is how one person shipped a platform this size:</p>
@@ -249,10 +246,10 @@ export default function BonusBowlsPage() {
             <p>The client came to us with a problem: their products have the best margins but the worst stickiness. They were struggling to build loyalty among pet parents, since customers tend to pick pet food brands purely on price. This was indirectly weakening the long-term relationship between vets and their customers. A loyalty rewards platform is the obvious fix, but there were real challenges to face: most people don&rsquo;t keep receipts, and some existing programs are slow and unreliable, so pet parents don&rsquo;t trust them enough to bother.</p>
             <p>So the real question was:</p>
           </Prose>
-          <Voice>How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?</Voice>
           <Prose>
-            <p>Bonus Bowls closes that gap without leaving the app: photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer at $25. The whole design rests on one promise: the receipt part just works &mdash; which is exactly where competitors fall down.</p>
+            <p>Bonus Bowls closes that gap without leaving the app: photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer. The whole design rests on one promise: the receipt part just works , which is exactly where competitors fall down.</p>
           </Prose>
+          <Voice>How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?</Voice>
         </Section>
 
         <Section heading="The Design Process">
@@ -270,7 +267,7 @@ export default function BonusBowlsPage() {
           />
         </Section>
 
-        <Phase phase="empathize" heading="Empathize">
+        <Phase phase="empathize">
           <Prose>
             <p>I ran a 5-minute survey targeting Canadian pet parents. We needed to understand how pet parents behave: where they buy pet food, how often, what they do with receipts, and what would make a rewards program worth their time.</p>
           </Prose>
@@ -317,13 +314,13 @@ export default function BonusBowlsPage() {
           <Voice>Every program we looked at got one half right and dropped the other, so how might we deliver both: reliable, universal approvals and rewards worth cashing in?</Voice>
         </Phase>
 
-        <Phase phase="define" heading="Define">
+        <Phase phase="define">
           <Prose>
             <p>Now that we&rsquo;ve mapped our users and our competition, we have a solid base to define our challenges and plan how to overcome them.</p>
           </Prose>
 
           <Sub>Personas</Sub>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-item sm:grid-cols-3">
             {[
               { name: 'Elena Martinez', role: 'The Devoted Dog Mom', bio: <>32, marketing coordinator, tech-comfortable but wants simple apps. Spends ~$90/month on her dog&rsquo;s prescription food. Needs fast receipt uploads, cash back she can use, and trust that her data is safe. Frustrated by complicated programs with unclear rules or slow rewards.</> },
               { name: 'David Thompson', role: 'The Multi-Pet Owner', bio: <>40, works full-time, mobile-first, price-driven. Feeds three pets at $200+/month. Wants to earn on every purchase, cash out fast, and get instant receipt confirmation. Already juggles five reward apps, so this one has to just work or he drops it.</> },
@@ -331,7 +328,7 @@ export default function BonusBowlsPage() {
             ].map((p) => (
               <div key={p.name} className="cs-panel grid content-start gap-3">
                 <div>
-                  <p className="font-display text-xl leading-tight tracking-tight text-aubergine">{p.name}</p>
+                  <p className="font-display text-xl leading-tight tracking-heading text-aubergine">{p.name}</p>
                   <p className="eyebrow mt-1">{p.role}</p>
                 </div>
                 <p className="text-sm leading-relaxed text-charcoal">{p.bio}</p>
@@ -343,25 +340,30 @@ export default function BonusBowlsPage() {
           </div>
 
           <Sub>How Might We</Sub>
-          <Prose>
-            <ul>
-              <li>How might we convert price-driven shoppers into loyal customers?</li>
-              <li>How might we make uploading a receipt effortless for people who don&rsquo;t keep receipts?</li>
-              <li>How might we keep members coming back between monthly purchases?</li>
-            </ul>
-          </Prose>
+          <div className="cs-columns">
+            {[
+              'How might we convert price-driven shoppers into loyal customers?',
+              'How might we make uploading a receipt effortless for people who don’t keep receipts?',
+              'How might we keep members coming back between monthly purchases?',
+            ].map((q, i) => (
+              <div key={q}>
+                <span className="cs-columns__index">{String(i + 1).padStart(2, '0')}</span>
+                <p className="text-base leading-relaxed text-charcoal">{q}</p>
+              </div>
+            ))}
+          </div>
 
           <Voice>Now that we defined the problems, how do we solve them?</Voice>
         </Phase>
 
-        <Phase phase="ideate" heading="Ideate">
+        <Phase phase="ideate">
           <Prose>
             <p>Before opening Figma, I mapped each business goal to the research finding that should drive it, on one page the client signed off on. It stopped every later &ldquo;what if we&hellip;&rdquo; from reopening a settled decision.</p>
           </Prose>
           <Table
             headers={['Business goal', 'Research-backed solution']}
             rows={[
-              ['Drive repeat purchase', <>Cash-back at a <strong>$25 minimum</strong>, about one monthly purchase cycle</>],
+              ['Drive repeat purchase', <>Cash-back at a <strong>$25 minimum</strong>, build a monthly purchase relationship</>],
               ['Reward the purchase', 'Quick photo capture, fast confirmation'],
               ['Build trust', 'Security messaging, 2FA, breached-password checks, consent-first analytics'],
               ['Win new customers', 'Educational content, more generous cash-back than competitors'],
@@ -376,12 +378,12 @@ export default function BonusBowlsPage() {
               <li><strong>Redeem:</strong> Reach $25 &rarr; Redeem &rarr; Choose e-transfer &rarr; Cash-out confirmed</li>
             </ul>
           </Prose>
-          <Figure placeholder="{{Figma: user flows}}" alt="User flows placeholder." wide />
+          <Figure placeholder="{{Figma: user flows}}" alt="User flows placeholder." />
 
           <Voice>With every decision mapped and signed off, the plan felt solid. Now the real question was how fast we could turn it into something people could actually use.</Voice>
         </Phase>
 
-        <Phase phase="prototype" heading="Prototype: From wireframes straight to code">
+        <Phase phase="prototype" deck="From wireframes straight to code">
           <Prose>
             <p>To build a prototype as fast as possible, we decided to use Google Material for our raw components. We chose Material for a few reasons:</p>
             <ol>
@@ -407,7 +409,7 @@ export default function BonusBowlsPage() {
             ]}
           />
           <figure className="m-0">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+            <div className="grid grid-cols-1 gap-item sm:grid-cols-4">
               {['Sign-up', 'Receipt upload', 'Earnings dashboard', 'Redeem'].map((name) => (
                 <div key={name} className="cs-placeholder cs-placeholder--sm">
                   <span className="eyebrow eyebrow--strong">{name}</span>
@@ -433,7 +435,7 @@ export default function BonusBowlsPage() {
           <Voice>The product was built and shipped. But building something and proving it works for real people are two very different things.</Voice>
         </Phase>
 
-        <Phase phase="test" heading="Test: Before launch, and with live data after">
+        <Phase phase="test" deck="Before launch, and with live data after">
           <Prose>
             <p>Testing happened twice: with real users on the prototype before launch, and with live data after.</p>
           </Prose>
@@ -457,7 +459,7 @@ export default function BonusBowlsPage() {
           <Prose>
             <p>The most useful part was watching where people hesitated. The fixes that came out of it:</p>
           </Prose>
-          <div className="grid gap-5">
+          <div className="grid gap-item md:grid-cols-3">
             {[
               {
                 title: 'Issue 1: People entered the total with tax included',
@@ -488,7 +490,7 @@ export default function BonusBowlsPage() {
           </div>
 
           <Sub>Final Product</Sub>
-          <Figure placeholder="{{Final product: annotated screenshots / link}}" alt="Final product screenshots placeholder." wide />
+          <Figure placeholder="{{Final product: annotated screenshots / link}}" alt="Final product screenshots placeholder." />
 
           <Sub>Validating in Production</Sub>
           <Prose>
@@ -503,7 +505,7 @@ export default function BonusBowlsPage() {
             <p>Bonus Bowls launched in July 2026, so this data is just starting to flow. The signals below are a first read, not a verdict.</p>
           </Prose>
           <h4 className="cs-minor">Early signals</h4>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-item sm:grid-cols-2 lg:grid-cols-3">
             <Stat value="{{N}}" label="Sign-ups" context="in {{X}} weeks" />
             <Stat value="{{N}}%" label="Receipt approval" context="vs. competitor's 40%" />
             <Stat value="${{N}}" label="Cashed out" context="across {{N}} redemptions" />
@@ -515,18 +517,23 @@ export default function BonusBowlsPage() {
         <Section heading="Conclusion">
           <Sub>Main Insights</Sub>
           <Prose>
-            <p>The research was clear: pet parents want cash, won&rsquo;t tolerate a slow or unreliable receipt process, and need to trust a new program before sharing banking details. Every major decision &mdash; cash over points, one-tap upload, security on every money screen, e-transfer payouts &mdash; traces back to one of those findings. Designing from data meant every review became &ldquo;show me the survey answer that says why.&rdquo;</p>
+            <p>The research was clear: pet parents want cash, won&rsquo;t tolerate a slow or unreliable receipt process, and need to trust a new program before sharing banking details. Every major decision , cash over points, one-tap upload, security on every money screen, e-transfer payouts , traces back to one of those findings. Designing from data meant every review became &ldquo;show me the survey answer that says why.&rdquo;</p>
           </Prose>
 
           <Sub>What I Learned</Sub>
-          <Prose>
-            <ul>
-              <li><strong>Pitching for research time was the highest-leverage hour of the project.</strong> Four weeks up front made every later decision faster.</li>
-              <li><strong>Reliability is a strategy when everyone else is unreliable.</strong> A 60% rejection rate from the market leader was the whole opening.</li>
-              <li><strong>Build the scoreboard before kickoff.</strong> Instrumenting from launch means &ldquo;did it work?&rdquo; has a real answer.</li>
-              <li><strong>Launch is the start of research, not the end.</strong> Next: a quarterly micro-survey to live members, fed into the roadmap.</li>
-            </ul>
-          </Prose>
+          <div className="cs-columns">
+            {[
+              { lead: 'Pitching for research time was the highest-leverage hour of the project.', body: 'Four weeks up front made every later decision faster.' },
+              { lead: 'Reliability is a strategy when everyone else is unreliable.', body: 'A 60% rejection rate from the market leader was the whole opening.' },
+              { lead: 'Build the scoreboard before kickoff.', body: <>Instrumenting from launch means &ldquo;did it work?&rdquo; has a real answer.</> },
+              { lead: 'Launch is the start of research, not the end.', body: 'Next: a quarterly micro-survey to live members, fed into the roadmap.' },
+            ].map((l) => (
+              <div key={l.lead}>
+                <h4 className="cs-minor">{l.lead}</h4>
+                <p className="text-sm leading-relaxed text-charcoal">{l.body}</p>
+              </div>
+            ))}
+          </div>
         </Section>
 
         <Section heading="Let&rsquo;s Connect">
