@@ -1,5 +1,19 @@
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import Image from 'next/image';
+import type { CSSProperties, ReactNode } from 'react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  ArrowUpRight,
+  CalendarDays,
+  CircleDollarSign,
+  HandCoins,
+  PawPrint,
+  ReceiptText,
+  Smartphone,
+  Tag,
+  ThumbsUp,
+  Users,
+} from 'lucide-react';
 import DesignThinkingDiagram from '@/app/components/shared/DesignThinkingDiagram';
 import { MotionVertical, MotionStagger, MotionItem } from '@/app/components/partials/Motions';
 
@@ -79,10 +93,10 @@ function Stat({ value, label, context }: { value: string; label: string; context
   );
 }
 
-function Figure({ placeholder, alt }: { placeholder: string; alt: string }) {
+function Figure({ placeholder, alt, className = '' }: { placeholder: string; alt: string; className?: string }) {
   return (
-    <figure className="m-0">
-      <div className="placeholder" role="img" aria-label={alt}>
+    <figure className={`m-0 ${className}`.trim()}>
+      <div className="placeholder h-full" role="img" aria-label={alt}>
         <span className="eyebrow eyebrow--strong">Visual asset</span>
         <p className="max-w-prose text-sm text-warm-grey">{placeholder}</p>
       </div>
@@ -115,82 +129,197 @@ function Table({ headers, rows }: { headers: string[]; rows: ReactNode[][] }) {
   );
 }
 
-type BentoCell = { span?: 1 | 2 | 4; accent: string } & (
-  | { kind: 'stat'; value: string; label: string }
-  | { kind: 'ph'; label: string; hint?: string }
+/* Bento cells. `cls` carries the responsive span (literal Tailwind classes so
+ * JIT sees them): a 2-col grid on mobile, a 6-col mosaic on desktop. Compact,
+ * tiered reading order — a full-width tinted hero band, three stat tiles,
+ * two logo tiles, then a quiet strip of supporting numbers beside a light
+ * CTA. Tile decoration lives in case-study.css (.bento-tile / .bento-logo /
+ * .bento-cta); the hero passes its tint as the `--tile-accent` property.
+ * Icons match the homepage (bare lucide, default stroke, ink). */
+type BentoMini = { icon: LucideIcon; value: string; label: string };
+type BentoLogo = { src: string; alt: string };
+type BentoCell = { cls: string } & (
+  | { kind: 'stat'; icon: LucideIcon; value: string; label: string; accent?: string; featured?: boolean }
+  | { kind: 'strip'; eyebrow: string; items: BentoMini[] }
+  | { kind: 'logos'; eyebrow: string; logos: BentoLogo[] }
+  | { kind: 'cta'; title: string; label: string; href: string }
 );
-const bentoSpan: Record<number, string> = { 1: 'md:col-span-1', 2: 'md:col-span-2', 4: 'md:col-span-4' };
+
+/** Big sans numeral with its unit ("%", "$") lifted to a superscript. */
+function BentoValue({ value, size }: { value: string; size?: 'hero' | 'sub' }) {
+  const m = value.match(/^(\$?[\d.,]+)(.*)$/);
+  const num = m ? m[1] : value;
+  const unit = m ? m[2] : '';
+  return (
+    <span className={`bento-value${size ? ` bento-value--${size}` : ''}`}>
+      {num}
+      {unit && <span className="bento-unit">{unit}</span>}
+    </span>
+  );
+}
+
+function BentoStat({ cell }: { cell: Extract<BentoCell, { kind: 'stat' }> }) {
+  const Icon = cell.icon;
+  if (cell.featured) {
+    /* Full-width horizontal band: icon · number · label · pill. */
+    return (
+      <div
+        className="bento-tile bento-tile--hero"
+        style={{ '--tile-accent': cell.accent } as CSSProperties}
+      >
+        <Icon className="h-7 w-7 shrink-0" aria-hidden />
+        <BentoValue value={cell.value} size="hero" />
+        <span className="max-w-[38ch] text-sm leading-snug text-ink">{cell.label}</span>
+        <span className="eyebrow ml-auto hidden rounded-pill border border-hairline px-3 py-1 md:inline-flex">
+          Key finding
+        </span>
+      </div>
+    );
+  }
+  return (
+    <div
+      className={`bento-tile${cell.accent ? ' bento-tile--tint' : ''} justify-center gap-2`}
+      style={cell.accent ? ({ '--tile-accent': cell.accent } as CSSProperties) : undefined}
+    >
+      <span className="flex items-center gap-3">
+        <Icon className="h-6 w-6 shrink-0" aria-hidden />
+        <BentoValue value={cell.value} />
+      </span>
+      <span className="text-sm leading-snug text-ink">{cell.label}</span>
+    </div>
+  );
+}
+
+/** One quiet row for the supporting numbers — context, not headlines.
+ *  Each mini stacks number over label so wrapping text never shifts the
+ *  numerals; hairline dividers keep the desktop row measured. */
+function BentoStrip({ cell }: { cell: Extract<BentoCell, { kind: 'strip' }> }) {
+  return (
+    <div className="bento-tile justify-center gap-3">
+      <span className="eyebrow">{cell.eyebrow}</span>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-4 lg:grid-cols-4">
+        {cell.items.map(({ icon: Icon, value, label }) => (
+          <div
+            key={label}
+            className="grid content-start gap-1 lg:border-l lg:border-hairline lg:pl-5 lg:first:border-l-0 lg:first:pl-0"
+          >
+            <span className="flex items-center gap-2">
+              <Icon className="h-4 w-4 shrink-0 text-muted-ink" aria-hidden />
+              <BentoValue value={value} size="sub" />
+            </span>
+            <span className="text-sm leading-snug text-muted-ink">{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function BentoCta({ cell }: { cell: Extract<BentoCell, { kind: 'cta' }> }) {
+  return (
+    <a href={cell.href} target="_blank" rel="noopener noreferrer" className="bento-cta no-underline-grow">
+      <span className="grid gap-1">
+        <span className="eyebrow">{cell.label}</span>
+        <span className="font-display text-h4 leading-tight">{cell.title}</span>
+      </span>
+      <span className="arrow" aria-hidden>
+        <ArrowUpRight className="h-5 w-5" />
+      </span>
+    </a>
+  );
+}
+
+/** Survey mentions rendered as round logo badges (square icons, circle-cropped). */
+function BentoLogos({ cell }: { cell: Extract<BentoCell, { kind: 'logos' }> }) {
+  return (
+    <div className="bento-tile justify-center gap-3">
+      <span className="eyebrow">{cell.eyebrow}</span>
+      <div className="flex flex-wrap items-center gap-2">
+        {cell.logos.map((logo) => (
+          <span key={logo.alt} className="bento-logo" title={logo.alt}>
+            <Image src={logo.src} alt={logo.alt} width={96} height={96} />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function Bento({ cells }: { cells: BentoCell[] }) {
   return (
     <MotionStagger
-      className="grid auto-rows-[minmax(180px,auto)] grid-cols-1 gap-item sm:grid-cols-2 md:grid-cols-4"
-      stagger={0.07}
+      className="grid grid-cols-2 gap-1 md:gap-3 max-w-6xl lg:grid-cols-6 lg:pb-8 mx-auto"
+      stagger={0.06}
     >
       {cells.map((c, i) => (
-        <MotionItem key={i} className={`${bentoSpan[c.span ?? 1]} min-h-[180px]`}>
-          <div
-            className="flex h-full flex-col overflow-hidden rounded-card p-block"
-            style={{ backgroundColor: `color-mix(in srgb, ${c.accent} 16%, var(--color-off))` }}
-          >
-            {c.kind === 'stat' ? (
-              <div className="flex h-full flex-col justify-end">
-                <span className="bento-value">{c.value}</span>
-                <span className="mt-2 text-sm text-ink">{c.label}</span>
-              </div>
-            ) : (
-              <div className="flex h-full flex-col items-center justify-center gap-2 text-center">
-                <span
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-pill border border-dashed text-lg"
-                  style={{ borderColor: c.accent, color: c.accent }}
-                >
-                  +
-                </span>
-                <span className="eyebrow">{c.label}</span>
-                {c.hint && <span className="max-w-[24ch] text-xs text-muted-ink">{c.hint}</span>}
-              </div>
-            )}
-          </div>
+        <MotionItem key={i} className={c.cls}>
+          {c.kind === 'stat' ? (
+            <BentoStat cell={c} />
+          ) : c.kind === 'strip' ? (
+            <BentoStrip cell={c} />
+          ) : c.kind === 'cta' ? (
+            <BentoCta cell={c} />
+          ) : (
+            <BentoLogos cell={c} />
+          )}
         </MotionItem>
       ))}
     </MotionStagger>
   );
 }
 
-/** Inline placeholder for an outside link to be added later. */
-function LinkPlaceholder({ label }: { label: string }) {
+/** Outbound link to a supporting doc. With `href` it's a real link (solid
+ *  pill, opens in a new tab); without one it stays a dashed placeholder. */
+function LinkPlaceholder({ label, href }: { label: string; href?: string }) {
+  const base =
+    'eyebrow eyebrow--strong inline-flex items-center gap-2 rounded-pill border px-4 py-2';
+  if (!href) {
+    return (
+      <span className={`${base} border-dashed border-hairline`}>
+        <span aria-hidden>↗</span>
+        {label}
+      </span>
+    );
+  }
   return (
-    <span className="eyebrow eyebrow--strong inline-flex items-center gap-2 rounded-pill border border-dashed border-hairline px-4 py-2">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`no-underline-grow ${base} border-hairline text-ink transition duration-300 ease-standard hover:-translate-y-1 hover:border-ink`}
+    >
       <span aria-hidden>↗</span>
       {label}
-    </span>
+    </a>
   );
 }
 
 export default function BonusBowlsPage() {
   return (
-    <main className="bg-white py-page">
-      <article className="prose wrap wrap--wide grid gap-section">
+    <main className="py-page">
+      <article className="prose wrap wrap--wide grid grid-cols-1 gap-section">
 
-        {/* Hero */}
+        {/* Hero — text left, hero image right on tablet+ (stacked on mobile) */}
         <header className="grid gap-sub">
+          <div className="grid grid-cols-1 gap-sub md:grid-cols-2 md:items-center">
+            <MotionVertical>
+              <h1>Bonus Bowls: A loyalty platform for a Fortune 500 pet brand</h1>
+              <p className="mt-block max-w-prose text-lg leading-relaxed text-ink md:text-xl">
+                Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph
+                and upload their receipts, collect cashback, and redeem it for rewards. I ran the User Research, designed the
+                experience, shipped the Angular front-end, and connected it to a comprehensive analytics dashboard.
+              </p>
+            </MotionVertical>
+            <MotionVertical className="h-full">
+              <Figure className="h-full min-h-[16rem]" placeholder="{{Hero visual}}" alt="Hero visual placeholder." />
+            </MotionVertical>
+          </div>
           <MotionVertical>
-            <h1>Bonus Bowls: A loyalty platform for a Fortune 500 pet brand</h1>
-            <p className="mt-block max-w-prose text-lg leading-relaxed text-ink md:text-xl">
-              Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph
-              and upload their receipts, collect cashback, and redeem it for rewards. I ran the User Research, designed the
-              experience, shipped the Angular front-end, and connected it to a comprehensive analytics dashboard.
-            </p>
-          </MotionVertical>
-          <MotionVertical>
-            <Figure placeholder="{{Hero visual}}" alt="Hero visual placeholder." />
-          </MotionVertical>
-          <MotionVertical>
-            <dl className="grid grid-cols-2 gap-x-block gap-y-item border-y border-hairline py-block sm:grid-cols-4">
+            <dl className="grid grid-cols-2 gap-x-block gap-y-item border-y border-hairline py-block sm:grid-cols-4 items-start ">
               {[
                 { label: 'Timeline', value: 'Fall 2025 → Spring 2026' },
                 { label: 'Tools', value: 'Google Forms, Figma, FigJam, Angular, GA4, Looker Studio' },
-                { label: 'Role', value: 'UX research, UI/UX, prototyping, usability testing, front-end, analytics' },
+                { label: 'Role', value: 'UX research, UI/UX, Prototyping, Usability Testing, Front-End, Analytics' },
                 { label: 'Industry', value: 'Pet food' },
               ].map((m) => (
                 <div className="grid gap-1" key={m.label}>
@@ -205,31 +334,30 @@ export default function BonusBowlsPage() {
         {/* How I Leveraged AI — restrained "sticky note", kept near the top. */}
         <MotionVertical>
           <aside
-            className="grid max-w-[52rem] gap-3 rounded-card border border-hairline bg-warm-panel p-block shadow-soft"
+            className="grid gap-3 rounded-card border border-hairline bg-warm-panel p-block shadow-soft max-w-md"
             aria-label="How I leveraged AI on this project"
           >
             <p className="eyebrow">Note</p>
             <h3>How I Leveraged AI</h3>
-            <p>I directed AI like a build partner, which is how one person shipped a platform this size:</p>
+            <p>I used AI to help me get things done faster and more efficiently:</p>
             <ul>
-              <li>Turned my wireframes and design decisions into working Angular components</li>
-              <li>Drafted the GA4 analytics instrumentation to my spec</li>
-              <li>Generated tests and boilerplate that would have taken weeks by hand</li>
-              <li>Kept the research, design, and product calls mine, and reviewed and shipped every piece</li>
+              <li>Organizing Notes and Ideas</li>
+              <li>Helped me scale front end components</li>
+              <li>Debug Solving</li>
+              <li>Assisted on implementing GA4 and Looker Studio</li>
             </ul>
           </aside>
         </MotionVertical>
 
         <Section heading="About">
-          <p>Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph and upload their receipts, collect cashback, and redeem it for rewards.</p>
-          <p>The client came to us with a problem: their products have the best margins but the worst stickiness. They were struggling to build loyalty among pet parents, since customers tend to pick pet food brands purely on price. This was indirectly weakening the long-term relationship between vets and their customers. A loyalty rewards platform is the obvious fix, but there were real challenges to face: most people don&rsquo;t keep receipts, and some existing programs are slow and unreliable, so pet parents don&rsquo;t trust them enough to bother.</p>
-          <p>So the real question was:</p>
-          <p>Bonus Bowls closes that gap without leaving the app: photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer. The whole design rests on one promise: the receipt part just works , which is exactly where competitors fall down.</p>
-          <blockquote><p>How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?</p></blockquote>
+        <p>The client came to us with a problem: their products have the best margins but the worst stickiness. Pet parents pick brands on price, so loyalty was hard to build, and that was quietly weakening the vet-customer relationship too. A rewards program is the obvious fix, but only if pet parents trust it enough to bother.</p>
+        <p>That&rsquo;s the gap Bonus Bowls closes. The whole design rests on one promise: the receipt part just works, which is exactly where competitors fall down.</p>
+        <p>So the real question was:</p>
+        <blockquote><p>How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?</p></blockquote>
         </Section>
 
-        <Section heading="The Design Process">
-          <p>I ran the project through the usual five phases of design thinking: user surveys and competitive analysis to <strong>empathize</strong>; a research-based persona, POV, and How-Might-We questions to <strong>define</strong>; user flows and wireframes to <strong>ideate</strong>; mid-fidelity Figma and Google Material to <strong>prototype</strong>; and usability testing and analytics after to <strong>test</strong>.</p>
+        <Section heading="Design Thinking">
+          <p>We run every project runs on the same five phases of design thinking. Here's how each one played out on Bonus Bowls:</p>
           <DesignThinkingDiagram
             activities={{
               empathize: ['User surveys', 'Competitive analysis'],
@@ -241,28 +369,52 @@ export default function BonusBowlsPage() {
           />
         </Section>
 
-        <Phase phase="empathize">
+      <hr className="border-hairline" />
+
+        <Phase phase="empathize" >
           <p>We needed to understand how pet parents behave: where they buy pet food, how often, what they do with receipts, and what would make a rewards program worth their time. I put together a 5-minute survey targeting Canadian pet parents.</p>
 
           <h3>Key Takeaways</h3>
           <Bento
             cells={[
-              { kind: 'stat', value: '85%', label: 'open to the program — the demand proof and the reason the project exists', span: 4, accent: 'var(--color-green)' },
-              { kind: 'stat', value: '66%', label: 'want cash, not merchandise', span: 2, accent: 'var(--color-cyan)' },
-              { kind: 'stat', value: '50%', label: "don't keep receipts", span: 2, accent: 'var(--color-lilac)' },
-              { kind: 'stat', value: '30%', label: 'buy on price', span: 2, accent: 'var(--color-pink)' },
-              { kind: 'stat', value: '47%', label: 'spend about $100 a month', span: 2, accent: 'var(--color-yellow)' },
-              { kind: 'stat', value: '40%', label: 'buy once a month', span: 1, accent: 'var(--color-cyan)' },
-              { kind: 'stat', value: '89%', label: 'smartphone-comfortable', span: 1, accent: 'var(--color-green)' },
-              { kind: 'ph', label: 'Top brands mentioned', hint: 'From the survey', span: 1, accent: 'var(--color-lilac)' },
-              { kind: 'ph', label: 'Top loyalty apps mentioned', hint: 'From the survey', span: 1, accent: 'var(--color-pink)' },
-              { kind: 'stat', value: '80%', label: 'are 20 to 40 years old', span: 1, accent: 'var(--color-yellow)' },
+              { kind: 'stat', featured: true, icon: ThumbsUp, value: '85%', label: 'open to the program — the demand proof and the reason the project exists', accent: 'var(--color-green)', cls: 'col-span-2 lg:col-span-6' },
+              { kind: 'stat', icon: HandCoins, value: '66%', label: 'want cash, not merchandise', accent: 'var(--color-cyan)', cls: 'lg:col-span-2' },
+              { kind: 'stat', icon: ReceiptText, value: '50%', label: "don't keep receipts", accent: 'var(--color-lilac)', cls: 'lg:col-span-2' },
+              { kind: 'stat', icon: Smartphone, value: '89%', label: 'smartphone-comfortable', accent: 'var(--color-pink)', cls: 'col-span-2 lg:col-span-2' },
+              {
+                kind: 'logos',
+                eyebrow: 'Top brands mentioned',
+                logos: [
+                  { src: '/images/brands/hills.webp', alt: "Hill's Pet Nutrition" },
+                  { src: '/images/brands/purina.webp', alt: 'Purina' },
+                  { src: '/images/brands/vitalessentials.webp', alt: 'Vital Essentials' },
+                ],
+                cls: 'lg:col-span-2',
+              },
+              {
+                kind: 'logos',
+                eyebrow: 'Top loyalty apps mentioned',
+                logos: [
+                  { src: '/images/brands/starbucks.webp', alt: 'Starbucks Rewards' },
+                  { src: '/images/brands/aircanada.webp', alt: 'Air Canada' },
+                  { src: '/images/brands/airmiles.webp', alt: 'Air Miles' },
+                ],
+                cls: 'lg:col-span-2',
+              },
+              {
+                kind: 'strip',
+                eyebrow: 'Buying habits & audience',
+                items: [
+                  { icon: Tag, value: '30%', label: 'buy on price' },
+                  { icon: CircleDollarSign, value: '47%', label: 'spend about $100 a month' },
+                  { icon: CalendarDays, value: '40%', label: 'buy once a month' },
+                  { icon: Users, value: '80%', label: 'are 20 to 40 years old' },
+                ],
+                cls: 'col-span-2 lg:col-span-4',
+              },
+              { kind: 'cta', title: 'See the full survey results', label: 'Full report', href: 'https://docs.google.com/forms/d/1DTZH-iRz0N4Dk8GsG8a65eTPbB0KarAwAxV4YgjtXEk/viewanalytics', cls: 'col-span-2 lg:col-span-2 lg:col-start-5 lg:row-start-3 lg:row-span-2' },
             ]}
           />
-          <p>Click the link below to see the full survey results.</p>
-          <div>
-            <LinkPlaceholder label="Full survey results" />
-          </div>
 
           <blockquote><p>Great news: people are open to the program. <br /> Beyond that, we found that pet parents shop monthly (suggesting a similar usage cadence for our platform), the audience is young, tech-savvy, and price-driven, and we've identified their favorite brands and platforms to enable a competitive analysis.</p></blockquote>
 
@@ -302,7 +454,7 @@ export default function BonusBowlsPage() {
             ))}
           </div>
           <div>
-            <LinkPlaceholder label="Full user persona document" />
+            <LinkPlaceholder label="Full user persona document" href="/images/bonusbowls-user-persona.pdf" />
           </div>
 
           <h3>How Might We</h3>
@@ -335,11 +487,8 @@ export default function BonusBowlsPage() {
           />
 
           <h3>User Flows</h3>
-          <p>I mapped the two core journeys so the path from &ldquo;I bought it&rdquo; to &ldquo;I got paid&rdquo; stayed as short as possible.</p>
-          <ul>
-            <li><strong>Earn:</strong> Sign up &rarr; Upload receipt (Photo &rarr; Details &rarr; Products &rarr; Review) &rarr; Reward dollars credited after review</li>
-            <li><strong>Redeem:</strong> Reach $25 &rarr; Redeem &rarr; Choose e-transfer &rarr; Cash-out confirmed</li>
-          </ul>
+          <p>I mapped the main journeys so the path from &ldquo;Onboarding&rdquo; to &ldquo;I got paid&rdquo; stayed as short as possible.</p>
+
           <Figure placeholder="{{Figma: user flows}}" alt="User flows placeholder." />
 
           <blockquote><p>With every decision mapped and signed off, the plan felt solid. Now the real question was how fast we could turn it into something people could actually use.</p></blockquote>

@@ -130,13 +130,14 @@ export default {
       },
       spacing: {
         gutter: 'var(--gutter)',
-        /* Fluid rhythm scale (variables.css) as semantic spacing utilities:
-           gap-item, gap-block, gap-sub, gap-section, py-page, p-block, … */
-        item:    'var(--space-s)',
-        block:   'var(--space-m)',
-        sub:     'var(--space-l)',
-        section: 'var(--space-xl)',
-        page:    'var(--space-2xl)',
+        /* Fluid rhythm scale — names mirror the tokens 1:1 (edit values in
+           variables.css). Utilities: gap-item, p-block, gap-sub, py-section,
+           py-page, … */
+        item:    'var(--space-item)',
+        block:   'var(--space-block)',
+        sub:     'var(--space-sub)',
+        section: 'var(--space-section)',
+        page:    'var(--space-page)',
       },
       borderRadius: {
         lg:   'var(--radius)',

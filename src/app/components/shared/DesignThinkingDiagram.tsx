@@ -1,6 +1,8 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { ChevronDown } from 'lucide-react';
+import { MotionStagger, MotionItem } from '../partials/Motions';
 
 export type DesignThinkingPhase =
   | 'empathize'
@@ -49,8 +51,6 @@ const PHASES: Phase[] = [
   },
 ];
 
-const EASE_OUT = [0.22, 1, 0.36, 1] as const;
-
 // Small hexagon (flat-top, inscribed in a 100×100 viewBox). Kept tiny — a
 // restrained nod to design-thinking, tied to the phase chips, not a loud block.
 const HEX_PATH = 'M25 8 L75 8 L100 50 L75 92 L25 92 L0 50 Z';
@@ -67,7 +67,22 @@ export default function DesignThinkingDiagram({
   variant = 'full',
   activities,
 }: DesignThinkingDiagramProps) {
-  const reduce = useReducedMotion() ?? false;
+  // Mobile: native <details> collapse (compact accordion). Desktop: force every
+  // phase open — the closed-details hiding lives in the UA shadow DOM and can't
+  // be undone with CSS, so set `open` imperatively at the md breakpoint.
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (variant !== 'full') return;
+    const mq = window.matchMedia('(min-width: 768px)');
+    const sync = () => {
+      ref.current?.querySelectorAll('details').forEach((d) => {
+        d.open = mq.matches;
+      });
+    };
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, [variant]);
 
   if (variant === 'compact') {
     return (
@@ -87,51 +102,49 @@ export default function DesignThinkingDiagram({
     );
   }
 
-  // Editorial "process index" — a numbered horizontal stepper. No card box:
-  // a phase-colour chip leads each step, and its activities sit beneath as
-  // small phase-tinted pills that re-group them under the phase.
+  // Editorial "process" — one asset for every screen. On mobile each phase is a
+  // native <details> accordion (tap to reveal activities); on desktop CSS turns
+  // the same markup into a full-width 5-column process on a hairline track.
   return (
-    <ol className="steps grid grid-cols-1 gap-x-8 gap-y-sub md:grid-cols-5">
+    <div ref={ref}>
+      <MotionStagger className="process" stagger={0.06}>
       {PHASES.map((phase, i) => {
         const labels = activities?.[phase.id] ?? phase.bullets;
         return (
-          <motion.li
-            key={phase.id}
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-10%' }}
-            transition={{ duration: 0.4, ease: EASE_OUT, delay: reduce ? 0 : i * 0.08 }}
-            className="grid content-start gap-2"
-          >
-            <span
-              className="phase-chip"
-              style={{
-                backgroundColor: `color-mix(in srgb, ${phase.colorVar} 12%, transparent)`,
-              }}
-            >
-              <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
-                <path d={HEX_PATH} fill={phase.colorVar} />
-              </svg>
-              <span className="n">{String(i + 1).padStart(2, '0')}</span>
-              <span>{phase.label}</span>
-            </span>
-            <ul className="pills flex flex-col items-start gap-1">
-              {labels.map((l) => (
-                <li
-                  key={l}
-                  className="phase-pill"
-                  style={{
-                    backgroundColor: `color-mix(in srgb, ${phase.colorVar} 15%, transparent)`,
-                  }}
+          <MotionItem key={phase.id} className="phase-item">
+            <details className="phase">
+              <summary>
+                <span
+                  className="phase-chip"
+                  style={{ backgroundColor: `color-mix(in srgb, ${phase.colorVar} 12%, transparent)` }}
                 >
-                  {l}
-                </li>
-              ))}
-            </ul>
-          </motion.li>
+                  <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
+                    <path d={HEX_PATH} fill={phase.colorVar} />
+                  </svg>
+                  <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                  <span>{phase.label}</span>
+                </span>
+                <ChevronDown className="chevron h-4 w-4 shrink-0 md:hidden" aria-hidden="true" />
+              </summary>
+              <div className="body">
+                <ul className="pills">
+                  {labels.map((l) => (
+                    <li
+                      key={l}
+                      className="phase-pill"
+                      style={{ backgroundColor: `color-mix(in srgb, ${phase.colorVar} 15%, transparent)` }}
+                    >
+                      {l}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </details>
+          </MotionItem>
         );
       })}
-    </ol>
+      </MotionStagger>
+    </div>
   );
 }
 
