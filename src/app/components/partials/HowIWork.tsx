@@ -39,10 +39,10 @@ export default function HowIWork() {
   return (
     <MotionVertical className="py-24 md:py-32">
       <header className="max-w-prose mb-16 md:mb-20">
-        <p className="font-mono text-xs uppercase tracking-[0.08em] text-coral mb-3">
+        <p className="eyebrow mb-3">
           03 · How I work
         </p>
-        <h2 className="font-display text-aubergine tracking-tight leading-[1.02] text-[clamp(2.5rem,6vw,4rem)]">
+        <h2 className="font-display text-h1 text-aubergine">
           Design Thinking, end-to-end, applied to product and code.
         </h2>
         <p className="font-sans text-base md:text-lg text-charcoal leading-[1.7] mt-6 max-w-[44rem]">
@@ -68,11 +68,9 @@ export default function HowIWork() {
               <span className="font-display italic text-terracotta text-5xl leading-none">
                 {phase.number}
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-warm-grey">
-                Phase
-              </span>
+              <span className="eyebrow">Phase</span>
             </div>
-            <h3 className="font-display text-aubergine tracking-tight leading-[1.15] text-[clamp(1.5rem,2.6vw,2rem)]">
+            <h3 className="font-display text-h4 text-aubergine">
               {phase.title}
             </h3>
             <p className="font-sans text-base text-charcoal leading-[1.7] max-w-prose">

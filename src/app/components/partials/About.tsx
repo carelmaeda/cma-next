@@ -4,10 +4,10 @@ import { MotionVertical } from './Motions';
 
 export default function About() {
   return (
-    <section id="about" className="px-[var(--gutter)] py-28 md:py-40">
+    <section id="about" className="px-gutter py-28 md:py-40">
       <div className="mx-auto max-w-wide">
         <MotionVertical>
-          <p className="mb-12 font-mono text-xs uppercase tracking-[0.14em] text-muted-ink">About</p>
+          <p className="eyebrow tracking-widest mb-12">About</p>
         </MotionVertical>
 
         <div className="grid gap-12 md:grid-cols-12 md:gap-16">
@@ -25,7 +25,7 @@ export default function About() {
 
           {/* Copy */}
           <MotionVertical className="md:col-span-8 lg:col-span-9" delay={0.05}>
-            <h2 className="max-w-[20ch] font-display text-ink font-medium leading-[1.08] tracking-tight text-[clamp(1.9rem,4.5vw,3.25rem)]">
+            <h2 className="max-w-[20ch] font-display text-h2 font-medium text-ink">
               A designer who codes, because handoff is where ideas go to die.
             </h2>
 
@@ -55,7 +55,7 @@ export default function About() {
                 href="https://linkedin.com/in/carelmaeda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline-grow inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+                className="eyebrow eyebrow--strong no-underline-grow inline-flex items-center gap-2 transition-opacity duration-300 ease-standard hover:opacity-60"
               >
                 <LinkedInIcon /> LinkedIn ↗
               </a>
@@ -63,7 +63,7 @@ export default function About() {
                 href="https://github.com/carelmaeda"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline-grow inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+                className="eyebrow eyebrow--strong no-underline-grow inline-flex items-center gap-2 transition-opacity duration-300 ease-standard hover:opacity-60"
               >
                 <GitHubIcon /> GitHub ↗
               </a>
@@ -71,7 +71,7 @@ export default function About() {
                 href="/cma-resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline-grow inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+                className="eyebrow eyebrow--strong no-underline-grow inline-flex items-center gap-2 transition-opacity duration-300 ease-standard hover:opacity-60"
               >
                 Resume.pdf ↗
               </a>

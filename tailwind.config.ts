@@ -29,10 +29,19 @@ export default {
       fontSize: {
         'display-xl': ['clamp(4rem, 12vw, 11rem)', { lineHeight: '1.02', letterSpacing: '-0.045em' }],
         'display':    ['clamp(2.5rem, 6vw, 4rem)',  { lineHeight: '1.05', letterSpacing: '-0.04em' }],
+        /* Fluid heading ramps — design tokens that replace arbitrary clamp() in JSX. */
+        'hero': ['clamp(2.75rem, 8vw, 5.5rem)',   { lineHeight: '1.02', letterSpacing: '-0.04em' }],
+        'h1':   ['clamp(2.25rem, 5.5vw, 4.25rem)', { lineHeight: '1.04', letterSpacing: '-0.04em' }],
+        'h2':   ['clamp(1.9rem, 4.5vw, 3.25rem)', { lineHeight: '1.1',  letterSpacing: '-0.04em' }],
+        'h3':   ['clamp(1.6rem, 4vw, 2.5rem)',    { lineHeight: '1.15', letterSpacing: '-0.04em' }],
+        'h4':   ['clamp(1.5rem, 2.6vw, 2rem)',    { lineHeight: '1.2',  letterSpacing: '-0.04em' }],
       },
       letterSpacing: {
-        tight: '-0.04em',   /* display headings */
-        snug:  '-0.025em',  /* UI / nav / buttons */
+        tight:  '-0.04em',   /* display headings */
+        snug:   '-0.025em',  /* UI / nav / buttons */
+        wide:   '0.08em',    /* micro-labels / eyebrows */
+        wider:  '0.12em',
+        widest: '0.14em',
       },
       colors: {
         /* Monochrome system (ref: h3ylab.com). Chrome stays black-on-white. */
@@ -52,6 +61,10 @@ export default {
         accentCyan:   '#24D1FE',
         accentYellow: '#EAFF00',
         accentPink:   '#FBC6F2',
+
+        /* Interaction fills, mapped to CSS variables (no inline rgba in JSX) */
+        pill:         'var(--color-pill-fill)',   /* translucent grey hover capsule */
+        'ink-hover':  'var(--color-ink-hover)',   /* pill button hover darken */
 
         /* Back-compat names remapped onto the monochrome system so existing
            components + opacity modifiers (bg-cream/40, text-coral) keep

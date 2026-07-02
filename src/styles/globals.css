@@ -105,6 +105,29 @@ p {
 }
 
 /* ============================================================
+   Eyebrow / micro-label, mono + uppercase + tracked. One semantic
+   class replaces a 4-utility chain repeated 15+ times site-wide
+   (nav, footer, captions, meta strips, chips, stat context).
+   ============================================================ */
+@layer components {
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  /* Ink-strength variant for the few labels meant to read darker
+     (e.g. "After" change tags, placeholder labels). */
+  .eyebrow--strong {
+    color: var(--text-strong);
+  }
+}
+
+/* ============================================================
    Default link behaviour, underline-grow in ink.
    Wrapped in :where() so the reset carries ZERO specificity and
    any Tailwind utility (e.g. a button's text-white) always wins.

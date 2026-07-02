@@ -130,7 +130,7 @@ function Bullets({ phase, index, reduce }: BulletsProps) {
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-10%' }}
       transition={{ duration: 0.4, ease: EASE_OUT, delay }}
-      className="mt-4 grid gap-1.5"
+      className="mt-4 grid gap-2"
     >
       {phase.bullets.map((b) => (
         <li
@@ -139,7 +139,7 @@ function Bullets({ phase, index, reduce }: BulletsProps) {
         >
           <span
             aria-hidden
-            className="mt-[0.45rem] inline-block w-1.5 h-1.5 shrink-0"
+            className="mt-2 inline-block h-2 w-2 shrink-0"
             style={{ backgroundColor: phase.colorVar }}
           />
           <span>{b}</span>
@@ -149,16 +149,64 @@ function Bullets({ phase, index, reduce }: BulletsProps) {
   );
 }
 
+interface PillsProps {
+  phase: Phase;
+  labels: string[];
+  index: number;
+  reduce: boolean;
+}
+
+function Pills({ phase, labels, index, reduce }: PillsProps) {
+  const delay = reduce ? 0 : index * 0.08 + 0.1;
+  return (
+    <motion.ul
+      initial={reduce ? false : { opacity: 0, y: 12 }}
+      whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-10%' }}
+      transition={{ duration: 0.4, ease: EASE_OUT, delay }}
+      className="mt-4 flex flex-wrap gap-2"
+    >
+      {labels.map((label) => (
+        <li
+          key={label}
+          className="inline-flex items-center rounded-pill px-3 py-1 font-mono text-xs font-semibold uppercase leading-none tracking-wide"
+          style={{
+            backgroundColor: `color-mix(in srgb, ${phase.colorVar} 14%, transparent)`,
+            color: phase.colorVar,
+          }}
+        >
+          {label}
+        </li>
+      ))}
+    </motion.ul>
+  );
+}
+
 interface DesignThinkingDiagramProps {
   activePhase?: DesignThinkingPhase;
   variant?: 'full' | 'compact';
+  /**
+   * Optional per-phase "what I did" labels. When provided for a phase, small
+   * pills replace the generic design-thinking bullets under that hex.
+   */
+  activities?: Partial<Record<DesignThinkingPhase, string[]>>;
 }
 
 export default function DesignThinkingDiagram({
   activePhase,
   variant = 'full',
+  activities,
 }: DesignThinkingDiagramProps) {
   const reduce = useReducedMotion() ?? false;
+
+  const renderDetail = (phase: Phase, i: number) => {
+    const labels = activities?.[phase.id];
+    return labels && labels.length > 0 ? (
+      <Pills phase={phase} labels={labels} index={i} reduce={reduce} />
+    ) : (
+      <Bullets phase={phase} index={i} reduce={reduce} />
+    );
+  };
 
   if (variant === 'compact') {
     return (
@@ -179,9 +227,7 @@ export default function DesignThinkingDiagram({
                 />
               </svg>
               {active && (
-                <span className="font-mono text-xs uppercase tracking-[0.08em] text-aubergine">
-                  {phase.label}
-                </span>
+                <span className="eyebrow eyebrow--strong">{phase.label}</span>
               )}
             </div>
           );
@@ -213,17 +259,17 @@ export default function DesignThinkingDiagram({
             >
               <Hex phase={phase} index={i} active={active || !activePhase} reduce={reduce} />
               <div className="md:hidden">
-                <Bullets phase={phase} index={i} reduce={reduce} />
+                {renderDetail(phase, i)}
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Desktop bullets, laid out in the same 5-col grid beneath the hex chain */}
+      {/* Desktop detail, laid out in the same 5-col grid beneath the hex chain */}
       <div className="hidden md:grid md:grid-cols-5 md:gap-4">
         {PHASES.map((phase, i) => (
-          <Bullets key={phase.id} phase={phase} index={i} reduce={reduce} />
+          <div key={phase.id}>{renderDetail(phase, i)}</div>
         ))}
       </div>
     </div>

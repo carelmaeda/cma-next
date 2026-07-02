@@ -1,22 +1,32 @@
-# Bonus Bowls: A Cashback Loyalty Platform for a Fortune 500 Pet-Nutrition Brand
+# Bonus Bowls: A cashback loyalty platform for a Fortune 500 pet-nutrition brand
 
-**Timeline:** Fall 2025 to Spring 2026
-**Tools:** Figma, FigJam, Angular, GA4, Looker Studio
-**Role:** UX Research · UI/UX Design · Personas · User Flows · Wireframing · Prototyping · Usability Testing · Front-End Development · Analytics
-
-> **Working note (delete before publishing):** Items in `{{braces}}` are placeholders. Drop in your real quotes, persona, Figma links, usability findings, and launch numbers. Survey data (100 respondents, fall 2025) and the percentages are final. Checklist at the bottom.
-
----
-
-## Project Overview
-
-Bonus Bowls is a cashback loyalty platform for a Fortune 500 pet-nutrition brand. Canadian pet parents buy the brand's products at their vet, photograph the clinic receipt, upload it, and earn reward dollars they can cash out by Interac e-transfer once a reviewer approves it.
-
-I ran the research, designed the experience in Figma, shipped the front-end in Angular, and instrumented the live product with analytics. One backend engineer built the data layer, receipt pipeline, and payouts.
+> **Editing note (not published):** This file mirrors the **live** page at
+> `src/app/case-studies/bonus-bowls/page.tsx`. Edit the copy here freely and hand it
+> back — I'll apply your edits to the page. Headings below map to the page's blocks so
+> the round-trip stays clean. Items in `{{braces}}` are still placeholders on the live
+> site. Keep the anonymization: it's always "a Fortune 500 pet food brand," never
+> Hill's/Science Diet. myPurina and Receipt Hog are fine to name.
 
 ---
 
-## How I Leveraged AI
+## Hero
+
+{{**Hero visual:**}}
+
+**Title:** Bonus Bowls: A loyalty platform for a Fortune 500 pet brand
+
+**Framing:** Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph and upload their receipts, collect cashback, and redeem it for rewards. I ran the research, designed the experience, shipped the Angular front-end, and connected it to a comprehensive analytics dashboard.
+
+**Meta:**
+- **Timeline:** Fall 2025 → Spring 2026
+- **Tools:** Google Forms, Figma, FigJam, Angular, GA4, Looker Studio
+- **Role:** UX research, UI/UX, prototyping, usability testing, front-end, analytics.
+- **Industry:** Pet food
+
+
+---
+
+## How I Leveraged AI - Sticky Note 
 
 I directed AI like a build partner, which is how one person shipped a platform this size:
 
@@ -25,127 +35,131 @@ I directed AI like a build partner, which is how one person shipped a platform t
 - Generated tests and boilerplate that would have taken weeks by hand
 - Kept the research, design, and product calls mine, and reviewed and shipped every piece
 
-The thinking, what to build and why, stayed the work.
 
 ---
 
-## Problem
+## Section: About
 
-The brand's vet-channel products have the best margins and the worst stickiness. A pet parent tries the brand on a vet's recommendation, then drifts back to cheaper grocery-store food the next month. Once they leave the clinic, there is no reason to return and no relationship with the brand.
+Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph and upload their receipts, collect cashback, and redeem it for rewards.
+The client came to us with a problem: their products have the best margins but the worst stickiness. They were struggling to build loyalty among pet parents, since customers tend to pick pet food brands purely on price. This was indirectly weakening the long-term relationship between vets and their customers. A loyalty rewards platform is the obvious fix, but there were real challenges to face: most people don't keep receipts, and some existing programs are slow and unreliable, so pet parents don't trust them enough to bother.
 
-Receipt-based rewards are the obvious fix, but they are a friction minefield: most people don't keep receipts, and existing programs are slow and unreliable, so pet parents don't trust them enough to bother.
+So the real question was:
 
----
+## "How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?" ##
 
-## Solution
+Bonus Bowls closes that gap without leaving the app: photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer at $25. The whole design rests on one promise: the receipt part just works, which is exactly where competitors fall down.
 
-Bonus Bowls rewards pet parents in cash for buying the brand at the vet, without leaving the app. Photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer at $25. The whole design rests on one promise: the receipt part just works, which is exactly where competitors fall down.
-
----
-
-## The Design Process
-
-I ran the project through the five phases of design thinking:
-
-- **Empathize:** a 100-person survey and a competitive teardown
-- **Define:** a research-based persona, a POV, and How-Might-We questions
-- **Ideate:** user flows and a research-to-design map
-- **Prototype:** mid-fidelity Figma straight into a coded build
-- **Test:** usability testing before launch, live analytics after
 
 ---
 
-## Empathize
+### The Design Process
 
-### Primary Research
+I ran the project through the usual five phases of design thinking: user surveys and competitive analysis to **empathize**; a research-based persona, POV, and How-Might-We questions to **define**; user flows and wireframes to **ideate**; mid-fidelity Figma and Google Material to **prototype**; and usability testing and analytics after to **test**.
 
-I ran a 17-question anonymous survey of 100 Canadian pet parents in fall 2025. The goal: understand how people buy pet food, what they do with receipts, and what would make a rewards program worth their time, before designing anything.
+_(Insert the Design Thinking diagram. - add a pill under each step showing what I did according to the list above)_
 
-### Key Takeaways
+---
 
-- **People don't keep receipts.** 71% don't, and 30% wouldn't upload one at all. The biggest threat to a receipt-based program.
-- **They want cash, not stuff.** 66% wanted cash-back; just 3% wanted cheques. The reward had to be money.
-- **Mobile, but cautious.** 89% are smartphone-comfortable, but only 45% were comfortable sharing banking details. Trust had to be earned on every money screen.
-- **Demand is real.** 85% wanted a pet-food loyalty program. If engagement fell well below that, the design was the problem.
+## Section: Empathize
 
-### User Testimonials
+I ran a 5-minute survey targeting Canadian pet parents. We needed to understand how pet parents behave: where they buy pet food, how often, what they do with receipts, and what would make a rewards program worth their time. 
 
-> {{Strongest open-text survey quote, about not keeping or trusting receipts, or wanting cash.}}
->
-> {{Participant 1}}
+---
 
-> {{Second quote, ideally about wanting rewards for a vet purchase, or hesitation about a new program.}}
->
-> {{Participant 2}}
+### Key Takeaways (Transform this into a Bento Grid) (Hero are big bold tiles, Intermediate is medium tiles, small tiles are small)
+
+### Hero tile
+Justifies the project.
+
+1. **85% open to the program.** The demand proof and the reason the project exists. Full-width banner.
+
+### Intermediate tiles
+Findings that shaped or sized a design decision.
+
+2. **66% want cash, not merchandise.** Validates the biggest product decision: cash back over points.
+3. **50% don't keep receipts.** Defines the exact problem the design solves.
+4. **30% buy on price.** The loyalty problem in the users' own words.
+5. **47% spend about $100 a month.** Sizes the reward economics.
+
+### Small tiles
+Supporting context and numbers.
+
+6. **40% buy once a month.** Sets the engagement cadence.
+7. **89% smartphone-comfortable.** Reassures the mobile-first call.
+8. **Top brands mentioned.**
+9. **Top loyalty apps mentioned.**
+10. **80% are 20 to 40 years old.**
+
+
+Click the link below to see the full survey results.
+
+{{Include Survey Link Here}}
+
+
+## "Great news: people are open to the program. We learned that pet parents usually buy food once a month, which hints at a similar once-a-month usage of our platform. And we are looking at a young, tech-savvy, price-oriented audience. We also uncovered their favorite brands and platforms so we can run a competitive analysis." ##
+
 
 ### Competitive Analysis
 
-I scored the programs pet parents said they would compare this to on what drives success or failure: upload reliability, processing time, reward type, and trust.
+After reading through the survey responses, it was time to investigate the pet brands that came up most often, along with some general loyalty apps. We needed to understand what was already out there so we could pick the best features and avoid what was causing frustration.
 
-| Competitor | Strengths | Challenges |
-|---|---|---|
-| **myPurina** | Major national brand; established program; wide product range | Rejects ~60% of receipts; slow, opaque review |
-| **Receipt Hog** | Familiar receipt-scanning model; broad retailer coverage | Low reward value; points and sweepstakes, not cash; not pet-specific |
-| **{{third competitor, if analyzed}}** | {{strengths}} | {{challenges}} |
+To accomplish this research I signed myself up to the programs, downloaded the apps and used them, read numerous Google and App Store reviews, joined Reddit forums.
 
-**Key Insight:** Every option fails at the thing that matters most: accepting a receipt reliably and paying out in cash. The category leader rejects 60%. That gap was the opening.
+
+| Feature | Purina myPurina | Receipt Hog | Takeaways |
+|---|---|---|---|
+| Receipt Upload | ✗ 60% rejection rate | ✓ Universal acceptance | ✓ Accept receipts from every vendor, no rejections |
+| Processing Time | ✗ 3+ business days | ✗ Variable delays | ✓ Approve receipts in under 3 days |
+| App Reliability | ✓ Stable and fast | ✗ Stability issues | ✓ Keep the app stable and fast enough to trust |
+| Reward Options | ✗ Merchandise, no cash | ✗ Low cash, low reward | ✓ Pay out in real cash, not merchandise |
+| Customer Support | ✗ Email only | ✗ Limited response | ✓ Offer responsive support like live chat and email |
+
+
+
+
+## "Every program we looked at got one half right and dropped the other, so how might we deliver both: reliable, universal approvals and rewards worth cashing in?" ##
+
 
 ---
 
-## Define
+## Section: Define
 
-### User Persona
+Header: Now that we've mapped our users and our competition, we have a solid base to define our challenges and plan how to overcome them
 
-> Swap in your finished persona. The pain points, needs, and behaviours are drafted from the survey as a starting point.
+## Personas (summary)
 
-**{{Name}}** · {{Age}} · {{Occupation}} · {{Location, Canada}}
+**Elena Martinez — The Devoted Dog Mom**
+32, marketing coordinator, tech-comfortable but wants simple apps. Spends ~$90/month on her dog's prescription food. Needs fast receipt uploads, cash back she can use, and trust that her data is safe. Frustrated by complicated programs with unclear rules or slow rewards.
 
-{{Background paragraph: who they are, how pets and shopping fit their life, why a rewards program appeals.}}
+**David Thompson — The Multi-Pet Owner**
+40, works full-time, mobile-first, price-driven. Feeds three pets at $200+/month. Wants to earn on every purchase, cash out fast, and get instant receipt confirmation. Already juggles five reward apps, so this one has to just work or he drops it.
 
-**Pain Points**
-- Doesn't keep receipts, so most rewards programs are a non-starter
-- Tried receipt apps that were slow or rejected uploads, and stopped trusting them
-- Nervous about entering banking details in an app she doesn't know
-- Doesn't want to research how a program works
+**Linda Wilson — The Loyal Vet Customer**
+58, retired teacher, prefers phone calls over apps. Shops only at her vet. Wants rewards without downloading anything complicated, an in-person explanation, and reassurance her information is safe. Open to rewards but wary of anything that needs smartphone skills.
 
-**Needs & Goals**
-- Rewarded for vet purchases with zero hassle
-- Upload a receipt in seconds, from her phone, at the clinic
-- Trust that the cash actually arrives
-- Paid in cash, not points or merchandise
-
-**Behaviors**
-- Buys the brand on a vet's recommendation, then drifts to cheaper food
-- Runs almost everything from her phone
-- Comfortable with apps, careful with anything financial
-
-**Feelings**
-- Cautious · Skeptical · Hopeful · Motivated by real savings
-
-### POV Statement
-
-I want to explore ways to reward Canadian pet parents for buying the brand at their vet, quickly and reliably, without leaving the app, so a one-time vet recommendation can become a repeat habit, even for people who have never bought the brand.
+*click here to see the full User Persona document*
 
 ### How Might We
 
-- How might we make uploading a vet receipt effortless for people who don't keep receipts?
-- How might we make the reward trustworthy enough that bank-cautious users will cash out?
-- How might we turn a single vet recommendation into a lasting habit?
+- How might we convert price-driven shoppers into loyal customers?
+- How might we make uploading a receipt effortless for people who don't keep receipts?
+- How might we keep members coming back between monthly purchases? 
+
+## "Now that we defined the problems, how do we solve them?" ##
 
 ---
 
-## Ideate
+## Section: Ideate
 
-### From Research to Design Decisions
 
 Before opening Figma, I mapped each business goal to the research finding that should drive it, on one page the client signed off on. It stopped every later "what if we…" from reopening a settled decision.
 
 | Business goal | Research-backed solution |
 |---|---|
 | Drive repeat purchase | Cash-back at a **$25 minimum**, about one monthly purchase cycle |
-| Reward the purchase | One-tap photo upload, fast confirmation |
+| Reward the purchase | Quick photo capture, fast confirmation |
 | Build trust | Security messaging, 2FA, breached-password checks, consent-first analytics |
-| Win new customers | Sign-up bonus, educational content, denser cash-back than competitors |
+| Win new customers | Educational content, more generous cash-back than competitors |
 
 ### User Flows
 
@@ -154,36 +168,33 @@ I mapped the two core journeys so the path from "I bought it" to "I got paid" st
 - **Earn:** Sign up → Upload receipt (Photo → Details → Products → Review) → Reward dollars credited after review
 - **Redeem:** Reach $25 → Redeem → Choose e-transfer → Cash-out confirmed
 
-### Mid-Fidelity Wireframes
+{{Figma: user flows here}}
 
-Mid-fidelity wireframes let me lock layout, hierarchy, and the upload flow's logic without getting pulled into visual polish. This is where I gathered early feedback and fixed structural problems before building. These wireframes doubled as the flow and journey map for the build.
-
-{{Figma: mid-fidelity wireframes & flows}}
+## "With every decision mapped and signed off, the plan felt solid. Now the real question was how fast we could turn it into something people could actually use." ##
 
 ---
 
-## Prototype
+## Prototype: From wireframes straight to code
 
-### From Wireframes Straight to Code
+To build a prototype as fast as possible, we decided to use Google Material for our raw components. We chose Material for a few reasons:
 
-We skipped high-fidelity mockups. The mid-fidelity Figma covered wireframes and flow; the real visual design got built directly in Angular. Coding was where the "sauce" went in. The look, feel, and polish all happened in the product itself, not in a Figma comp.
+1. Google is the native platform the client already uses, so the look would feel familiar to stakeholders.
+2. It let us ship a quick mid-fidelity prototype for review.
+3. Material components are built to work with our Angular framework, which saved developer time.
 
-### Visual Direction
+### Visual direction
 
-The product had to feel trustworthy first and warm second, since people were sharing purchase and banking data for a brand most of them didn't buy yet. In code, that meant generous white space, photos of real pets over stock shots, and brand colour used sparingly so primary buttons stood out.
-
-### Built on Google Material
-
-Instead of building every component from scratch, I used Google's Material Design system (via Angular Material): accessible, familiar components out of the box. It sped up the build and freed up time for the screens that needed real craft, the upload and the dashboard.
+We pulled colors, typography, and core patterns from the brand's existing design system to keep Bonus Bowls consistent with its other products.
 
 ### Key Screens
 
 | Screen | Design decision | View |
 |---|---|---|
-| Sign-up | Bonus on screen one; banking deferred to cash-out | {{screenshot}} |
+| Sign-up | Banking deferred to cash-out | {{screenshot}} |
 | Receipt upload | Guided 4-step flow; one-tap camera; live validation | {{screenshot}} |
 | Earnings dashboard | Plain progress to the threshold; no gamification noise | {{screenshot}} |
-| Cash-out | E-transfer; transparent status; support one tap away | {{screenshot}} |
+| Redeem | E-transfer; transparent status; support one tap away | {{screenshot}} |
+
 
 ### From Prototype to Shipped Product
 
@@ -194,70 +205,67 @@ It shipped as a real product:
 - **Accessibility:** WCAG AA, passing AXE checks, with live announcements on receipt status changes.
 - **A full admin console:** the brand's reviewers approve receipts, manage payouts, and run the product catalog.
 
+## "The product was built and shipped. But building something and proving it works for real people are two very different things." ##
+
 ---
 
-## Test
+## Test: Before launch, and with live data after
 
 Testing happened twice: with real users on the prototype before launch, and with live data after.
 
-### Usability Testing
+### Usability testing
 
-I ran moderated usability tests with {{N}} participants ({{N}} current users, {{N}} interested). Each completed a few core tasks:
+I ran moderated usability tests with 5 participants (3 current users, 2 interested). Each completed a few core tasks:
 
-- {{Task 1: e.g., upload a receipt for a recent purchase}}
-- {{Task 2: e.g., check balance and start a cash-out}}
+- Upload a receipt for a recent vet purchase
+- Check your balance and start a cash-out
 
 **Goal:** see how easily people moved through the flow, gather feedback on look and feel, and find points of confusion.
 
-### Key Findings
+### Key findings
 
-{{Overall reaction. For example: participants found the upload flow clear and the cash-out trustworthy. Note any praise or sticking points.}}
+Participants moved through the upload process and described the redemption as trustworthy and fast, mostly because each step confirmed what had happened and the e-transfer payout was something they were already familiar with. The friction showed up in a few places: entering the invoice total before tax, needing a payment method before cash-out, and finding the right product in the catalog.
 
-### Changes Made After Testing
+### Changes made after testing
 
 The most useful part was watching where people hesitated. The fixes that came out of it:
 
-**Issue 1: {{title}}**
-- *Before:* {{what confused them}}
-- *After:* {{what you changed}}
+**Issue 1: People entered the total with tax included**
+- *Before:* On the Purchase Details step, several participants typed the full invoice total, tax included, even though rewards are based on the pre-tax product total.
+- *After:* Added a clear hint under the field ("Enter the pre-tax product total, before tax") and a matching line in the pre-submit checklist.
 
-**Issue 2: {{title}}**
-- *Before:* {{…}}
-- *After:* {{…}}
+**Issue 2: Cash-out stalled with no payment method saved**
+- *Before:* Participants reached the redemption screen ready to redeem, then discovered they first had to add an e-transfer email, which felt like an unexpected extra step.
+- *After:* Surfaced the payment-method prompt earlier and added a direct link to add one from the redemption screen, so people aren't sent hunting through settings.
 
-**Issue 3: {{title}}**
-- *Before:* {{…}}
-- *After:* {{…}}
-
+**Issue 3: Hard to find a product in a long list**
+- *Before:* On the Select Products step, participants scrolled a large catalog to locate their item.
+- *After:* Added search and category filters (dog/cat, dry/wet, prescription/science diet) at the top of the step.
 ### Final Product
 
-{{Annotated final screens or a link. Call out 2 to 3 best moments: the upload flow, the reward card, the cash-out confirmation.}}
 
-{{Final product: screenshots / link}}
+{{Final product: annotated screenshots / link}}
 
-### Validating in Production
+## Validating in Production
 
-Testing didn't stop at launch. I instrumented the live product so the brand could see whether real behaviour matched the research.
+Testing didn't stop at launch. I instrumented the live product so the brand could see whether real behaviour matched the research, and to lay a solid base for UX measurement so we can track how well future updates perform.
 
-The GA4 layer tracks the full member journey, 30+ events, with four real conversions: account created, receipt submitted, payout requested, payment method added. Three decisions kept the data honest:
+The GA4 layer tracks the full member journey across 30+ events, with four real conversions: account created, receipt submitted, payout requested, and payment method added. Three decisions kept the data honest:
 
 - **Privacy-first:** nothing is tracked until the user consents.
 - **Members vs. browsers:** every session is tagged registered or guest, so reports show real members, not all traffic.
 - **Bilingual in the data:** language is captured as a property, so English and French behaviour is visible, not guessed.
 
-A Looker Studio dashboard turns the raw events into plain-language answers. Every research number that justified a decision is now a live metric.
+A Looker Studio dashboard turns the raw events into plain-language answers that I shared with all stakeholders. Every research number that justified a decision is now a live metric.
 
-| Research said | The KPI it became |
-|---|---|
-| myPurina rejects 60% of receipts | Our approval rate vs. that 40% |
-| 90% aren't customers yet | % of sign-ups who are first-time customers |
-| 85% want this | Real engagement vs. that floor |
+Bonus Bowls launched in July 2026, so this data is just starting to flow. The signals below are a first read, not a verdict.
 
-**Early signals** *(placeholders):*
-- {{N}} sign-ups in {{X}} weeks
-- {{N}} receipts · {{N%}} approval *(vs. competitor's 40%)*
-- {{N}} redemptions · ${{N}} cashed out
-- {{N%}} first-time customers
+**Early signals**
+- **{{N}}** sign-ups _(in {{X}} weeks)_
+- **{{N}}%** receipt approval _(vs. competitor's 40%)_
+- **${{N}}** cashed out _(across {{N}} redemptions)_
+
+## "Between usability testing before launch and live analytics after, the product could finally answer its own hardest question: is it actually working?" ##
 
 ---
 
@@ -265,7 +273,7 @@ A Looker Studio dashboard turns the raw events into plain-language answers. Ever
 
 ### Main Insights
 
-The research was clear: pet parents want cash, won't tolerate a slow or unreliable receipt process, and need to trust a new program before sharing banking details. Every major decision (cash over points, one-tap upload, security on every money screen, e-transfer payouts) traces back to one of those findings. Designing from data meant every review became "show me the survey answer that says why."
+The research was clear: pet parents want cash, won't tolerate a slow or unreliable receipt process, and need to trust a new program before sharing banking details. Every major decision — cash over points, one-tap upload, security on every money screen, e-transfer payouts — traces back to one of those findings. Designing from data meant every review became "show me the survey answer that says why."
 
 ### What I Learned
 
@@ -280,27 +288,4 @@ The research was clear: pet parents want cash, won't tolerate a slow or unreliab
 
 Thanks for reading. Happy to talk through any part of the process, or just say hi.
 
-📧 {{your email}}
-🔗 {{portfolio / LinkedIn}}
-
----
----
-
-# CHECKLIST (delete before publishing)
-
-**Fill the placeholders** (`Ctrl+F` for `{{`):
-- 2 user quotes from your survey's open-text responses
-- Your finished persona (name, photo, demographics, background); I seeded the pain points, needs, and behaviours from the survey
-- Figma link for the mid-fidelity wireframes
-- Screenshots of the built screens (key screens table + final product)
-- Usability testing: participants, tasks, key findings, before/after fixes
-- Launch numbers
-- Contact details
-
-**Verify the competitive table.** myPurina's 60% rejection is from your research; check the other strengths and challenges against your actual teardown, and add or delete the third competitor row.
-
-**Verify the corrections** (vs. earlier drafts): Angular 21 stack · cashback dollars, not points · $25 threshold · e-transfer only · 4-step upload · bilingual, GA4/Looker, admin console, security · no high-fidelity Figma stage (mid-fi straight to code).
-
-**On the AI section:** it states plainly that AI did the implementation under your direction. Make sure you can speak to the design, product, and research decisions you owned, and that the split matches how you would describe it out loud.
-
-**Anonymization:** searched Hill's / Science Diet / etc., none appear. "Bonus Bowls" and "Paygos" do appear; keep only if you are comfortable. myPurina and Receipt Hog are named, which you confirmed is fine.
+📧 carelmaeda@gmail.com

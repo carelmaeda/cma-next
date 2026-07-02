@@ -34,7 +34,7 @@ const workCards: WorkCard[] = [
 
 function TagPill({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-pill bg-[rgba(187,187,187,0.18)] px-3 py-1 font-mono text-[11px] uppercase tracking-[0.06em] text-ink/70">
+    <span className="eyebrow inline-flex items-center rounded-pill bg-pill px-3 py-1">
       {children}
     </span>
   );
@@ -66,7 +66,7 @@ function CoverSlot({ card }: { card: WorkCard }) {
       aria-hidden="true"
     >
       <span
-        className="absolute right-5 top-3 font-numeral leading-none text-[6rem] opacity-25"
+        className="absolute right-5 top-3 font-numeral text-8xl leading-none opacity-25"
         style={{ color: card.accent }}
       >
         {card.number}
@@ -78,9 +78,7 @@ function CoverSlot({ card }: { card: WorkCard }) {
         >
           +
         </span>
-        <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-ink/55">
-          Cover slot · drop 4:3 .webp
-        </span>
+        <span className="eyebrow">Cover slot · drop 4:3 .webp</span>
       </div>
     </div>
   );
@@ -88,11 +86,11 @@ function CoverSlot({ card }: { card: WorkCard }) {
 
 export default function Work() {
   return (
-    <section id="work" className="px-[var(--gutter)] py-28 md:py-40">
+    <section id="work" className="px-gutter py-28 md:py-40">
       <div className="mx-auto max-w-wide">
         <MotionVertical>
           <header className="mb-12 md:mb-16">
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-ink">
+            <p className="eyebrow tracking-widest">
               Latest work
             </p>
           </header>
@@ -114,7 +112,7 @@ export default function Work() {
                     ))}
                   </div>
 
-                  <h3 className="mt-5 font-display font-medium leading-[1.1] tracking-tight text-ink text-[clamp(2rem,4vw,3rem)]">
+                  <h3 className="mt-5 font-display text-h2 font-medium text-ink">
                     {card.title}
                   </h3>
 
@@ -127,9 +125,7 @@ export default function Work() {
                     <span className="transition-transform duration-300 ease-standard group-hover:translate-x-1">
                       →
                     </span>
-                    <span className="font-mono text-xs font-normal uppercase tracking-[0.08em] text-muted-ink">
-                      · {card.readingTime} min
-                    </span>
+                    <span className="eyebrow">· {card.readingTime} min</span>
                   </span>
                 </div>
               </Link>

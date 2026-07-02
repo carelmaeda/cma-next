@@ -15,7 +15,7 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-hairline bg-white px-[var(--gutter)] pb-10 pt-20 md:pt-24">
+    <footer className="border-t border-hairline bg-white px-gutter pb-10 pt-20 md:pt-24">
       <div className="mx-auto max-w-wide">
         {/* Utility bar — inline nav + social icon buttons, capping the wordmark */}
         <div className="flex flex-col gap-8 pb-10 sm:flex-row sm:items-center sm:justify-between">
@@ -25,21 +25,21 @@ export default function Footer() {
                 key={l.label}
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="no-underline-grow font-display text-[0.95rem] font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
+                className="no-underline-grow font-display text-sm font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
               >
                 {l.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             {social.map(({ label, href, Icon }) => (
               <a
                 key={label}
                 href={href}
                 aria-label={label}
                 {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="no-underline-grow grid size-10 place-items-center rounded-full border border-hairline text-muted-ink transition duration-300 ease-standard hover:-translate-y-0.5 hover:border-ink hover:text-ink"
+                className="no-underline-grow grid size-10 place-items-center rounded-full border border-hairline text-muted-ink transition duration-300 ease-standard hover:-translate-y-1 hover:border-ink hover:text-ink"
               >
                 <Icon className="size-[18px]" />
               </a>
@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         {/* Colophon */}
-        <div className="flex flex-col gap-3 border-t border-hairline pt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-muted-ink sm:flex-row sm:items-center sm:justify-between">
+        <div className="eyebrow flex flex-col gap-3 border-t border-hairline pt-6 sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 Carel Maeda · Toronto, Canada</span>
           <span className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span>

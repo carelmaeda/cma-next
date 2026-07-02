@@ -21,7 +21,7 @@ const navLinks: { label: string; href: string; external?: boolean }[] = [
 /** Light-grey live-status capsule with a pulsing neon-green dot. */
 function StatusPill() {
   return (
-    <span className="hidden md:inline-flex items-center gap-2 rounded-pill bg-[rgba(187,187,187,0.18)] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.08em] text-ink/70">
+    <span className="eyebrow hidden items-center gap-2 rounded-pill bg-pill px-4 py-1 md:inline-flex">
       <span className="relative flex h-2 w-2">
         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accentGreen opacity-70" />
         <span className="relative inline-flex h-2 w-2 rounded-full bg-accentGreen" />
@@ -34,9 +34,9 @@ function StatusPill() {
 /** Wordmark: "Carel Maeda" + an electric-blue accent dot (the only chrome colour). */
 function Wordmark() {
   return (
-    <span className="inline-flex items-baseline gap-0.5 font-display text-[1.05rem] font-semibold tracking-snug text-ink">
+    <span className="inline-flex items-baseline gap-1 font-display text-base font-semibold tracking-snug text-ink">
       Carel Maeda
-      <span className="ml-0.5 h-1.5 w-1.5 translate-y-[-1px] rounded-full bg-accentBlue" aria-hidden="true" />
+      <span className="ml-1 h-2 w-2 -translate-y-px rounded-full bg-accentBlue" aria-hidden="true" />
     </span>
   );
 }
@@ -50,7 +50,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-wide px-[var(--gutter)] pt-4">
         {/* Self-contained floating glass pill — bounded edge + hairline + soft
             shadow reads as an intentional frosted element, never a smear. */}
-        <nav className="pointer-events-auto flex items-center justify-between gap-4 rounded-pill border border-hairline/80 bg-white/80 py-2.5 pl-6 pr-2.5 shadow-soft backdrop-blur-xl supports-[backdrop-filter]:bg-white/65">
+        <nav className="pointer-events-auto flex items-center justify-between gap-4 rounded-pill border border-hairline/80 bg-white/80 py-2 pl-6 pr-2 shadow-soft backdrop-blur-xl supports-[backdrop-filter]:bg-white/65">
         <Link
           href="/"
           onClick={close}
@@ -94,9 +94,7 @@ export default function Navbar() {
                 Site navigation and primary call-to-action.
               </SheetDescription>
               <nav className="mt-12 flex flex-col gap-1">
-                <p className="mb-4 font-mono text-xs uppercase tracking-[0.08em] text-muted-ink">
-                  Menu
-                </p>
+                <p className="eyebrow mb-4">Menu</p>
                 {navLinks.map((link) => (
                   <SheetClose asChild key={link.href}>
                     <Link

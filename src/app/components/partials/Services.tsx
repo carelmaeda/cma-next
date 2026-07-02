@@ -43,14 +43,14 @@ const services: Service[] = [
 
 export default function Services() {
   return (
-    <section id="services" className="px-[var(--gutter)] py-28 md:py-40">
+    <section id="services" className="px-gutter py-28 md:py-40">
       <div className="mx-auto max-w-wide">
         <MotionVertical>
           <header className="mb-14 max-w-prose md:mb-20">
-            <p className="mb-4 font-mono text-xs uppercase tracking-[0.14em] text-muted-ink">
+            <p className="eyebrow tracking-widest mb-4">
               What I do
             </p>
-            <h2 className="font-display text-ink font-medium leading-[1.06] tracking-tight text-[clamp(2rem,5vw,3.5rem)]">
+            <h2 className="font-display text-h2 font-medium text-ink">
               One person, the whole arc, from the first interview to the shipped build.
             </h2>
           </header>
@@ -62,7 +62,7 @@ export default function Services() {
               <div className="group flex cursor-default items-center justify-between gap-6 border-b border-hairline py-7 transition-colors duration-300 ease-standard md:py-9">
                 <div className="flex items-center gap-5 md:gap-8">
                   <span className="font-mono text-xs tracking-[0.1em] text-muted-ink">{number}</span>
-                  <h3 className="flex items-center gap-4 font-display font-medium tracking-tight text-ink text-[clamp(1.6rem,4vw,2.5rem)]">
+                  <h3 className="flex items-center gap-4 font-display text-h3 font-medium text-ink">
                     {/* Hover-reveal inline icon next to the word (ref detail). */}
                     <span className="inline-grid w-0 place-items-center overflow-hidden opacity-0 transition-all duration-300 ease-standard group-hover:w-[1.1em] group-hover:opacity-100">
                       <Icon className="size-[0.85em]" />

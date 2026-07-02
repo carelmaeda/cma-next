@@ -131,6 +131,14 @@ this voice.
   plus an unused Geist load) was fixed during the audit pass.
 - **Metadata:** every route should export its own `metadata`. Case
   study routes need title, description, and per-route OG image.
+- **Frontend style contract:** all UI work must follow
+  `.claude/docs/frontend-style-contract.md` — Tailwind for
+  layout/spacing/sizing only; typography, colour and decoration go
+  through design tokens (`text-h1…h4`, `tracking-wide/wider/widest`,
+  `bg-pill`, `bg-ink-hover`) and semantic CSS classes (`.eyebrow`,
+  the `.cs-*` case-study primitives). No arbitrary font sizes,
+  fractional spacing, or inline `rgba()`; extract any pattern used
+  3+ times; customise shadcn at the `src/components/ui/` primitive.
 
 ### 5. What never to do
 

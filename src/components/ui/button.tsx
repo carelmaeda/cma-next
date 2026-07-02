@@ -11,25 +11,25 @@ const buttonVariants = cva(
       variant: {
         // Primary, fully-rounded black pill, white text (the reference default)
         default:
-          "bg-ink text-white rounded-pill hover:bg-[#222] hover:-translate-y-0.5",
+          "bg-ink text-white rounded-pill hover:bg-ink-hover hover:-translate-y-1",
         // Secondary, same black pill (kept distinct for shadcn variant resolution)
         secondary:
-          "bg-ink text-white rounded-pill hover:bg-[#222] hover:-translate-y-0.5",
+          "bg-ink text-white rounded-pill hover:bg-ink-hover hover:-translate-y-1",
         // Outline, hairline border on white, translucent grey fill on hover
         outline:
-          "border border-hairline bg-white text-ink rounded-pill hover:bg-[rgba(187,187,187,0.18)] hover:-translate-y-0.5",
+          "border border-hairline bg-white text-ink rounded-pill hover:bg-pill hover:-translate-y-1",
         // Ghost, text only, translucent grey wash on hover
         ghost:
-          "bg-transparent text-ink rounded-pill hover:bg-[rgba(187,187,187,0.18)]",
+          "bg-transparent text-ink rounded-pill hover:bg-pill",
         // Link, inherits the global ink underline-grow feel
         link:
           "text-ink underline-offset-4 hover:underline",
         // Destructive kept for shadcn compat
         destructive:
-          "bg-destructive text-destructive-foreground rounded-pill hover:-translate-y-0.5 hover:opacity-95",
+          "bg-destructive text-destructive-foreground rounded-pill hover:-translate-y-1 hover:opacity-95",
         // Legacy alias for any leftover `variant="dark"` references
         dark:
-          "bg-ink text-white rounded-pill hover:bg-[#222] hover:-translate-y-0.5",
+          "bg-ink text-white rounded-pill hover:bg-ink-hover hover:-translate-y-1",
       },
       size: {
         default: "h-12 px-7 py-2 text-sm",

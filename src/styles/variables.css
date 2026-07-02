@@ -85,6 +85,7 @@ h6 {
   --color-muted-2:      #888888;   /* secondary metadata */
   --color-faded:        rgba(0, 0, 0, 0.4);          /* faded caption */
   --color-pill-fill:    rgba(187, 187, 187, 0.18);   /* translucent pill / hover */
+  --color-ink-hover:    #222222;   /* pill button hover darken */
   --color-hairline:     #E8E8E8;   /* hairline divider */
 
   /* Accents, used sparingly, inside content / data-viz only */
