@@ -174,7 +174,7 @@ export default function BonusBowlsPage() {
 
         {/* Hero */}
         <header className="grid gap-sub">
-          <MotionVertical className="max-w-[58rem]">
+          <MotionVertical>
             <h1>Bonus Bowls: A loyalty platform for a Fortune 500 pet brand</h1>
             <p className="mt-block max-w-prose text-lg leading-relaxed text-ink md:text-xl">
               Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph
@@ -264,7 +264,7 @@ export default function BonusBowlsPage() {
             <LinkPlaceholder label="Full survey results" />
           </div>
 
-          <blockquote><p>Great news: people are open to the program. We learned that pet parents usually buy food once a month, which hints at a similar once-a-month usage of our platform. And we are looking at a young, tech-savvy, price-oriented audience. We also uncovered their favorite brands and platforms so we can run a competitive analysis.</p></blockquote>
+          <blockquote><p>Great news: people are open to the program. <br /> Beyond that, we found that pet parents shop monthly (suggesting a similar usage cadence for our platform), the audience is young, tech-savvy, and price-driven, and we've identified their favorite brands and platforms to enable a competitive analysis.</p></blockquote>
 
           <h3>Competitive Analysis</h3>
           <p>After reading through the survey responses, it was time to investigate the pet brands that came up most often, along with some general loyalty apps. We needed to understand what was already out there so we could pick the best features and avoid what was causing frustration.</p>
