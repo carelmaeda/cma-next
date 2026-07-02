@@ -24,7 +24,7 @@ const workCards: WorkCard[] = [
     tags: ['Consumer', 'Strategy & Impact'],
     title: 'Bonus Bowls',
     description:
-      'A cashback loyalty platform for a Fortune 500 pet-nutrition brand: researched, designed, and shipped end-to-end, with the strategy built from a 100-respondent primary study.',
+      'A cashback loyalty platform for a Fortune 500 pet-nutrition brand: From User Research to Live.',
     href: '/case-studies/bonus-bowls',
     readingTime: 4,
     accent: 'var(--color-green)',

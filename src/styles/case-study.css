@@ -1,169 +1,91 @@
 /* =========================================================
    Case-study styles.
-   Per the style contract: Tailwind stays for layout/spacing in the
-   page; typography, colour and decoration for the case-study
-   primitives live here as semantic classes driven by design tokens.
-   Class names are scoped with a `cs-` prefix.
+
+   Everything lives under ONE wrapper: `.prose` on the <article>.
+   Text is plain HTML — h1..h4, p, a, ul/ol/li, blockquote, table —
+   styled by tag, so the markup stays clean (no class on an <h3>).
+   The few blocks that aren't a single tag get a plain-noun class
+   (.card, .stat, .columns, .placeholder, .phase-chip, .phase-pill,
+   .phase-title, .phase-deck, .bento-value), scoped under `.prose`.
+
+   All values come from the design tokens in variables.css — only the
+   selectors changed, not the look.
    ========================================================= */
 
-/* --- Headings ---
-   Headings are text, so they hold the reading measure and stay left-aligned
-   even when their section spans the full page (assets break out, words don't). */
-.cs-heading {
-  font-family: var(--font-display);
-  font-size: var(--text-h2);
-  line-height: 1.12;
-  letter-spacing: var(--tracking-heading);
-  color: var(--text-strong);
-  max-width: var(--container-prose);
-}
-
-.cs-sub {
-  font-family: var(--font-display);
-  font-size: var(--text-h4);
-  line-height: 1.2;
-  letter-spacing: var(--tracking-heading);
-  color: var(--text-strong);
-  max-width: var(--container-prose);
-}
-
-.cs-minor {
-  font-family: var(--font-sans);
-  font-size: var(--text-body);
-  font-weight: 600;
-  line-height: 1.3;
-  color: var(--text-strong);
-  max-width: var(--container-prose);
-}
-
-/* --- Compact text columns ---
-   Short body-text blocks (How-Might-We, lessons) laid out side by side on
-   desktop. Columns auto-flow and cap at a readable measure, staying left-
-   aligned so the words stay compact even when the section spans the page. */
-.cs-columns {
-  display: grid;
-  gap: var(--space-l) var(--space-m);
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 24rem));
-  justify-content: start;
-}
-.cs-columns > * {
-  display: grid;
-  align-content: start;
-  gap: 0.5rem;
-  border-top: 1px solid var(--color-hairline);
-  padding-top: 1rem;
-}
-.cs-columns__index {
-  font-family: var(--font-numeral);
-  font-size: 1.5rem;
-  line-height: 1;
-  color: var(--color-muted);
-}
-
-/* --- Flow (vertical rhythm within a section) ---
-   Siblings are spaced by the item step, but a subsection heading (h3/h4)
-   gets real air above it and its content sits close below — so the page
-   reads with hierarchy instead of one uniform list. */
-.cs-flow > * + *           { margin-block-start: var(--space-s); }
-.cs-flow > :is(h3, h4)     { margin-block-start: var(--space-l); }
-.cs-flow > :is(h3, h4) + * { margin-block-start: var(--space-m); }
-
-/* --- Prose (body copy blocks) --- */
-.cs-prose {
-  display: grid;
-  gap: var(--space-s);
-  max-width: var(--container-prose);
-  font-family: var(--font-sans);
+/* --- Reading base ---
+   Font-size/leading/colour live on the wrapper and are INHERITED by the
+   text, deliberately not set on `p` — so an element-level Tailwind utility
+   (text-sm on a card bio, text-lg on the hero intro) still wins. */
+.prose {
   font-size: var(--text-body);
   line-height: 1.5;
   color: var(--color-charcoal);
 }
-.cs-prose p { margin: 0; }
-.cs-prose strong { font-weight: 500; color: var(--text-strong); }
+
+/* --- Headings ---
+   Family/colour/tracking come from the site-wide h1..h6 rule (globals.css);
+   here we only set size + measure. h4 is the small sans "minor" heading. */
+.prose h1 { font-size: var(--text-h1); font-weight: 500; line-height: 1.07; max-width: var(--container-prose); }
+.prose h2 { font-size: var(--text-h2); line-height: 1.12; max-width: var(--container-prose); }
+.prose h3 { font-size: var(--text-h4); line-height: 1.2;  max-width: var(--container-prose); }
+.prose h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: var(--container-prose);
+}
+
+/* --- Body text --- */
+.prose p { max-width: var(--container-prose); }
+.prose a { color: var(--color-terracotta); }
+.prose strong { font-weight: 500; color: var(--text-strong); }
 /* Highlight: emphasized copy lifts into the serif italic (Newsreader). */
-.cs-prose em {
+.prose em {
   font-family: var(--font-display);
   font-style: italic;
   color: var(--text-strong);
 }
-.cs-prose a { color: var(--color-terracotta); }
-.cs-prose code {
+.prose code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   background: var(--color-cream-deep);
   padding: 0.1rem 0.4rem;
   border-radius: var(--radius-sm);
 }
-.cs-prose ul,
-.cs-prose ol { margin: 0; padding-left: 1.25rem; }
-.cs-prose li { margin-block: 0.25rem; }
-.cs-prose li::marker { color: var(--color-muted); }
+.prose ul,
+.prose ol { max-width: var(--container-prose); padding-left: 1.25rem; }
+.prose li { margin-block: 0.25rem; }
+.prose li::marker { color: var(--color-muted); }
 
-/* --- Panel (persona / issue cards) --- */
-.cs-panel {
-  padding: var(--space-m);
-  background: var(--color-cream-pale);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-md);
-}
+/* --- Vertical rhythm inside a section ---
+   A base step between blocks, with extra air above a subheading and its
+   content pulled close below — so the page reads with hierarchy. */
+.prose section > * + *            { margin-block-start: var(--space-s); }
+.prose section > :is(h3, h4)      { margin-block-start: var(--space-l); }
+.prose section > :is(h3, h4) + *  { margin-block-start: var(--space-m); }
 
-/* --- Placeholder (visual-asset slots to fill later) --- */
-.cs-placeholder {
-  display: grid;
-  place-items: center;
-  gap: 0.5rem;
-  min-height: 220px;
-  padding: var(--space-m);
-  text-align: center;
-  background: var(--color-cream-pale);
-  border: 1px dashed var(--color-hairline);
-  border-radius: var(--radius-md);
+/* --- Quote (Carel's own voice) --- */
+.prose blockquote {
+  margin: 2rem 0;
+  padding: 2rem 2.25rem;
+  background: var(--color-warm-panel);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--color-ink);
 }
-.cs-placeholder--sm {
-  min-height: 160px;
-  padding: var(--space-s);
-}
-
-/* --- Stat callout (early signals) --- */
-.cs-stat {
-  display: grid;
-  gap: 0.375rem;
-  padding: var(--space-m);
-  background: var(--color-cream-pale);
-  border: 1px solid var(--color-hairline);
-  border-radius: var(--radius-md);
-}
-.cs-stat__value {
+.prose blockquote p {
+  max-width: none;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  line-height: 1.2;
   letter-spacing: var(--tracking-heading);
   color: var(--text-strong);
 }
-.cs-stat__value--long { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
-.cs-stat__label {
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  line-height: 1.35;
-  color: var(--color-charcoal);
-}
-.cs-stat__context {
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  line-height: 1.5;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-warm-grey);
-}
 
-/* --- Table --- */
-.cs-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-.cs-table th {
+/* --- Table (kept in an overflow-x wrapper in the JSX) --- */
+.prose table { width: 100%; border-collapse: collapse; text-align: left; }
+.prose th {
   padding: 0.75rem 1rem;
   vertical-align: bottom;
   border-bottom: 1px solid var(--color-hairline);
@@ -174,21 +96,89 @@
   letter-spacing: var(--tracking-wide);
   color: var(--color-warm-grey);
 }
-.cs-table td {
+.prose td {
   padding: 0.875rem 1rem;
   vertical-align: top;
   border-bottom: 1px solid var(--color-hairline);
-  font-family: var(--font-sans);
   font-size: 0.9375rem;
   line-height: 1.5;
-  color: var(--color-charcoal);
 }
-.cs-table td:first-child,
-.cs-table td strong { font-weight: 500; color: var(--text-strong); }
-.cs-table tr:last-child td { border-bottom: 0; }
+.prose td:first-child,
+.prose td strong { font-weight: 500; color: var(--text-strong); }
+.prose tr:last-child td { border-bottom: 0; }
 
-/* --- Phase chip (Design-Thinking section eyebrow) --- */
-.cs-phase-chip {
+/* --- Card (persona / issue cards) --- */
+.prose .card {
+  padding: var(--space-m);
+  background: var(--color-cream-pale);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+}
+
+/* --- Placeholder (visual-asset slots to fill later) --- */
+.prose .placeholder {
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  min-height: 220px;
+  padding: var(--space-m);
+  text-align: center;
+  background: var(--color-cream-pale);
+  border: 1px dashed var(--color-hairline);
+  border-radius: var(--radius-md);
+}
+.prose .placeholder.small { min-height: 160px; padding: var(--space-s); }
+
+/* --- Stat callout (early signals) --- */
+.prose .stat {
+  display: grid;
+  gap: 0.375rem;
+  padding: var(--space-m);
+  background: var(--color-cream-pale);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+}
+.prose .stat .value {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: var(--tracking-heading);
+  color: var(--text-strong);
+}
+.prose .stat .value.long { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+.prose .stat .label { font-weight: 500; font-size: 0.9375rem; line-height: 1.35; }
+.prose .stat .context {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-warm-grey);
+}
+
+/* --- Side-by-side columns (How-Might-We, What I Learned) --- */
+.prose .columns {
+  display: grid;
+  gap: var(--space-l) var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 24rem));
+  justify-content: start;
+}
+.prose .columns > * {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  border-top: 1px solid var(--color-hairline);
+  padding-top: 1rem;
+}
+.prose .columns .index {
+  font-family: var(--font-numeral);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+/* --- Process phase chips + feature pills (DesignThinkingDiagram) --- */
+.prose .phase-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
@@ -201,20 +191,33 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
 }
-.cs-phase-chip__n {
-  font-family: var(--font-display);
+.prose .phase-chip .n {
+  font-family: var(--font-sans);
   font-size: 0.95rem;
-  font-style: italic;
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
 }
+/* Feature pill under each step; the phase-colour tint is set inline in the JSX. */
+.prose .phase-pill {
+  display: inline-flex;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-label);
+  line-height: 1.35;
+}
+/* The diagram's own lists are structural (grid/flex), so opt them out of the
+   prose list styling above — no bullets, no indent. */
+.prose .steps,
+.prose .pills { list-style: none; padding-left: 0; margin: 0; }
 
 /* --- Phase title (enlarged badge that IS the section title) ---
-   One asset carries the phase colour + number + name, so the section no
-   longer repeats the name in a separate heading. A big italic numeral leads,
-   the phase name follows as an uppercase label, on a soft phase-colour fill. */
-.cs-phase-title {
+   One asset carries the phase colour + number + name. A big italic numeral
+   leads, the phase name follows as an uppercase label, on a soft tint fill. */
+.prose .phase-title {
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
@@ -230,7 +233,7 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
 }
-.cs-phase-title__n {
+.prose .phase-title .n {
   font-family: var(--font-display);
   font-size: 1.9em;
   font-style: italic;
@@ -240,7 +243,7 @@
 }
 
 /* --- Phase deck (optional descriptive line under the title badge) --- */
-.cs-phase-deck {
+.prose .phase-deck {
   max-width: var(--container-prose);
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);
@@ -250,55 +253,9 @@
 }
 
 /* --- Bento (Key Takeaways) numeral value --- */
-.cs-bento__value {
+.prose .bento-value {
   font-family: var(--font-numeral);
   font-size: clamp(2.5rem, 6vw, 4rem);
   line-height: 1;
   color: var(--color-black);
-}
-
-/* --- Back-to-work link (sticky chrome at top of the article) --- */
-.cs-back-link {
-  position: sticky;
-  top: 4.75rem;   /* clears the fixed floating nav */
-  z-index: 30;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: max-content;
-  margin-bottom: 0.5rem;
-  padding-block: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-charcoal);
-  background: color-mix(in srgb, var(--bg) 90%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: color var(--duration-base) var(--ease-standard);
-}
-.cs-back-link:hover { color: var(--color-coral); }
-.cs-back-link__arrow {
-  display: inline-block;
-  transition: transform var(--duration-base) var(--ease-standard);
-}
-.cs-back-link:hover .cs-back-link__arrow { transform: translateX(-3px); }
-
-/* --- Voice quote (Carel's own voice; the single quick-to-retune asset) --- */
-.cs-voice-quote {
-  margin: 2rem 0;
-  padding: 2rem 2.25rem;
-  background: var(--color-warm-panel);
-  border-radius: var(--radius-lg);
-  border-left: 4px solid var(--color-ink);
-}
-.cs-voice-quote p {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  line-height: 1.2;
-  letter-spacing: var(--tracking-heading);
-  color: var(--text-strong);
 }

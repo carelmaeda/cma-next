@@ -13,10 +13,16 @@ strictly.
   interaction fills are `bg-pill` and `bg-ink-hover`. **Never** hardcode an
   arbitrary font size, fractional spacing step, or inline `rgba()`.
 - **Decoration lives in CSS, not className soup.** Site-wide primitives are in
-  `src/styles/globals.css` (e.g. `.eyebrow`); case-study primitives are in
-  `src/styles/case-study.css` (`.cs-heading`, `.cs-sub`, `.cs-minor`, `.cs-prose`,
-  `.cs-panel`, `.cs-placeholder`, `.cs-stat*`, `.cs-table`, `.cs-phase-chip`,
-  `.cs-voice-quote`). Tailwind in JSX is for layout/spacing/sizing.
+  `src/styles/globals.css` (e.g. `.eyebrow`). The case study
+  (`src/styles/case-study.css`) uses **one `.prose` wrapper** on the `<article>`
+  and styles **plain HTML by tag** inside it (`.prose h2`, `.prose h3`,
+  `.prose p`, `.prose ul`, `.prose blockquote`, `.prose table`…), so text
+  markup stays classless. Only blocks that aren't a single tag get a
+  **plain-noun class scoped under `.prose`** (`.prose .card`, `.prose .stat`,
+  `.prose .columns`, `.prose .placeholder`, `.prose .phase-chip`,
+  `.prose .phase-pill`, `.prose .phase-title`, `.prose .bento-value`). Do **not**
+  reintroduce `cs-*` prefixes or a class on every heading/paragraph. Tailwind in
+  JSX is for layout/spacing/sizing.
 - **shadcn is customised at the primitive** (`src/components/ui/*`) via theme
   tokens — never patched with page-level overrides.
 

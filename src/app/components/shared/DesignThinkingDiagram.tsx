@@ -87,11 +87,11 @@ export default function DesignThinkingDiagram({
     );
   }
 
-  // Editorial "process index" — a numbered horizontal stepper. Serif numerals
-  // over a hairline track, a tiny phase-colour hex as the only accent, and the
-  // activities listed beneath. Monochrome and restrained, matching the site.
+  // Editorial "process index" — a numbered horizontal stepper. No card box:
+  // a phase-colour chip leads each step, and its activities sit beneath as
+  // small phase-tinted pills that re-group them under the phase.
   return (
-    <ol className="grid grid-cols-1 gap-x-8 gap-y-sub md:grid-cols-5">
+    <ol className="steps grid grid-cols-1 gap-x-8 gap-y-sub md:grid-cols-5">
       {PHASES.map((phase, i) => {
         const labels = activities?.[phase.id] ?? phase.bullets;
         return (
@@ -101,10 +101,10 @@ export default function DesignThinkingDiagram({
             whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-10%' }}
             transition={{ duration: 0.4, ease: EASE_OUT, delay: reduce ? 0 : i * 0.08 }}
-            className="cs-panel grid content-start gap-3"
+            className="grid content-start gap-2"
           >
             <span
-              className="cs-phase-chip"
+              className="phase-chip"
               style={{
                 backgroundColor: `color-mix(in srgb, ${phase.colorVar} 12%, transparent)`,
               }}
@@ -112,12 +112,18 @@ export default function DesignThinkingDiagram({
               <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
                 <path d={HEX_PATH} fill={phase.colorVar} />
               </svg>
-              <span className="cs-phase-chip__n">{String(i + 1).padStart(2, '0')}</span>
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
               <span>{phase.label}</span>
             </span>
-            <ul className="grid gap-1">
+            <ul className="pills flex flex-col items-start gap-1">
               {labels.map((l) => (
-                <li key={l} className="text-sm leading-snug text-muted-ink">
+                <li
+                  key={l}
+                  className="phase-pill"
+                  style={{
+                    backgroundColor: `color-mix(in srgb, ${phase.colorVar} 15%, transparent)`,
+                  }}
+                >
                   {l}
                 </li>
               ))}

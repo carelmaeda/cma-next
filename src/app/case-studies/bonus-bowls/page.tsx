@@ -1,32 +1,28 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import Link from 'next/link';
 import DesignThinkingDiagram from '@/app/components/shared/DesignThinkingDiagram';
 import { MotionVertical, MotionStagger, MotionItem } from '@/app/components/partials/Motions';
 
 export const metadata: Metadata = {
   title: 'Bonus Bowls: A loyalty platform for a Fortune 500 pet brand',
   description:
-    'Bonus Bowls rewards Canadian pet parents for their pet food purchases: photograph the receipt, collect cashback, and redeem it for rewards. I ran the research, designed the experience, shipped the Angular front-end, and connected it to an analytics dashboard.',
+    'Bonus Bowls rewards Canadian pet parents for their pet food purchases: photograph the receipt, collect cashback, and redeem it for rewards. I ran an User Research, designed the experience, shipped the Angular front-end, and connected it to an analytics dashboard.',
 };
 
 /* ------------------------------------------------------------------ *
- * Local structure for this one case study. Layout/spacing stays in
- * Tailwind; typography, colour and decoration live in the `cs-*`
- * classes (case-study.css) and the site-wide `.eyebrow` (globals.css).
+ * One case study. The <article> carries `.prose`, so text is authored
+ * as plain HTML (h2/h3/p/ul/blockquote/table) and styled by tag in
+ * case-study.css. Only true components (cards, stats, the process
+ * chips) take a plain-noun class. Layout/spacing stays in Tailwind.
  * ------------------------------------------------------------------ */
-
-function Prose({ children }: { children: ReactNode }) {
-  return <div className="cs-prose">{children}</div>;
-}
 
 function Section({ heading, children }: { heading: string; children: ReactNode }) {
   return (
-    <section className="grid gap-block">
+    <section>
       <MotionVertical>
-        <h2 className="cs-heading">{heading}</h2>
+        <h2>{heading}</h2>
       </MotionVertical>
-      <div className="cs-flow">{children}</div>
+      {children}
     </section>
   );
 }
@@ -51,46 +47,34 @@ function Phase({
 }) {
   const { n, label, color } = PHASES[phase];
   return (
-    <section id={phase} className="grid gap-block">
+    <section id={phase}>
       <MotionVertical>
         <div className="grid gap-3">
           {/* One asset: the enlarged phase badge doubles as the section title. */}
           <h2
-            className="cs-phase-title"
+            className="phase-title"
             style={{ backgroundColor: `color-mix(in srgb, ${color} 18%, transparent)` }}
           >
             <svg viewBox="0 0 100 100" className="h-6 w-6 shrink-0" aria-hidden="true">
               <path d={HEX_PATH} fill={color} />
             </svg>
-            <span className="cs-phase-title__n">{n}</span>
+            <span className="n">{n}</span>
             <span>{label}</span>
           </h2>
-          {deck && <p className="cs-phase-deck">{deck}</p>}
+          {deck && <p className="phase-deck">{deck}</p>}
         </div>
       </MotionVertical>
-      <div className="cs-flow">{children}</div>
+      {children}
     </section>
-  );
-}
-
-function Sub({ children }: { children: ReactNode }) {
-  return <h3 className="cs-sub">{children}</h3>;
-}
-
-function Voice({ children }: { children: ReactNode }) {
-  return (
-    <blockquote className="cs-voice-quote">
-      <p>{children}</p>
-    </blockquote>
   );
 }
 
 function Stat({ value, label, context }: { value: string; label: string; context?: string }) {
   return (
-    <div className="cs-stat">
-      <span className={`cs-stat__value${value.length > 12 ? ' cs-stat__value--long' : ''}`}>{value}</span>
-      <span className="cs-stat__label">{label}</span>
-      {context && <span className="cs-stat__context">{context}</span>}
+    <div className="stat">
+      <span className={`value${value.length > 12 ? ' long' : ''}`}>{value}</span>
+      <span className="label">{label}</span>
+      {context && <span className="context">{context}</span>}
     </div>
   );
 }
@@ -98,7 +82,7 @@ function Stat({ value, label, context }: { value: string; label: string; context
 function Figure({ placeholder, alt }: { placeholder: string; alt: string }) {
   return (
     <figure className="m-0">
-      <div className="cs-placeholder" role="img" aria-label={alt}>
+      <div className="placeholder" role="img" aria-label={alt}>
         <span className="eyebrow eyebrow--strong">Visual asset</span>
         <p className="max-w-prose text-sm text-warm-grey">{placeholder}</p>
       </div>
@@ -108,8 +92,8 @@ function Figure({ placeholder, alt }: { placeholder: string; alt: string }) {
 
 function Table({ headers, rows }: { headers: string[]; rows: ReactNode[][] }) {
   return (
-    <div className="my-4 overflow-x-auto rounded-md border border-hairline">
-      <table className="cs-table">
+    <div className="overflow-x-auto rounded-md border border-hairline">
+      <table>
         <thead>
           <tr>
             {headers.map((h) => (
@@ -151,7 +135,7 @@ function Bento({ cells }: { cells: BentoCell[] }) {
           >
             {c.kind === 'stat' ? (
               <div className="flex h-full flex-col justify-end">
-                <span className="cs-bento__value">{c.value}</span>
+                <span className="bento-value">{c.value}</span>
                 <span className="mt-2 text-sm text-ink">{c.label}</span>
               </div>
             ) : (
@@ -186,17 +170,15 @@ function LinkPlaceholder({ label }: { label: string }) {
 export default function BonusBowlsPage() {
   return (
     <main className="bg-white py-page">
-      <article className="wrap wrap--wide grid gap-section">
+      <article className="prose wrap wrap--wide grid gap-section">
 
         {/* Hero */}
         <header className="grid gap-sub">
           <MotionVertical className="max-w-[58rem]">
-            <h1 className="font-display text-h1 font-medium text-ink">
-              Bonus Bowls: A loyalty platform for a Fortune 500 pet brand
-            </h1>
+            <h1>Bonus Bowls: A loyalty platform for a Fortune 500 pet brand</h1>
             <p className="mt-block max-w-prose text-lg leading-relaxed text-ink md:text-xl">
               Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph
-              and upload their receipts, collect cashback, and redeem it for rewards. I ran the research, designed the
+              and upload their receipts, collect cashback, and redeem it for rewards. I ran the User Research, designed the
               experience, shipped the Angular front-end, and connected it to a comprehensive analytics dashboard.
             </p>
           </MotionVertical>
@@ -227,35 +209,27 @@ export default function BonusBowlsPage() {
             aria-label="How I leveraged AI on this project"
           >
             <p className="eyebrow">Note</p>
-            <h2 className="cs-sub">How I Leveraged AI</h2>
-            <Prose>
-              <p>I directed AI like a build partner, which is how one person shipped a platform this size:</p>
-              <ul>
-                <li>Turned my wireframes and design decisions into working Angular components</li>
-                <li>Drafted the GA4 analytics instrumentation to my spec</li>
-                <li>Generated tests and boilerplate that would have taken weeks by hand</li>
-                <li>Kept the research, design, and product calls mine, and reviewed and shipped every piece</li>
-              </ul>
-            </Prose>
+            <h3>How I Leveraged AI</h3>
+            <p>I directed AI like a build partner, which is how one person shipped a platform this size:</p>
+            <ul>
+              <li>Turned my wireframes and design decisions into working Angular components</li>
+              <li>Drafted the GA4 analytics instrumentation to my spec</li>
+              <li>Generated tests and boilerplate that would have taken weeks by hand</li>
+              <li>Kept the research, design, and product calls mine, and reviewed and shipped every piece</li>
+            </ul>
           </aside>
         </MotionVertical>
 
         <Section heading="About">
-          <Prose>
-            <p>Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph and upload their receipts, collect cashback, and redeem it for rewards.</p>
-            <p>The client came to us with a problem: their products have the best margins but the worst stickiness. They were struggling to build loyalty among pet parents, since customers tend to pick pet food brands purely on price. This was indirectly weakening the long-term relationship between vets and their customers. A loyalty rewards platform is the obvious fix, but there were real challenges to face: most people don&rsquo;t keep receipts, and some existing programs are slow and unreliable, so pet parents don&rsquo;t trust them enough to bother.</p>
-            <p>So the real question was:</p>
-          </Prose>
-          <Prose>
-            <p>Bonus Bowls closes that gap without leaving the app: photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer. The whole design rests on one promise: the receipt part just works , which is exactly where competitors fall down.</p>
-          </Prose>
-          <Voice>How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?</Voice>
+          <p>Bonus Bowls is a platform that rewards Canadian pet parents for their pet food purchases. Users photograph and upload their receipts, collect cashback, and redeem it for rewards.</p>
+          <p>The client came to us with a problem: their products have the best margins but the worst stickiness. They were struggling to build loyalty among pet parents, since customers tend to pick pet food brands purely on price. This was indirectly weakening the long-term relationship between vets and their customers. A loyalty rewards platform is the obvious fix, but there were real challenges to face: most people don&rsquo;t keep receipts, and some existing programs are slow and unreliable, so pet parents don&rsquo;t trust them enough to bother.</p>
+          <p>So the real question was:</p>
+          <p>Bonus Bowls closes that gap without leaving the app: photograph the receipt, get reward dollars after a quick review, and cash out by e-transfer. The whole design rests on one promise: the receipt part just works , which is exactly where competitors fall down.</p>
+          <blockquote><p>How do we build a rewards platform that pet parents actually trust, and make rewards actually feel rewarding?</p></blockquote>
         </Section>
 
         <Section heading="The Design Process">
-          <Prose>
-            <p>I ran the project through the usual five phases of design thinking: user surveys and competitive analysis to <strong>empathize</strong>; a research-based persona, POV, and How-Might-We questions to <strong>define</strong>; user flows and wireframes to <strong>ideate</strong>; mid-fidelity Figma and Google Material to <strong>prototype</strong>; and usability testing and analytics after to <strong>test</strong>.</p>
-          </Prose>
+          <p>I ran the project through the usual five phases of design thinking: user surveys and competitive analysis to <strong>empathize</strong>; a research-based persona, POV, and How-Might-We questions to <strong>define</strong>; user flows and wireframes to <strong>ideate</strong>; mid-fidelity Figma and Google Material to <strong>prototype</strong>; and usability testing and analytics after to <strong>test</strong>.</p>
           <DesignThinkingDiagram
             activities={{
               empathize: ['User surveys', 'Competitive analysis'],
@@ -268,11 +242,9 @@ export default function BonusBowlsPage() {
         </Section>
 
         <Phase phase="empathize">
-          <Prose>
-            <p>I ran a 5-minute survey targeting Canadian pet parents. We needed to understand how pet parents behave: where they buy pet food, how often, what they do with receipts, and what would make a rewards program worth their time.</p>
-          </Prose>
+          <p>We needed to understand how pet parents behave: where they buy pet food, how often, what they do with receipts, and what would make a rewards program worth their time. I put together a 5-minute survey targeting Canadian pet parents.</p>
 
-          <Sub>Key Takeaways</Sub>
+          <h3>Key Takeaways</h3>
           <Bento
             cells={[
               { kind: 'stat', value: '85%', label: 'open to the program — the demand proof and the reason the project exists', span: 4, accent: 'var(--color-green)' },
@@ -287,20 +259,16 @@ export default function BonusBowlsPage() {
               { kind: 'stat', value: '80%', label: 'are 20 to 40 years old', span: 1, accent: 'var(--color-yellow)' },
             ]}
           />
-          <Prose>
-            <p>Click the link below to see the full survey results.</p>
-          </Prose>
+          <p>Click the link below to see the full survey results.</p>
           <div>
             <LinkPlaceholder label="Full survey results" />
           </div>
 
-          <Voice>Great news: people are open to the program. We learned that pet parents usually buy food once a month, which hints at a similar once-a-month usage of our platform. And we are looking at a young, tech-savvy, price-oriented audience. We also uncovered their favorite brands and platforms so we can run a competitive analysis.</Voice>
+          <blockquote><p>Great news: people are open to the program. We learned that pet parents usually buy food once a month, which hints at a similar once-a-month usage of our platform. And we are looking at a young, tech-savvy, price-oriented audience. We also uncovered their favorite brands and platforms so we can run a competitive analysis.</p></blockquote>
 
-          <Sub>Competitive Analysis</Sub>
-          <Prose>
-            <p>After reading through the survey responses, it was time to investigate the pet brands that came up most often, along with some general loyalty apps. We needed to understand what was already out there so we could pick the best features and avoid what was causing frustration.</p>
-            <p>To accomplish this research I signed myself up to the programs, downloaded the apps and used them, read numerous Google and App Store reviews, and joined Reddit forums.</p>
-          </Prose>
+          <h3>Competitive Analysis</h3>
+          <p>After reading through the survey responses, it was time to investigate the pet brands that came up most often, along with some general loyalty apps. We needed to understand what was already out there so we could pick the best features and avoid what was causing frustration.</p>
+          <p>To accomplish this research I signed myself up to the programs, downloaded the apps and used them, read numerous Google and App Store reviews, and joined Reddit forums.</p>
           <Table
             headers={['Feature', 'Purina myPurina', 'Receipt Hog', 'Takeaways']}
             rows={[
@@ -311,22 +279,20 @@ export default function BonusBowlsPage() {
               ['Customer Support', '✗ Email only', '✗ Limited response', '✓ Offer responsive support like live chat and email'],
             ]}
           />
-          <Voice>Every program we looked at got one half right and dropped the other, so how might we deliver both: reliable, universal approvals and rewards worth cashing in?</Voice>
+          <blockquote><p>Every program we looked at got one half right and dropped the other, so how might we deliver both: reliable, universal approvals and rewards worth cashing in?</p></blockquote>
         </Phase>
 
         <Phase phase="define">
-          <Prose>
-            <p>Now that we&rsquo;ve mapped our users and our competition, we have a solid base to define our challenges and plan how to overcome them.</p>
-          </Prose>
+          <p>Now that we&rsquo;ve mapped our users and our competition, we have a solid base to define our challenges and plan how to overcome them.</p>
 
-          <Sub>Personas</Sub>
+          <h3>Personas</h3>
           <div className="grid gap-item sm:grid-cols-3">
             {[
               { name: 'Elena Martinez', role: 'The Devoted Dog Mom', bio: <>32, marketing coordinator, tech-comfortable but wants simple apps. Spends ~$90/month on her dog&rsquo;s prescription food. Needs fast receipt uploads, cash back she can use, and trust that her data is safe. Frustrated by complicated programs with unclear rules or slow rewards.</> },
               { name: 'David Thompson', role: 'The Multi-Pet Owner', bio: <>40, works full-time, mobile-first, price-driven. Feeds three pets at $200+/month. Wants to earn on every purchase, cash out fast, and get instant receipt confirmation. Already juggles five reward apps, so this one has to just work or he drops it.</> },
               { name: 'Linda Wilson', role: 'The Loyal Vet Customer', bio: <>58, retired teacher, prefers phone calls over apps. Shops only at her vet. Wants rewards without downloading anything complicated, an in-person explanation, and reassurance her information is safe. Open to rewards but wary of anything that needs smartphone skills.</> },
             ].map((p) => (
-              <div key={p.name} className="cs-panel grid content-start gap-3">
+              <div key={p.name} className="card grid content-start gap-3">
                 <div>
                   <p className="font-display text-xl leading-tight tracking-heading text-aubergine">{p.name}</p>
                   <p className="eyebrow mt-1">{p.role}</p>
@@ -339,27 +305,25 @@ export default function BonusBowlsPage() {
             <LinkPlaceholder label="Full user persona document" />
           </div>
 
-          <Sub>How Might We</Sub>
-          <div className="cs-columns">
+          <h3>How Might We</h3>
+          <div className="columns">
             {[
               'How might we convert price-driven shoppers into loyal customers?',
               'How might we make uploading a receipt effortless for people who don’t keep receipts?',
               'How might we keep members coming back between monthly purchases?',
             ].map((q, i) => (
               <div key={q}>
-                <span className="cs-columns__index">{String(i + 1).padStart(2, '0')}</span>
+                <span className="index">{String(i + 1).padStart(2, '0')}</span>
                 <p className="text-base leading-relaxed text-charcoal">{q}</p>
               </div>
             ))}
           </div>
 
-          <Voice>Now that we defined the problems, how do we solve them?</Voice>
+          <blockquote><p>Now that we defined the problems, how do we solve them?</p></blockquote>
         </Phase>
 
         <Phase phase="ideate">
-          <Prose>
-            <p>Before opening Figma, I mapped each business goal to the research finding that should drive it, on one page the client signed off on. It stopped every later &ldquo;what if we&hellip;&rdquo; from reopening a settled decision.</p>
-          </Prose>
+          <p>Before opening Figma, I mapped each business goal to the research finding that should drive it, on one page the client signed off on. It stopped every later &ldquo;what if we&hellip;&rdquo; from reopening a settled decision.</p>
           <Table
             headers={['Business goal', 'Research-backed solution']}
             rows={[
@@ -370,35 +334,29 @@ export default function BonusBowlsPage() {
             ]}
           />
 
-          <Sub>User Flows</Sub>
-          <Prose>
-            <p>I mapped the two core journeys so the path from &ldquo;I bought it&rdquo; to &ldquo;I got paid&rdquo; stayed as short as possible.</p>
-            <ul>
-              <li><strong>Earn:</strong> Sign up &rarr; Upload receipt (Photo &rarr; Details &rarr; Products &rarr; Review) &rarr; Reward dollars credited after review</li>
-              <li><strong>Redeem:</strong> Reach $25 &rarr; Redeem &rarr; Choose e-transfer &rarr; Cash-out confirmed</li>
-            </ul>
-          </Prose>
+          <h3>User Flows</h3>
+          <p>I mapped the two core journeys so the path from &ldquo;I bought it&rdquo; to &ldquo;I got paid&rdquo; stayed as short as possible.</p>
+          <ul>
+            <li><strong>Earn:</strong> Sign up &rarr; Upload receipt (Photo &rarr; Details &rarr; Products &rarr; Review) &rarr; Reward dollars credited after review</li>
+            <li><strong>Redeem:</strong> Reach $25 &rarr; Redeem &rarr; Choose e-transfer &rarr; Cash-out confirmed</li>
+          </ul>
           <Figure placeholder="{{Figma: user flows}}" alt="User flows placeholder." />
 
-          <Voice>With every decision mapped and signed off, the plan felt solid. Now the real question was how fast we could turn it into something people could actually use.</Voice>
+          <blockquote><p>With every decision mapped and signed off, the plan felt solid. Now the real question was how fast we could turn it into something people could actually use.</p></blockquote>
         </Phase>
 
         <Phase phase="prototype" deck="From wireframes straight to code">
-          <Prose>
-            <p>To build a prototype as fast as possible, we decided to use Google Material for our raw components. We chose Material for a few reasons:</p>
-            <ol>
-              <li>Google is the native platform the client already uses, so the look would feel familiar to stakeholders.</li>
-              <li>It let us ship a quick mid-fidelity prototype for review.</li>
-              <li>Material components are built to work with our Angular framework, which saved developer time.</li>
-            </ol>
-          </Prose>
+          <p>To build a prototype as fast as possible, we decided to use Google Material for our raw components. We chose Material for a few reasons:</p>
+          <ol>
+            <li>Google is the native platform the client already uses, so the look would feel familiar to stakeholders.</li>
+            <li>It let us ship a quick mid-fidelity prototype for review.</li>
+            <li>Material components are built to work with our Angular framework, which saved developer time.</li>
+          </ol>
 
-          <Sub>Visual Direction</Sub>
-          <Prose>
-            <p>We pulled colors, typography, and core patterns from the brand&rsquo;s existing design system to keep Bonus Bowls consistent with its other products.</p>
-          </Prose>
+          <h3>Visual Direction</h3>
+          <p>We pulled colors, typography, and core patterns from the brand&rsquo;s existing design system to keep Bonus Bowls consistent with its other products.</p>
 
-          <Sub>Key Screens</Sub>
+          <h3>Key Screens</h3>
           <Table
             headers={['Screen', 'Design decision', 'View']}
             rows={[
@@ -411,7 +369,7 @@ export default function BonusBowlsPage() {
           <figure className="m-0">
             <div className="grid grid-cols-1 gap-item sm:grid-cols-4">
               {['Sign-up', 'Receipt upload', 'Earnings dashboard', 'Redeem'].map((name) => (
-                <div key={name} className="cs-placeholder cs-placeholder--sm">
+                <div key={name} className="placeholder small">
                   <span className="eyebrow eyebrow--strong">{name}</span>
                 </div>
               ))}
@@ -421,44 +379,34 @@ export default function BonusBowlsPage() {
             </figcaption>
           </figure>
 
-          <Sub>From Prototype to Shipped Product</Sub>
-          <Prose>
-            <p>I owned the Angular front-end end to end: architecture, component and state design, responsive behaviour, accessibility, and the production deploy, plus the API contract my backend partner and I built against.</p>
-            <p>It shipped as a real product:</p>
-            <ul>
-              <li><strong>Bilingual EN / FR-CA:</strong> every string, status, and page title flips cleanly.</li>
-              <li><strong>Accessibility:</strong> WCAG AA, passing AXE checks, with live announcements on receipt status changes.</li>
-              <li><strong>A full admin console:</strong> the brand&rsquo;s reviewers approve receipts, manage payouts, and run the product catalog.</li>
-            </ul>
-          </Prose>
+          <h3>From Prototype to Shipped Product</h3>
+          <p>I owned the Angular front-end end to end: architecture, component and state design, responsive behaviour, accessibility, and the production deploy, plus the API contract my backend partner and I built against.</p>
+          <p>It shipped as a real product:</p>
+          <ul>
+            <li><strong>Bilingual EN / FR-CA:</strong> every string, status, and page title flips cleanly.</li>
+            <li><strong>Accessibility:</strong> WCAG AA, passing AXE checks, with live announcements on receipt status changes.</li>
+            <li><strong>A full admin console:</strong> the brand&rsquo;s reviewers approve receipts, manage payouts, and run the product catalog.</li>
+          </ul>
 
-          <Voice>The product was built and shipped. But building something and proving it works for real people are two very different things.</Voice>
+          <blockquote><p>The product was built and shipped. But building something and proving it works for real people are two very different things.</p></blockquote>
         </Phase>
 
         <Phase phase="test" deck="Before launch, and with live data after">
-          <Prose>
-            <p>Testing happened twice: with real users on the prototype before launch, and with live data after.</p>
-          </Prose>
+          <p>Testing happened twice: with real users on the prototype before launch, and with live data after.</p>
 
-          <Sub>Usability Testing</Sub>
-          <Prose>
-            <p>I ran moderated usability tests with 5 participants (3 current users, 2 interested). Each completed a few core tasks:</p>
-            <ul>
-              <li>Upload a receipt for a recent vet purchase</li>
-              <li>Check your balance and start a cash-out</li>
-            </ul>
-            <p><strong>Goal:</strong> see how easily people moved through the flow, gather feedback on look and feel, and find points of confusion.</p>
-          </Prose>
+          <h3>Usability Testing</h3>
+          <p>I ran moderated usability tests with 5 participants (3 current users, 2 interested). Each completed a few core tasks:</p>
+          <ul>
+            <li>Upload a receipt for a recent vet purchase</li>
+            <li>Check your balance and start a cash-out</li>
+          </ul>
+          <p><strong>Goal:</strong> see how easily people moved through the flow, gather feedback on look and feel, and find points of confusion.</p>
 
-          <Sub>Key Findings</Sub>
-          <Prose>
-            <p>Participants moved through the upload process and described the redemption as trustworthy and fast, mostly because each step confirmed what had happened and the e-transfer payout was something they were already familiar with. The friction showed up in a few places: entering the invoice total before tax, needing a payment method before cash-out, and finding the right product in the catalog.</p>
-          </Prose>
+          <h3>Key Findings</h3>
+          <p>Participants moved through the upload process and described the redemption as trustworthy and fast, mostly because each step confirmed what had happened and the e-transfer payout was something they were already familiar with. The friction showed up in a few places: entering the invoice total before tax, needing a payment method before cash-out, and finding the right product in the catalog.</p>
 
-          <Sub>Changes Made After Testing</Sub>
-          <Prose>
-            <p>The most useful part was watching where people hesitated. The fixes that came out of it:</p>
-          </Prose>
+          <h3>Changes Made After Testing</h3>
+          <p>The most useful part was watching where people hesitated. The fixes that came out of it:</p>
           <div className="grid gap-item md:grid-cols-3">
             {[
               {
@@ -477,8 +425,8 @@ export default function BonusBowlsPage() {
                 after: 'Added search and category filters (dog/cat, dry/wet, prescription/regular) at the top of the step.',
               },
             ].map((issue) => (
-              <div key={issue.title} className="cs-panel grid gap-2">
-                <h4 className="cs-minor">{issue.title}</h4>
+              <div key={issue.title} className="card grid gap-2">
+                <h4>{issue.title}</h4>
                 <p className="text-sm leading-relaxed text-charcoal">
                   <span className="eyebrow">Before</span> {issue.before}
                 </p>
@@ -489,39 +437,35 @@ export default function BonusBowlsPage() {
             ))}
           </div>
 
-          <Sub>Final Product</Sub>
+          <h3>Final Product</h3>
           <Figure placeholder="{{Final product: annotated screenshots / link}}" alt="Final product screenshots placeholder." />
 
-          <Sub>Validating in Production</Sub>
-          <Prose>
-            <p>Testing didn&rsquo;t stop at launch. I instrumented the live product so the brand could see whether real behaviour matched the research, and to lay a solid base for UX measurement so we can track how well future updates perform.</p>
-            <p>The GA4 layer tracks the full member journey across 30+ events, with four real conversions: account created, receipt submitted, payout requested, and payment method added. Three decisions kept the data honest:</p>
-            <ul>
-              <li><strong>Privacy-first:</strong> nothing is tracked until the user consents.</li>
-              <li><strong>Members vs. browsers:</strong> every session is tagged registered or guest, so reports show real members, not all traffic.</li>
-              <li><strong>Bilingual in the data:</strong> language is captured as a property, so English and French behaviour is visible, not guessed.</li>
-            </ul>
-            <p>A Looker Studio dashboard turns the raw events into plain-language answers that I shared with all stakeholders. Every research number that justified a decision is now a live metric.</p>
-            <p>Bonus Bowls launched in July 2026, so this data is just starting to flow. The signals below are a first read, not a verdict.</p>
-          </Prose>
-          <h4 className="cs-minor">Early signals</h4>
+          <h3>Validating in Production</h3>
+          <p>Testing didn&rsquo;t stop at launch. I instrumented the live product so the brand could see whether real behaviour matched the research, and to lay a solid base for UX measurement so we can track how well future updates perform.</p>
+          <p>The GA4 layer tracks the full member journey across 30+ events, with four real conversions: account created, receipt submitted, payout requested, and payment method added. Three decisions kept the data honest:</p>
+          <ul>
+            <li><strong>Privacy-first:</strong> nothing is tracked until the user consents.</li>
+            <li><strong>Members vs. browsers:</strong> every session is tagged registered or guest, so reports show real members, not all traffic.</li>
+            <li><strong>Bilingual in the data:</strong> language is captured as a property, so English and French behaviour is visible, not guessed.</li>
+          </ul>
+          <p>A Looker Studio dashboard turns the raw events into plain-language answers that I shared with all stakeholders. Every research number that justified a decision is now a live metric.</p>
+          <p>Bonus Bowls launched in July 2026, so this data is just starting to flow. The signals below are a first read, not a verdict.</p>
+          <h4>Early signals</h4>
           <div className="grid grid-cols-1 gap-item sm:grid-cols-2 lg:grid-cols-3">
             <Stat value="{{N}}" label="Sign-ups" context="in {{X}} weeks" />
             <Stat value="{{N}}%" label="Receipt approval" context="vs. competitor's 40%" />
             <Stat value="${{N}}" label="Cashed out" context="across {{N}} redemptions" />
           </div>
 
-          <Voice>Between usability testing before launch and live analytics after, the product could finally answer its own hardest question: is it actually working?</Voice>
+          <blockquote><p>Between usability testing before launch and live analytics after, the product could finally answer its own hardest question: is it actually working?</p></blockquote>
         </Phase>
 
         <Section heading="Conclusion">
-          <Sub>Main Insights</Sub>
-          <Prose>
-            <p>The research was clear: pet parents want cash, won&rsquo;t tolerate a slow or unreliable receipt process, and need to trust a new program before sharing banking details. Every major decision , cash over points, one-tap upload, security on every money screen, e-transfer payouts , traces back to one of those findings. Designing from data meant every review became &ldquo;show me the survey answer that says why.&rdquo;</p>
-          </Prose>
+          <h3>Main Insights</h3>
+          <p>The research was clear: pet parents want cash, won&rsquo;t tolerate a slow or unreliable receipt process, and need to trust a new program before sharing banking details. Every major decision , cash over points, one-tap upload, security on every money screen, e-transfer payouts , traces back to one of those findings. Designing from data meant every review became &ldquo;show me the survey answer that says why.&rdquo;</p>
 
-          <Sub>What I Learned</Sub>
-          <div className="cs-columns">
+          <h3>What I Learned</h3>
+          <div className="columns">
             {[
               { lead: 'Pitching for research time was the highest-leverage hour of the project.', body: 'Four weeks up front made every later decision faster.' },
               { lead: 'Reliability is a strategy when everyone else is unreliable.', body: 'A 60% rejection rate from the market leader was the whole opening.' },
@@ -529,7 +473,7 @@ export default function BonusBowlsPage() {
               { lead: 'Launch is the start of research, not the end.', body: 'Next: a quarterly micro-survey to live members, fed into the roadmap.' },
             ].map((l) => (
               <div key={l.lead}>
-                <h4 className="cs-minor">{l.lead}</h4>
+                <h4>{l.lead}</h4>
                 <p className="text-sm leading-relaxed text-charcoal">{l.body}</p>
               </div>
             ))}
@@ -537,12 +481,10 @@ export default function BonusBowlsPage() {
         </Section>
 
         <Section heading="Let&rsquo;s Connect">
-          <Prose>
-            <p>Thanks for reading. Happy to talk through any part of the process, or just say hi.</p>
-            <p>
-              <a href="mailto:carelmaeda@gmail.com">carelmaeda@gmail.com</a>
-            </p>
-          </Prose>
+          <p>Thanks for reading. Happy to talk through any part of the process, or just say hi.</p>
+          <p>
+            <a href="mailto:carelmaeda@gmail.com">carelmaeda@gmail.com</a>
+          </p>
         </Section>
       </article>
     </main>

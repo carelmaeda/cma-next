@@ -133,19 +133,24 @@ this voice.
   in `variables.css` (with `--font-primary`/`--font-secondary`
   back-compat aliases). Heading size lives on one shared ramp
   (`--text-hero`/`--text-h1…h4`) read by both the Tailwind `text-*`
-  utilities and the case-study `cs-*` primitives, so the two never
-  drift; serif headings use `--tracking-heading` (near-neutral), not
-  the aggressive grotesque tracking.
+  utilities and the case study's `.prose` element rules, so the two
+  never drift; serif headings use `--tracking-heading` (near-neutral),
+  not the aggressive grotesque tracking.
 - **Metadata:** every route should export its own `metadata`. Case
   study routes need title, description, and per-route OG image.
 - **Frontend style contract:** all UI work must follow
   `.claude/docs/frontend-style-contract.md` — Tailwind for
   layout/spacing/sizing only; typography, colour and decoration go
   through design tokens (`text-h1…h4`, `tracking-wide/wider/widest`,
-  `bg-pill`, `bg-ink-hover`) and semantic CSS classes (`.eyebrow`,
-  the `.cs-*` case-study primitives). No arbitrary font sizes,
-  fractional spacing, or inline `rgba()`; extract any pattern used
-  3+ times; customise shadcn at the `src/components/ui/` primitive.
+  `bg-pill`, `bg-ink-hover`) and the site-wide `.eyebrow` class. The
+  **case study** wraps its `<article>` in a single `.prose` class and
+  styles **plain HTML by tag** (`.prose h2`, `.prose p`,
+  `.prose blockquote`, `.prose table`…); the few non-tag blocks use
+  plain-noun classes scoped under it (`.prose .card`, `.prose .stat`,
+  `.prose .phase-chip`…). Do **not** put a class on every heading/
+  paragraph or bring back the old `cs-*` prefix. No arbitrary font
+  sizes, fractional spacing, or inline `rgba()`; extract any pattern
+  used 3+ times; customise shadcn at the `src/components/ui/` primitive.
 
 ### 5. What never to do
 

@@ -103,7 +103,7 @@ h6 {
 p {
   margin-block: 0.25rem;
   /* No line-height here — let paragraphs inherit their container's leading
-     (body ~1.55, .cs-prose 1.5) instead of collapsing to a cramped value. */
+     (body ~1.55, .prose 1.5) instead of collapsing to a cramped value. */
 }
 
 /* ============================================================
