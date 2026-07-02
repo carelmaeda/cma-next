@@ -2,8 +2,8 @@
   command = "npm ci && npm run build"
   publish = ".next"
 
-[build.environment] 
-  NODE_VERSION = "18"
+[build.environment]
+  NODE_VERSION = "22"
   NEXT_CACHE = ".next/cache"
   SECRETS_SCAN_OMIT_PATHS = ".netlify/functions-internal/**"
   SECRETS_SCAN_OMIT_KEYS = "EMAIL_USER,EMAIL_PASS"
