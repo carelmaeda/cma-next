@@ -7,6 +7,7 @@ the placeholder slots below. Every slot is already styled, sized, and tinted —
 you only supply the image and flip one commented line.
 
 Conventions:
+
 - Drop files in `public/images/work/` (home covers) or `public/images/cs/<slug>/`
   (case-study mockups). Create the folders as needed.
 - Prefer **`.webp`**, exported at **2×** the displayed size for retina.
@@ -24,11 +25,11 @@ Each card has a commented `cover` line. Uncomment and set `src` + `alt`:
 cover: { src: '/images/work/paygos-corporate.webp', alt: '…' },
 ```
 
-| Card | Suggested image | Aspect | Accent (if left as placeholder) |
-|------|-----------------|--------|--------------------------------|
-| 01 Paygos corporate site | Desktop homepage hero, tilted | **4:3** | cyan |
-| 02 Paygos demo / design system | Component/token grid or a dense product screen | **4:3** | lilac |
-| 03 Bonus Bowls | Tilted phone mockup of the loyalty app | **4:3** | green |
+| Card                           | Suggested image                                | Aspect  | Accent (if left as placeholder) |
+| ------------------------------ | ---------------------------------------------- | ------- | ------------------------------- |
+| 01 Paygos corporate site       | Desktop homepage hero, tilted                  | **4:3** | cyan                            |
+| 02 Paygos demo / design system | Component/token grid or a dense product screen | **4:3** | lilac                           |
+| 03 Bonus Bowls                 | Tilted phone mockup of the loyalty app         | **4:3** | green                           |
 
 Export ~**1280×960**. Until set, a tinted slot with the serif index renders.
 

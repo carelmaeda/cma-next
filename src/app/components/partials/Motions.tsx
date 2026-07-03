@@ -70,13 +70,7 @@ const wordChild: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE_OUT } },
 };
 
-export function StaggerWords({
-  text,
-  className,
-}: {
-  text: string;
-  className?: string;
-}) {
+export function StaggerWords({ text, className }: { text: string; className?: string }) {
   const reduce = useReducedMotion();
   const words = text.split(' ');
   if (reduce) return <span className={className}>{text}</span>;

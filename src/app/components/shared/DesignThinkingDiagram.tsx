@@ -4,12 +4,7 @@ import { useEffect, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { MotionStagger, MotionItem } from '../partials/Motions';
 
-export type DesignThinkingPhase =
-  | 'empathize'
-  | 'define'
-  | 'ideate'
-  | 'prototype'
-  | 'test';
+export type DesignThinkingPhase = 'empathize' | 'define' | 'ideate' | 'prototype' | 'test';
 
 interface Phase {
   id: DesignThinkingPhase;
@@ -35,7 +30,7 @@ const PHASES: Phase[] = [
     id: 'ideate',
     label: 'Ideate',
     colorVar: 'var(--color-phase-ideate)',
-    bullets: ['Brainstorm widely', "Build on ideas", 'Suspend judgement'],
+    bullets: ['Brainstorm widely', 'Build on ideas', 'Suspend judgement'],
   },
   {
     id: 'prototype',
@@ -108,41 +103,45 @@ export default function DesignThinkingDiagram({
   return (
     <div ref={ref}>
       <MotionStagger className="process" stagger={0.06}>
-      {PHASES.map((phase, i) => {
-        const labels = activities?.[phase.id] ?? phase.bullets;
-        return (
-          <MotionItem key={phase.id} className="phase-item">
-            <details className="phase">
-              <summary>
-                <span
-                  className="phase-chip"
-                  style={{ backgroundColor: `color-mix(in srgb, ${phase.colorVar} 12%, transparent)` }}
-                >
-                  <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
-                    <path d={HEX_PATH} fill={phase.colorVar} />
-                  </svg>
-                  <span className="n">{String(i + 1).padStart(2, '0')}</span>
-                  <span>{phase.label}</span>
-                </span>
-                <ChevronDown className="chevron h-4 w-4 shrink-0 md:hidden" aria-hidden="true" />
-              </summary>
-              <div className="body">
-                <ul className="pills">
-                  {labels.map((l) => (
-                    <li
-                      key={l}
-                      className="phase-pill"
-                      style={{ backgroundColor: `color-mix(in srgb, ${phase.colorVar} 15%, transparent)` }}
-                    >
-                      {l}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </details>
-          </MotionItem>
-        );
-      })}
+        {PHASES.map((phase, i) => {
+          const labels = activities?.[phase.id] ?? phase.bullets;
+          return (
+            <MotionItem key={phase.id} className="phase-item">
+              <details className="phase">
+                <summary>
+                  <span
+                    className="phase-chip"
+                    style={{
+                      backgroundColor: `color-mix(in srgb, ${phase.colorVar} 12%, transparent)`,
+                    }}
+                  >
+                    <svg viewBox="0 0 100 100" className="h-4 w-4 shrink-0" aria-hidden="true">
+                      <path d={HEX_PATH} fill={phase.colorVar} />
+                    </svg>
+                    <span className="n">{String(i + 1).padStart(2, '0')}</span>
+                    <span>{phase.label}</span>
+                  </span>
+                  <ChevronDown className="chevron h-4 w-4 shrink-0 md:hidden" aria-hidden="true" />
+                </summary>
+                <div className="body">
+                  <ul className="pills">
+                    {labels.map((l) => (
+                      <li
+                        key={l}
+                        className="phase-pill"
+                        style={{
+                          backgroundColor: `color-mix(in srgb, ${phase.colorVar} 15%, transparent)`,
+                        }}
+                      >
+                        {l}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </details>
+            </MotionItem>
+          );
+        })}
       </MotionStagger>
     </div>
   );

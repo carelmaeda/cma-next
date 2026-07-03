@@ -36,79 +36,79 @@ Paste these into the global stylesheet (`globals.css`, `app.css`, or `:root` in 
 :root {
   /* ============ COLOR ============ */
   /* Backgrounds */
-  --color-cream:        #F5EFE6;  /* primary canvas — never pure white */
-  --color-cream-pale:   #FAF4E8;  /* surfaces, cards, subtle layering */
-  --color-cream-deep:   #EDE3D2;  /* alternate sections, hover backgrounds */
+  --color-cream: #f5efe6; /* primary canvas — never pure white */
+  --color-cream-pale: #faf4e8; /* surfaces, cards, subtle layering */
+  --color-cream-deep: #ede3d2; /* alternate sections, hover backgrounds */
 
   /* Brand */
-  --color-terracotta:   #C66B3D;  /* primary brand, section heads, CTAs */
-  --color-coral:        #E87461;  /* interactive states, links, energy */
-  --color-mustard:      #D4A24C;  /* highlights, tags — use sparingly */
-  --color-peach:        #F4B89C;  /* soft accent, decorative shapes */
+  --color-terracotta: #c66b3d; /* primary brand, section heads, CTAs */
+  --color-coral: #e87461; /* interactive states, links, energy */
+  --color-mustard: #d4a24c; /* highlights, tags — use sparingly */
+  --color-peach: #f4b89c; /* soft accent, decorative shapes */
 
   /* Ink */
-  --color-charcoal:     #2C2826;  /* body text — softer than pure black */
-  --color-aubergine:    #3A2218;  /* display type, deepest contrast */
-  --color-warm-grey:    #7A6E63;  /* secondary text, meta info */
-  --color-hairline:     #D8CFC2;  /* borders, dividers */
+  --color-charcoal: #2c2826; /* body text — softer than pure black */
+  --color-aubergine: #3a2218; /* display type, deepest contrast */
+  --color-warm-grey: #7a6e63; /* secondary text, meta info */
+  --color-hairline: #d8cfc2; /* borders, dividers */
 
   /* Semantic aliases */
-  --bg:                 var(--color-cream);
-  --bg-surface:         var(--color-cream-pale);
-  --bg-alt:             var(--color-cream-deep);
-  --text:               var(--color-charcoal);
-  --text-muted:         var(--color-warm-grey);
-  --text-strong:        var(--color-aubergine);
-  --accent:             var(--color-terracotta);
-  --accent-energy:      var(--color-coral);
-  --accent-highlight:   var(--color-mustard);
-  --border:             var(--color-hairline);
+  --bg: var(--color-cream);
+  --bg-surface: var(--color-cream-pale);
+  --bg-alt: var(--color-cream-deep);
+  --text: var(--color-charcoal);
+  --text-muted: var(--color-warm-grey);
+  --text-strong: var(--color-aubergine);
+  --accent: var(--color-terracotta);
+  --accent-energy: var(--color-coral);
+  --accent-highlight: var(--color-mustard);
+  --border: var(--color-hairline);
 
   /* ============ TYPOGRAPHY ============ */
   /* SWAP these for chosen fonts. Defaults are placeholders. */
-  --font-sans:          "Inter", "General Sans", system-ui, sans-serif;
-  --font-display:       "PP Editorial New", "Migra", Georgia, serif;
-  --font-mono:          "JetBrains Mono", "Courier New", monospace;
+  --font-sans: 'Inter', 'General Sans', system-ui, sans-serif;
+  --font-display: 'PP Editorial New', 'Migra', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
   /* Type scale (modular, mobile-first) */
-  --text-xs:    0.8125rem;   /* 13px — captions, meta */
-  --text-sm:    0.9375rem;   /* 15px — UI labels */
-  --text-base:  1.125rem;    /* 18px — body */
-  --text-lg:    1.375rem;    /* 22px — large body, lead */
-  --text-xl:    1.75rem;     /* 28px — small heads */
-  --text-2xl:   2.5rem;      /* 40px — section sub-heads */
-  --text-3xl:   4rem;        /* 64px — section heads (clamps up on desktop) */
-  --text-4xl:   clamp(4rem, 12vw, 11rem);   /* hero / name */
+  --text-xs: 0.8125rem; /* 13px — captions, meta */
+  --text-sm: 0.9375rem; /* 15px — UI labels */
+  --text-base: 1.125rem; /* 18px — body */
+  --text-lg: 1.375rem; /* 22px — large body, lead */
+  --text-xl: 1.75rem; /* 28px — small heads */
+  --text-2xl: 2.5rem; /* 40px — section sub-heads */
+  --text-3xl: 4rem; /* 64px — section heads (clamps up on desktop) */
+  --text-4xl: clamp(4rem, 12vw, 11rem); /* hero / name */
 
   /* Line heights */
-  --leading-tight:   1.05;
-  --leading-snug:    1.2;
-  --leading-normal:  1.55;
-  --leading-loose:   1.7;
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-loose: 1.7;
 
   /* Letter spacing */
-  --tracking-tight:   -0.02em;  /* display */
-  --tracking-normal:  0;
-  --tracking-wide:    0.08em;   /* small uppercase labels */
+  --tracking-tight: -0.02em; /* display */
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em; /* small uppercase labels */
 
   /* ============ SPACING ============ */
-  --space-1:  0.25rem;   /* 4 */
-  --space-2:  0.5rem;    /* 8 */
-  --space-3:  0.75rem;   /* 12 */
-  --space-4:  1rem;      /* 16 */
-  --space-6:  1.5rem;    /* 24 */
-  --space-8:  2rem;      /* 32 */
-  --space-12: 3rem;      /* 48 */
-  --space-16: 4rem;      /* 64 */
-  --space-24: 6rem;      /* 96 */
-  --space-32: 8rem;      /* 128 — between major sections */
-  --space-48: 12rem;     /* 192 — between hero and content */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+  --space-24: 6rem; /* 96 */
+  --space-32: 8rem; /* 128 — between major sections */
+  --space-48: 12rem; /* 192 — between hero and content */
 
   /* Layout */
-  --container-prose: 42rem;   /* 672px — body copy max width */
-  --container-wide:  80rem;   /* 1280px — layouts */
-  --container-full:  90rem;   /* 1440px — hero, full-bleed */
-  --gutter:          clamp(1.5rem, 8vw, 8rem);
+  --container-prose: 42rem; /* 672px — body copy max width */
+  --container-wide: 80rem; /* 1280px — layouts */
+  --container-full: 90rem; /* 1440px — hero, full-bleed */
+  --gutter: clamp(1.5rem, 8vw, 8rem);
 
   /* ============ RADIUS ============ */
   --radius-sm: 4px;
@@ -117,18 +117,21 @@ Paste these into the global stylesheet (`globals.css`, `app.css`, or `:root` in 
   --radius-pill: 999px;
 
   /* ============ SHADOW (use sparingly) ============ */
-  --shadow-soft:    0 4px 24px rgba(44, 40, 38, 0.06);
-  --shadow-warm:    0 8px 32px rgba(198, 107, 61, 0.12);
+  --shadow-soft: 0 4px 24px rgba(44, 40, 38, 0.06);
+  --shadow-warm: 0 8px 32px rgba(198, 107, 61, 0.12);
 
   /* ============ MOTION ============ */
-  --ease-out:        cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast:   150ms;
-  --duration-base:   200ms;
-  --duration-slow:   400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 400ms;
 }
 
-html { background: var(--bg); color: var(--text); }
+html {
+  background: var(--bg);
+  color: var(--text);
+}
 body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -149,31 +152,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream:      { DEFAULT: '#F5EFE6', pale: '#FAF4E8', deep: '#EDE3D2' },
+        cream: { DEFAULT: '#F5EFE6', pale: '#FAF4E8', deep: '#EDE3D2' },
         terracotta: '#C66B3D',
-        coral:      '#E87461',
-        mustard:    '#D4A24C',
-        peach:      '#F4B89C',
-        charcoal:   '#2C2826',
-        aubergine:  '#3A2218',
-        'warm-grey':'#7A6E63',
-        hairline:   '#D8CFC2',
+        coral: '#E87461',
+        mustard: '#D4A24C',
+        peach: '#F4B89C',
+        charcoal: '#2C2826',
+        aubergine: '#3A2218',
+        'warm-grey': '#7A6E63',
+        hairline: '#D8CFC2',
       },
       fontFamily: {
-        sans:    ['Inter', 'General Sans', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'General Sans', 'system-ui', 'sans-serif'],
         display: ['"PP Editorial New"', 'Migra', 'Georgia', 'serif'],
-        mono:    ['"JetBrains Mono"', 'Courier New', 'monospace'],
+        mono: ['"JetBrains Mono"', 'Courier New', 'monospace'],
       },
       fontSize: {
-        'display-xl': ['clamp(4rem, 12vw, 11rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'display':    ['clamp(2.5rem, 6vw, 4rem)',  { lineHeight: '1.1',  letterSpacing: '-0.015em' }],
+        'display-xl': [
+          'clamp(4rem, 12vw, 11rem)',
+          { lineHeight: '1.05', letterSpacing: '-0.02em' },
+        ],
+        display: ['clamp(2.5rem, 6vw, 4rem)', { lineHeight: '1.1', letterSpacing: '-0.015em' }],
       },
       maxWidth: {
         prose: '42rem',
-        wide:  '80rem',
+        wide: '80rem',
       },
       transitionTimingFunction: {
-        'soft': 'cubic-bezier(0.22, 1, 0.36, 1)',
+        soft: 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
     },
   },
@@ -185,19 +191,20 @@ module.exports = {
 ## 5. Typography Rules
 
 ### Pairing
+
 - **Body / structural**: a confident geometric sans (Söhne, Inter, General Sans, Aktiv Grotesk).
 - **Display / accent**: a high-contrast modern serif (PP Editorial New, Migra, Reckless Neue, Tobias).
 
 ### Hierarchy
 
-| Use case | Class | Notes |
-|---|---|---|
-| Hero name | `font-display text-display-xl tracking-tight` | One or two words, viewport-filling |
-| Section head | `font-display text-display tracking-tight` | 40-64px |
-| Sub-head | `font-sans text-xl font-bold` | 28px |
-| Body | `font-sans text-base leading-normal` | 18px, 1.55 line height |
-| Lead paragraph | `font-sans text-lg leading-normal` | 22px |
-| Caption / meta | `font-mono text-xs text-warm-grey tracking-wide uppercase` | Numbers, section labels |
+| Use case       | Class                                                      | Notes                              |
+| -------------- | ---------------------------------------------------------- | ---------------------------------- |
+| Hero name      | `font-display text-display-xl tracking-tight`              | One or two words, viewport-filling |
+| Section head   | `font-display text-display tracking-tight`                 | 40-64px                            |
+| Sub-head       | `font-sans text-xl font-bold`                              | 28px                               |
+| Body           | `font-sans text-base leading-normal`                       | 18px, 1.55 line height             |
+| Lead paragraph | `font-sans text-lg leading-normal`                         | 22px                               |
+| Caption / meta | `font-mono text-xs text-warm-grey tracking-wide uppercase` | Numbers, section labels            |
 
 ### Type rules
 
@@ -222,6 +229,7 @@ module.exports = {
 - **Hairline for all borders.** Never use grey-blue or pure black borders.
 
 ### Pairing combos (use these):
+
 - `bg-cream` + `text-charcoal` → default reading mode
 - `bg-cream-pale` + `text-charcoal` → cards, surfaces
 - `bg-terracotta` + `text-cream` → primary CTAs
@@ -230,6 +238,7 @@ module.exports = {
 - `text-coral` on hover → all interactive elements
 
 ### Never:
+
 - Use blue. There is no blue in this portfolio.
 - Use pure black or pure white.
 - Use the same accent twice in the same viewport at full saturation — let one win.
@@ -250,14 +259,15 @@ module.exports = {
 
 ## 8. Motion Specs
 
-| Interaction | Duration | Easing |
-|---|---|---|
-| Hover state (color, scale) | 150-200ms | `--ease-out` |
-| Page transition | 300-400ms | `--ease-in-out` |
-| Scroll reveal | max 400ms | `--ease-out` |
-| Stagger between elements | 40-60ms max | — |
+| Interaction                | Duration    | Easing          |
+| -------------------------- | ----------- | --------------- |
+| Hover state (color, scale) | 150-200ms   | `--ease-out`    |
+| Page transition            | 300-400ms   | `--ease-in-out` |
+| Scroll reveal              | max 400ms   | `--ease-out`    |
+| Stagger between elements   | 40-60ms max | —               |
 
 ### Rules
+
 - **Respect `prefers-reduced-motion`** — wrap every animation in a media query check.
 - **No parallax unless requested.** One earned moment per page, max.
 - **Hover scale**: never larger than `1.02-1.03x`. No bouncing or overshooting.
@@ -274,10 +284,14 @@ a {
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size var(--duration-base) var(--ease-out),
-              color var(--duration-base) var(--ease-out);
+  transition:
+    background-size var(--duration-base) var(--ease-out),
+    color var(--duration-base) var(--ease-out);
 }
-a:hover { background-size: 100% 1px; color: var(--color-coral); }
+a:hover {
+  background-size: 100% 1px;
+  color: var(--color-coral);
+}
 ```
 
 ---
@@ -287,6 +301,7 @@ a:hover { background-size: 100% 1px; color: var(--color-coral); }
 This is the personality layer. Without it, the portfolio reads as polished but cold.
 
 ### Implement via:
+
 - **Inline SVG scribbles** — hand-drawn arrows, circles, underlines. Slightly imperfect paths. Use `stroke="var(--color-coral)"` and `stroke-width="2-3"`.
 - **Organic blob shapes** as section backdrops — never perfect circles. Use SVG with rounded asymmetric paths.
 - **Slight rotation** on photos and cards: `transform: rotate(-1.2deg)` or similar. Always odd-degree values, never multiples of 5.
@@ -297,7 +312,13 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 
 ```html
 <!-- Hand-drawn arrow -->
-<svg viewBox="0 0 100 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<svg
+  viewBox="0 0 100 40"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.5"
+  stroke-linecap="round"
+>
   <path d="M5 22 Q 30 14, 60 20 T 92 22" />
   <path d="M82 14 L 92 22 L 82 30" />
 </svg>
@@ -309,6 +330,7 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 ```
 
 ### Never:
+
 - Use Heroicons / Phosphor / Tabler / any clean icon set as personality.
 - Use stock illustrations.
 - Use Lottie animations of waving emojis, generic office figures, etc.
@@ -326,11 +348,13 @@ This is the personality layer. Without it, the portfolio reads as polished but c
     Project Design Manager
   </p>
   <h1 className="font-display text-display-xl text-charcoal tracking-tight leading-[1.02]">
-    Carel<br />Maeda
+    Carel
+    <br />
+    Maeda
   </h1>
   <p className="font-sans text-lg text-warm-grey max-w-prose mt-12 leading-normal">
-    Designer, strategist, translator between business and humans. I turn
-    complex enterprise problems into experiences people actually want to use.
+    Designer, strategist, translator between business and humans. I turn complex enterprise problems
+    into experiences people actually want to use.
   </p>
   {/* hand-drawn accent positioned in negative space */}
   <div className="absolute right-[10%] top-[40%] text-coral opacity-80 rotate-[8deg]">
@@ -343,9 +367,7 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 
 ```jsx
 <header className="mb-12">
-  <p className="font-mono text-xs uppercase tracking-wide text-coral mb-2">
-    03 — Process
-  </p>
+  <p className="font-mono text-xs uppercase tracking-wide text-coral mb-2">03 — Process</p>
   <h2 className="font-display text-display text-charcoal tracking-tight">
     Asking better questions
   </h2>
@@ -375,9 +397,11 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 ### Primary Button
 
 ```jsx
-<button className="font-sans text-base bg-terracotta text-cream px-8 py-4 rounded-pill
+<button
+  className="font-sans text-base bg-terracotta text-cream px-8 py-4 rounded-pill
                    transition-all duration-[200ms] ease-soft
-                   hover:bg-coral hover:scale-[1.02]">
+                   hover:bg-coral hover:scale-[1.02]"
+>
   Say hello →
 </button>
 ```
@@ -385,18 +409,14 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 ### Body Paragraph
 
 ```jsx
-<p className="font-sans text-base text-charcoal max-w-prose leading-[1.6] mb-6">
-  Lorem ipsum...
-</p>
+<p className="font-sans text-base text-charcoal max-w-prose leading-[1.6] mb-6">Lorem ipsum...</p>
 ```
 
 ### Case Study Section Wrapper
 
 ```jsx
 <section className="py-32 px-[var(--gutter)]">
-  <div className="max-w-wide mx-auto">
-    {/* content — one idea per section */}
-  </div>
+  <div className="max-w-wide mx-auto">{/* content — one idea per section */}</div>
 </section>
 ```
 
@@ -405,6 +425,7 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 ## 11. Voice & Copy Rules
 
 ### Voice
+
 - **First-person.** "I" / "we" — never third-person bio voice.
 - **Warm, conversational.** Like talking to a smart friend over coffee.
 - **Specific over abstract.** Name the company, the problem, the metric, the outcome.
@@ -415,12 +436,15 @@ This is the personality layer. Without it, the portfolio reads as polished but c
 ### Voice samples
 
 ✓ **YES:**
+
 > "I'm Carel. I help enterprise fintech teams turn complex compliance workflows into experiences people actually want to use. Mostly that means asking better questions, drawing a lot, and translating between business, engineering, and the human on the other end."
 
 ✗ **NO:**
+
 > "Project Design Manager with 5+ years of experience driving cross-functional UX strategy across enterprise accounts, delivering measurable business impact through user-centered design."
 
 ### Phrases that sound like Carel
+
 - "The interesting part wasn't the design — it was figuring out who actually needed to see this."
 - "I came to UX from mechanical engineering, which is probably why I draw flowcharts on everything."
 - "Speaking four languages turned out to be design research training I didn't know I was getting."
@@ -463,7 +487,7 @@ If a user request falls into one of these, **surface it** before implementing. E
 
 Ask, in order:
 
-1. **Does this advance one of the mood keywords?** *(Confident · Warm · Crafted · Editorial · Approachable · Considered · Distinct · Honest · Tactile · Sun-warmed · Generous · Specific · Personal · Designed · Bright · Unhurried)* — if not, cut it.
+1. **Does this advance one of the mood keywords?** _(Confident · Warm · Crafted · Editorial · Approachable · Considered · Distinct · Honest · Tactile · Sun-warmed · Generous · Specific · Personal · Designed · Bright · Unhurried)_ — if not, cut it.
 2. **Could a 100-person SaaS company use this exact element?** If yes, redesign it.
 3. **Would a hiring manager understand the work in 30-60 seconds on this page?** If not, simplify.
 4. **Is this serving the content, or showing off?** If showing off, cut it.
@@ -489,16 +513,16 @@ Before completing any UI change, verify:
 
 ## 15. Mood Vocabulary — How to Interpret Requests
 
-When the user says... | Interpret as...
----|---
-"Make it warmer" | More cream / peach exposure, softer rounding, more breathing room
-"Make it bolder" | Larger display type, tighter tracking, more terracotta presence
-"Make it more crafted" | Add a hand-touched element (scribble, rotation, sketch photo)
-"Make it more editorial" | Increase whitespace, lengthen prose width, add section numbering
-"Make it more playful" | Add a coral micro-interaction, slight rotation, expressive hover
-"Make it cleaner" | Reduce element count, increase spacing — do NOT remove personality
-"Make it more professional" | Tighten copy, remove a decorative element if there are 3+, NOT add blue or cool tones
-"Make it pop" | Increase contrast between terracotta and cream — never add saturation broadly
+| When the user says...       | Interpret as...                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------- |
+| "Make it warmer"            | More cream / peach exposure, softer rounding, more breathing room                     |
+| "Make it bolder"            | Larger display type, tighter tracking, more terracotta presence                       |
+| "Make it more crafted"      | Add a hand-touched element (scribble, rotation, sketch photo)                         |
+| "Make it more editorial"    | Increase whitespace, lengthen prose width, add section numbering                      |
+| "Make it more playful"      | Add a coral micro-interaction, slight rotation, expressive hover                      |
+| "Make it cleaner"           | Reduce element count, increase spacing — do NOT remove personality                    |
+| "Make it more professional" | Tighten copy, remove a decorative element if there are 3+, NOT add blue or cool tones |
+| "Make it pop"               | Increase contrast between terracotta and cream — never add saturation broadly         |
 
 ---
 
@@ -507,16 +531,24 @@ When the user says... | Interpret as...
 Use `<link>` or `@import` for free fonts; self-host for paid ones.
 
 ### Free pairing (recommended starting point)
+
 ```html
 <link rel="preconnect" href="https://api.fontshare.com" />
-<link rel="stylesheet"
-  href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500,700&display=swap" />
+<link
+  rel="stylesheet"
+  href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700&f[]=satoshi@400,500,700&display=swap"
+/>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+/>
 ```
+
 For the display face, download **PP Editorial New** (free for personal use from Pangram Pangram) and self-host.
 
 ### Paid pairing (production-grade)
+
 - Body: **Söhne** (Klim Type Foundry)
 - Display: **Tobias** (Klim) or **PP Editorial New** (Pangram Pangram)
 - Mono: **Söhne Mono** or **JetBrains Mono** (free)

@@ -6,14 +6,15 @@ export default function ContactCTA() {
       <div className="wrap wrap--content text-center">
         <MotionVertical>
           <p className="eyebrow tracking-widest mb-4">
-            <span className="text-accentGreen" aria-hidden="true">●</span> Open for new projects
+            <span className="text-accentGreen" aria-hidden="true">
+              ●
+            </span>{' '}
+            Open for new projects
           </p>
-          <h2 className="mx-auto max-w-[16ch] font-display text-h1 font-medium text-ink">
-            Let&rsquo;s build something.
-          </h2>
+          <h2 className="mx-auto max-w-[16ch] text-h1 font-medium">Let&rsquo;s build something.</h2>
           <a
             href="mailto:carelmaeda@gmail.com"
-            className="no-underline-grow mt-sub inline-block font-display text-h3 text-ink underline underline-offset-[6px] decoration-1 transition-opacity duration-300 ease-standard hover:opacity-60"
+            className="no-underline-grow mt-sub inline-block font-display text-h3 underline underline-offset-[6px] decoration-1 transition-opacity duration-300 ease-standard hover:opacity-60"
           >
             carelmaeda@gmail.com
           </a>

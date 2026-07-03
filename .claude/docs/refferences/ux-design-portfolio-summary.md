@@ -1,4 +1,5 @@
 # How to Make Your Own Awesome UX Design Portfolio
+
 > **Source:** [CareerFoundry](https://careerfoundry.com/en/blog/ux-design/ux-design-portfolio-tips/)
 > **Author:** Tom Cotterill | **Updated:** December 6, 2022
 
@@ -30,25 +31,28 @@ Yes — arguably more important than a CV. Recruiters spend only about 6 seconds
 The single most important thing: **show your process**, not just polished final designs.
 
 For each project, include:
+
 - The problem you were solving
 - Who you worked with
 - Tools used
 - Discovery/research phases
 - The design process (wireframes, prototypes, personas, user journeys, etc.)
 - The final outcome and what happened after handoff
-- Storytelling between steps — explain *why* you moved from one stage to the next
+- Storytelling between steps — explain _why_ you moved from one stage to the next
 
 ---
 
 ## 4. Tips by Experience Level
 
 ### Beginners & Juniors
+
 - Inject personality, even with few projects
 - Include personal projects and course work
 - Show failures honestly — grit and humility are valued
 - Hiring managers want cultural fit, not perfection; skills can be learned on the job
 
 ### Seniors & Managers
+
 - Showcase team work and strategic leadership rather than old hands-on projects
 - Show how you set strategy, delegated tasks, and delivered outcomes
 - Include data (ROI, improved UX metrics) to back up results
@@ -70,6 +74,7 @@ For each project, include:
 Researchers should also have portfolios — but focused on **impact**, not UI screens.
 
 Include:
+
 - Client/project context
 - The problem you were brought in to solve
 - Your research approach
@@ -92,6 +97,7 @@ Include:
 Aim for a hiring manager to understand your work in **30–60 seconds**.
 
 Best practices:
+
 - Conduct simple user tests with friends or family
 - Use clear navigation, sub-headings, and a defined process
 - Remove anything that doesn't represent your best work
@@ -111,6 +117,7 @@ Best practices:
 ## 10. Building a Portfolio with No Experience
 
 Options to get started:
+
 1. **Take a course** — apply UX principles through curriculum projects
 2. **Volunteer** for a charity or non-profit — real users, real problems
 3. **Join hackathons** — build portfolio pieces quickly while networking
@@ -120,6 +127,7 @@ Options to get started:
 ## 11. Where to Host Your Portfolio
 
 **Recommended: Personal website** (e.g., yourname.com)
+
 - Easier to share and remember
 - Can include About page, blog, video, personality
 - Good for personal branding and SEO
@@ -147,4 +155,4 @@ Options to get started:
 
 ---
 
-*Summary created on 2026-05-25*
+_Summary created on 2026-05-25_

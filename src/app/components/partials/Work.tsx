@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MotionVertical, MotionStagger, MotionItem } from './Motions';
+import { Button } from '@/components/ui/button';
 
 interface WorkCard {
   number: string;
@@ -90,9 +91,7 @@ export default function Work() {
       <div className="wrap wrap--wide">
         <MotionVertical>
           <header className="mb-sub">
-            <p className="eyebrow tracking-widest">
-              Latest work
-            </p>
+            <p className="eyebrow tracking-widest">Latest work</p>
           </header>
         </MotionVertical>
 
@@ -112,21 +111,11 @@ export default function Work() {
                     ))}
                   </div>
 
-                  <h3 className="mt-5 font-display text-h2 font-medium text-ink">
-                    {card.title}
-                  </h3>
+                  <h3 className="mt-5 text-h2 font-medium">{card.title}</h3>
 
-                  <p className="mt-4 max-w-prose font-sans text-base leading-[1.6] text-muted-ink">
-                    {card.description}
-                  </p>
+                  <p className="max-w-prose text-muted-ink">{card.description}</p>
 
-                  <span className="mt-6 inline-flex items-center gap-2 font-sans text-sm font-medium tracking-snug text-ink">
-                    Read case study
-                    <span className="transition-transform duration-300 ease-standard group-hover:translate-x-1">
-                      →
-                    </span>
-                    <span className="eyebrow">· {card.readingTime} min</span>
-                  </span>
+                  <Button>Read case study</Button>
                 </div>
               </Link>
             </MotionItem>

@@ -13,7 +13,7 @@
 This positioning was chosen deliberately after an honesty audit:
 
 - "Senior" is defensible from actual evidence — six years at Paygos, ~10–15% YoY revenue impact across enterprise accounts, three shipped products end-to-end
-- "Ships strategy, design, *and* code" is the differentiation — the audit's section 10 flagged this as the most underused asset on the current site
+- "Ships strategy, design, _and_ code" is the differentiation — the audit's section 10 flagged this as the most underused asset on the current site
 - "Building toward Design Lead" is the trajectory framing that lets the portfolio earn interviews now while planting the seeds for the next title escalation
 
 The previous positioning (claiming Design Lead directly, without people-leadership evidence) created a contradiction the audit caught immediately. This positioning resolves it in the direction that's true.
@@ -25,6 +25,7 @@ The previous positioning (claiming Design Lead directly, without people-leadersh
 The May 2026 audit of carelmaeda.com surfaced four categories of issues:
 
 **Disqualifying (must fix before any other work):**
+
 - Every primary work-card CTA on the home page returns 404 (`/work/demo-platform`, `/work/receipt-platform`, `/work/sales-ops-tool`)
 - About, Resume, and Archive links in the nav and footer all 404
 - The public repo is linked from the footer, so any hiring manager can verify all of the above in 30 seconds
@@ -32,11 +33,13 @@ The May 2026 audit of carelmaeda.com surfaced four categories of issues:
 - A hidden `d-none` H1 says "Design Lead" while the visible H1 says "Hi! My name is Carel" — the page reads junior to humans and senior to crawlers
 
 **Content gaps (the work we already prepared for):**
+
 - Three new case studies are ready to replace the existing weak ones
 - The existing case-study template is single-mode (tactical IC story) and will flatten the new case studies if used as-is
 - The bottom of the case-study mix (Wealthie 7-day bootcamp project, Design Archive Figma templates) actively undercuts senior signal
 
 **Positioning issues:**
+
 - "Hi! My name is" hero framing reads junior
 - "Open for cool projects" pulsing pill reads freelancer/junior
 - "How I Work" pillars are all senior-IC craft, no Lead-adjacent thinking
@@ -44,6 +47,7 @@ The May 2026 audit of carelmaeda.com surfaced four categories of issues:
 - The eng-background + writes front-end angle is positioned as IC craft when it's actually senior leverage
 
 **Technical hygiene:**
+
 - No per-case-study metadata
 - No sitemap, no robots, no structured data
 - Bootstrap 5.3 loaded via CDN for the hamburger menu only
@@ -51,9 +55,9 @@ The May 2026 audit of carelmaeda.com surfaced four categories of issues:
 - LCP image lazy-loaded on About
 - `package.json` still named `next-proj`
 
-The audit's verdict: *"Good metric, broken links, IC's portfolio with a Lead's job title — pass for now."*
+The audit's verdict: _"Good metric, broken links, IC's portfolio with a Lead's job title — pass for now."_
 
-This plan moves the verdict to: *"Senior portfolio with end-to-end ownership and visible upward trajectory — interview."*
+This plan moves the verdict to: _"Senior portfolio with end-to-end ownership and visible upward trajectory — interview."_
 
 ---
 
@@ -106,15 +110,16 @@ The audit flagged that the footer's "Developed with Next.js and TypeScript" link
 ### 4. Resolve the title-vs-positioning mismatch
 
 The current site has:
-- Visible H1: *"Hi! My name is Carel."*
-- Hidden `d-none` H1: *"Design Lead | UX Strategy & Product Design"*
-- Metadata title: *"Carel Maeda — Design Lead"*
+
+- Visible H1: _"Hi! My name is Carel."_
+- Hidden `d-none` H1: _"Design Lead | UX Strategy & Product Design"_
+- Metadata title: _"Carel Maeda — Design Lead"_
 
 This is the worst possible combination — junior to humans, senior to crawlers. Phase 0 picks one direction and aligns everything.
 
 **Resolution for this plan:**
 
-- **Metadata title:** *"Carel Maeda — Senior Product Designer"*
+- **Metadata title:** _"Carel Maeda — Senior Product Designer"_
 - **Visible H1:** TBD in Phase 2 (will replace the "Hi! My name is" hero). For Phase 0, just remove the hidden `d-none` H1 and leave the existing visible H1 in place. The hero will be properly rewritten in Phase 2.
 - **Open Graph title:** match metadata
 - **Twitter card title:** match metadata
@@ -150,7 +155,7 @@ If the receiving Claude wants to "improve" anything else while in the codebase: 
 
 **Prerequisite:** Phase 0 complete.
 
-## Phase 1A — Design the new case-study template *(half a session)*
+## Phase 1A — Design the new case-study template _(half a session)_
 
 The current case-study template is single-mode: a "Summary / Problem / Solution / Metrics" four-stack hero followed by a fixed narrative sequence. The audit was emphatic that this template will flatten the new case studies because the three are in three different modes:
 
@@ -165,6 +170,7 @@ The new template needs to flex along these axes:
 **Body sections.** Variable. Each case study has its own section sequence in its markdown source. The template should render whatever H2s the case study has — not enforce a fixed sequence.
 
 **Visual slots.** Each case study's pre-publish checklist specifies 6–9 visual asset slots. The template needs flexible figure components:
+
 - Hero composition (full-width)
 - Before/after pair
 - Diagram (full-width or constrained)
@@ -175,6 +181,7 @@ The new template needs to flex along these axes:
 - Stat callout
 
 **Callout components.**
+
 - Pulled quotes (e.g. The Ownership Rule blockquote in the Demo case study)
 - Stat callouts (e.g. the "85% interested" insight in Bonus Bowls)
 - The "How AI Assisted Me on This Project" section at the bottom of each case study
@@ -185,18 +192,19 @@ The new template needs to flex along these axes:
 
 **Definition of done for 1A:** a single page component (or MDX layout) that all three new case studies will use, with all the slot types above implemented.
 
-## Phase 1B — Migrate the three case studies *(one session per case study)*
+## Phase 1B — Migrate the three case studies _(one session per case study)_
 
 The mapping:
 
-| Existing route | Replace with | Status |
-|---|---|---|
-| `/case-studies/paygos-prototype` | **Paygos Demo** | Direct upgrade — same project, more mature framing |
-| `/case-studies/birdseye` | **Bonus Bowls** | Same shape of story, more rigorous version |
-| `/case-studies/design-archive` | **Paygos Corporate Site** | Brand+positioning replaces Figma-template-archive |
-| `/case-studies/wealthie` | **Cut or move to deep archive** | 7-day bootcamp project undercuts senior signal |
+| Existing route                   | Replace with                    | Status                                             |
+| -------------------------------- | ------------------------------- | -------------------------------------------------- |
+| `/case-studies/paygos-prototype` | **Paygos Demo**                 | Direct upgrade — same project, more mature framing |
+| `/case-studies/birdseye`         | **Bonus Bowls**                 | Same shape of story, more rigorous version         |
+| `/case-studies/design-archive`   | **Paygos Corporate Site**       | Brand+positioning replaces Figma-template-archive  |
+| `/case-studies/wealthie`         | **Cut or move to deep archive** | 7-day bootcamp project undercuts senior signal     |
 
 The three new case study markdown files are at:
+
 - `paygos-corporate-site-case-study.md`
 - `paygos-demo-case-study.md`
 - `bonus-bowls-case-study.md`
@@ -207,24 +215,24 @@ Three sentences across the three case studies need a small edit before migration
 
 **In `paygos-demo-case-study.md`, Reflection section:**
 
-- Old: *"This work is the bar I want to set for a team: a design system isn't a deliverable, it's a contract..."*
-- New: *"This work is the bar I'm building toward as I grow into a Lead role: a design system isn't a deliverable, it's a contract..."*
+- Old: _"This work is the bar I want to set for a team: a design system isn't a deliverable, it's a contract..."_
+- New: _"This work is the bar I'm building toward as I grow into a Lead role: a design system isn't a deliverable, it's a contract..."_
 
-- Old: *"The Paygos Demo is my proof that I can hold both sides — set the bar in design, *and* ship the code that makes the bar hold."*
-- New: *"The Paygos Demo is my proof that I can hold both sides today — set the bar in design, *and* ship the code that makes the bar hold — and the foundation I'm building Lead-scope capability on."*
+- Old: _"The Paygos Demo is my proof that I can hold both sides — set the bar in design, *and* ship the code that makes the bar hold."_
+- New: _"The Paygos Demo is my proof that I can hold both sides today — set the bar in design, *and* ship the code that makes the bar hold — and the foundation I'm building Lead-scope capability on."_
 
 **In `bonus-bowls-case-study.md`, Reflection section:**
 
-- Old: *"A Design Lead's job is to make that through-line non-negotiable in how a team operates."*
-- New: *"As I grow into a Lead role, this is the discipline I want to be known for — making the through-line from research to shipped UI non-negotiable."*
+- Old: _"A Design Lead's job is to make that through-line non-negotiable in how a team operates."_
+- New: _"As I grow into a Lead role, this is the discipline I want to be known for — making the through-line from research to shipped UI non-negotiable."_
 
-- Old: *"Bonus Bowls is my proof that I can pitch that discipline to a Fortune 500 client, run it myself, translate it into a shipping product, and write the code that makes the design real."*
-- New: *"Bonus Bowls is my proof that I can pitch that discipline to a Fortune 500 client, run it myself, translate it into a shipping product, and write the code that makes the design real — at Senior level today, building toward Lead."*
+- Old: _"Bonus Bowls is my proof that I can pitch that discipline to a Fortune 500 client, run it myself, translate it into a shipping product, and write the code that makes the design real."_
+- New: _"Bonus Bowls is my proof that I can pitch that discipline to a Fortune 500 client, run it myself, translate it into a shipping product, and write the code that makes the design real — at Senior level today, building toward Lead."_
 
 **In `paygos-corporate-site-case-study.md`, Reflection section:**
 
-- Old: *"I'll do that on every Lead-scope project from now on."*
-- New: *"I'll do that on every Senior-scope project from now on, and it's a discipline I'll carry into a Lead role."*
+- Old: _"I'll do that on every Lead-scope project from now on."_
+- New: _"I'll do that on every Senior-scope project from now on, and it's a discipline I'll carry into a Lead role."_
 
 These are six total sentence edits across three files. Do them at the start of Phase 1B before any migration work.
 
@@ -232,17 +240,19 @@ These are six total sentence edits across three files. Do them at the start of P
 
 1. Drop the markdown into MDX (or whatever renders content in your stack)
 2. Apply the sentence softening edits above
-3. Replace `{{placeholders}}` with real numbers — this is *the* moment to pull the metrics that have been deferred:
- - **Corporate Site:** GA4, EmailJS, Search Console — see the case study's pre-publish checklist
- - **Demo:** verticals where sales has demoed + production team's relationship to the system
- - **Bonus Bowls:** post-launch sign-up counts, receipt approval rate, redemption totals — whatever has accumulated since launch
+3. Replace `{{placeholders}}` with real numbers — this is _the_ moment to pull the metrics that have been deferred:
+
+- **Corporate Site:** GA4, EmailJS, Search Console — see the case study's pre-publish checklist
+- **Demo:** verticals where sales has demoed + production team's relationship to the system
+- **Bonus Bowls:** post-launch sign-up counts, receipt approval rate, redemption totals — whatever has accumulated since launch
+
 4. Capture the priority visual assets from each case study's pre-publish checklist (top 4 are essential, top 9 are listed)
 5. Fill the per-page metadata (title, description, OG image)
 6. Delete the `PRE-PUBLISH CHECKLIST` section from each file before shipping
 
 **The visual asset capture is the bottleneck.** Realistically, Phase 1B will not ship without spending real time on visuals. Plan for it.
 
-## Phase 1C — Rework the case study index and home cards *(half a session)*
+## Phase 1C — Rework the case study index and home cards _(half a session)_
 
 The home page currently has three work cards pointing at broken routes with mismatched copy. Rebuild:
 
@@ -250,9 +260,9 @@ The home page currently has three work cards pointing at broken routes with mism
 - Each card leads with **the headline outcome** from that case study's snapshot, not a feature description
 - Each card uses the case study's hero visual as preview
 - Links resolve to the new routes:
- - `/case-studies/paygos-corporate-site`
- - `/case-studies/paygos-demo`
- - `/case-studies/bonus-bowls` *(or whichever URL slug fits your scheme)*
+- `/case-studies/paygos-corporate-site`
+- `/case-studies/paygos-demo`
+- `/case-studies/bonus-bowls` _(or whichever URL slug fits your scheme)_
 
 **Wealthie disposition:** cut from the home page entirely. If you want to preserve it for context, move to an `/archive` page that is not linked from primary nav. Honest recommendation: cut entirely.
 
@@ -293,27 +303,27 @@ Cut "Hi! My name is" and the "Open for cool projects" pulsing pill. The new hero
 **Working draft (to iterate):**
 
 > **Senior Product Designer who ships strategy, design, and code.**
-> *Six years at Paygos, ~10–15% YoY revenue impact across enterprise accounts. Building toward Design Lead.*
+> _Six years at Paygos, ~10–15% YoY revenue impact across enterprise accounts. Building toward Design Lead._
 
 Every clause maps to evidence in the case studies. The "Building toward Design Lead" line is the move that makes everything else honest.
 
 ### 2. Proof strip rewrite
 
-The three current metrics are really two distinct claims phrased three ways. Rebuild as three *distinct* proofs:
+The three current metrics are really two distinct claims phrased three ways. Rebuild as three _distinct_ proofs:
 
-1. **10–15% YoY revenue impact** across enterprise accounts *(strategy)*
-2. **~15% engagement lift** through UX optimization *(craft)*
-3. **End-to-end ownership** of three shipped products *(scope)*
+1. **10–15% YoY revenue impact** across enterprise accounts _(strategy)_
+2. **~15% engagement lift** through UX optimization _(craft)_
+3. **End-to-end ownership** of three shipped products _(scope)_
 
 The third one is new and addresses the audit's repeated "this is your most underused asset" finding.
 
 ### 3. "How I Work" rewrite
 
-The four pillars currently read as Senior IC manifesto. That's defensible at Senior level — *but* one pillar should be reframed to Lead-adjacent thinking. The candidate for reframing is the front-end pillar.
+The four pillars currently read as Senior IC manifesto. That's defensible at Senior level — _but_ one pillar should be reframed to Lead-adjacent thinking. The candidate for reframing is the front-end pillar.
 
-**Old (per audit):** *"I write front-end code and review PRs."* — IC craft.
+**Old (per audit):** _"I write front-end code and review PRs."_ — IC craft.
 
-**New:** *"I close the design-engineering trust gap. My work ships faster because handoffs aren't theater — they're a contract written in code."* — Senior leverage that reads as proto-Lead thinking.
+**New:** _"I close the design-engineering trust gap. My work ships faster because handoffs aren't theater — they're a contract written in code."_ — Senior leverage that reads as proto-Lead thinking.
 
 The other three pillars can stay close to current copy.
 
@@ -323,7 +333,7 @@ Two changes:
 
 **Surface the trajectory explicitly:**
 
-> *"Senior Product Designer at Paygos, building toward a Design Lead role over the next 12–18 months."*
+> _"Senior Product Designer at Paygos, building toward a Design Lead role over the next 12–18 months."_
 
 **Surface any leadership-adjacent work that is real.** Even small evidence earns its place in the About story without overclaiming. Examples to consider including if they're true:
 
@@ -337,11 +347,11 @@ This is a conversation to have at the start of Phase 2 — what real evidence ex
 
 ### 5. Contact CTA rewrite
 
-Replace the *"Design Lead opportunities"* line with:
+Replace the _"Design Lead opportunities"_ line with:
 
-> *"I'm exploring Senior Product Designer roles with a path to Lead. Remote-first, fintech / consumer / B2B SaaS."*
+> _"I'm exploring Senior Product Designer roles with a path to Lead. Remote-first, fintech / consumer / B2B SaaS."_
 
-The mailto subject becomes *"Senior Product Designer opportunity"*.
+The mailto subject becomes _"Senior Product Designer opportunity"_.
 
 ### 6. Add a real visible H1 to each page
 
@@ -371,7 +381,7 @@ Kill the `d-none` H1 hack (already done in Phase 0). Add a semantically correct,
 
 ### Typography hierarchy review
 
-Every heading, body block, and caption across the three case studies and the home page should feel like one document. The Demo case study has a *"typography owned by the tag"* insight; ironically, applying that discipline to the portfolio itself is the move.
+Every heading, body block, and caption across the three case studies and the home page should feel like one document. The Demo case study has a _"typography owned by the tag"_ insight; ironically, applying that discipline to the portfolio itself is the move.
 
 ### Spacing rhythm
 
@@ -432,10 +442,10 @@ Once Phase 3 is done, the public repo link can come back if you want it there. T
 
 The audit's current verdict:
 
-> *"Good metric, broken links, IC's portfolio with a Lead's job title — pass for now."*
+> _"Good metric, broken links, IC's portfolio with a Lead's job title — pass for now."_
 
 The verdict after this plan executes:
 
-> *"Senior portfolio with end-to-end ownership and visible upward trajectory — interview."*
+> _"Senior portfolio with end-to-end ownership and visible upward trajectory — interview."_
 
 That's the target. Every phase is sequenced to move the verdict that direction.

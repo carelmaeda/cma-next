@@ -23,7 +23,7 @@
 - **Live in front of enterprise prospects** — sales runs real discovery sessions on the demo with prospects across pet, vet, pharma, and CPG
 - **Zero className-driven design drift** in the codebase: typography is owned by `@layer base` and tags; visuals are owned by `components/ui/`, not consumers
 
-[HERO VISUAL: Token grid + primitive catalog + three representative product surfaces (rep dashboard, payment wizard, clinic catalog) arranged as a single composition. Caption: *"The design system, the components it produces, and the product running on them — same surface."*]
+[HERO VISUAL: Token grid + primitive catalog + three representative product surfaces (rep dashboard, payment wizard, clinic catalog) arranged as a single composition. Caption: _"The design system, the components it produces, and the product running on them — same surface."_]
 
 ---
 
@@ -31,11 +31,11 @@
 
 Paygos sells a unified workspace to enterprise commercial teams — distributor orders, returns, rebate agreements, trade-spend payments, analytics. To win those rooms, sales needed more than a slide deck. They needed a working product the prospect could touch, on a laptop, without a backend dependency.
 
-The brief I gave myself was harder than that. Anyone can ship a polished demo. The opportunity was to make the demo *the canonical reference implementation of the design system that ships in production* — one artifact that does three jobs: it sells, it documents the system in code, and it sets the bar for everything Paygos builds next.
+The brief I gave myself was harder than that. Anyone can ship a polished demo. The opportunity was to make the demo _the canonical reference implementation of the design system that ships in production_ — one artifact that does three jobs: it sells, it documents the system in code, and it sets the bar for everything Paygos builds next.
 
 **On "is this real?"** This is a working SaaS application, not a portfolio mock. Sales runs live prospect sessions on it. It uses seeded data and runtime mutation overlays to simulate real customer scenarios end-to-end — drafting an order, approving a rebate above threshold, issuing a discretionary payment against a campaign. Where the production product and the demo diverge, the design system is the same; the demo is its most complete deployment.
 
-**Why one owner mattered.** The system has 39 primitives, 190 consumers, and 47 pages. With a handoff seam between design and engineering, drift is inevitable — a `text-sm` here, a one-off `rounded-md` there, and inside six months the system is suggestions instead of rules. Owning both sides let me make the system *self-enforcing in code*, not aspirational in Figma.
+**Why one owner mattered.** The system has 39 primitives, 190 consumers, and 47 pages. With a handoff seam between design and engineering, drift is inevitable — a `text-sm` here, a one-off `rounded-md` there, and inside six months the system is suggestions instead of rules. Owning both sides let me make the system _self-enforcing in code_, not aspirational in Figma.
 
 ---
 
@@ -45,7 +45,7 @@ The brief I gave myself was harder than that. Anyone can ship a polished demo. T
 
 **Tokens.** Tailwind v4's `@theme inline` block in `globals.css` is the registry of record. Two brand tokens (paygos-green `#43AB6C`, paygos-teal `#0F4C5C`), a neutral scale, semantic surfaces (`background`, `card`, `muted`, `destructive`, `ring`), chart and sidebar palettes, two radii, and a typography stack (Urbanist display, Inter body, Outfit for KPI numerals, Geist Mono for code). Light and dark modes resolve from the same semantic names. **No component reads a hex.**
 
-**Typography is owned by the tag.** This is the single highest-leverage decision in the system. `globals.css @layer base` defines the type for `<h1>`–`<h6>`, `<p>`, `<small>`, `<code>`, `<strong>`, `<dl>/<dt>/<dd>`. Consumer code is *banned* from adding `text-*`, `font-*`, `leading-*`, or `tracking-*` to text. Hierarchy comes from semantics; styling lives in one place; the whole product changes by editing six declarations.
+**Typography is owned by the tag.** This is the single highest-leverage decision in the system. `globals.css @layer base` defines the type for `<h1>`–`<h6>`, `<p>`, `<small>`, `<code>`, `<strong>`, `<dl>/<dt>/<dd>`. Consumer code is _banned_ from adding `text-*`, `font-*`, `leading-*`, or `tracking-*` to text. Hierarchy comes from semantics; styling lives in one place; the whole product changes by editing six declarations.
 
 **Motion primitives.** Two utilities, both respecting `prefers-reduced-motion`:
 
@@ -66,8 +66,8 @@ Writing `bg-*`, `text-*` (color or size), `border-*` (color), `font-*`, `shadow-
 
 **Notable primitives that exemplify the thinking:**
 
-- **`<Button>`** — 14 variants × 9 sizes, built on `class-variance-authority` with full `aria-expanded`, `aria-pressed`, `data-active`, `aria-invalid`, and disabled state coverage baked into the variant strings. When a consumer needed a filter-chip toggle, the answer was *"add a variant,"* never *"style a div."*
-- **`<StatusPill>`** — the *only* place in the codebase permitted to use the extended semantic palette (blue, amber, emerald, indigo, red). The standards explicitly white-list those shades inside this file and forbid them everywhere else. State language has one vocabulary.
+- **`<Button>`** — 14 variants × 9 sizes, built on `class-variance-authority` with full `aria-expanded`, `aria-pressed`, `data-active`, `aria-invalid`, and disabled state coverage baked into the variant strings. When a consumer needed a filter-chip toggle, the answer was _"add a variant,"_ never _"style a div."_
+- **`<StatusPill>`** — the _only_ place in the codebase permitted to use the extended semantic palette (blue, amber, emerald, indigo, red). The standards explicitly white-list those shades inside this file and forbid them everywhere else. State language has one vocabulary.
 - **`<Sheet>`, `<Dialog>`, `<Popover>` + `<Command>`** — Radix primitives wrapped with system tokens. Multi-step wizards (Order, Payment, Return, Rebate Agreement) and complex search-pickers (account, SKU, campaign) all compose these, never bespoke modals.
 - **`<Card>` + slots** — a `<div>` is never a card. Any panel-shaped surface uses the primitive, which means radius, border, shadow, and padding rhythm are decided in one file.
 
@@ -123,19 +123,19 @@ Owning a design system end-to-end taught me that **rules in a Figma file are wis
 
 **What I'd evolve next.** Promote the standards file into a published package consumed by the production product; add visual-regression coverage on the primitive set; build a token-diff CI check that flags any consumer drift before it lands.
 
-**Design Lead trajectory.** This work is the bar I'm building toward as I grow into a Lead role: a design system isn't a deliverable, it's a contract; primitives aren't a library, they're a vocabulary; and a Lead's job is to make that contract enforceable so craft doesn't depend on vigilance. The Paygos Demo is my proof that I can hold both sides today — set the bar in design, *and* ship the code that makes the bar hold — and the foundation I'm building Lead-scope capability on.
+**Design Lead trajectory.** This work is the bar I'm building toward as I grow into a Lead role: a design system isn't a deliverable, it's a contract; primitives aren't a library, they're a vocabulary; and a Lead's job is to make that contract enforceable so craft doesn't depend on vigilance. The Paygos Demo is my proof that I can hold both sides today — set the bar in design, _and_ ship the code that makes the bar hold — and the foundation I'm building Lead-scope capability on.
 
 ---
 
 ## How AI Assisted Me on This Project
 
-I used AI coding assistants to accelerate execution — generating component scaffolds from variant specs, drafting TypeScript prop contracts, and producing the boilerplate I'd otherwise hand-type. The system's standards file is intentionally written in a form (`AGENTS.md` / `CLAUDE.md`) that lets these tools work *inside* the rules rather than around them — the same lint and constraints that bind a human contributor bind the assistant. Every system decision, design judgment, and shipped surface is mine. AI is leverage on execution; the system is the work.
+I used AI coding assistants to accelerate execution — generating component scaffolds from variant specs, drafting TypeScript prop contracts, and producing the boilerplate I'd otherwise hand-type. The system's standards file is intentionally written in a form (`AGENTS.md` / `CLAUDE.md`) that lets these tools work _inside_ the rules rather than around them — the same lint and constraints that bind a human contributor bind the assistant. Every system decision, design judgment, and shipped surface is mine. AI is leverage on execution; the system is the work.
 
 ---
 
 ---
 
-# PRE-PUBLISH CHECKLIST — *delete this section before publishing*
+# PRE-PUBLISH CHECKLIST — _delete this section before publishing_
 
 ## Placeholders to replace (search for `{{`)
 

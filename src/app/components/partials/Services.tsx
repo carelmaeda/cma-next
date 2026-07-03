@@ -47,10 +47,8 @@ export default function Services() {
       <div className="wrap wrap--wide">
         <MotionVertical>
           <header className="mb-sub max-w-prose">
-            <p className="eyebrow tracking-widest mb-4">
-              What I do
-            </p>
-            <h2 className="font-display text-h2 font-medium text-ink">
+            <p className="eyebrow tracking-widest mb-4">What I do</p>
+            <h2 className="text-h2 font-medium">
               One person, the whole arc, from the first interview to the shipped build.
             </h2>
           </header>
@@ -62,7 +60,7 @@ export default function Services() {
               <div className="group flex cursor-default items-center justify-between gap-6 border-b border-hairline py-7 transition-colors duration-300 ease-standard md:py-9">
                 <div className="flex items-center gap-5 md:gap-8">
                   <span className="font-mono text-xs tracking-wider text-muted-ink">{number}</span>
-                  <h3 className="flex items-center gap-4 font-display text-h3 font-medium text-ink">
+                  <h3 className="flex items-center gap-4 text-h3 font-medium">
                     {/* Hover-reveal inline icon next to the word (ref detail). */}
                     <span className="inline-grid w-0 place-items-center overflow-hidden opacity-0 transition-all duration-300 ease-standard group-hover:w-[1.1em] group-hover:opacity-100">
                       <Icon className="size-[0.85em]" />
@@ -70,7 +68,7 @@ export default function Services() {
                     {title}
                   </h3>
                 </div>
-                <p className="hidden max-w-[24rem] text-right font-sans text-sm leading-[1.5] text-muted-ink md:block">
+                <p className="hidden max-w-[24rem] text-right text-sm leading-[1.5] text-muted-ink md:block">
                   {detail}
                 </p>
               </div>

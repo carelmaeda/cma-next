@@ -25,28 +25,34 @@ export default function About() {
 
           {/* Copy */}
           <MotionVertical className="md:col-span-8 lg:col-span-9" delay={0.05}>
-            <h2 className="max-w-[20ch] font-display text-h2 font-medium text-ink">
+            <h2 className="max-w-[20ch] text-h2 font-medium">
               A designer who codes, because handoff is where ideas go to die.
             </h2>
 
-            <div className="mt-block grid gap-x-12 gap-y-item font-sans text-base leading-[1.7] text-ink md:grid-cols-2">
+            <div className="mt-block grid gap-x-12 gap-y-item leading-[1.7] md:grid-cols-2">
+              <p>My team and I lead UX strategies that drive measurable product growth.</p>
               <p>
-                Six years at Paygos, three promotions (Coordinator → Specialist → Manager), now
-                building toward a Design Lead role over the next 12–18 months.
+                Over the years, these strategies delivered around 10–15% YoY growth for clients,
+                alongside stronger engagement and reduced workflow friction. Our platforms make
+                their lives easier each day so they can focus on selling.
               </p>
               <p>
-                My mechanical-engineering background lets me ship production front-end as part of my
-                design work, closing the design-engineering handoff gap that slows most teams down.
+                Working across design, product, and engineering, we align stakeholders, shape
+                roadmap priorities, and ship accessible, high-impact experiences. To facilitate
+                this, we built and scaled Paygos&rsquo; first design system back in 2023,
+                streamlining the design-to-dev handoff from weeks to days.
               </p>
               <p>
-                I own the design system that governs the Paygos product surface, and I run the
-                stakeholder workshops and discovery sessions that align clients and leadership before
-                any pixels move.
+                With a background in marketing and engineering, I bring structured problem-solving
+                to creative strategy. I&rsquo;m now focused on broadening my design leadership and
+                continually improving as a designer every day. This means mentoring designers,
+                taking extra courses, staying up to date with a growing industry, and making myself
+                future-proof.
               </p>
               <p>
-                Based in Toronto. Fluent in English, Portuguese, French, and Spanish. Four
-                languages, which turned out to be design-research training I didn&rsquo;t know I was
-                getting.
+                Outside of work, I&rsquo;m usually behind a camera. Photography shares the same
+                instinct I bring to design: noticing the details that make complex things feel
+                simple.
               </p>
             </div>
 

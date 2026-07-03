@@ -9,38 +9,40 @@
 
 Clean, confident, **editorial-Swiss meets playful app-studio**. A strict black-on-white type
 system + huge whitespace creates a premium, disciplined base; saturated candy-bright color
-arrives almost exclusively *inside the work* (app mockups, stat bars), so it pops hard.
+arrives almost exclusively _inside the work_ (app mockups, stat bars), so it pops hard.
 
 Vibe keywords: **minimal, editorial, spacious, high-contrast, premium, playful-but-disciplined.**
-Emotional throughline: *"serious craft, but we have fun."*
+Emotional throughline: _"serious craft, but we have fun."_
 
 ---
 
 ## 2. Color Palette
 
 ### Neutrals (foundation, ~90% of surface area)
-| Role | Value |
-|------|-------|
-| Page background | `#FFFFFF` |
-| Off-white surfaces / cards / inputs | `#F5F5F5`, `#F9F9F9` |
-| Warm off-white panel | `#FAF9F5` |
-| Primary text + black pill buttons | `#040404` |
-| Pure black (stat numbers) | `#000000` |
-| Eyebrow / muted label | `#707070` |
-| Secondary metadata | `#888888` |
-| Faded caption | `rgba(0,0,0,0.4)` |
-| Translucent pill / hover fill | `rgba(187,187,187,0.15–0.2)` |
-| Hairline divider | `#E8E8E8` |
+
+| Role                                | Value                        |
+| ----------------------------------- | ---------------------------- |
+| Page background                     | `#FFFFFF`                    |
+| Off-white surfaces / cards / inputs | `#F5F5F5`, `#F9F9F9`         |
+| Warm off-white panel                | `#FAF9F5`                    |
+| Primary text + black pill buttons   | `#040404`                    |
+| Pure black (stat numbers)           | `#000000`                    |
+| Eyebrow / muted label               | `#707070`                    |
+| Secondary metadata                  | `#888888`                    |
+| Faded caption                       | `rgba(0,0,0,0.4)`            |
+| Translucent pill / hover fill       | `rgba(187,187,187,0.15–0.2)` |
+| Hairline divider                    | `#E8E8E8`                    |
 
 ### Accents (used sparingly, inside content only)
-| Color | Value | Where |
-|-------|-------|-------|
-| Electric blue (brand) | `#1400FF` | Logo dot, links, Order project |
-| Neon green | `#39F241` | "Open for new projects" dot; getupandwalk brand |
-| Lilac / purple | `#B88EFE` | Stat bar; Biz bg |
-| Cyan | `#24D1FE` | Stat bar |
-| Acid yellow | `#EAFF00` | Stat bar; getupandwalk accent |
-| Pink | `#FBC6F2` | Stat bar |
+
+| Color                 | Value     | Where                                           |
+| --------------------- | --------- | ----------------------------------------------- |
+| Electric blue (brand) | `#1400FF` | Logo dot, links, Order project                  |
+| Neon green            | `#39F241` | "Open for new projects" dot; getupandwalk brand |
+| Lilac / purple        | `#B88EFE` | Stat bar; Biz bg                                |
+| Cyan                  | `#24D1FE` | Stat bar                                        |
+| Acid yellow           | `#EAFF00` | Stat bar; getupandwalk accent                   |
+| Pink                  | `#FBC6F2` | Stat bar                                        |
 
 **Rule:** structural chrome stays monochrome; saturated color lives in imagery + data viz.
 
@@ -52,15 +54,16 @@ Three faces, strict roles:
 
 **Space Grotesk** — headings + ALL UI/nav. Weight **500** almost everywhere, with
 aggressively tight negative tracking on large sizes.
-| Element | Size | Wt | Line-height | Tracking |
-|---------|------|----|-------------|----------|
-| H1 hero | 56px | 500 | 1.1 | **-2.8px** |
-| H2 section | 40px | 500 | 1.4 | -2px |
-| H3 service item | 32px | 500 | 1.4 | -1.6px |
-| Eyebrow label | 12px | 400 | — | -0.6px, UPPERCASE, `#707070` |
+
+| Element         | Size | Wt  | Line-height | Tracking                     |
+| --------------- | ---- | --- | ----------- | ---------------------------- |
+| H1 hero         | 56px | 500 | 1.1         | **-2.8px**                   |
+| H2 section      | 40px | 500 | 1.4         | -2px                         |
+| H3 service item | 32px | 500 | 1.4         | -1.6px                       |
+| Eyebrow label   | 12px | 400 | —           | -0.6px, UPPERCASE, `#707070` |
 
 **Roboto Serif** — **numerals/data only** (stat numbers ~33px/500, big in-mockup figures).
-The serif-vs-grotesque tension is the signature "editorial" detail. Use a serif *only* for numbers.
+The serif-vs-grotesque tension is the signature "editorial" detail. Use a serif _only_ for numbers.
 
 **Outfit** — tiny functional labels ("Completed tasks", "AI-Assisted/Manual"). Neutral, recedes.
 
@@ -81,11 +84,11 @@ The serif-vs-grotesque tension is the signature "editorial" detail. Use a serif 
 
 ## 5. Shape & Borders
 
-| Token | Value | Use |
-|-------|-------|-----|
-| Pill | `~51.6px` / `60–62px` / `999px` | Buttons, status pill, tag chips |
-| Card | `24px` / `30px` | Project cards, panels, bento cards |
-| Small | `4px` / `10–11px` | Inputs, small UI |
+| Token | Value                           | Use                                |
+| ----- | ------------------------------- | ---------------------------------- |
+| Pill  | `~51.6px` / `60–62px` / `999px` | Buttons, status pill, tag chips    |
+| Card  | `24px` / `30px`                 | Project cards, panels, bento cards |
+| Small | `4px` / `10–11px`               | Inputs, small UI                   |
 
 Fully rounded everything, no hard rectangles, no heavy strokes (separation via fill + hairline).
 Buttons = fully-rounded black pills (`#040404` bg, white text). Tags = translucent grey pills.
@@ -139,7 +142,7 @@ Measured from computed styles / Framer attributes:
 
 ---
 
-## 9. Project Detail (Case-Study) Page — anatomy  *(NEW)*
+## 9. Project Detail (Case-Study) Page — anatomy _(NEW)_
 
 Confirmed consistent across /details/getupandwalk and /details/order. Top→bottom:
 
@@ -163,6 +166,7 @@ Confirmed consistent across /details/getupandwalk and /details/order. Top→bott
 7. **Shared footer** (identical to homepage).
 
 ### Detail-page specific flourishes
+
 - **Hand-drawn line-art doodles**: scattered around the hero mockup are simple monoline
   illustrations matching the project (Order: waving hand ✋, dollar bill, piggy bank, invoice).
   A recurring playful motif layered over/around the device.
@@ -171,7 +175,7 @@ Confirmed consistent across /details/getupandwalk and /details/order. Top→bott
 
 ---
 
-## 10. Imagery & Illustration Style  *(NEW)*
+## 10. Imagery & Illustration Style _(NEW)_
 
 - Photoreal tilted **iPhone mockups** as the primary product imagery.
 - Tinted solid-color backgrounds behind devices, matched to each project's brand accent.
@@ -204,7 +208,7 @@ Confirmed consistent across /details/getupandwalk and /details/order. Top→bott
 
 ---
 
-## 12. Notes / limits  *(NEW)*
+## 12. Notes / limits _(NEW)_
 
 - Exact easing/durations above are the real computed CSS transition values; Framer's
   scroll-appear timings are component-driven (variant state machines) and not all exposed as

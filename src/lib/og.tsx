@@ -1,11 +1,11 @@
-export const ogSize = { width: 1200, height: 630 }
-export const ogContentType = 'image/png'
+export const ogSize = { width: 1200, height: 630 };
+export const ogContentType = 'image/png';
 
 export interface OGParams {
-  title: string
-  subtitle?: string
+  title: string;
+  subtitle?: string;
   /** Optional eyebrow override; defaults to "Carel Maeda · carelmaeda.com" */
-  eyebrow?: string
+  eyebrow?: string;
 }
 
 /**
@@ -161,5 +161,5 @@ export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
         </span>
       </div>
     </div>
-  )
+  );
 }

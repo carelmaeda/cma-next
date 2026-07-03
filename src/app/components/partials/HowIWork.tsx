@@ -39,17 +39,12 @@ export default function HowIWork() {
   return (
     <MotionVertical className="py-24 md:py-32">
       <header className="max-w-prose mb-16 md:mb-20">
-        <p className="eyebrow mb-3">
-          03 · How I work
-        </p>
-        <h2 className="font-display text-h1 text-aubergine">
-          Design Thinking, end-to-end, applied to product and code.
-        </h2>
-        <p className="font-sans text-base md:text-lg text-charcoal leading-[1.7] mt-6 max-w-[44rem]">
-          Every project I ship runs through the same five phases. The
-          methodology is borrowed from the Stanford d.school; the rigor is
-          mine. Every case study below is organized around these phases so you
-          can see exactly where my work lives.
+        <p className="eyebrow mb-3">03 · How I work</p>
+        <h2 className="text-h1">Design Thinking, end-to-end, applied to product and code.</h2>
+        <p className="md:text-lg leading-[1.7] mt-6 max-w-[44rem]">
+          Every project I ship runs through the same five phases. The methodology is borrowed from
+          the Stanford d.school; the rigor is mine. Every case study below is organized around these
+          phases so you can see exactly where my work lives.
         </p>
       </header>
 
@@ -65,17 +60,11 @@ export default function HowIWork() {
             className={`flex flex-col gap-3 ${i % 2 === 1 ? 'md:mt-12' : ''}`}
           >
             <div className="flex items-baseline gap-4">
-              <span className="font-display italic text-terracotta text-5xl leading-none">
-                {phase.number}
-              </span>
+              <span className="font-display italic text-5xl leading-none">{phase.number}</span>
               <span className="eyebrow">Phase</span>
             </div>
-            <h3 className="font-display text-h4 text-aubergine">
-              {phase.title}
-            </h3>
-            <p className="font-sans text-base text-charcoal leading-[1.7] max-w-prose">
-              {phase.body}
-            </p>
+            <h3 className="text-h4">{phase.title}</h3>
+            <p className="leading-[1.7] max-w-prose">{phase.body}</p>
           </article>
         ))}
       </div>

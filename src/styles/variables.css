@@ -75,120 +75,120 @@ h6 {
      + data-viz (stat bars, mockups). Grain overlay retained as a signature. */
 
   /* Neutrals, ~90% of surface area */
-  --color-white:        #FFFFFF;   /* page background */
-  --color-off:          #F5F5F5;   /* off-white surfaces / cards / inputs */
-  --color-off-2:        #F9F9F9;   /* lighter off-white surface */
-  --color-warm-panel:   #FAF9F5;   /* warm off-white panel */
-  --color-ink:          #040404;   /* primary text + black pill buttons */
-  --color-black:        #000000;   /* pure black, stat numbers */
-  --color-muted:        #707070;   /* eyebrow / muted label */
-  --color-muted-2:      #888888;   /* secondary metadata */
-  --color-faded:        rgba(0, 0, 0, 0.4);          /* faded caption */
-  --color-pill-fill:    rgba(187, 187, 187, 0.18);   /* translucent pill / hover */
-  --color-ink-hover:    #222222;   /* pill button hover darken */
-  --color-hairline:     #E8E8E8;   /* hairline divider */
+  --color-white: #ffffff; /* page background */
+  --color-off: #f5f5f5; /* off-white surfaces / cards / inputs */
+  --color-off-2: #f9f9f9; /* lighter off-white surface */
+  --color-warm-panel: #faf9f5; /* warm off-white panel */
+  --color-ink: #040404; /* primary text + black pill buttons */
+  --color-black: #000000; /* pure black, stat numbers */
+  --color-muted: #707070; /* eyebrow / muted label */
+  --color-muted-2: #888888; /* secondary metadata */
+  --color-faded: rgba(0, 0, 0, 0.4); /* faded caption */
+  --color-pill-fill: rgba(187, 187, 187, 0.18); /* translucent pill / hover */
+  --color-ink-hover: #222222; /* pill button hover darken */
+  --color-hairline: #e8e8e8; /* hairline divider */
 
   /* Accents, used sparingly, inside content / data-viz only */
-  --color-blue:         #1400FF;   /* electric blue, logo dot, links */
-  --color-green:        #39F241;   /* neon green, "open for work" dot */
-  --color-lilac:        #B88EFE;   /* stat bar */
-  --color-cyan:         #24D1FE;   /* stat bar */
-  --color-yellow:       #EAFF00;   /* acid yellow, stat bar / accent */
-  --color-pink:         #FBC6F2;   /* stat bar */
+  --color-blue: #1400ff; /* electric blue, logo dot, links */
+  --color-green: #39f241; /* neon green, "open for work" dot */
+  --color-lilac: #b88efe; /* stat bar */
+  --color-cyan: #24d1fe; /* stat bar */
+  --color-yellow: #eaff00; /* acid yellow, stat bar / accent */
+  --color-pink: #fbc6f2; /* stat bar */
 
   /* Back-compat aliases, legacy class + component names remapped onto the
      monochrome system so the whole site re-skins without per-component edits.
      (e.g. `text-coral` → muted grey, `bg-cream` → white, `text-aubergine` → ink) */
-  --color-cream:        var(--color-white);
-  --color-cream-pale:   var(--color-off-2);
-  --color-cream-deep:   var(--color-off);
-  --color-terracotta:   var(--color-ink);
-  --color-coral:        var(--color-muted);
-  --color-mustard:      var(--color-muted);
-  --color-peach:        var(--color-muted-2);
-  --color-charcoal:     var(--color-ink);
-  --color-aubergine:    var(--color-ink);
-  --color-warm-grey:    var(--color-muted);
+  --color-cream: var(--color-white);
+  --color-cream-pale: var(--color-off-2);
+  --color-cream-deep: var(--color-off);
+  --color-terracotta: var(--color-ink);
+  --color-coral: var(--color-muted);
+  --color-mustard: var(--color-muted);
+  --color-peach: var(--color-muted-2);
+  --color-charcoal: var(--color-ink);
+  --color-aubergine: var(--color-ink);
+  --color-warm-grey: var(--color-muted);
 
   /* Semantic aliases */
-  --bg:                 var(--color-white);
-  --bg-surface:         var(--color-off-2);
-  --bg-alt:             var(--color-off);
-  --text:               var(--color-ink);
-  --text-muted:         var(--color-muted);
-  --text-strong:        var(--color-ink);
-  --accent:             var(--color-ink);
-  --accent-energy:      var(--color-ink);
-  --accent-highlight:   var(--color-muted);
-  --border-warm:        var(--color-hairline);
+  --bg: var(--color-white);
+  --bg-surface: var(--color-off-2);
+  --bg-alt: var(--color-off);
+  --text: var(--color-ink);
+  --text-muted: var(--color-muted);
+  --text-strong: var(--color-ink);
+  --accent: var(--color-ink);
+  --accent-energy: var(--color-ink);
+  --accent-highlight: var(--color-muted);
+  --border-warm: var(--color-hairline);
 
   /* Design Thinking phase colors, the one place case studies are allowed
      saturated accents (data-viz). Mapped onto the content accent palette. */
-  --color-phase-empathize:  var(--color-blue);
-  --color-phase-define:     var(--color-cyan);
-  --color-phase-ideate:     var(--color-lilac);
-  --color-phase-prototype:  var(--color-green);
-  --color-phase-test:       var(--color-pink);
+  --color-phase-empathize: var(--color-blue);
+  --color-phase-define: var(--color-cyan);
+  --color-phase-ideate: var(--color-lilac);
+  --color-phase-prototype: var(--color-green);
+  --color-phase-test: var(--color-pink);
 
   /* ---------- TYPOGRAPHY ---------- */
   /* Three faces, strict roles (injected by next/font/google in app/layout.tsx):
      Newsreader = headings + highlights + numerals (serif, w/ italic)
      · Spline Sans = body copy + ALL UI/nav
      · Spline Sans Mono = micro-labels, pills, tables, code (a REAL monospace). */
-  --font-display: var(--font-newsreader), "Newsreader", Georgia, serif;
-  --font-sans:    var(--font-spline-sans), "Spline Sans", system-ui, sans-serif;
-  --font-mono:    var(--font-spline-sans-mono), "Spline Sans Mono", ui-monospace, monospace;
+  --font-display: var(--font-newsreader), 'Newsreader', Georgia, serif;
+  --font-sans: var(--font-spline-sans), 'Spline Sans', system-ui, sans-serif;
+  --font-mono: var(--font-spline-sans-mono), 'Spline Sans Mono', ui-monospace, monospace;
   /* Numerals now share the heading serif (Newsreader's figures + italic). */
   --font-numeral: var(--font-display);
 
   /* Back-compat aliases */
-  --font-primary:   var(--font-sans);
+  --font-primary: var(--font-sans);
   --font-secondary: var(--font-display);
 
   /* Type scale */
-  --text-xs:    0.8125rem;
-  --text-sm:    0.9375rem;
-  --text-base:  1.125rem;
-  --text-lg:    1.375rem;
-  --text-xl:    1.75rem;
-  --text-2xl:   2.5rem;
-  --text-3xl:   4rem;
-  --text-4xl:   clamp(4rem, 12vw, 11rem);
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 4rem;
+  --text-4xl: clamp(4rem, 12vw, 11rem);
 
   /* Fluid heading ramp — single source shared by the Tailwind `text-*`
      utilities (tailwind.config.ts) AND the case-study `cs-*` primitives, so
      a home H2 and a case-study H2 are the same size. Plus one reading-body
      size and one micro-label size (were three). */
-  --text-hero:  clamp(2.75rem, 8vw,   5.5rem);
-  --text-h1:    clamp(2.25rem, 5.5vw, 4.25rem);
-  --text-h2:    clamp(1.9rem,  4.5vw, 3.25rem);
-  --text-h3:    clamp(1.6rem,  4vw,   2.5rem);
-  --text-h4:    clamp(1.5rem,  2.6vw, 2rem);
-  --text-body:  1.0625rem;   /* reading body (prose) */
-  --text-label: 0.6875rem;   /* single micro-label size */
+  --text-hero: clamp(2.75rem, 8vw, 5.5rem);
+  --text-h1: clamp(2.25rem, 5.5vw, 4.25rem);
+  --text-h2: clamp(1.9rem, 4.5vw, 3.25rem);
+  --text-h3: clamp(1.6rem, 4vw, 2.5rem);
+  --text-h4: clamp(1.5rem, 2.6vw, 2rem);
+  --text-body: 1.0625rem; /* reading body (prose) */
+  --text-label: 0.6875rem; /* single micro-label size */
 
   /* Line heights */
-  --leading-tight:   1.05;
-  --leading-snug:    1.2;
-  --leading-normal:  1.55;
-  --leading-loose:   1.7;
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.55;
+  --leading-loose: 1.7;
 
   /* Letter spacing. `--tracking-heading` is tuned for the serif (Newsreader) —
      serifs read best near-neutral, not the aggressive grotesque -0.04em. */
-  --tracking-heading: -0.015em;  /* headings (serif) */
-  --tracking-tight:   -0.04em;   /* legacy grotesque-era spot use */
-  --tracking-snug:    -0.025em;  /* UI / nav / buttons */
-  --tracking-normal:  0;
-  --tracking-wide:    0.08em;
+  --tracking-heading: -0.015em; /* headings (serif) */
+  --tracking-tight: -0.04em; /* legacy grotesque-era spot use */
+  --tracking-snug: -0.025em; /* UI / nav / buttons */
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
 
   /* ---------- SPACING ---------- */
   /* Fixed numeric steps — legacy classes + micro-spacing. */
-  --space-1:  0.25rem;
-  --space-2:  0.5rem;
-  --space-3:  0.75rem;
-  --space-4:  1rem;
-  --space-6:  1.5rem;
-  --space-8:  2rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
   --space-12: 3rem;
   --space-16: 4rem;
   --space-24: 6rem;
@@ -200,46 +200,58 @@ h6 {
      py-page …); the config just mirrors these names. To change a step,
      edit its clamp here — nowhere else. clamp(phone, fluid, desktop):
      the first/last numbers are the px sizes at mobile and at ≥1440px. */
-  --space-item:    clamp(1rem,    0.88rem + 0.5vw,  1.375rem); /* 16→22px · gap between items, prose gap */
-  --space-block:   clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);  /* 20→28px · heading→content, card padding */
-  --space-sub:     clamp(1.75rem, 1.35rem + 1.6vw,  3rem);     /* 28→48px · air before a subsection heading */
-  --space-section: clamp(2.75rem, 2.1rem + 2.8vw,   5.5rem);   /* 44→88px · gap between major sections */
-  --space-page:    clamp(5rem,  4rem + 3.6vw,   8rem);   /* 56→104px · page padding, home section py */
+  --space-item: clamp(1rem, 0.88rem + 0.5vw, 1.375rem); /* 16→22px · gap between items, prose gap */
+  --space-block: clamp(
+    1.25rem,
+    1.05rem + 0.85vw,
+    1.75rem
+  ); /* 20→28px · heading→content, card padding */
+  --space-sub: clamp(
+    1.75rem,
+    1.35rem + 1.6vw,
+    3rem
+  ); /* 28→48px · air before a subsection heading */
+  --space-section: clamp(
+    2.75rem,
+    2.1rem + 2.8vw,
+    5.5rem
+  ); /* 44→88px · gap between major sections */
+  --space-page: clamp(5rem, 4rem + 3.6vw, 8rem); /* 56→104px · page padding, home section py */
 
   /* Layout — layered container tiers.
      reading (prose) → content (full) → feature (wide spread) → bleed.
      Structure spreads; body copy stays at the reading measure. */
-  --container-prose:   40rem;                 /* reading column (~68–72ch, compact) */
-  --container-full:    90rem;                 /* text-led sections / chrome copy */
+  --container-prose: 40rem; /* reading column (~68–72ch, compact) */
+  --container-full: 90rem; /* text-led sections / chrome copy */
   /* Fixed rem (like the others) so `.wrap` insets ONCE via the gutter on all
      screens; only past this cap does it centre. A vw value here double-insets
      (centring margin + gutter) on every screen — bad on mobile. */
-  --container-feature: 132rem;                /* work / about / nav frame — spreads to ~2112px */
-  --gutter:            clamp(1.25rem, 5vw, 4rem);
+  --container-feature: 132rem; /* work / about / nav frame — spreads to ~2112px */
+  --gutter: clamp(1.25rem, 5vw, 4rem);
 
   /* ---------- RADIUS ---------- */
   /* Fully rounded everything; no hard rectangles. */
-  --radius-sm:      4px;     /* small UI */
-  --radius-md:      11px;    /* inputs */
-  --radius-lg:      24px;    /* cards, panels, bento */
-  --radius-card:    24px;
+  --radius-sm: 4px; /* small UI */
+  --radius-md: 11px; /* inputs */
+  --radius-lg: 24px; /* cards, panels, bento */
+  --radius-card: 24px;
   --radius-card-lg: 30px;
-  --radius-pill:    999px;   /* buttons, status pill, tag chips */
+  --radius-pill: 999px; /* buttons, status pill, tag chips */
 
   /* ---------- SHADOW (use sparingly, separation via fill + hairline) ---------- */
   --shadow-soft: 0 4px 24px rgba(4, 4, 4, 0.05);
   --shadow-lift: 0 18px 48px -12px rgba(4, 4, 4, 0.14);
-  --shadow-warm: var(--shadow-lift);   /* legacy alias */
+  --shadow-warm: var(--shadow-lift); /* legacy alias */
 
   /* ---------- MOTION, concrete primitives measured from the reference ---------- */
-  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);    /* scroll-reveal rise */
-  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);      /* hovers / state */
-  --ease-snappy:   cubic-bezier(0.2, 0, 0, 1);        /* presses / micro */
-  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast:   150ms;
-  --duration-base:   200ms;
-  --duration-hover:  300ms;
-  --duration-press:  180ms;
-  --duration-slow:   400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1); /* scroll-reveal rise */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* hovers / state */
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1); /* presses / micro */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-hover: 300ms;
+  --duration-press: 180ms;
+  --duration-slow: 400ms;
   --duration-reveal: 600ms;
 }

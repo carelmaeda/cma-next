@@ -9,9 +9,8 @@ export default function Hero() {
       className="relative flex min-h-[92dvh] flex-col items-center justify-center px-gutter pb-24 pt-40 text-center"
     >
       <MotionHero className="flex w-full max-w-[60rem] flex-col items-center">
-
         {/* Giant centred headline, Newsreader serif 500, per-word rise */}
-        <h1 className="font-display text-hero font-medium text-ink">
+        <h1 className="text-hero font-medium">
           <StaggerWords text="Hi, I'm Carel. I design products and ship the code." />
         </h1>
 

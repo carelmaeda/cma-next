@@ -28,12 +28,12 @@ Three things to internalize about this positioning:
    makes a Design Lead claim that the evidence doesn't support
    (no people-management history). The revamp aligns the visible
    positioning to Senior, which is defensible from actual work.
-2. **The "and code" half is the differentiation.** Carel designs *and*
+2. **The "and code" half is the differentiation.** Carel designs _and_
    ships front-end code end-to-end. That hybrid is the most
    underused asset on the current site. Surface it; don't bury it.
 3. **"Building toward Design Lead" is the trajectory framing.** It's
    honest, it's specific, and it tells recruiters what to consider
-   him for now *and* later. Do not strip it. Do not over-claim past it.
+   him for now _and_ later. Do not strip it. Do not over-claim past it.
 
 ## Where the reference material lives
 
@@ -42,7 +42,7 @@ that drove each phase have been deleted; what remains is the durable
 reference material:
 
 - **`.claude/docs/plan/portfolio-revamp-plan.md`** — historical record
-  of the revamp plan. Read for context on *why* the site looks the
+  of the revamp plan. Read for context on _why_ the site looks the
   way it does. Not actionable any more.
 
 - **`.claude/docs/case-studies/`** — three canonical long-form case
@@ -56,7 +56,7 @@ reference material:
   rendered pages can drift toward shorter or longer; the markdown
   is what feeds future PDF exports or content edits.
 
-- **`.claude/docs/refferences/`** *(sic — folder spelling)* — background
+- **`.claude/docs/refferences/`** _(sic — folder spelling)_ — background
   research on portfolio craft, UX case study structure, and the
   May 2026 audit that drove this revamp. Read only when a specific
   question needs answering.
@@ -86,7 +86,7 @@ near the top (right after Project Overview), framing AI as the
 build partner that let one person ship at that scale. Older studies
 may still use **"How AI Assisted Me on This Project"** near the end.
 Either pattern is fine — what's fixed is that this section is the
-*only* place in any case study where AI tools are mentioned. Do not
+_only_ place in any case study where AI tools are mentioned. Do not
 insert AI references into other parts of the body. Carel is the
 author; AI is acceleration on execution.
 
@@ -114,12 +114,16 @@ this voice.
 - **Framework:** Next.js 16 (App Router, Turbopack dev + build)
 - **Language:** TypeScript
 - **Styling:** Tailwind v3 + shadcn/ui (Bootstrap fully removed).
-  Two design-token systems coexist by design: shadcn HSL tokens
-  (authoritative) in `globals.css`, and brand `--color-*` tokens
-  in `variables.css` for the deep-blue and signature-green hues
-  that don't map to shadcn's neutral `secondary`/`accent` semantics.
-  The overlapping tokens (`--color-primary`, `--color-black`,
-  `--color-white`) derive from the HSL set.
+  Just two stylesheets: `src/styles/variables.css` (design tokens
+  only) and `src/styles/globals.css` (everything else — shadcn HSL
+  tokens, base element styles, the `.eyebrow`/`.wrap*`/case-study
+  component classes). Two design-token systems coexist by design:
+  shadcn HSL tokens (authoritative) in `globals.css`, and brand
+  `--color-*` tokens in `variables.css` for the deep-blue and
+  signature-green hues that don't map to shadcn's neutral
+  `secondary`/`accent` semantics. The overlapping tokens
+  (`--color-primary`, `--color-black`, `--color-white`) derive from
+  the HSL set.
 - **Content rendering:** case studies are `.tsx` page files
   (summaries of the canonical `.md` source in
   `.claude/docs/case-studies/`).
@@ -133,9 +137,9 @@ this voice.
   in `variables.css` (with `--font-primary`/`--font-secondary`
   back-compat aliases). Heading size lives on one shared ramp
   (`--text-hero`/`--text-h1…h4`) read by both the Tailwind `text-*`
-  utilities and the case study's `.prose` element rules, so the two
-  never drift; serif headings use `--tracking-heading` (near-neutral),
-  not the aggressive grotesque tracking.
+  utilities and the bare `h1…h6` element rules in `globals.css`, so
+  the two never drift; serif headings use `--tracking-heading`
+  (near-neutral), not the aggressive grotesque tracking.
 - **Metadata:** every route should export its own `metadata`. Case
   study routes need title, description, and per-route OG image.
 - **Frontend style contract:** all UI work must follow
@@ -143,14 +147,24 @@ this voice.
   layout/spacing/sizing only; typography, colour and decoration go
   through design tokens (`text-h1…h4`, `tracking-wide/wider/widest`,
   `bg-pill`, `bg-ink-hover`) and the site-wide `.eyebrow` class. The
-  **case study** wraps its `<article>` in a single `.prose` class and
-  styles **plain HTML by tag** (`.prose h2`, `.prose p`,
-  `.prose blockquote`, `.prose table`…); the few non-tag blocks use
-  plain-noun classes scoped under it (`.prose .card`, `.prose .stat`,
-  `.prose .phase-chip`…). Do **not** put a class on every heading/
-  paragraph or bring back the old `cs-*` prefix. No arbitrary font
-  sizes, fractional spacing, or inline `rgba()`; extract any pattern
-  used 3+ times; customise shadcn at the `src/components/ui/` primitive.
+  **case study** page is plain HTML — no wrapper class — styled by
+  bare tag in `globals.css` (`h1…h6`, `p`, `blockquote`, `table`…),
+  the same rules the rest of the site's headings/paragraphs use; a
+  component that needs a different size/weight layers a Tailwind
+  utility on top (utility specificity beats a bare tag selector, so
+  this never fights the base rule). Case-study-only patterns that
+  aren't a single tag (cards, stats, the process/phase chips, the
+  bento grid) get a plain-noun class (`.card`, `.stat`,
+  `.phase-chip`…) — no scoping prefix needed since nothing else in
+  the codebase uses those names. The one exception: long-form
+  vertical rhythm (`margin-block-start` between a section's direct
+  children) is scoped to `article section > * + *` rather than being
+  bare, since a bare `section > * + *` rule would leak spacing onto
+  every `gap-*`-based section on the home page. Do **not** put a
+  class on every heading/paragraph or bring back the old `cs-*`
+  prefix. No arbitrary font sizes, fractional spacing, or inline
+  `rgba()`; extract any pattern used 3+ times; customise shadcn at
+  the `src/components/ui/` primitive.
 
 ### 5. What never to do
 

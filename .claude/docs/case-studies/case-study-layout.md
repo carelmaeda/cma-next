@@ -3,12 +3,14 @@
 ---
 
 ## 1. Header / Branding
+
 - Designer name
 - Navigation (Work, About, Contact)
 
 ---
 
 ## 2. Project Intro
+
 - Project title
 - Timeline
 - Tools used
@@ -17,17 +19,20 @@
 ---
 
 ## 3. Project Overview
+
 - High-level summary of the feature and its purpose
 
 ---
 
 ## 4. Problem & Solution
+
 - Problem statement (user pain point)
 - Solution statement (how the feature addresses it)
 
 ---
 
 ## 5. Design Process Overview
+
 - List of the 5 Design Thinking phases:
   - Empathize
   - Define
@@ -37,28 +42,29 @@
 
 ---
 
-## (My Own quote to introduce and call the next phase) 
+## (My Own quote to introduce and call the next phase)
 
-## 6. Empathize *(Phase 1)*
-
+## 6. Empathize _(Phase 1)_
 
 ### User Interviews
+
 - Participant info and goal
 - Key takeaways (bulleted insights)
 - User testimonials (quotes)
 
-### Competitive Analysis *(moved here)*
+### Competitive Analysis _(moved here)_
+
 - Competitor comparison (strengths & challenges)
 - Key insight derived from the analysis
 
 ---
 
-## (My Own quote to introduce and call the next phase) 
+## (My Own quote to introduce and call the next phase)
 
-
-## 7. Define *(Phase 2)*
+## 7. Define _(Phase 2)_
 
 ### User Persona (Emily)
+
 - Background
 - Pain Points
 - Needs/Goals
@@ -71,54 +77,60 @@
 
 ---
 
-## (My Own quote to introduce and call the next phase) 
+## (My Own quote to introduce and call the next phase)
 
-
-## 8. Ideate *(Phase 3)*
+## 8. Ideate _(Phase 3)_
 
 ### User Flows
+
 - Access paths to the feature
 
 ### Mid-Fidelity Wireframes
+
 - Purpose and role in the process
 
 ---
 
-## 9. Prototype *(Phase 4)*
+## 9. Prototype _(Phase 4)_
 
 ### High-Fidelity Wireframes
+
 - Brand consistency
 - Design choices applied
 
 ---
 
-## (My Own quote to introduce and call the next phase) 
+## (My Own quote to introduce and call the next phase)
 
-
-## 10. Test *(Phase 5)*
+## 10. Test _(Phase 5)_
 
 ### Usability Testing
+
 - Participants, tasks, and goals
 - Key findings
 
 ### Changes Made (Before vs. After)
+
 - Specific issues identified and fixes applied (lyrics, comments, text size, button placement)
 
 ---
 
 ## 11. Final Product
+
 - Summary of the final feature and interactive elements
 
 ---
 
 ## 12. Conclusion
+
 - Main research insights
 - Personal learnings from the project
 
-## (My Own quote to finalize) 
+## (My Own quote to finalize)
 
 ---
 
 ## 13. Call to Action / Contact
+
 - Invitation to connect
 - Email contact

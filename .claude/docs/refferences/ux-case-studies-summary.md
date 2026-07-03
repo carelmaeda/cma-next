@@ -1,5 +1,6 @@
 # UX Case Studies — Summary
-*Source: [IxDF — What are UX Case Studies?](https://ixdf.org/literature/topics/ux-case-studies)*
+
+_Source: [IxDF — What are UX Case Studies?](https://ixdf.org/literature/topics/ux-case-studies)_
 
 ---
 
@@ -55,17 +56,19 @@ A UX case study is a detailed narrative and analysis of a UX design project. It 
 ## Storytelling Framework
 
 ### Aristotle's Elements
-| Element | Description |
-|---|---|
-| **Plot** | The career aspect to highlight (consistent with the target role) |
-| **Character** | Designer's expertise and teamwork |
-| **Theme** | Goals, motivations, and obstacles of the project |
-| **Diction** | Friendly, professional, jargon-free tone |
-| **Melody** | Passion for design as a lifelong interest |
-| **Décor** | Balance of text and visuals |
-| **Spectacle** | The "wow factor" or unexpected discovery |
+
+| Element       | Description                                                      |
+| ------------- | ---------------------------------------------------------------- |
+| **Plot**      | The career aspect to highlight (consistent with the target role) |
+| **Character** | Designer's expertise and teamwork                                |
+| **Theme**     | Goals, motivations, and obstacles of the project                 |
+| **Diction**   | Friendly, professional, jargon-free tone                         |
+| **Melody**    | Passion for design as a lifelong interest                        |
+| **Décor**     | Balance of text and visuals                                      |
+| **Spectacle** | The "wow factor" or unexpected discovery                         |
 
 ### Freytag's 5-Part Pyramid Structure
+
 1. **Exposition (Hook)** — Problem statement, solution outline, designer's role (4–5 sentences).
 2. **Rising Action** — Obstacles, constraints, and the design process leading to key moments.
 3. **Climax** — The story's most intriguing or pivotal point.
@@ -77,7 +80,7 @@ A UX case study is a detailed narrative and analysis of a UX design project. It 
 ## Key Principles for a Strong Case Study
 
 - Tell a design story that **progresses meaningfully**.
-- Reinforce each *"what"* with a *"how"* and *"why"*.
+- Reinforce each _"what"_ with a _"how"_ and _"why"_.
 - **Balance "I" with "we"** to acknowledge team contributions.
 - Use visuals (screenshots, wireframes, personas, flowcharts, journey maps) to support the narrative.
 - Make the case study **scannable** with headings and subheadings.
@@ -85,4 +88,4 @@ A UX case study is a detailed narrative and analysis of a UX design project. It 
 
 ---
 
-*Summary created on May 25, 2026*
+_Summary created on May 25, 2026_
