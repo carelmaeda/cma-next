@@ -29,7 +29,10 @@ const workCards: WorkCard[] = [
     href: '/case-studies/bonus-bowls',
     readingTime: 4,
     accent: 'var(--color-green)',
-    // cover: { src: '/images/work/bonus-bowls.webp', alt: 'Bonus Bowls loyalty web app, phone mock' },
+    cover: {
+      src: '/images/bonusbowls-hero.webp',
+      alt: 'Bonus Bowls, the receipt-to-cashback loyalty app for pet parents',
+    },
   },
 ];
 

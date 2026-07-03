@@ -11,8 +11,9 @@ export default function Hero() {
       <MotionHero className="flex w-full max-w-[60rem] flex-col items-center">
         {/* Giant centred headline, Newsreader serif 500, per-word rise */}
         <h1 className="text-hero font-medium">
-          <StaggerWords text="Hi, I'm Carel. I design products and ship the code." />
+          <StaggerWords text="Hi, I'm Carel." />
         </h1>
+        <StaggerWords text="From user research to shipped code, I design products that make an impact." />
 
         {/* Single pill CTA + a quiet meta line */}
         <div className="mt-14 flex flex-col items-center gap-5">

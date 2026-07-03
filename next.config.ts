@@ -3,6 +3,10 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'cdn.brandfetch.io' }],
+    /* Next 16 clamps <Image quality> to this allowlist (default [75]).
+       85 = photographic hero/cover shots; 90 = dense artboard/diagram
+       sheets where UI text must stay crisp. */
+    qualities: [75, 85, 90],
   },
   async redirects() {
     return [

@@ -38,10 +38,7 @@ export default {
           'clamp(2.5rem, 6vw, 4rem)',
           { lineHeight: '1.06', letterSpacing: 'var(--tracking-heading)' },
         ],
-        hero: [
-          'var(--text-hero)',
-          { lineHeight: '1.06', letterSpacing: 'var(--tracking-heading)' },
-        ],
+        hero: ['var(--text-hero)', { lineHeight: '0.9', letterSpacing: 'var(--tracking-heading)' }],
         h1: ['var(--text-h1)', { lineHeight: '1.07', letterSpacing: 'var(--tracking-heading)' }],
         h2: ['var(--text-h2)', { lineHeight: '1.12', letterSpacing: 'var(--tracking-heading)' }],
         h3: ['var(--text-h3)', { lineHeight: '1.16', letterSpacing: 'var(--tracking-heading)' }],

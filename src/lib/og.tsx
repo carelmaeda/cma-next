@@ -9,12 +9,15 @@ export interface OGParams {
 }
 
 /**
- * OG card, cream canvas, aubergine ink, terracotta brand, editorial serif feel.
- * Uses Georgia as the system-available high-contrast serif (next/og can't load
- * Instrument Serif without a remote font fetch; Georgia is the closest globally
- * available substitute that survives in social-share previews).
+ * OG card, matched to the site's editorial monochrome system: white paper,
+ * ink text, hairline rules, and the single electric-blue logo dot as accent.
+ * Colours are inlined hex mirroring variables.css (next/og can't read CSS
+ * vars). Georgia stands in for Newsreader — next/og can't load the site serif
+ * without a remote font fetch, and Georgia is the closest globally available
+ * substitute that survives in social-share previews.
  */
 export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
+  const mono = 'ui-monospace, "JetBrains Mono", "Courier New", monospace';
   return (
     <div
       style={{
@@ -23,92 +26,75 @@ export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        backgroundColor: '#F5EFE6', // cream
+        backgroundColor: '#FFFFFF', // white paper
         padding: '64px 80px',
         position: 'relative',
         fontFamily: 'Georgia, serif',
       }}
     >
-      {/* Decorative peach blob, top-right */}
-      <div
-        style={{
-          position: 'absolute',
-          top: -180,
-          right: -180,
-          width: 520,
-          height: 520,
-          borderRadius: 9999,
-          backgroundColor: '#F4B89C', // peach
-          opacity: 0.45,
-          display: 'flex',
-        }}
-      />
-      {/* Decorative mustard blob, bottom-left */}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: -160,
-          left: -140,
-          width: 420,
-          height: 420,
-          borderRadius: 9999,
-          backgroundColor: '#D4A24C', // mustard
-          opacity: 0.25,
-          display: 'flex',
-        }}
-      />
-
-      {/* Header row, mono eyebrow on coral */}
+      {/* Header row — logo dot + mono eyebrow, domain right, on a hairline */}
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-start',
-          position: 'relative',
+          alignItems: 'center',
+          paddingBottom: '28px',
+          borderBottom: '1px solid #E8E8E8', // hairline
         }}
       >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div
+            style={{
+              width: '14px',
+              height: '14px',
+              borderRadius: 9999,
+              backgroundColor: '#1400FF', // electric blue logo dot
+              display: 'flex',
+            }}
+          />
+          <span
+            style={{
+              color: '#707070', // muted
+              fontSize: '20px',
+              fontWeight: 500,
+              letterSpacing: '0.14em',
+              textTransform: 'uppercase',
+              fontFamily: mono,
+            }}
+          >
+            {eyebrow ?? 'Carel Maeda · Senior Product Designer'}
+          </span>
+        </div>
         <span
           style={{
-            color: '#E87461', // coral
-            fontSize: '20px',
-            fontWeight: 500,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            fontFamily: 'ui-monospace, "JetBrains Mono", "Courier New", monospace',
-          }}
-        >
-          {eyebrow ?? 'Carel Maeda · Senior Product Designer'}
-        </span>
-        <span
-          style={{
-            color: '#7A6E63', // warm-grey
+            color: '#888888', // muted-2, decorative metadata
             fontSize: '18px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            fontFamily: 'ui-monospace, "JetBrains Mono", "Courier New", monospace',
+            fontFamily: mono,
           }}
         >
           carelmaeda.com
         </span>
       </div>
 
-      {/* Main content, editorial display serif on aubergine */}
+      {/* Main content, editorial display serif in ink */}
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '28px',
           position: 'relative',
-          maxWidth: '960px',
+          maxWidth: '980px',
         }}
       >
         <div
           style={{
-            color: '#3A2218', // aubergine
+            color: '#040404', // ink
             fontSize: subtitle ? '76px' : '92px',
-            fontWeight: 400,
+            fontWeight: 500,
             lineHeight: 1.02,
-            letterSpacing: '-0.02em',
+            letterSpacing: '-0.015em', // --tracking-heading
             fontFamily: 'Georgia, "Times New Roman", serif',
           }}
         >
@@ -117,12 +103,12 @@ export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
         {subtitle && (
           <div
             style={{
-              color: '#7A6E63', // warm-grey
+              color: '#707070', // muted
               fontSize: '26px',
               fontWeight: 400,
               letterSpacing: '0.01em',
               lineHeight: 1.4,
-              fontFamily: 'system-ui, -apple-system, "Inter Tight", sans-serif',
+              fontFamily: 'system-ui, -apple-system, sans-serif',
             }}
           >
             {subtitle}
@@ -130,7 +116,7 @@ export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
         )}
       </div>
 
-      {/* Bottom row, terracotta accent rule + mono tagline */}
+      {/* Bottom row — ink rule + mono tagline */}
       <div
         style={{
           display: 'flex',
@@ -142,22 +128,21 @@ export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
         <div
           style={{
             width: '56px',
-            height: '3px',
-            backgroundColor: '#C66B3D', // terracotta
-            borderRadius: '2px',
+            height: '2px',
+            backgroundColor: '#040404', // ink
             display: 'flex',
           }}
         />
         <span
           style={{
-            color: '#2C2826', // charcoal
+            color: '#040404', // ink
             fontSize: '18px',
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            fontFamily: 'ui-monospace, "JetBrains Mono", "Courier New", monospace',
+            fontFamily: mono,
           }}
         >
-          Strategy · Design · Code · shipped
+          Strategy · Design · Code · Shipped
         </span>
       </div>
     </div>

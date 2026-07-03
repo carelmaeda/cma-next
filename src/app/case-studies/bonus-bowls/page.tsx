@@ -15,12 +15,14 @@ import {
   Users,
 } from 'lucide-react';
 import DesignThinkingDiagram from '@/app/components/shared/DesignThinkingDiagram';
+import ImageLightbox from '@/app/components/shared/ImageLightbox';
 import { MotionVertical, MotionStagger, MotionItem } from '@/app/components/partials/Motions';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Bonus Bowls: A loyalty platform for a Fortune 500 pet brand',
   description:
-    'Bonus Bowls rewards Canadian pet parents for their pet food purchases: photograph the receipt, collect cashback, and redeem it for rewards. I ran an User Research, designed the experience, shipped the Angular front-end, and connected it to an analytics dashboard.',
+    'Bonus Bowls rewards Canadian pet parents for their pet food purchases: photograph the receipt, collect cashback, and redeem it for rewards. I ran the user research, designed the experience, shipped the Angular front-end, and connected it to an analytics dashboard.',
 };
 
 /* ------------------------------------------------------------------ *
@@ -291,32 +293,6 @@ function Bento({ cells }: { cells: BentoCell[] }) {
   );
 }
 
-/** Outbound link to a supporting doc. With `href` it's a real link (solid
- *  pill, opens in a new tab); without one it stays a dashed placeholder. */
-function LinkPlaceholder({ label, href }: { label: string; href?: string }) {
-  const base =
-    'eyebrow eyebrow--strong inline-flex items-center gap-2 rounded-pill border px-4 py-2';
-  if (!href) {
-    return (
-      <span className={`${base} border-dashed border-hairline`}>
-        <span aria-hidden>↗</span>
-        {label}
-      </span>
-    );
-  }
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`no-underline-grow ${base} border-hairline transition duration-300 ease-standard hover:-translate-y-1 hover:border-ink`}
-    >
-      <span aria-hidden>↗</span>
-      {label}
-    </a>
-  );
-}
-
 export default function BonusBowlsPage() {
   return (
     <main className="py-page">
@@ -334,10 +310,15 @@ export default function BonusBowlsPage() {
               </p>
             </MotionVertical>
             <MotionVertical className="h-full">
-              <Figure
-                className="h-full min-h-[16rem]"
-                placeholder="{{Hero visual}}"
-                alt="Hero visual placeholder."
+              <Image
+                src="/images/bonusbowls-hero.webp"
+                alt="Bonus Bowls, the receipt-to-cashback loyalty app for pet parents"
+                width={3200}
+                height={2400}
+                priority
+                sizes="(min-width: 768px) 50vw, 100vw"
+                quality={85}
+                className="h-full min-h-[16rem] w-full rounded-card object-cover"
               />
             </MotionVertical>
           </div>
@@ -364,24 +345,6 @@ export default function BonusBowlsPage() {
           </MotionVertical>
         </header>
 
-        {/* How I Leveraged AI — restrained "sticky note", kept near the top. */}
-        <MotionVertical>
-          <aside
-            className="grid gap-3 rounded-card border border-hairline bg-warm-panel p-block shadow-soft max-w-md"
-            aria-label="How I leveraged AI on this project"
-          >
-            <p className="eyebrow">Note</p>
-            <h3>How I Leveraged AI</h3>
-            <p>I used AI to help me get things done faster and more efficiently:</p>
-            <ul>
-              <li>Organizing Notes and Ideas</li>
-              <li>Helped me scale front end components</li>
-              <li>Debug Solving</li>
-              <li>Assisted on implementing GA4 and Looker Studio</li>
-            </ul>
-          </aside>
-        </MotionVertical>
-
         <Section heading="About">
           <p>
             The client came to us with a problem: their products have the best margins but the worst
@@ -401,6 +364,8 @@ export default function BonusBowlsPage() {
             </p>
           </blockquote>
         </Section>
+
+        <hr className="border-hairline" />
 
         <Section heading="Design Thinking">
           <p>
@@ -567,6 +532,8 @@ export default function BonusBowlsPage() {
           </blockquote>
         </Phase>
 
+        <hr className="border-hairline" />
+
         <Phase phase="define">
           <p>
             Now that we&rsquo;ve mapped our users and our competition, we have a solid base to
@@ -574,43 +541,28 @@ export default function BonusBowlsPage() {
           </p>
 
           <h3>Personas</h3>
+          {/* Card teasers: one-line bio + the persona's core objective. The
+              trailing ellipsis signals the list continues in the full
+              document (the pill below opens it). */}
           <div className="grid gap-item sm:grid-cols-3">
             {[
               {
                 name: 'Elena Martinez',
                 role: 'The Devoted Dog Mom',
-                bio: (
-                  <>
-                    32, marketing coordinator, tech-comfortable but wants simple apps. Spends
-                    ~$90/month on her dog&rsquo;s prescription food. Needs fast receipt uploads,
-                    cash back she can use, and trust that her data is safe. Frustrated by
-                    complicated programs with unclear rules or slow rewards.
-                  </>
-                ),
+                bio: '32, marketing coordinator, ~$90/month on prescription dog food.',
+                objective: 'Upload a receipt in seconds and get cash back she can actually use.',
               },
               {
                 name: 'David Thompson',
                 role: 'The Multi-Pet Owner',
-                bio: (
-                  <>
-                    40, works full-time, mobile-first, price-driven. Feeds three pets at
-                    $200+/month. Wants to earn on every purchase, cash out fast, and get instant
-                    receipt confirmation. Already juggles five reward apps, so this one has to just
-                    work or he drops it.
-                  </>
-                ),
+                bio: '40, mobile-first and price-driven, three pets at $200+/month.',
+                objective: 'Earn on every purchase and cash out fast — it has to just work.',
               },
               {
                 name: 'Linda Wilson',
                 role: 'The Loyal Vet Customer',
-                bio: (
-                  <>
-                    58, retired teacher, prefers phone calls over apps. Shops only at her vet. Wants
-                    rewards without downloading anything complicated, an in-person explanation, and
-                    reassurance her information is safe. Open to rewards but wary of anything that
-                    needs smartphone skills.
-                  </>
-                ),
+                bio: '58, retired teacher, shops only at her vet clinic.',
+                objective: 'Rewards without complicated apps, and reassurance her info is safe.',
               },
             ].map((p) => (
               <div key={p.name} className="card grid content-start gap-3">
@@ -619,18 +571,37 @@ export default function BonusBowlsPage() {
                   <p className="eyebrow mt-1">{p.role}</p>
                 </div>
                 <p className="text-sm leading-relaxed">{p.bio}</p>
+                <ul className="bullets m-0 text-sm leading-relaxed">
+                  <li>
+                    <strong>Objective:</strong> {p.objective}
+                  </li>
+                </ul>
+                <span className="text-warm-grey" aria-hidden>
+                  …
+                </span>
               </div>
             ))}
           </div>
           <div>
-            <LinkPlaceholder
-              label="Full user persona document"
-              href="/images/bonusbowls-user-persona.pdf"
-            />
+            <ImageLightbox
+              src="/images/bonusbowls-personas.webp"
+              alt="Full user persona document covering the three Bonus Bowls personas."
+              width={2400}
+              height={1942}
+              className="inline-flex cursor-pointer"
+            >
+              <Button asChild variant="secondary" size="sm">
+                <span>
+                  <span aria-hidden>↗</span>
+                  Full user persona document
+                </span>
+              </Button>
+            </ImageLightbox>
           </div>
 
           <h3>How Might We</h3>
-          <div className="columns">
+          <small className="eyebrow">The three key challenges we need to solve</small>
+          <div className="md:flex gap-sub space-y-4">
             {[
               'How might we convert price-driven shoppers into loyal customers?',
               'How might we make uploading a receipt effortless for people who don’t keep receipts?',
@@ -647,6 +618,8 @@ export default function BonusBowlsPage() {
             <p>Now that we defined the problems, how do we solve them?</p>
           </blockquote>
         </Phase>
+
+        <hr className="border-hairline" />
 
         <Phase phase="ideate">
           <p>
@@ -676,12 +649,44 @@ export default function BonusBowlsPage() {
           />
 
           <h3>User Flows</h3>
-          <p>
-            I mapped the main journeys so the path from &ldquo;Onboarding&rdquo; to &ldquo;I got
-            paid&rdquo; stayed as short as possible.
-          </p>
 
-          <Figure placeholder="{{Figma: user flows}}" alt="User flows placeholder." />
+          {/* Text + flow-map teaser split the width from tablet up, matching
+              the other phase figures; the lightbox carries the full map. */}
+          <div className="grid grid-cols-1 gap-item md:grid-cols-2 md:items-center md:gap-sub">
+            <p>
+              I mapped the main journeys so the path from &ldquo;Onboarding&rdquo; to &ldquo;I got
+              paid&rdquo; stayed as short as possible.
+            </p>
+            <figure className="m-0">
+              <ImageLightbox
+                src="/images/bonusbowls-user-flows.webp"
+                alt="User flow diagram mapping the main journeys from onboarding to cashing out."
+                width={2310}
+                height={2400}
+                className="group relative block w-full cursor-zoom-in"
+              >
+                <Image
+                  src="/images/bonusbowls-user-flows.webp"
+                  alt="User flow diagram mapping the main journeys from onboarding to cashing out."
+                  width={2310}
+                  height={2400}
+                  loading="lazy"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  quality={90}
+                  className="h-64 w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink md:h-80"
+                />
+                {/* asChild renders a span: the lightbox trigger is already a
+                    <button>, and a nested <button> is invalid HTML (hydration
+                    error). The span keeps the Button styling. */}
+                <Button asChild variant="secondary" size="sm">
+                  <span className="absolute bottom-4 right-4">
+                    <span aria-hidden>↗</span>
+                    View full user flows
+                  </span>
+                </Button>
+              </ImageLightbox>
+            </figure>
+          </div>
 
           <blockquote>
             <p>
@@ -691,22 +696,58 @@ export default function BonusBowlsPage() {
           </blockquote>
         </Phase>
 
-        <Phase phase="prototype" deck="From wireframes straight to code">
-          <p>
-            To build a prototype as fast as possible, we decided to use Google Material for our raw
-            components. We chose Material for a few reasons:
-          </p>
-          <ol>
-            <li>
-              Google is the native platform the client already uses, so the look would feel familiar
-              to stakeholders.
-            </li>
-            <li>It let us ship a quick mid-fidelity prototype for review.</li>
-            <li>
-              Material components are built to work with our Angular framework, which saved
-              developer time.
-            </li>
-          </ol>
+        <hr className="border-hairline" />
+
+        <Phase phase="prototype">
+          {/* Text + artboards split the width evenly from tablet up. The dense
+              board sheet shows as a fixed-height teaser cropped to its top
+              rows; the lightbox carries the full 3000×2400 board. */}
+          <div className="grid grid-cols-1 gap-item md:grid-cols-2 md:items-center md:gap-sub">
+            <div>
+              <p>
+                To build a prototype as fast as possible, we decided to use Google Material for our
+                raw components. We chose Material for a few reasons:
+              </p>
+              <ol className="bullets">
+                <li>
+                  Google is the native platform the client already uses, so the look would feel
+                  familiar to stakeholders.
+                </li>
+                <li>It let us ship a quick mid-fidelity prototype for review.</li>
+                <li>
+                  Material components are built to work with our Angular framework, which saved
+                  developer time.
+                </li>
+              </ol>
+            </div>
+
+            <figure className="m-0">
+              <ImageLightbox
+                src="/images/bonusbowls-midfidelity.webp"
+                alt="Figma mid-fidelity artboards for the Bonus Bowls prototype."
+                width={3000}
+                height={2400}
+                className="group relative block w-full cursor-zoom-in"
+              >
+                <Image
+                  src="/images/bonusbowls-midfidelity.webp"
+                  alt="Figma mid-fidelity artboards for the Bonus Bowls prototype."
+                  width={3000}
+                  height={2400}
+                  loading="lazy"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  quality={90}
+                  className="h-64 w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink md:h-72"
+                />
+                <Button asChild variant="secondary" size="sm">
+                  <span className="absolute bottom-4 right-4">
+                    <span aria-hidden>↗</span>
+                    View Figma Artboards
+                  </span>
+                </Button>
+              </ImageLightbox>
+            </figure>
+          </div>
 
           <h3>Visual Direction</h3>
           <p>
@@ -715,35 +756,47 @@ export default function BonusBowlsPage() {
           </p>
 
           <h3>Key Screens</h3>
-          <Table
-            headers={['Screen', 'Design decision', 'View']}
-            rows={[
-              ['Sign-up', 'Banking deferred to cash-out', '{{screenshot}}'],
-              [
-                'Receipt upload',
-                'Guided 4-step flow; one-tap camera; live validation',
-                '{{screenshot}}',
-              ],
-              [
-                'Earnings dashboard',
-                'Plain progress to the threshold; no gamification noise',
-                '{{screenshot}}',
-              ],
-              ['Redeem', 'E-transfer; transparent status; support one tap away', '{{screenshot}}'],
-            ]}
-          />
-          <figure className="m-0">
-            <div className="grid grid-cols-1 gap-item sm:grid-cols-4">
-              {['Sign-up', 'Receipt upload', 'Earnings dashboard', 'Redeem'].map((name) => (
-                <div key={name} className="placeholder small">
-                  <span className="eyebrow eyebrow--strong">{name}</span>
-                </div>
-              ))}
-            </div>
-            <figcaption className="eyebrow mt-3">
-              The four key screens — sign-up → receipt upload → earnings dashboard → redeem.
-            </figcaption>
-          </figure>
+          {/* Rationale beside its evidence: decision table left, the four
+              screens right, from tablet up. */}
+          <div className="grid grid-cols-1 gap-item md:grid-cols-2 md:items-center md:gap-sub">
+            <Table
+              headers={['Screen', 'Design decision']}
+              rows={[
+                ['Sign-up', 'Banking deferred to cash-out'],
+                ['Earnings dashboard', 'Plain progress to the threshold; no gamification noise'],
+                ['Receipt upload', 'Guided 4-step flow; one-tap camera; live validation'],
+              ]}
+            />
+            <figure className="m-0">
+              <ImageLightbox
+                src="/images/bonusbowls-key-screens.webp"
+                alt="The four key screens: sign-up, receipt upload, earnings dashboard, and redeem."
+                width={3200}
+                height={2136}
+                className="group relative block w-full cursor-zoom-in"
+              >
+                <Image
+                  src="/images/bonusbowls-key-screens.webp"
+                  alt="The four key screens: sign-up, receipt upload, earnings dashboard, and redeem."
+                  width={3200}
+                  height={2136}
+                  loading="lazy"
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  quality={90}
+                  className="w-full rounded-md border border-hairline transition duration-300 ease-standard group-hover:border-ink"
+                />
+                <Button asChild variant="secondary" size="sm">
+                  <span className="absolute bottom-4 right-4">
+                    <span aria-hidden>↗</span>
+                    View key screens
+                  </span>
+                </Button>
+              </ImageLightbox>
+              <figcaption className="eyebrow mt-3">
+                Some key screens — Profile | Dashboard | Upload Receipt
+              </figcaption>
+            </figure>
+          </div>
 
           <h3>From Prototype to Shipped Product</h3>
           <p>
@@ -752,7 +805,7 @@ export default function BonusBowlsPage() {
             backend partner and I built against.
           </p>
           <p>It shipped as a real product:</p>
-          <ul>
+          <ul className="bullets">
             <li>
               <strong>Bilingual EN / FR-CA:</strong> every string, status, and page title flips
               cleanly.
@@ -775,7 +828,9 @@ export default function BonusBowlsPage() {
           </blockquote>
         </Phase>
 
-        <Phase phase="test" deck="Before launch, and with live data after">
+        <hr className="border-hairline" />
+
+        <Phase phase="test">
           <p>
             Testing happened twice: with real users on the prototype before launch, and with live
             data after.
@@ -786,7 +841,7 @@ export default function BonusBowlsPage() {
             I ran moderated usability tests with 5 participants (3 current users, 2 interested).
             Each completed a few core tasks:
           </p>
-          <ul>
+          <ul className="bullets">
             <li>Upload a receipt for a recent vet purchase</li>
             <li>Check your balance and start a cash-out</li>
           </ul>
@@ -798,10 +853,10 @@ export default function BonusBowlsPage() {
           <h3>Key Findings</h3>
           <p>
             Participants moved through the upload process and described the redemption as
-            trustworthy and fast, mostly because each step confirmed what had happened and the
-            e-transfer payout was something they were already familiar with. The friction showed up
-            in a few places: entering the invoice total before tax, needing a payment method before
-            cash-out, and finding the right product in the catalog.
+            trustworthy and straightforward, mostly because each step confirmed what had happened
+            and the e-transfer payout was something they were already familiar with. The friction
+            showed up in a few places: entering the invoice total before tax, needing a e-transfer
+            setup method before cash-out, and finding the right product in the catalog.
           </p>
 
           <h3>Changes Made After Testing</h3>
@@ -854,10 +909,32 @@ export default function BonusBowlsPage() {
           </div>
 
           <h3>Final Product</h3>
-          <Figure
-            placeholder="{{Final product: annotated screenshots / link}}"
-            alt="Final product screenshots placeholder."
-          />
+          <figure className="m-0">
+            <ImageLightbox
+              src="/images/bonusbowls-signup.webp"
+              alt="Final product: the shipped Bonus Bowls sign-up flow."
+              width={4522}
+              height={1782}
+              className="group relative block w-full cursor-zoom-in"
+            >
+              <Image
+                src="/images/bonusbowls-signup.webp"
+                alt="Final product: the shipped Bonus Bowls sign-up flow."
+                width={4522}
+                height={1782}
+                loading="lazy"
+                sizes="(min-width: 2112px) 2048px, 100vw"
+                quality={90}
+                className="w-full rounded-md border border-hairline transition duration-300 ease-standard group-hover:border-ink"
+              />
+              <Button asChild variant="secondary" size="sm">
+                <span className="absolute bottom-4 right-4">
+                  <span aria-hidden>↗</span>
+                  View full size
+                </span>
+              </Button>
+            </ImageLightbox>
+          </figure>
 
           <h3>Validating in Production</h3>
           <p>
@@ -870,7 +947,7 @@ export default function BonusBowlsPage() {
             conversions: account created, receipt submitted, payout requested, and payment method
             added. Three decisions kept the data honest:
           </p>
-          <ul>
+          <ul className="bullets">
             <li>
               <strong>Privacy-first:</strong> nothing is tracked until the user consents.
             </li>
@@ -893,10 +970,49 @@ export default function BonusBowlsPage() {
             below are a first read, not a verdict.
           </p>
           <h4>Early signals</h4>
-          <div className="grid grid-cols-1 gap-item sm:grid-cols-2 lg:grid-cols-3">
-            <Stat value="{{N}}" label="Sign-ups" context="in {{X}} weeks" />
-            <Stat value="{{N}}%" label="Receipt approval" context="vs. competitor's 40%" />
-            <Stat value="${{N}}" label="Cashed out" context="across {{N}} redemptions" />
+          {/* The numbers beside the report they're read from: stat tiles
+              stack in a narrow left column, the Looker dashboard takes the
+              wider right column, from tablet up. */}
+          <div className="grid grid-cols-1 gap-item md:grid-cols-5 md:items-center md:gap-sub">
+            <div className="grid grid-cols-1 gap-item sm:grid-cols-3 md:col-span-2 md:grid-cols-1">
+              <Stat value="722" label="Sign-Ups" context="in 4 weeks" />
+              <Stat
+                value="264"
+                label="Receipts Submitted"
+                context="80% approved, vs. competitor's 40%"
+              />
+              <Stat value="3" label="Payouts Requested" context="first to clear the $25 minimum" />
+            </div>
+
+            <figure className="m-0 md:col-span-3">
+              <ImageLightbox
+                src="/images/bonusbowls-looker-dashboard.webp"
+                alt="The Bonus Bowls analytics dashboard, built in Google Looker Studio."
+                width={2750}
+                height={2063}
+                className="group relative block w-full cursor-zoom-in"
+              >
+                <Image
+                  src="/images/bonusbowls-looker-dashboard.webp"
+                  alt="The Bonus Bowls analytics dashboard, built in Google Looker Studio."
+                  width={2750}
+                  height={2063}
+                  loading="lazy"
+                  sizes="(min-width: 768px) 60vw, 100vw"
+                  quality={90}
+                  className="w-full rounded-md border border-hairline transition duration-300 ease-standard group-hover:border-ink"
+                />
+                <Button asChild variant="secondary" size="sm">
+                  <span className="absolute bottom-4 right-4">
+                    <span aria-hidden>↗</span>
+                    View dashboard
+                  </span>
+                </Button>
+              </ImageLightbox>
+              <figcaption className="eyebrow mt-3">
+                The exact report I shared with the client, built in Google Looker Studio.
+              </figcaption>
+            </figure>
           </div>
 
           <blockquote>
@@ -907,45 +1023,72 @@ export default function BonusBowlsPage() {
           </blockquote>
         </Phase>
 
+        <hr className="border-hairline" />
+
         <Section heading="Conclusion">
           <h3>Main Insights</h3>
           <p>
             The research was clear: pet parents want cash, won&rsquo;t tolerate a slow or unreliable
             receipt process, and need to trust a new program before sharing banking details. Every
-            major decision , cash over points, one-tap upload, security on every money screen,
-            e-transfer payouts , traces back to one of those findings. Designing from data meant
-            every review became &ldquo;show me the survey answer that says why.&rdquo;
+            major decision &mdash; cash over points, one-tap upload, security on every money screen,
+            e-transfer payouts &mdash; traces back to one of those findings. Designing from data
+            meant every review became &ldquo;show me the survey answer that says why.&rdquo;
           </p>
 
           <h3>What I Learned</h3>
-          <div className="columns">
-            {[
-              {
-                lead: 'Pitching for research time was the highest-leverage hour of the project.',
-                body: 'Four weeks up front made every later decision faster.',
-              },
-              {
-                lead: 'Reliability is a strategy when everyone else is unreliable.',
-                body: 'A 60% rejection rate from the market leader was the whole opening.',
-              },
-              {
-                lead: 'Build the scoreboard before kickoff.',
-                body: (
-                  <>Instrumenting from launch means &ldquo;did it work?&rdquo; has a real answer.</>
-                ),
-              },
-              {
-                lead: 'Launch is the start of research, not the end.',
-                body: 'Next: a quarterly micro-survey to live members, fed into the roadmap.',
-              },
-            ].map((l) => (
-              <div key={l.lead}>
-                <h4>{l.lead}</h4>
-                <p className="text-sm leading-relaxed">{l.body}</p>
-              </div>
-            ))}
+          {/* Learnings left, the AI-disclosure sticky note right, from tablet
+              up — the note reads as one more takeaway instead of floating
+              alone at the top of the page. */}
+          <div className="grid grid-cols-1 gap-item md:grid-cols-3 md:items-start md:gap-sub">
+            <div className="columns md:col-span-2">
+              {[
+                {
+                  lead: 'Pitching for research time was the highest-leverage hour of the project.',
+                  body: 'Four weeks up front made every later decision faster.',
+                },
+                {
+                  lead: 'Reliability is a strategy when everyone else is unreliable.',
+                  body: 'A 60% rejection rate from the market leader was the whole opening.',
+                },
+                {
+                  lead: 'Build the scoreboard before kickoff.',
+                  body: (
+                    <>
+                      Instrumenting from launch means &ldquo;did it work?&rdquo; has a real answer.
+                    </>
+                  ),
+                },
+                {
+                  lead: 'Launch is the start of research, not the end.',
+                  body: 'Next: a quarterly micro-survey to live members, fed into the roadmap.',
+                },
+              ].map((l) => (
+                <div key={l.lead}>
+                  <h4>{l.lead}</h4>
+                  <p className="text-sm leading-relaxed">{l.body}</p>
+                </div>
+              ))}
+            </div>
+
+            <aside
+              className="grid gap-3 rounded-sm border border-hairline bg-warm-panel p-block shadow-soft"
+              aria-label="How I leveraged AI on this project"
+            >
+              <p className="eyebrow">Note</p>
+              <h4>How I Leveraged AI</h4>
+              <small>I used AI to help me get things done faster and more efficiently:</small>
+              <ul className="bullets text-sm">
+                <li>Organizing Notes and Ideas</li>
+                <li>Helped me scale front end components</li>
+                <li>Debug Solving</li>
+                <li>Converting/Optimizing Images</li>
+                <li>Assisted on implementing GA4 and Looker Studio</li>
+              </ul>
+            </aside>
           </div>
         </Section>
+
+        <hr className="border-hairline" />
 
         <Section heading="Let&rsquo;s Connect">
           <p>Thanks for reading. Happy to talk through any part of the process, or just say hi.</p>

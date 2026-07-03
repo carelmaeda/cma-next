@@ -378,7 +378,6 @@ article section > :is(h3, h4) + * {
   display: grid;
   align-content: start;
   gap: 0.5rem;
-  border-top: 1px solid var(--color-hairline);
   padding-top: 1rem;
 }
 .columns .index {
@@ -386,6 +385,43 @@ article section > :is(h3, h4) + * {
   font-size: 1.5rem;
   line-height: 1;
   color: var(--color-muted);
+}
+
+/* Decorated list — flat hexagon markers echoing the phase-badge glyph
+   (same geometry as the HEX_PATH svg). Items cycle through the content
+   accent palette in phase order: blue → cyan → lilac → green → pink. */
+.bullets {
+  display: grid;
+  gap: 0.625rem;
+  padding-left: 0;
+  list-style: none;
+}
+.bullets li {
+  position: relative;
+  margin: 0;
+  padding-left: 1.75rem;
+}
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.32em;
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-blue);
+  clip-path: polygon(25% 8%, 75% 8%, 100% 50%, 75% 92%, 25% 92%, 0% 50%);
+}
+.bullets li:nth-child(5n + 2)::before {
+  background: var(--color-cyan);
+}
+.bullets li:nth-child(5n + 3)::before {
+  background: var(--color-lilac);
+}
+.bullets li:nth-child(5n + 4)::before {
+  background: var(--color-green);
+}
+.bullets li:nth-child(5n)::before {
+  background: var(--color-pink);
 }
 
 /* Process phase chips + feature pills (DesignThinkingDiagram). */
