@@ -1,14 +1,19 @@
+import type { Metadata } from 'next';
 import Hero from './components/partials/Hero';
 import Work from './components/partials/Work';
 import Services from './components/partials/Services';
 import About from './components/partials/About';
 import ContactCTA from './components/partials/ContactCTA';
 
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
+
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Carel Maeda',
-  jobTitle: 'Product Designer',
+  jobTitle: 'Senior Product Designer',
   url: 'https://carelmaeda.com',
   image: 'https://carelmaeda.com/images/profile.webp',
   sameAs: ['https://linkedin.com/in/carelmaeda', 'https://github.com/carelmaeda'],
@@ -21,6 +26,14 @@ const personJsonLd = {
     addressLocality: 'Toronto',
     addressCountry: 'CA',
   },
+  knowsAbout: [
+    'Product design',
+    'UX research',
+    'Design systems',
+    'Product strategy',
+    'Usability testing',
+    'Front-end development',
+  ],
   knowsLanguage: ['en', 'pt', 'fr', 'es'],
 };
 

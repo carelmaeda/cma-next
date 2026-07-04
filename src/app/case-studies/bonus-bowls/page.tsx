@@ -19,10 +19,47 @@ import { MotionVertical, MotionStagger, MotionItem } from '@/app/components/part
 import { Blockquote } from '@/components/ui/blockquote';
 import { Button } from '@/components/ui/button';
 
+// ≤60-char title (before the "| Carel Maeda" template) and ≤160-char
+// description; og/twitter set explicitly so this page never inherits the
+// homepage's social tags (Next merges those objects wholesale).
+const CS_TITLE = 'Bonus Bowls — Loyalty Platform Case Study';
+const CS_DESCRIPTION =
+  'UX case study: research, design, and the Angular front-end for a cashback loyalty platform for a Fortune 500 pet-nutrition brand — from survey to live analytics.';
+const CS_URL = '/case-studies/bonus-bowls';
+
 export const metadata: Metadata = {
-  title: 'Bonus Bowls: A loyalty platform for a Fortune 500 pet brand',
-  description:
-    'Bonus Bowls rewards Canadian pet parents for their pet food purchases: photograph the receipt, collect cashback, and redeem it for rewards. I ran the user research, designed the experience, shipped the Angular front-end, and connected it to an analytics dashboard.',
+  title: CS_TITLE,
+  description: CS_DESCRIPTION,
+  alternates: { canonical: CS_URL },
+  openGraph: {
+    type: 'article',
+    url: CS_URL,
+    title: CS_TITLE,
+    description: CS_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: CS_TITLE,
+    description: CS_DESCRIPTION,
+  },
+};
+
+const caseStudyJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Bonus Bowls: A loyalty platform for a Fortune 500 pet brand',
+  description: CS_DESCRIPTION,
+  url: `https://carelmaeda.com${CS_URL}`,
+  image: `https://carelmaeda.com${CS_URL}/opengraph-image`,
+  datePublished: '2026-07-04',
+  author: {
+    '@type': 'Person',
+    name: 'Carel Maeda',
+    jobTitle: 'Senior Product Designer',
+    url: 'https://carelmaeda.com',
+  },
+  keywords:
+    'UX case study, product design, loyalty platform, design systems, user research, Angular',
 };
 
 /* ------------------------------------------------------------------ *
@@ -286,6 +323,10 @@ function Bento({ cells }: { cells: BentoCell[] }) {
 export default function BonusBowlsPage() {
   return (
     <main id="main" className="py-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+      />
       <article className="wrap wrap--wide grid grid-cols-1 gap-section">
         {/* Hero — text left, hero image right on tablet+ (stacked on mobile) */}
         <header className="grid gap-sub">
@@ -663,7 +704,7 @@ export default function BonusBowlsPage() {
                   loading="lazy"
                   sizes="(min-width: 768px) 50vw, 100vw"
                   quality={90}
-                  className="h-64 w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink md:h-80"
+                  className="aspect-[3/2] w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink"
                 />
                 {/* asChild renders a span: the lightbox trigger is already a
                     <button>, and a nested <button> is invalid HTML (hydration
@@ -680,6 +721,9 @@ export default function BonusBowlsPage() {
                   </span>
                 </Button>
               </ImageLightbox>
+              <figcaption className="eyebrow mt-3">
+                The main journeys, from onboarding to cashing out
+              </figcaption>
             </figure>
           </div>
 
@@ -732,7 +776,7 @@ export default function BonusBowlsPage() {
                   loading="lazy"
                   sizes="(min-width: 768px) 50vw, 100vw"
                   quality={90}
-                  className="h-64 w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink md:h-72"
+                  className="aspect-[3/2] w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink"
                 />
                 <Button
                   asChild
@@ -746,6 +790,9 @@ export default function BonusBowlsPage() {
                   </span>
                 </Button>
               </ImageLightbox>
+              <figcaption className="eyebrow mt-3">
+                Mid-fidelity artboards in Figma, built on Google Material
+              </figcaption>
             </figure>
           </div>
 
@@ -944,6 +991,9 @@ export default function BonusBowlsPage() {
                 </span>
               </Button>
             </ImageLightbox>
+            <figcaption className="eyebrow mt-3">
+              The shipped sign-up flow, live in production
+            </figcaption>
           </figure>
 
           <h3>Validating in Production</h3>

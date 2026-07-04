@@ -52,7 +52,7 @@ export default function Footer() {
 
         {/* Colophon */}
         <div className="eyebrow flex flex-col gap-3 border-t border-hairline pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <span>© 2026 Carel Maeda · Toronto, Canada</span>
+          <span>© 2026 Carel Maeda · Senior Product Designer · Toronto, Canada</span>
           <span className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span>
               I built this using Next.js + Tailwind ·{' '}

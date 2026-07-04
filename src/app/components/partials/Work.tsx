@@ -21,10 +21,10 @@ interface WorkCard {
 const workCards: WorkCard[] = [
   {
     number: '01',
-    tags: ['User Research', 'Design Thinking'],
+    tags: ['Loyalty Platform', 'Design + Code', '0→1'],
     title: 'Bonus Bowls',
     description:
-      'A cashback loyalty platform for a Fortune 500 pet-nutrition brand: From User Research to Live.',
+      'A cashback loyalty platform for a Fortune 500 pet-nutrition brand: from user research to live product.',
     href: '/case-studies/bonus-bowls',
     accent: 'var(--color-green)',
     cover: {

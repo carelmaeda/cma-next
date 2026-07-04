@@ -52,7 +52,7 @@ export function ogTemplate({ title, subtitle }: OGParams) {
           />
           <span
             style={{
-              color: '#707070', // muted
+              color: '#6B6B6B', // muted (variables.css --color-muted)
               fontSize: '20px',
               fontWeight: 500,
               letterSpacing: '0.14em',
@@ -65,7 +65,7 @@ export function ogTemplate({ title, subtitle }: OGParams) {
         </div>
         <span
           style={{
-            color: '#888888', // muted-2, decorative metadata
+            color: '#6B6B6B', // muted (variables.css --color-muted)
             fontSize: '18px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -101,7 +101,7 @@ export function ogTemplate({ title, subtitle }: OGParams) {
         {subtitle && (
           <div
             style={{
-              color: '#707070', // muted
+              color: '#6B6B6B', // muted (variables.css --color-muted)
               fontSize: '26px',
               fontWeight: 400,
               letterSpacing: '0.01em',

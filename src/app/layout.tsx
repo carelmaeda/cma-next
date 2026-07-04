@@ -31,23 +31,34 @@ const splineSansMono = Spline_Sans_Mono({
   weight: ['400', '500', '600'],
 });
 
+// ≤60-char titles, ≤160-char descriptions. Every page overrides
+// `openGraph`/`twitter` (Next merges those objects wholesale from the
+// layout, so a page that skips them would ship the homepage's og:title).
+const HOME_TITLE = 'Carel Maeda — Senior Product Designer';
+const HOME_DESCRIPTION =
+  'Senior Product Designer in Toronto who ships strategy, design, and code — UX research, design systems, and production front-end.';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://carelmaeda.com'),
   title: {
     template: '%s | Carel Maeda',
-    default: 'Carel Maeda, Senior Product Designer',
+    default: HOME_TITLE,
   },
-  description:
-    'Senior Product Designer who ships strategy, design, and code, building toward Design Lead. Six years at Paygos, ~10–15% YoY revenue impact across enterprise accounts.',
+  description: HOME_DESCRIPTION,
+  authors: [{ name: 'Carel Maeda', url: 'https://carelmaeda.com' }],
+  creator: 'Carel Maeda',
   openGraph: {
     type: 'website',
     siteName: 'Carel Maeda',
     locale: 'en_US',
-    title: 'Carel Maeda, Senior Product Designer',
+    url: '/',
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Carel Maeda, Senior Product Designer',
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
   },
 };
 

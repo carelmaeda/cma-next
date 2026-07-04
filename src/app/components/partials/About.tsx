@@ -11,7 +11,7 @@ export default function About() {
           <p className="eyebrow tracking-widest mb-sub">About</p>
 
           <h2 className="max-w-[28ch] text-h3 font-medium">
-            My team and I lead UX strategies that drive measurable product growth.
+            I lead UX strategies that drive measurable product growth.
           </h2>
 
           {/* Byline — the portrait as a small editorial avatar, not a hero */}
@@ -36,15 +36,15 @@ export default function About() {
           <div className="mt-sub grid gap-x-16 gap-y-item border-t border-hairline pt-sub leading-[1.7] md:grid-cols-2">
             <div className="grid gap-item content-start">
               <p>
-                Over the years, these strategies delivered around 10–15% YoY growth for clients,
-                alongside stronger engagement and reduced workflow friction. Our platforms make
-                their lives easier each day so they can focus on selling.
+                Over the years, my strategies delivered around 10–15% YoY growth for clients,
+                alongside stronger engagement and less workflow friction. The platforms I design
+                make users&rsquo; lives easier each day so they can focus on selling.
               </p>
               <p>
-                Working across design, product, and engineering, we align stakeholders, shape
-                roadmap priorities, and ship accessible, high-impact experiences. To facilitate
-                this, we built and scaled Paygos&rsquo; first design system back in 2023,
-                streamlining the design-to-dev handoff from weeks to days.
+                Working across design, product, and engineering, I align stakeholders, shape roadmap
+                priorities, and ship accessible, high-impact experiences. In 2023 my team and I
+                built Paygos&rsquo; first design system, and I scaled it &mdash; streamlining the
+                design-to-dev handoff from weeks to days.
               </p>
             </div>
             <div className="grid gap-item content-start">

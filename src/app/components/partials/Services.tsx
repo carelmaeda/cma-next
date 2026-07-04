@@ -54,7 +54,9 @@ export default function Services() {
         <MotionVertical>
           <header className="mb-sub max-w-prose">
             <p className="eyebrow tracking-widest mb-4">What I do</p>
-            <h2 className="text-h2 font-medium">From user research to shipped product.</h2>
+            <h2 className="text-h2 font-medium">
+              I run the research, design the product, and ship the front-end.
+            </h2>
           </header>
         </MotionVertical>
 
