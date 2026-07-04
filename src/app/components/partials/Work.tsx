@@ -9,12 +9,11 @@ interface WorkCard {
   title: string;
   description: string;
   href: string;
-  readingTime: number;
   /** Accent that colours the cover panel, colour lives ONLY inside imagery. */
   accent: string;
   /**
-   * Cover image, drop a 4:3 .webp in /public/images/work/ and set `src`.
-   * Until then a tinted placeholder slot renders in its place.
+   * Cover image, a 4:3 .webp in /public/images/. When omitted (e.g. a new
+   * card awaiting art) a tinted placeholder slot renders in its place.
    */
   cover?: { src: string; alt: string };
 }
@@ -22,12 +21,11 @@ interface WorkCard {
 const workCards: WorkCard[] = [
   {
     number: '01',
-    tags: ['Consumer', 'Strategy & Impact'],
+    tags: ['User Research', 'Design Thinking'],
     title: 'Bonus Bowls',
     description:
       'A cashback loyalty platform for a Fortune 500 pet-nutrition brand: From User Research to Live.',
     href: '/case-studies/bonus-bowls',
-    readingTime: 4,
     accent: 'var(--color-green)',
     cover: {
       src: '/images/bonusbowls-hero.webp',
@@ -53,11 +51,15 @@ function CoverSlot({ card }: { card: WorkCard }) {
   if (card.cover) {
     return (
       <div className="relative aspect-[4/3] overflow-hidden rounded-card bg-off-white">
+        {/* sizes tracks the real rendered width: one grid column of
+            .wrap--wide (max 132rem incl. gutter+gap → ~964px cap). The old
+            40rem value made browsers upscale a 640px variant on desktop. */}
         <Image
           src={card.cover.src}
           alt={card.cover.alt}
           fill
-          sizes="(min-width: 768px) 40rem, 90vw"
+          quality={85}
+          sizes="(min-width: 2112px) 964px, (min-width: 768px) 45vw, 90vw"
           className="object-cover transition-transform duration-[600ms] ease-soft group-hover:scale-[1.03]"
         />
       </div>
@@ -88,13 +90,16 @@ function CoverSlot({ card }: { card: WorkCard }) {
   );
 }
 
+/** Home "Latest work" section — one full-width linked card per case study. */
 export default function Work() {
   return (
     <section id="work" className="py-page">
       <div className="wrap wrap--wide">
         <MotionVertical>
-          <header className="mb-sub">
-            <p className="eyebrow tracking-widest">Latest work</p>
+          <header className="mb-4">
+            {/* h2 (not p) so the outline doesn't skip from the hero h1 to the
+                card h3s; the .eyebrow class keeps the micro-label look. */}
+            <h2 className="eyebrow tracking-widest">Latest work</h2>
           </header>
         </MotionVertical>
 
@@ -118,7 +123,17 @@ export default function Work() {
 
                   <p className="max-w-prose text-muted-ink">{card.description}</p>
 
-                  <Button>Read case study</Button>
+                  {/* asChild renders a span: the whole card is already a link,
+                      and a <button> inside an <a> is invalid HTML. The whole
+                      card is the hover target, so the pill mirrors its own
+                      hover treatment on group-hover — it must respond while
+                      the cover image zooms. */}
+                  <Button
+                    asChild
+                    className="group-hover:-translate-y-1 group-hover:bg-ink-hover group-hover:shadow-lift"
+                  >
+                    <span>Read case study</span>
+                  </Button>
                 </div>
               </Link>
             </MotionItem>

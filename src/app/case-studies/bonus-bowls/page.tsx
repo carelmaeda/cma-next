@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import type { CSSProperties, ReactNode } from 'react';
+import { Children, isValidElement, type CSSProperties, type ReactNode } from 'react';
 import type { LucideIcon } from 'lucide-react';
 import {
   ArrowUpRight,
   CalendarDays,
   CircleDollarSign,
   HandCoins,
-  PawPrint,
   ReceiptText,
   Smartphone,
   Tag,
@@ -17,6 +16,7 @@ import {
 import DesignThinkingDiagram from '@/app/components/shared/DesignThinkingDiagram';
 import ImageLightbox from '@/app/components/shared/ImageLightbox';
 import { MotionVertical, MotionStagger, MotionItem } from '@/app/components/partials/Motions';
+import { Blockquote } from '@/components/ui/blockquote';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
@@ -26,12 +26,32 @@ export const metadata: Metadata = {
 };
 
 /* ------------------------------------------------------------------ *
- * One case study. Text is authored as plain HTML (h2/h3/p/ul/
- * blockquote/table) and styled by bare tag in globals.css, same rules
- * as the rest of the site. Only true components (cards, stats, the
- * process chips) take a plain-noun class. Layout/spacing stays in
- * Tailwind.
+ * One case study. Text is authored as plain HTML (h2/h3/p/ul/table)
+ * and styled by bare tag in globals.css, same rules as the rest of
+ * the site. Pull-quotes use the shadcn-style <Blockquote> primitive
+ * (src/components/ui/blockquote.tsx). Only true components (cards,
+ * stats, the process chips) take a plain-noun class. Layout/spacing
+ * stays in Tailwind.
  * ------------------------------------------------------------------ */
+
+/* Components whose entrance is already choreographed internally.
+   (`Bento` is a hoisted function declaration further down the file.) */
+const SELF_ANIMATED = new Set<unknown>([DesignThinkingDiagram, Bento]);
+
+/* Scroll-reveal for a section body: each direct child gets its own
+ * MotionVertical so it rises when IT enters the viewport (reading-order
+ * choreography on long sections). Components that already animate their
+ * own children (Bento, DesignThinkingDiagram stagger internally) pass
+ * through untouched — a second wrapper would double-fade them. */
+function reveal(children: ReactNode) {
+  return Children.map(children, (child) =>
+    isValidElement(child) && SELF_ANIMATED.has(child.type) ? (
+      child
+    ) : (
+      <MotionVertical>{child}</MotionVertical>
+    ),
+  );
+}
 
 function Section({ heading, children }: { heading: string; children: ReactNode }) {
   return (
@@ -39,7 +59,7 @@ function Section({ heading, children }: { heading: string; children: ReactNode }
       <MotionVertical>
         <h2>{heading}</h2>
       </MotionVertical>
-      {children}
+      {reveal(children)}
     </section>
   );
 }
@@ -53,35 +73,24 @@ const PHASES = {
   test: { n: '05', label: 'Test', color: 'var(--color-phase-test)' },
 } as const;
 
-function Phase({
-  phase,
-  deck,
-  children,
-}: {
-  phase: keyof typeof PHASES;
-  deck?: string;
-  children: ReactNode;
-}) {
+function Phase({ phase, children }: { phase: keyof typeof PHASES; children: ReactNode }) {
   const { n, label, color } = PHASES[phase];
   return (
     <section id={phase}>
       <MotionVertical>
-        <div className="grid gap-3">
-          {/* One asset: the enlarged phase badge doubles as the section title. */}
-          <h2
-            className="phase-title"
-            style={{ backgroundColor: `color-mix(in srgb, ${color} 18%, transparent)` }}
-          >
-            <svg viewBox="0 0 100 100" className="h-6 w-6 shrink-0" aria-hidden="true">
-              <path d={HEX_PATH} fill={color} />
-            </svg>
-            <span className="n">{n}</span>
-            <span>{label}</span>
-          </h2>
-          {deck && <p className="phase-deck">{deck}</p>}
-        </div>
+        {/* One asset: the enlarged phase badge doubles as the section title. */}
+        <h2
+          className="phase-title"
+          style={{ backgroundColor: `color-mix(in srgb, ${color} 18%, transparent)` }}
+        >
+          <svg viewBox="0 0 100 100" className="h-6 w-6 shrink-0" aria-hidden="true">
+            <path d={HEX_PATH} fill={color} />
+          </svg>
+          {/* whitespace between spans so screen readers don't read "01Empathize" */}
+          <span className="n">{n}</span> <span>{label}</span>
+        </h2>
       </MotionVertical>
-      {children}
+      {reveal(children)}
     </section>
   );
 }
@@ -93,25 +102,6 @@ function Stat({ value, label, context }: { value: string; label: string; context
       <span className="label">{label}</span>
       {context && <span className="context">{context}</span>}
     </div>
-  );
-}
-
-function Figure({
-  placeholder,
-  alt,
-  className = '',
-}: {
-  placeholder: string;
-  alt: string;
-  className?: string;
-}) {
-  return (
-    <figure className={`m-0 ${className}`.trim()}>
-      <div className="placeholder h-full" role="img" aria-label={alt}>
-        <span className="eyebrow eyebrow--strong">Visual asset</span>
-        <p className="max-w-prose text-sm text-warm-grey">{placeholder}</p>
-      </div>
-    </figure>
   );
 }
 
@@ -295,7 +285,7 @@ function Bento({ cells }: { cells: BentoCell[] }) {
 
 export default function BonusBowlsPage() {
   return (
-    <main className="py-page">
+    <main id="main" className="py-page">
       <article className="wrap wrap--wide grid grid-cols-1 gap-section">
         {/* Hero — text left, hero image right on tablet+ (stacked on mobile) */}
         <header className="grid gap-sub">
@@ -313,8 +303,8 @@ export default function BonusBowlsPage() {
               <Image
                 src="/images/bonusbowls-hero.webp"
                 alt="Bonus Bowls, the receipt-to-cashback loyalty app for pet parents"
-                width={3200}
-                height={2400}
+                width={4800}
+                height={3600}
                 priority
                 sizes="(min-width: 768px) 50vw, 100vw"
                 quality={85}
@@ -323,7 +313,7 @@ export default function BonusBowlsPage() {
             </MotionVertical>
           </div>
           <MotionVertical>
-            <dl className="grid grid-cols-2 gap-x-block gap-y-item border-y border-hairline py-block sm:grid-cols-4 items-start ">
+            <dl className="grid grid-cols-2 items-start gap-x-block gap-y-item border-y border-hairline py-block sm:grid-cols-4">
               {[
                 { label: 'Timeline', value: 'Fall 2025 → Spring 2026' },
                 {
@@ -357,19 +347,19 @@ export default function BonusBowlsPage() {
             receipt part just works, which is exactly where competitors fall down.
           </p>
           <p>So the real question was:</p>
-          <blockquote>
+          <Blockquote>
             <p>
               How do we build a rewards platform that pet parents actually trust, and make rewards
               actually feel rewarding?
             </p>
-          </blockquote>
+          </Blockquote>
         </Section>
 
         <hr className="border-hairline" />
 
         <Section heading="Design Thinking">
           <p>
-            We run every project runs on the same five phases of design thinking. Here's how each
+            We run every project on the same five phases of design thinking. Here&rsquo;s how each
             one played out on Bonus Bowls:
           </p>
           <DesignThinkingDiagram
@@ -469,14 +459,14 @@ export default function BonusBowlsPage() {
             ]}
           />
 
-          <blockquote>
+          <Blockquote>
             <p>
               Great news: people are open to the program. <br /> Beyond that, we found that pet
               parents shop monthly (suggesting a similar usage cadence for our platform), the
-              audience is young, tech-savvy, and price-driven, and we've identified their favorite
-              brands and platforms to enable a competitive analysis.
+              audience is young, tech-savvy, and price-driven, and we&rsquo;ve identified their
+              favorite brands and platforms to enable a competitive analysis.
             </p>
-          </blockquote>
+          </Blockquote>
 
           <h3>Competitive Analysis</h3>
           <p>
@@ -524,12 +514,12 @@ export default function BonusBowlsPage() {
               ],
             ]}
           />
-          <blockquote>
+          <Blockquote>
             <p>
               Every program we looked at got one half right and dropped the other, so how might we
               deliver both: reliable, universal approvals and rewards worth cashing in?
             </p>
-          </blockquote>
+          </Blockquote>
         </Phase>
 
         <hr className="border-hairline" />
@@ -576,7 +566,7 @@ export default function BonusBowlsPage() {
                     <strong>Objective:</strong> {p.objective}
                   </li>
                 </ul>
-                <span className="text-warm-grey" aria-hidden>
+                <span className="text-muted-ink" aria-hidden>
                   …
                 </span>
               </div>
@@ -601,7 +591,7 @@ export default function BonusBowlsPage() {
 
           <h3>How Might We</h3>
           <small className="eyebrow">The three key challenges we need to solve</small>
-          <div className="md:flex gap-sub space-y-4">
+          <div className="grid gap-item md:grid-cols-3 md:gap-sub">
             {[
               'How might we convert price-driven shoppers into loyal customers?',
               'How might we make uploading a receipt effortless for people who don’t keep receipts?',
@@ -614,9 +604,9 @@ export default function BonusBowlsPage() {
             ))}
           </div>
 
-          <blockquote>
+          <Blockquote>
             <p>Now that we defined the problems, how do we solve them?</p>
-          </blockquote>
+          </Blockquote>
         </Phase>
 
         <hr className="border-hairline" />
@@ -661,14 +651,14 @@ export default function BonusBowlsPage() {
               <ImageLightbox
                 src="/images/bonusbowls-user-flows.webp"
                 alt="User flow diagram mapping the main journeys from onboarding to cashing out."
-                width={2310}
+                width={3000}
                 height={2400}
                 className="group relative block w-full cursor-zoom-in"
               >
                 <Image
                   src="/images/bonusbowls-user-flows.webp"
                   alt="User flow diagram mapping the main journeys from onboarding to cashing out."
-                  width={2310}
+                  width={3000}
                   height={2400}
                   loading="lazy"
                   sizes="(min-width: 768px) 50vw, 100vw"
@@ -678,7 +668,12 @@ export default function BonusBowlsPage() {
                 {/* asChild renders a span: the lightbox trigger is already a
                     <button>, and a nested <button> is invalid HTML (hydration
                     error). The span keeps the Button styling. */}
-                <Button asChild variant="secondary" size="sm">
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="sm"
+                  className="group-hover:-translate-y-1 group-hover:border-ink group-hover:shadow-soft"
+                >
                   <span className="absolute bottom-4 right-4">
                     <span aria-hidden>↗</span>
                     View full user flows
@@ -688,12 +683,12 @@ export default function BonusBowlsPage() {
             </figure>
           </div>
 
-          <blockquote>
+          <Blockquote>
             <p>
               With every decision mapped and signed off, the plan felt solid. Now the real question
               was how fast we could turn it into something people could actually use.
             </p>
-          </blockquote>
+          </Blockquote>
         </Phase>
 
         <hr className="border-hairline" />
@@ -739,7 +734,12 @@ export default function BonusBowlsPage() {
                   quality={90}
                   className="h-64 w-full rounded-md border border-hairline object-cover object-top transition duration-300 ease-standard group-hover:border-ink md:h-72"
                 />
-                <Button asChild variant="secondary" size="sm">
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="sm"
+                  className="group-hover:-translate-y-1 group-hover:border-ink group-hover:shadow-soft"
+                >
                   <span className="absolute bottom-4 right-4">
                     <span aria-hidden>↗</span>
                     View Figma Artboards
@@ -771,21 +771,26 @@ export default function BonusBowlsPage() {
               <ImageLightbox
                 src="/images/bonusbowls-key-screens.webp"
                 alt="The four key screens: sign-up, receipt upload, earnings dashboard, and redeem."
-                width={3200}
-                height={2136}
+                width={4800}
+                height={3204}
                 className="group relative block w-full cursor-zoom-in"
               >
                 <Image
                   src="/images/bonusbowls-key-screens.webp"
                   alt="The four key screens: sign-up, receipt upload, earnings dashboard, and redeem."
-                  width={3200}
-                  height={2136}
+                  width={4800}
+                  height={3204}
                   loading="lazy"
                   sizes="(min-width: 768px) 50vw, 100vw"
                   quality={90}
                   className="w-full rounded-md border border-hairline transition duration-300 ease-standard group-hover:border-ink"
                 />
-                <Button asChild variant="secondary" size="sm">
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="sm"
+                  className="group-hover:-translate-y-1 group-hover:border-ink group-hover:shadow-soft"
+                >
                   <span className="absolute bottom-4 right-4">
                     <span aria-hidden>↗</span>
                     View key screens
@@ -820,12 +825,12 @@ export default function BonusBowlsPage() {
             </li>
           </ul>
 
-          <blockquote>
+          <Blockquote>
             <p>
               The product was built and shipped. But building something and proving it works for
               real people are two very different things.
             </p>
-          </blockquote>
+          </Blockquote>
         </Phase>
 
         <hr className="border-hairline" />
@@ -855,7 +860,7 @@ export default function BonusBowlsPage() {
             Participants moved through the upload process and described the redemption as
             trustworthy and straightforward, mostly because each step confirmed what had happened
             and the e-transfer payout was something they were already familiar with. The friction
-            showed up in a few places: entering the invoice total before tax, needing a e-transfer
+            showed up in a few places: entering the invoice total before tax, needing an e-transfer
             setup method before cash-out, and finding the right product in the catalog.
           </p>
 
@@ -913,21 +918,26 @@ export default function BonusBowlsPage() {
             <ImageLightbox
               src="/images/bonusbowls-signup.webp"
               alt="Final product: the shipped Bonus Bowls sign-up flow."
-              width={4522}
-              height={1782}
+              width={6783}
+              height={2673}
               className="group relative block w-full cursor-zoom-in"
             >
               <Image
                 src="/images/bonusbowls-signup.webp"
                 alt="Final product: the shipped Bonus Bowls sign-up flow."
-                width={4522}
-                height={1782}
+                width={6783}
+                height={2673}
                 loading="lazy"
                 sizes="(min-width: 2112px) 2048px, 100vw"
                 quality={90}
                 className="w-full rounded-md border border-hairline transition duration-300 ease-standard group-hover:border-ink"
               />
-              <Button asChild variant="secondary" size="sm">
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className="group-hover:-translate-y-1 group-hover:border-ink group-hover:shadow-soft"
+              >
                 <span className="absolute bottom-4 right-4">
                   <span aria-hidden>↗</span>
                   View full size
@@ -1002,7 +1012,12 @@ export default function BonusBowlsPage() {
                   quality={90}
                   className="w-full rounded-md border border-hairline transition duration-300 ease-standard group-hover:border-ink"
                 />
-                <Button asChild variant="secondary" size="sm">
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="sm"
+                  className="group-hover:-translate-y-1 group-hover:border-ink group-hover:shadow-soft"
+                >
                   <span className="absolute bottom-4 right-4">
                     <span aria-hidden>↗</span>
                     View dashboard
@@ -1015,12 +1030,12 @@ export default function BonusBowlsPage() {
             </figure>
           </div>
 
-          <blockquote>
+          <Blockquote>
             <p>
               Between usability testing before launch and live analytics after, the product could
               finally answer its own hardest question: is it actually working?
             </p>
-          </blockquote>
+          </Blockquote>
         </Phase>
 
         <hr className="border-hairline" />
@@ -1093,7 +1108,14 @@ export default function BonusBowlsPage() {
         <Section heading="Let&rsquo;s Connect">
           <p>Thanks for reading. Happy to talk through any part of the process, or just say hi.</p>
           <p>
-            <a href="mailto:carelmaeda@gmail.com">carelmaeda@gmail.com</a>
+            {/* text-decoration underline (not the grow-underline) so the rule
+                hugs the text despite the padded 44px touch target */}
+            <a
+              href="mailto:carelmaeda@gmail.com"
+              className="no-underline-grow -my-3 inline-block py-3 underline decoration-1 underline-offset-4 transition-opacity duration-300 ease-standard hover:opacity-60"
+            >
+              carelmaeda@gmail.com
+            </a>
           </p>
         </Section>
       </article>

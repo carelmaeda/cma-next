@@ -15,7 +15,8 @@ text-h3 / text-h4`; micro-label tracking is `tracking-wide / wider / widest`;
 - **Decoration lives in CSS, not className soup.** Just two stylesheets:
   `src/styles/variables.css` (tokens only) and `src/styles/globals.css`
   (everything else). Site-wide primitives (`.eyebrow`, `.wrap*`) and the base
-  `h1…h6` / `p` / `a` / `ul` / `blockquote` / `table` element rules live there,
+  `h1…h6` / `p` / `a` / `ul` / `table` element rules live there (pull-quotes
+  are the shadcn-style `<Blockquote>` primitive in `src/components/ui/`),
   and apply everywhere — home page and case study alike, no wrapper class. Text
   markup stays classless (`<h2>`, `<p>`, no class on either); a component that
   needs a different size/weight layers a Tailwind utility on top, which always

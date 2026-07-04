@@ -77,6 +77,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body suppressHydrationWarning>
+        <a href="#main" className="skip-link no-underline-grow">
+          Skip to content
+        </a>
         <Navbar />
         {children}
         <Footer />

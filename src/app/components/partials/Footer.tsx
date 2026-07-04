@@ -13,6 +13,7 @@ const social = [
   { label: 'Email', href: 'mailto:carelmaeda@gmail.com', Icon: Mail },
 ];
 
+/** Site-wide footer — inline nav, social icon buttons, and colophon. */
 export default function Footer() {
   return (
     <footer className="border-t border-hairline bg-white pb-10 pt-20 md:pt-24">
@@ -25,7 +26,7 @@ export default function Footer() {
                 key={l.label}
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="no-underline-grow text-sm font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
+                className="no-underline-grow -mx-2 -my-3.5 inline-block px-2 py-3.5 text-sm font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
               >
                 {l.label}
               </Link>
@@ -41,7 +42,7 @@ export default function Footer() {
                 {...(href.startsWith('http')
                   ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}
-                className="no-underline-grow grid size-10 place-items-center rounded-full border border-hairline text-muted-ink transition duration-300 ease-standard hover:-translate-y-1 hover:border-ink hover:text-ink"
+                className="no-underline-grow grid size-11 place-items-center rounded-full border border-hairline text-muted-ink transition duration-300 ease-standard hover:-translate-y-1 hover:border-ink hover:text-ink"
               >
                 <Icon className="size-[18px]" />
               </a>
@@ -59,14 +60,16 @@ export default function Footer() {
                 href="https://github.com/carelmaeda/cma-next"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="no-underline-grow text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+                className="no-underline-grow -my-3.5 inline-block py-3.5 text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
               >
                 Source ↗
               </a>
             </span>
+            {/* "#top" scrolls to the document top on every page (HTML spec
+                fallback) — "#hero" only exists on the home page. */}
             <a
-              href="#hero"
-              className="no-underline-grow text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
+              href="#top"
+              className="no-underline-grow -my-3.5 inline-block py-3.5 text-ink transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               Back to top ↑
             </a>

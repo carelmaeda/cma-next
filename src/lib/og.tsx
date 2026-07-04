@@ -4,8 +4,6 @@ export const ogContentType = 'image/png';
 export interface OGParams {
   title: string;
   subtitle?: string;
-  /** Optional eyebrow override; defaults to "Carel Maeda · carelmaeda.com" */
-  eyebrow?: string;
 }
 
 /**
@@ -16,7 +14,7 @@ export interface OGParams {
  * without a remote font fetch, and Georgia is the closest globally available
  * substitute that survives in social-share previews.
  */
-export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
+export function ogTemplate({ title, subtitle }: OGParams) {
   const mono = 'ui-monospace, "JetBrains Mono", "Courier New", monospace';
   return (
     <div
@@ -62,7 +60,7 @@ export function ogTemplate({ title, subtitle, eyebrow }: OGParams) {
               fontFamily: mono,
             }}
           >
-            {eyebrow ?? 'Carel Maeda · Senior Product Designer'}
+            Carel Maeda · Product Designer
           </span>
         </div>
         <span

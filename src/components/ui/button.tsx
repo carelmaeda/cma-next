@@ -32,12 +32,11 @@ const buttonVariants = cva(
         // Destructive kept for shadcn compat
         destructive:
           'bg-destructive text-destructive-foreground rounded-pill hover:-translate-y-1 hover:opacity-95',
-        // Legacy alias for any leftover `variant="dark"` references
-        dark: 'bg-ink text-white rounded-pill hover:bg-ink-hover hover:-translate-y-1 hover:shadow-lift',
       },
       size: {
         default: 'h-12 px-7 py-2 text-sm',
-        sm: 'h-10 px-5 text-xs [&_svg]:size-3.5',
+        // 44px on touch viewports (WCAG target size), compact on md+ pointers
+        sm: 'h-11 px-5 text-xs md:h-10 [&_svg]:size-3.5',
         lg: 'h-14 px-9 text-base',
         icon: 'h-11 w-11 rounded-pill',
         // Hero / section CTA, big, generous pill

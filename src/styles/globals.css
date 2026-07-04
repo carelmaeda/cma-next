@@ -7,10 +7,10 @@
 @tailwind utilities;
 
 /* ============================================================
-   shadcn HSL tokens, mapped onto the warm portfolio palette.
+   shadcn HSL tokens, mapped onto the monochrome palette.
    The single source of truth for colour is variables.css; these
    HSL triplets exist so shadcn primitives (Button, Sheet, etc.)
-   inherit the cream / charcoal / terracotta system automatically.
+   inherit the black-on-white system automatically.
    ============================================================ */
 @layer base {
   :root {
@@ -21,7 +21,6 @@
     --card-foreground: 0 0% 2%;
     --popover: 0 0% 98%;
     --popover-foreground: 0 0% 2%;
-    --surface: 0 0% 96%; /* off     #F5F5F5 */
 
     /* Brand = black pill, white text */
     --primary: 0 0% 2%; /* ink     #040404 */
@@ -33,7 +32,7 @@
 
     /* Muted surface + grey text */
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 44%; /* muted   #707070 */
+    --muted-foreground: 0 0% 42%; /* muted   #6B6B6B */
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 2%;
@@ -69,11 +68,18 @@ body::after {
 }
 
 /* ============================================================
-   Body, cream canvas, charcoal ink, sans body, no grid.
+   Body, white canvas, ink text, sans body, no grid.
    ============================================================ */
 html {
   background: var(--bg);
   color: var(--text);
+  /* Smooth anchor scrolling; the reduced-motion block resets it to auto. */
+  scroll-behavior: smooth;
+}
+
+/* Anchor targets (#work, #contact, phase ids…) clear the fixed glass navbar. */
+[id] {
+  scroll-margin-block-start: 6.5rem;
 }
 
 body {
@@ -143,7 +149,7 @@ em {
 code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: var(--color-cream-deep);
+  background: var(--color-off);
   padding: 0.1rem 0.4rem;
   border-radius: var(--radius-sm);
 }
@@ -161,23 +167,7 @@ li::marker {
   color: var(--color-muted);
 }
 
-/* Quote (Carel's own voice). */
-blockquote {
-  margin: 2rem 0;
-  padding: 2rem 2.25rem;
-  background: var(--color-warm-panel);
-  border-radius: var(--radius-lg);
-  border-left: 4px solid var(--color-ink);
-}
-blockquote p {
-  max-width: none;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  line-height: 1.2;
-  letter-spacing: var(--tracking-heading);
-  color: var(--text-strong);
-}
+/* Quotes are a component now — see src/components/ui/blockquote.tsx. */
 
 table {
   width: 100%;
@@ -188,12 +178,12 @@ th {
   padding: 0.75rem 1rem;
   vertical-align: bottom;
   border-bottom: 1px solid var(--color-hairline);
-  background: var(--color-cream-pale);
+  background: var(--color-off-2);
   font-family: var(--font-mono);
   font-size: var(--text-label);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
-  color: var(--color-warm-grey);
+  color: var(--color-muted);
 }
 td {
   padding: 0.875rem 1rem;
@@ -201,6 +191,12 @@ td {
   border-bottom: 1px solid var(--color-hairline);
   font-size: 0.9375rem;
   line-height: 1.5;
+}
+tbody tr {
+  transition: background-color var(--duration-base) var(--ease-standard);
+}
+tbody tr:hover {
+  background: var(--color-off-2);
 }
 td:first-child,
 td strong {
@@ -235,6 +231,25 @@ tr:last-child td {
   .wrap--wide {
     max-width: var(--container-feature);
   } /* spreads on big screens */
+
+  /* Keyboard bypass link (WCAG 2.4.1) — off-screen until focused, then a
+     black pill above the navbar. Rendered first in <body> (layout.tsx). */
+  .skip-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 60; /* navbar is z-50 */
+    padding: 0.75rem 1.5rem;
+    background: var(--color-ink);
+    color: var(--color-white);
+    border-radius: var(--radius-pill);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transform: translateY(-200%);
+  }
+  .skip-link:focus-visible {
+    transform: none;
+  }
 
   .eyebrow {
     font-family: var(--font-mono);
@@ -300,10 +315,15 @@ tr:last-child td {
 article section > * + * {
   margin-block-start: var(--space-item);
 }
-article section > :is(h3, h4) {
+/* The :has() alternates match a heading wrapped in a scroll-reveal div
+   (Section/Phase wrap each direct child in a MotionVertical), so the
+   subsection rhythm survives the extra wrapper. */
+article section > :is(h3, h4),
+article section > div:has(> :is(h3, h4):first-child) {
   margin-block-start: var(--space-sub);
 }
-article section > :is(h3, h4) + * {
+article section > :is(h3, h4) + *,
+article section > div:has(> :is(h3, h4):first-child) + * {
   margin-block-start: var(--space-block);
 }
 
@@ -315,32 +335,16 @@ article section > :is(h3, h4) + * {
    ============================================================ */
 .card {
   padding: var(--space-block);
-  background: var(--color-cream-pale);
+  background: var(--color-off-2);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
-}
-
-.placeholder {
-  display: grid;
-  place-items: center;
-  gap: 0.5rem;
-  min-height: 220px;
-  padding: var(--space-block);
-  text-align: center;
-  background: var(--color-cream-pale);
-  border: 1px dashed var(--color-hairline);
-  border-radius: var(--radius-md);
-}
-.placeholder.small {
-  min-height: 160px;
-  padding: var(--space-item);
 }
 
 .stat {
   display: grid;
   gap: 0.375rem;
   padding: var(--space-block);
-  background: var(--color-cream-pale);
+  background: var(--color-off-2);
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-md);
 }
@@ -365,7 +369,7 @@ article section > :is(h3, h4) + * {
   line-height: 1.5;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
-  color: var(--color-warm-grey);
+  color: var(--color-muted);
 }
 
 .columns {
@@ -380,7 +384,9 @@ article section > :is(h3, h4) + * {
   gap: 0.5rem;
   padding-top: 1rem;
 }
-.columns .index {
+/* Serif index numeral ("01", "02"…) leading a list item — used by the
+   How-Might-We cards; standalone so it works outside `.columns` too. */
+.index {
   font-family: var(--font-numeral);
   font-size: 1.5rem;
   line-height: 1;
@@ -547,16 +553,6 @@ article section > :is(h3, h4) + * {
   line-height: 1;
   text-transform: none;
   letter-spacing: normal;
-}
-
-/* Phase deck (optional descriptive line under the title badge). */
-.phase-deck {
-  max-width: var(--container-prose);
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);
-  line-height: 1.2;
-  letter-spacing: var(--tracking-heading);
-  color: var(--color-muted);
 }
 
 /* Bento (Key Takeaways) — compact tiered stat mosaic. Emphasis does the

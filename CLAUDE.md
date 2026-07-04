@@ -148,7 +148,8 @@ this voice.
   through design tokens (`text-h1…h4`, `tracking-wide/wider/widest`,
   `bg-pill`, `bg-ink-hover`) and the site-wide `.eyebrow` class. The
   **case study** page is plain HTML — no wrapper class — styled by
-  bare tag in `globals.css` (`h1…h6`, `p`, `blockquote`, `table`…),
+  bare tag in `globals.css` (`h1…h6`, `p`, `table`…; pull-quotes are
+  the shadcn-style `<Blockquote>` in `src/components/ui/`),
   the same rules the rest of the site's headings/paragraphs use; a
   component that needs a different size/weight layers a Tailwind
   utility on top (utility specificity beats a bare tag selector, so

@@ -8,7 +8,7 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Carel Maeda',
-  jobTitle: 'Senior Product Designer',
+  jobTitle: 'Product Designer',
   url: 'https://carelmaeda.com',
   image: 'https://carelmaeda.com/images/profile.webp',
   sameAs: ['https://linkedin.com/in/carelmaeda', 'https://github.com/carelmaeda'],
@@ -26,7 +26,7 @@ const personJsonLd = {
 
 export default function Home() {
   return (
-    <main>
+    <main id="main">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

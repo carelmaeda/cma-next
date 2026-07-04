@@ -1,3 +1,5 @@
+/* Inline SVG brand icons (LinkedIn, GitHub) — lucide dropped brand glyphs,
+   so these live here as currentColor paths. */
 type IconProps = {
   className?: string;
   size?: number;

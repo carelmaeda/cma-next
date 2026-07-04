@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { LinkedInIcon, GitHubIcon } from '../shared/BrandIcons';
 import { MotionVertical } from './Motions';
 
+/** Home About section — byline avatar, two-column bio, social + resume links. */
 export default function About() {
   return (
     <section id="about" className="py-page">
@@ -25,7 +26,7 @@ export default function About() {
             />
             <div>
               <p className="font-medium">Carel Maeda</p>
-              <p className="eyebrow">Senior Product Designer · Toronto</p>
+              <p className="eyebrow">Product Designer · Toronto</p>
             </div>
           </div>
         </MotionVertical>
@@ -67,7 +68,7 @@ export default function About() {
               href="https://linkedin.com/in/carelmaeda"
               target="_blank"
               rel="noopener noreferrer"
-              className="eyebrow eyebrow--strong no-underline-grow inline-flex items-center gap-2 transition-opacity duration-300 ease-standard hover:opacity-60"
+              className="eyebrow eyebrow--strong no-underline-grow -my-3.5 inline-flex items-center gap-2 py-3.5 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               <LinkedInIcon /> LinkedIn ↗
             </a>
@@ -75,7 +76,7 @@ export default function About() {
               href="https://github.com/carelmaeda"
               target="_blank"
               rel="noopener noreferrer"
-              className="eyebrow eyebrow--strong no-underline-grow inline-flex items-center gap-2 transition-opacity duration-300 ease-standard hover:opacity-60"
+              className="eyebrow eyebrow--strong no-underline-grow -my-3.5 inline-flex items-center gap-2 py-3.5 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               <GitHubIcon /> GitHub ↗
             </a>
@@ -83,7 +84,7 @@ export default function About() {
               href="/cma-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="eyebrow eyebrow--strong no-underline-grow inline-flex items-center gap-2 transition-opacity duration-300 ease-standard hover:opacity-60"
+              className="eyebrow eyebrow--strong no-underline-grow -my-3.5 inline-flex items-center gap-2 py-3.5 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               Resume.pdf ↗
             </a>
