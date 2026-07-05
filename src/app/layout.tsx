@@ -34,9 +34,9 @@ const splineSansMono = Spline_Sans_Mono({
 // ≤60-char titles, ≤160-char descriptions. Every page overrides
 // `openGraph`/`twitter` (Next merges those objects wholesale from the
 // layout, so a page that skips them would ship the homepage's og:title).
-const HOME_TITLE = 'Carel Maeda — Senior Product Designer';
+const HOME_TITLE = 'Carel Maeda — Product Design Manager';
 const HOME_DESCRIPTION =
-  'Senior Product Designer in Toronto who ships strategy, design, and code — UX research, design systems, and production front-end.';
+  'Product Design Manager in Toronto who ships strategy, design, and code — leading UX research, design systems, and production front-end.';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://carelmaeda.com'),

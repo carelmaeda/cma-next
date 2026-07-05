@@ -19,21 +19,23 @@ not phase-bound.
 
 The portfolio is anchored to a single positioning statement:
 
-> **Senior Product Designer who ships strategy, design, and code —
-> building toward Design Lead.**
+> **Product Design Manager who ships strategy, design, and code —
+> ready for Design Lead.**
 
 Three things to internalize about this positioning:
 
-1. **"Senior" — not "Lead" — is the visible claim.** The current site
-   makes a Design Lead claim that the evidence doesn't support
-   (no people-management history). The revamp aligns the visible
-   positioning to Senior, which is defensible from actual work.
+1. **"Product Design Manager" is the visible claim.** This is Carel's
+   actual current title (per Carel, July 2026 — it superseded the
+   earlier "Senior Product Designer" framing, which must not
+   reappear anywhere on the site). "Design Lead" is the target role,
+   framed as trajectory/readiness, not as a held title.
 2. **The "and code" half is the differentiation.** Carel designs _and_
    ships front-end code end-to-end. That hybrid is the most
    underused asset on the current site. Surface it; don't bury it.
-3. **"Building toward Design Lead" is the trajectory framing.** It's
-   honest, it's specific, and it tells recruiters what to consider
-   him for now _and_ later. Do not strip it. Do not over-claim past it.
+3. **The Design Lead framing positions him as a lead applicant.**
+   It's specific and tells recruiters what to consider him for now
+   _and_ next. Do not strip it — but "Design Lead" stays a target,
+   never a claimed past/current title.
 
 ## Where the reference material lives
 
@@ -45,16 +47,19 @@ reference material:
   of the revamp plan. Read for context on _why_ the site looks the
   way it does. Not actionable any more.
 
-- **`.claude/docs/case-studies/`** — three canonical long-form case
-  study markdown files. The rendered `.tsx` pages are summaries of
-  these:
-  - `paygos-corporate-site-case-study.md` (Brand & Positioning)
-  - `paygos-demo-case-study.md` (Craft & Systems)
-  - `bonus-bowls-case-study.md` (Strategy & Impact)
+- **`.claude/docs/case-studies/`** — the canonical long-form case
+  study markdown. The portfolio has exactly **one** case study:
+  - `bonus-bowls-case-study.md` (Strategy & Impact) — rendered as
+    the `.tsx` page at `/case-studies/bonus-bowls`, which is a
+    summary of it.
 
-  Treat these as the source of truth for case study content. The
-  rendered pages can drift toward shorter or longer; the markdown
+  Treat the markdown as the source of truth for case study content.
+  The rendered page can drift toward shorter or longer; the markdown
   is what feeds future PDF exports or content edits.
+
+  The two earlier Paygos case studies (corporate site, demo) were
+  removed in July 2026 at Carel's request — do not reintroduce them
+  or link to them (recoverable from git history if ever needed).
 
 - **`.claude/docs/refferences/`** _(sic — folder spelling)_ — background
   research on portfolio craft, UX case study structure, and the
@@ -83,9 +88,8 @@ Every case study includes a dedicated AI-disclosure section. Title
 and placement follow the case study's own markdown source: the
 Bonus Bowls study titles it **"How I Leveraged AI"** and places it
 near the top (right after Project Overview), framing AI as the
-build partner that let one person ship at that scale. Older studies
-may still use **"How AI Assisted Me on This Project"** near the end.
-Either pattern is fine — what's fixed is that this section is the
+build partner that let one person ship at that scale. What's fixed
+is that this section is the
 _only_ place in any case study where AI tools are mentioned. Do not
 insert AI references into other parts of the body. Carel is the
 author; AI is acceleration on execution.

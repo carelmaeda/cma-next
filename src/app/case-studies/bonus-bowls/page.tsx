@@ -55,7 +55,7 @@ const caseStudyJsonLd = {
   author: {
     '@type': 'Person',
     name: 'Carel Maeda',
-    jobTitle: 'Senior Product Designer',
+    jobTitle: 'Product Design Manager',
     url: 'https://carelmaeda.com',
   },
   keywords:

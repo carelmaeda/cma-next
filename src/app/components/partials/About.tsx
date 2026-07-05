@@ -26,7 +26,7 @@ export default function About() {
             />
             <div>
               <p className="font-medium">Carel Maeda</p>
-              <p className="eyebrow">Product Designer · Toronto</p>
+              <p className="eyebrow">Product Design Manager · Toronto</p>
             </div>
           </div>
         </MotionVertical>
@@ -50,10 +50,9 @@ export default function About() {
             <div className="grid gap-item content-start">
               <p>
                 With a background in marketing and engineering, I bring structured problem-solving
-                to creative strategy. I&rsquo;m now focused on broadening my design leadership and
-                continually improving as a designer every day. This means mentoring designers,
-                taking extra courses, staying up to date with a growing industry, and making myself
-                future-proof.
+                to creative strategy. As a Product Design Manager, I&rsquo;m growing my leadership
+                toward a Design Lead role &mdash; mentoring designers, taking extra courses, staying
+                up to date with a growing industry, and making myself future-proof.
               </p>
               <p>
                 Outside of work, I&rsquo;m usually behind a camera. Photography shares the same

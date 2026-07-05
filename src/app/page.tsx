@@ -13,7 +13,7 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Carel Maeda',
-  jobTitle: 'Senior Product Designer',
+  jobTitle: 'Product Design Manager',
   url: 'https://carelmaeda.com',
   image: 'https://carelmaeda.com/images/profile.webp',
   sameAs: ['https://linkedin.com/in/carelmaeda', 'https://github.com/carelmaeda'],

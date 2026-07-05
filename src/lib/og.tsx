@@ -60,7 +60,7 @@ export function ogTemplate({ title, subtitle }: OGParams) {
               fontFamily: mono,
             }}
           >
-            Carel Maeda · Product Designer
+            Carel Maeda · Product Design Manager
           </span>
         </div>
         <span

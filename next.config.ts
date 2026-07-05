@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/case-studies/paygos-prototype',
-        destination: '/case-studies/paygos-demo',
+        destination: '/',
         permanent: true,
       },
       {
@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/case-studies/design-archive',
-        destination: '/case-studies/paygos-corporate-site',
+        destination: '/',
         permanent: true,
       },
       {
