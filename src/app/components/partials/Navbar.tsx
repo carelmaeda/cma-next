@@ -120,9 +120,9 @@ export default function Navbar() {
                 </Link>
               ))}
               <Button asChild variant="default" size="sm">
-                <Link href="/#contact" className="no-underline-grow">
+                <a href="mailto:carelmaeda@gmail.com" className="no-underline-grow">
                   Let&rsquo;s talk 👋
-                </Link>
+                </a>
               </Button>
             </div>
 
@@ -160,9 +160,13 @@ export default function Navbar() {
                     ))}
                     <SheetClose asChild>
                       <Button asChild variant="default" size="default" className="mt-8 w-full">
-                        <Link href="/#contact" onClick={close} className="no-underline-grow">
+                        <a
+                          href="mailto:carelmaeda@gmail.com"
+                          onClick={close}
+                          className="no-underline-grow"
+                        >
                           Let&rsquo;s talk 👋
-                        </Link>
+                        </a>
                       </Button>
                     </SheetClose>
                   </nav>
