@@ -700,14 +700,14 @@ export default function BonusBowlsPage() {
               <ImageLightbox
                 src="/images/bonusbowls-user-flows.webp"
                 alt="User flow diagram mapping the main journeys from onboarding to cashing out."
-                width={3000}
+                width={2310}
                 height={2400}
                 className="group relative block w-full cursor-zoom-in"
               >
                 <Image
                   src="/images/bonusbowls-user-flows.webp"
                   alt="User flow diagram mapping the main journeys from onboarding to cashing out."
-                  width={3000}
+                  width={2310}
                   height={2400}
                   loading="lazy"
                   sizes="(min-width: 768px) 50vw, 100vw"
@@ -1057,14 +1057,14 @@ export default function BonusBowlsPage() {
                 src="/images/bonusbowls-looker-dashboard.webp"
                 alt="The Bonus Bowls analytics dashboard, built in Google Looker Studio."
                 width={2750}
-                height={2063}
+                height={2064}
                 className="group relative block w-full cursor-zoom-in"
               >
                 <Image
                   src="/images/bonusbowls-looker-dashboard.webp"
                   alt="The Bonus Bowls analytics dashboard, built in Google Looker Studio."
                   width={2750}
-                  height={2063}
+                  height={2064}
                   loading="lazy"
                   sizes="(min-width: 768px) 60vw, 100vw"
                   quality={90}
