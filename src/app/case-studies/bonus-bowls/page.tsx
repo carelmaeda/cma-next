@@ -15,7 +15,12 @@ import {
 } from 'lucide-react';
 import DesignThinkingDiagram from '@/app/components/shared/DesignThinkingDiagram';
 import ImageLightbox from '@/app/components/shared/ImageLightbox';
-import { MotionVertical, MotionStagger, MotionItem } from '@/app/components/partials/Motions';
+import {
+  MotionHero,
+  MotionVertical,
+  MotionStagger,
+  MotionItem,
+} from '@/app/components/partials/Motions';
 import { Blockquote } from '@/components/ui/blockquote';
 import { Button } from '@/components/ui/button';
 
@@ -331,7 +336,10 @@ export default function BonusBowlsPage() {
         {/* Hero — text left, hero image right on tablet+ (stacked on mobile) */}
         <header className="grid gap-sub">
           <div className="grid grid-cols-1 gap-sub md:grid-cols-2 md:items-center">
-            <MotionVertical>
+            {/* Header uses MotionHero (CSS entrance), not MotionVertical —
+                it's above the fold, so a hydration-gated reveal would hold
+                the page's LCP hostage. Sequence: copy → image → meta. */}
+            <MotionHero y={28} delay={0}>
               <h1>Bonus Bowls: A loyalty platform for a Fortune 500 pet brand</h1>
               <p className="mt-block max-w-prose text-lg leading-relaxed md:text-xl">
                 Bonus Bowls is a platform that rewards Canadian pet parents for their pet food
@@ -339,8 +347,8 @@ export default function BonusBowlsPage() {
                 it for rewards. I ran the User Research, designed the experience, shipped the
                 Angular front-end, and connected it to a comprehensive analytics dashboard.
               </p>
-            </MotionVertical>
-            <MotionVertical className="h-full">
+            </MotionHero>
+            <MotionHero y={28} delay={0.15} className="h-full">
               <Image
                 src="/images/bonusbowls-hero.webp"
                 alt="Bonus Bowls, the receipt-to-cashback loyalty app for pet parents"
@@ -351,9 +359,9 @@ export default function BonusBowlsPage() {
                 quality={85}
                 className="h-full min-h-[16rem] w-full rounded-card object-cover"
               />
-            </MotionVertical>
+            </MotionHero>
           </div>
-          <MotionVertical>
+          <MotionHero y={28} delay={0.3}>
             <dl className="grid grid-cols-2 items-start gap-x-block gap-y-item border-y border-hairline py-block sm:grid-cols-4">
               {[
                 { label: 'Timeline', value: 'Fall 2025 → Spring 2026' },
@@ -373,7 +381,7 @@ export default function BonusBowlsPage() {
                 </div>
               ))}
             </dl>
-          </MotionVertical>
+          </MotionHero>
         </header>
 
         <Section heading="About">

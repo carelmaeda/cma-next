@@ -1,7 +1,7 @@
 'use client';
 
 import { Fragment } from 'react';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 /**
  * Motion primitives tuned to the reference (h3ylab.com) computed values:
@@ -10,10 +10,21 @@ import { motion, useReducedMotion, type Variants } from 'framer-motion';
  *   - press/micro:   0.18s cubic-bezier(.2,0,0,1)
  * "Soft, eased, unhurried", nothing fast or flashy.
  *
+ * Two implementations by fold position:
+ *   - Above the fold (MotionHero, StaggerWords): pure CSS (`.rise` /
+ *     `.rise-word` in globals.css, `--ease-out` token = EASE_OUT). A
+ *     framer `initial={{ opacity: 0 }}` holds content invisible until
+ *     the JS bundle downloads and hydrates, which pushed mobile LCP
+ *     past 5s; CSS animations start at first paint instead.
+ *   - Below the fold (MotionVertical, MotionStagger/Item): framer,
+ *     since scroll-triggered reveals need IntersectionObserver anyway
+ *     and the visitor scrolls to them long after hydration.
+ *
  * Reduced motion: the server can't know the visitor's preference, so the
  * rendered markup and initial props NEVER branch on it (that caused a real
- * hydration failure, React #418). Instead the preference only zeroes the
- * transition durations — same DOM, instant reveal, no movement.
+ * hydration failure, React #418). The framer components zero their
+ * transition durations via useReducedMotion; the CSS ones are handled by
+ * a plain media query — same DOM, instant reveal, no movement.
  */
 export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
@@ -41,9 +52,10 @@ export function MotionVertical({
   );
 }
 
-/** Above-the-fold: animate on mount so it doesn't wait for a scroll trigger.
- *  `y`/`delay` let the hero sequence its pieces (headline → copy → CTA);
- *  y=0 gives a pure fade for containers whose children move on their own. */
+/** Above-the-fold: animates from first paint (CSS `.rise`), so the entrance
+ *  never waits on hydration. `y`/`delay` let the hero sequence its pieces
+ *  (headline → copy → CTA); y=0 gives a pure fade for containers whose
+ *  children move on their own. */
 export function MotionHero({
   children,
   className,
@@ -55,22 +67,20 @@ export function MotionHero({
   y?: number;
   delay?: number;
 }) {
-  const reduce = useReducedMotion();
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={reduce ? { duration: 0 } : { duration: 0.5, ease: EASE_OUT, delay }}
+    <div
+      className={className ? `rise ${className}` : 'rise'}
+      style={{ '--rise-y': `${y}px`, '--rise-delay': `${delay}s` } as React.CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
 /**
  * Per-word staggered reveal for the hero headline — each word is wrapped and
- * rises into place on load. Words split on spaces; markup is identical for
+ * rises into place from first paint (CSS `.rise-word`; the stagger is a
+ * per-word animation-delay). Words split on spaces; markup is identical for
  * every visitor (see the reduced-motion note above).
  */
 export function StaggerWords({
@@ -83,48 +93,26 @@ export function StaggerWords({
   /** When the first word starts — lets successive lines enter in sequence. */
   delay?: number;
 }) {
-  const reduce = useReducedMotion();
   const words = text.split(' ');
-  const container: Variants = {
-    hidden: {},
-    show: {
-      transition: reduce
-        ? { staggerChildren: 0, delayChildren: 0 }
-        : { staggerChildren: 0.07, delayChildren: delay },
-    },
-  };
-  const child: Variants = {
-    hidden: { opacity: 0, y: '0.5em' },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: reduce ? { duration: 0 } : { duration: 0.7, ease: EASE_OUT },
-    },
-  };
   return (
-    <motion.span
-      className={className}
-      variants={container}
-      initial="hidden"
-      animate="show"
-      style={{ display: 'inline-block' }}
-    >
+    <span className={className} style={{ display: 'inline-block' }}>
       {words.map((word, i) => (
         <Fragment key={`${word}-${i}`}>
           {/* No overflow:hidden mask here — with line-height < 1 (the hero
               ramp) the wrapper is shorter than the glyphs' em box and clips
               caps/ascenders at rest. The opacity fade carries the reveal. */}
-          <span style={{ display: 'inline-block' }}>
-            <motion.span variants={child} style={{ display: 'inline-block' }}>
-              {word}
-            </motion.span>
+          <span
+            className="rise-word"
+            style={{ '--rise-delay': `${delay + i * 0.07}s` } as React.CSSProperties}
+          >
+            {word}
           </span>
           {/* separator OUTSIDE the inline-block wrapper — trailing whitespace
               inside one is trimmed by CSS, which jammed the words together */}
           {i < words.length - 1 ? ' ' : null}
         </Fragment>
       ))}
-    </motion.span>
+    </span>
   );
 }
 

@@ -70,13 +70,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        {/* lazyOnload: gtag.js is ~100 KiB of mostly-unused JS — loading it
+            after `load` keeps it out of the Lighthouse critical window. The
+            trade-off (sub-2s bounces may go uncounted) is fine for a
+            portfolio. */}
         <Script
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           src={`https://www.googletagmanager.com/gtag/js?id=G-TGVPXPQKVJ`}
         />
         <Script
           id="google-analytics"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

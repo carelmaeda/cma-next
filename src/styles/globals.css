@@ -669,6 +669,42 @@ article section > div:has(> :is(h3, h4):first-child) + * {
 }
 
 /* ============================================================
+   Entrance rises — CSS-driven so above-the-fold content paints
+   at first paint instead of after hydration (the framer-motion
+   versions held the hero at opacity 0 until the JS bundle ran,
+   which pushed mobile LCP past 5s). Per-element choreography
+   comes in through the --rise-y / --rise-delay custom props.
+   ============================================================ */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise-y, 16px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.5s var(--ease-out) both;
+  animation-delay: var(--rise-delay, 0s);
+}
+.rise-word {
+  display: inline-block;
+  --rise-y: 0.5em;
+  animation: rise 0.7s var(--ease-out) both;
+  animation-delay: var(--rise-delay, 0s);
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .rise-word {
+    /* `animation: none` (not just zero duration) — with a fill-mode of
+       `both` a zeroed animation still hides the element for its delay. */
+    animation: none;
+  }
+}
+
+/* ============================================================
    Reduced-motion guard, global.
    Component-level animations should also wrap in their own
    @media (prefers-reduced-motion: no-preference) where heavier.
