@@ -32,26 +32,33 @@ export default function About() {
         </MotionVertical>
 
         <MotionVertical delay={0.05}>
-          {/* Two reading columns: text flows down the left column, then the right */}
+          {/* Two reading columns: text flows down the left column, then the right.
+              Key claims are bolded (600 — the global strong sits at 500). */}
           <div className="mt-sub grid gap-x-16 gap-y-item border-t border-hairline pt-sub leading-[1.7] md:grid-cols-2">
             <div className="grid gap-item content-start">
               <p>
-                Over the years, my strategies delivered around 10–15% YoY growth for clients,
-                alongside stronger engagement and less workflow friction. The platforms I design
-                make users&rsquo; lives easier each day so they can focus on selling.
+                <strong className="font-semibold">
+                  Over the years, my strategies delivered around 10&ndash;15% YoY growth for
+                  clients, alongside stronger engagement and less workflow friction.
+                </strong>{' '}
+                The platforms I design make users&rsquo; lives easier each day so they can focus on
+                selling.
               </p>
               <p>
                 Working across design, product, and engineering, I align stakeholders, shape roadmap
                 priorities, and ship accessible, high-impact experiences. In 2023 my team and I
-                built Paygos&rsquo; first design system, and I scaled it &mdash; streamlining the
-                design-to-dev handoff from weeks to days.
+                built Paygos&rsquo; first design system, and I scaled it,{' '}
+                <strong className="font-semibold">
+                  streamlining the design-to-dev handoff from weeks to days
+                </strong>
+                .
               </p>
             </div>
             <div className="grid gap-item content-start">
               <p>
                 With a background in marketing and engineering, I bring structured problem-solving
                 to creative strategy. As a Product Design Manager, I&rsquo;m growing my leadership
-                toward a Design Lead role &mdash; mentoring designers, taking extra courses, staying
+                toward a Design Lead role: mentoring designers, taking extra courses, staying
                 up to date with a growing industry, and making myself future-proof.
               </p>
               <p>
