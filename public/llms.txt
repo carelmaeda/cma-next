@@ -1,0 +1,20 @@
+# Carel Maeda — Product Design Manager
+
+> Personal design portfolio of Carel Maeda, a Product Design Manager in Toronto who ships strategy, design, and code — leading UX research, design systems, and production front-end development. Ready for Design Lead roles.
+
+Carel designs and ships end-to-end: he runs the user research, designs the experience, and builds the production front-end himself. This site is his own work — designed and coded by Carel with Next.js, TypeScript, and Tailwind CSS.
+
+## Pages
+
+- [Home](https://carelmaeda.com/): Who Carel is, what he does, selected work, and how to get in touch
+- [Bonus Bowls case study](https://carelmaeda.com/case-studies/bonus-bowls): UX case study of a cashback loyalty platform for a Fortune 500 pet-nutrition brand — user research, experience design, the Angular front-end, and live analytics
+- [Resume (PDF)](https://carelmaeda.com/cma-resume.pdf): Carel's resume
+
+## Profiles
+
+- [LinkedIn](https://linkedin.com/in/carelmaeda): Professional profile
+- [GitHub](https://github.com/carelmaeda): Code and projects
+
+## Optional
+
+- [Sitemap](https://carelmaeda.com/sitemap.xml): All indexable pages
