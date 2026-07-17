@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import DesignThinkingDiagram from '@/app/components/shared/DesignThinkingDiagram';
 import ImageLightbox from '@/app/components/shared/ImageLightbox';
+import ReadTracker from '@/app/components/shared/ReadTracker';
 import {
   MotionHero,
   MotionVertical,
@@ -1170,12 +1171,16 @@ export default function BonusBowlsPage() {
                 hugs the text despite the padded 44px touch target */}
             <a
               href="mailto:carelmaeda@gmail.com"
+              data-track="contact_click"
+              data-track-location="case_study"
               className="no-underline-grow -my-3 inline-block py-3 underline decoration-1 underline-offset-4 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               carelmaeda@gmail.com
             </a>
           </p>
         </Section>
+
+        <ReadTracker study="bonus-bowls" />
       </article>
     </main>
   );

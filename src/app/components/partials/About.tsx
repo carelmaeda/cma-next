@@ -74,6 +74,9 @@ export default function About() {
               href="https://linkedin.com/in/carelmaeda"
               target="_blank"
               rel="noopener noreferrer"
+              data-track="social_click"
+              data-track-location="home_about"
+              data-track-label="LinkedIn"
               className="eyebrow eyebrow--strong no-underline-grow -my-3.5 inline-flex items-center gap-2 py-3.5 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               <LinkedInIcon /> LinkedIn ↗
@@ -82,6 +85,9 @@ export default function About() {
               href="https://github.com/carelmaeda"
               target="_blank"
               rel="noopener noreferrer"
+              data-track="social_click"
+              data-track-location="home_about"
+              data-track-label="GitHub"
               className="eyebrow eyebrow--strong no-underline-grow -my-3.5 inline-flex items-center gap-2 py-3.5 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               <GitHubIcon /> GitHub ↗
@@ -90,6 +96,8 @@ export default function About() {
               href="/cma-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
+              data-track="resume_open"
+              data-track-location="home_about"
               className="eyebrow eyebrow--strong no-underline-grow -my-3.5 inline-flex items-center gap-2 py-3.5 transition-opacity duration-300 ease-standard hover:opacity-60"
             >
               Resume.pdf ↗

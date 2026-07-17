@@ -15,6 +15,8 @@ export default function ContactCTA() {
           <h2 className="mx-auto max-w-[16ch] text-h1 font-medium">Let&rsquo;s build something.</h2>
           <a
             href="mailto:carelmaeda@gmail.com"
+            data-track="contact_click"
+            data-track-location="home_contact"
             className="no-underline-grow mt-sub inline-block py-2 font-display text-h3 underline decoration-1 underline-offset-[6px] transition-opacity duration-300 ease-standard hover:opacity-60"
           >
             carelmaeda@gmail.com

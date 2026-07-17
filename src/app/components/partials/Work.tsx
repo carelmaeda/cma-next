@@ -108,6 +108,9 @@ export default function Work() {
             <MotionItem key={card.href}>
               <Link
                 href={card.href}
+                data-track="case_study_card_click"
+                data-track-label={card.title}
+                data-track-location="home_work"
                 className="no-underline-grow group grid gap-8 md:grid-cols-2 md:items-center md:gap-14"
               >
                 <CoverSlot card={card} />

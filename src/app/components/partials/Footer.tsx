@@ -2,15 +2,25 @@ import Link from 'next/link';
 import { Mail } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon } from '../shared/BrandIcons';
 
-const explore = [
+const explore: { label: string; href: string; external?: boolean; track?: string }[] = [
   { label: 'Work', href: '/#work' },
-  { label: 'Resume', href: '/cma-resume.pdf', external: true },
+  { label: 'Resume', href: '/cma-resume.pdf', external: true, track: 'resume_open' },
 ];
 
 const social = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/carelmaeda', Icon: LinkedInIcon },
-  { label: 'GitHub', href: 'https://github.com/carelmaeda', Icon: GitHubIcon },
-  { label: 'Email', href: 'mailto:carelmaeda@gmail.com', Icon: Mail },
+  {
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/carelmaeda',
+    Icon: LinkedInIcon,
+    track: 'social_click',
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/carelmaeda',
+    Icon: GitHubIcon,
+    track: 'social_click',
+  },
+  { label: 'Email', href: 'mailto:carelmaeda@gmail.com', Icon: Mail, track: 'contact_click' },
 ];
 
 /** Site-wide footer — inline nav, social icon buttons, and colophon. */
@@ -26,6 +36,7 @@ export default function Footer() {
                 key={l.label}
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                {...(l.track ? { 'data-track': l.track, 'data-track-location': 'footer' } : {})}
                 className="no-underline-grow -mx-2 -my-3.5 inline-block px-2 py-3.5 text-sm font-medium tracking-snug text-ink/75 transition-colors duration-300 ease-standard hover:text-ink"
               >
                 {l.label}
@@ -34,11 +45,14 @@ export default function Footer() {
           </nav>
 
           <div className="flex items-center gap-2">
-            {social.map(({ label, href, Icon }) => (
+            {social.map(({ label, href, Icon, track }) => (
               <a
                 key={label}
                 href={href}
                 aria-label={label}
+                data-track={track}
+                data-track-location="footer"
+                data-track-label={label}
                 {...(href.startsWith('http')
                   ? { target: '_blank', rel: 'noopener noreferrer' }
                   : {})}

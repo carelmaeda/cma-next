@@ -16,8 +16,8 @@ import {
   SheetClose,
 } from '@/components/ui/sheet';
 
-const navLinks: { label: string; href: string; external?: boolean }[] = [
-  { label: 'Resume', href: '/cma-resume.pdf', external: true },
+const navLinks: { label: string; href: string; external?: boolean; track?: string }[] = [
+  { label: 'Resume', href: '/cma-resume.pdf', external: true, track: 'resume_open' },
 ];
 
 /** Light-grey live-status capsule with a pulsing neon-green dot. */
@@ -114,13 +114,19 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  {...(link.track ? { 'data-track': link.track, 'data-track-location': 'navbar' } : {})}
                   className="no-underline-grow text-sm font-medium tracking-snug text-ink/80 transition-colors duration-300 ease-standard hover:text-ink"
                 >
                   {link.label}
                 </Link>
               ))}
               <Button asChild variant="default" size="sm">
-                <a href="mailto:carelmaeda@gmail.com" className="no-underline-grow">
+                <a
+                  href="mailto:carelmaeda@gmail.com"
+                  data-track="contact_click"
+                  data-track-location="navbar"
+                  className="no-underline-grow"
+                >
                   Let&rsquo;s talk 👋
                 </a>
               </Button>
@@ -151,6 +157,9 @@ export default function Navbar() {
                           {...(link.external
                             ? { target: '_blank', rel: 'noopener noreferrer' }
                             : {})}
+                          {...(link.track
+                            ? { 'data-track': link.track, 'data-track-location': 'navbar_menu' }
+                            : {})}
                           onClick={close}
                           className="no-underline-grow py-3 text-3xl font-medium tracking-snug transition-opacity duration-300 ease-standard hover:opacity-60"
                         >
@@ -162,6 +171,8 @@ export default function Navbar() {
                       <Button asChild variant="default" size="default" className="mt-8 w-full">
                         <a
                           href="mailto:carelmaeda@gmail.com"
+                          data-track="contact_click"
+                          data-track-location="navbar_menu"
                           onClick={close}
                           className="no-underline-grow"
                         >

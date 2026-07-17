@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 import Script from 'next/script';
 import Footer from './components/partials/Footer';
 import Navbar from './components/partials/Navbar';
+import Analytics from './components/shared/Analytics';
 import { cn } from '@/lib/utils';
 
 // Headings + highlights + numerals. Editorial serif; italic is the highlight face.
@@ -70,17 +71,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
-        {/* lazyOnload: gtag.js is ~100 KiB of mostly-unused JS — loading it
-            after `load` keeps it out of the Lighthouse critical window. The
-            trade-off (sub-2s bounces may go uncounted) is fine for a
+        {/* The dataLayer/gtag queue runs as a plain synchronous inline script
+            (bytes of JS, no network) so `window.gtag` exists before hydration
+            and events tracked anywhere (src/lib/analytics.ts) queue in order
+            behind the config. gtag.js itself stays lazyOnload: it's ~100 KiB
+            of mostly-unused JS — loading it after `load` keeps it out of the
+            Lighthouse critical window, and it replays the queue on arrival.
+            The trade-off (sub-2s bounces may go uncounted) is fine for a
             portfolio. */}
-        <Script
-          strategy="lazyOnload"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-TGVPXPQKVJ`}
-        />
-        <Script
-          id="google-analytics"
-          strategy="lazyOnload"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -90,11 +89,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+        <Script
+          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-TGVPXPQKVJ`}
+        />
       </head>
       <body suppressHydrationWarning>
         <a href="#main" className="skip-link no-underline-grow">
           Skip to content
         </a>
+        <Analytics />
         <Navbar />
         {children}
         <Footer />
