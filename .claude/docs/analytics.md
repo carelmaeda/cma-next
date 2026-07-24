@@ -44,10 +44,11 @@ Admin → (property) unless noted. Done items should be checked off here.
       reports appear under Reports → User → User attributes.
       Note: demographic reports apply *thresholding* — low-traffic sites
       show "(not set)"/withheld rows until volume is high enough.
-- [ ] **Enhanced measurement**: Admin → Data streams → web stream →
-      Enhanced measurement — confirm ON, and specifically
-      "Page changes based on browser history events" (this is what
-      counts client-side `next/link` navigations as page_views).
+- [x] **Enhanced measurement** — VERIFIED 2026-07-17 empirically:
+      beacon capture on the live site showed a second `page_view` fire
+      on the client-side home → case-study navigation (history-change
+      tracking works), plus built-in `scroll` and `file_download`
+      events. No console change was needed.
 - [ ] **Key events** (⚠ do AFTER deploy): Admin → Data display →
       Events → Key events tab → star `case_study_read_complete`,
       `contact_click`, `resume_open` (these are the portfolio's
@@ -82,3 +83,27 @@ Admin → (property) unless noted. Done items should be checked off here.
 
 Realtime report (Reports → Realtime) is the fastest way to verify a new
 event: open the site, click the CTA, watch the event appear within ~30s.
+
+## Looker Studio dashboard spec (one page: "Portfolio Overview")
+
+Data source: Google Analytics connector → the property containing web
+stream G-TGVPXPQKVJ (carelmaeda.com). Default date range: last 28 days,
+compared to previous period.
+
+| Tile | Chart | Config |
+| --- | --- | --- |
+| Visitors | Scorecard | Metric: Total users |
+| Case study views | Scorecard | Metric: Views, filter: Page path contains `/case-studies` |
+| Read to the end | Scorecard | Metric: Event count, filter: Event name = `case_study_read_complete` |
+| Contact clicks | Scorecard | Metric: Event count, filter: Event name = `contact_click` |
+| Resume opens | Scorecard | Metric: Event count, filter: Event name = `resume_open` |
+| Visitors over time | Time series | Dimension: Date, Metric: Total users |
+| Reading funnel | Bar chart | Dimension: Event name, Metric: Event count, filter: Event name IN (`case_study_scroll_25`, `case_study_scroll_50`, `case_study_scroll_75`, `case_study_read_complete`), sorted by Event count desc |
+| Where visitors come from | Table | Dimension: Session default channel group, Metrics: Total users, Key events |
+| Countries | Table (or geo map) | Dimension: Country, Metric: Total users |
+| CTA placement | Table | Dimension: `location` (custom dim), Metric: Event count, filter: Event name IN (`contact_click`, `resume_open`) |
+
+Custom dimensions (`location`, `label`, `study`, `metric_rating`) were
+registered 2026-07-16; if they don't appear in the field list, refresh
+the data source fields (Resource → Manage added data sources → Edit →
+Refresh fields).
